@@ -17,12 +17,25 @@ export default async function startRewriteForwardProxy({
   port: number;
 }) {
   const regularProxy = createProxyServer({ ignorePath: true, secure: false });
+  function getSslCertificate() {
+    const customCertPath = process.env.CUSTOM_CERT_PATH;
+    const customCertKeyPath = process.env.CUSTOM_CERT_KEY_PATH;
+    if (customCertPath && customCertKeyPath) {
+      return {
+        cert: customCertPath,
+        key: customCertKeyPath,
+      };
+    }
 
-  const options = {
-    key: fs.readFileSync(path.join(__dirname, '../certificates/server.key')),
-    cert: fs.readFileSync(path.join(__dirname, '../certificates/server.cert')),
-  };
+    return {
+      key: fs.readFileSync(path.join(__dirname, '../certificates/server.key')),
+      cert: fs.readFileSync(
+        path.join(__dirname, '../certificates/server.cert'),
+      ),
+    };
+  }
 
+  const options = getSslCertificate();
   function proxyRequest(protocol: 'http' | 'https') {
     return (req: IncomingMessage, res: ServerResponse) => {
       let target =

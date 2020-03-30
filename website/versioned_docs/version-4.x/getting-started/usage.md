@@ -14,7 +14,7 @@ The page will automatically reload if you make changes to the code. You will see
 
 ### `npm test`
 
-Runs your unit and e2e tests. Run `npm test --watch` to run the tests in watch mode.
+Runs your unit and e2e tests. Run `npm test -- --watch` to run the tests in watch mode.
 
 ---
 

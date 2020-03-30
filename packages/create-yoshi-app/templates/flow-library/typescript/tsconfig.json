@@ -10,11 +10,12 @@
     "module": "esnext",
     "lib": [
       "dom",
+      "dom.iterable",
       "esnext"
     ],
     "moduleResolution": "node",
     "rootDir": "src",
-    "outDir": "dist/es",
+    "outDir": "dist/esm",
     "declarationDir": "dist/types",
     "declaration": true,
     "sourceMap": true,
@@ -31,6 +32,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   }
 }

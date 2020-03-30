@@ -30,21 +30,31 @@ export async function startCDN({ port, ssl }: { port: number; ssl: boolean }) {
     return http.createServer(serverFn);
   }
 
+  function getSslCertificate() {
+    const customCertPath = process.env.CUSTOM_CERT_PATH;
+    const customCertKeyPath = process.env.CUSTOM_CERT_KEY_PATH;
+    if (customCertPath && customCertKeyPath) {
+      return {
+        cert: customCertPath,
+        key: customCertKeyPath,
+      };
+    }
+
+    return {
+      cert: fs.readFileSync(
+        require.resolve('yoshi-helpers/certificates/server.cert'),
+        'utf-8',
+      ),
+      key: fs.readFileSync(
+        require.resolve('yoshi-helpers/certificates/server.key'),
+        'utf-8',
+      ),
+      passphrase: '1234',
+    };
+  }
+
   function httpsCdn() {
-    return https.createServer(
-      {
-        cert: fs.readFileSync(
-          require.resolve('yoshi-helpers/certificates/server.cert'),
-          'utf-8',
-        ),
-        key: fs.readFileSync(
-          require.resolve('yoshi-helpers/certificates/server.key'),
-          'utf-8',
-        ),
-        passphrase: '1234',
-      },
-      serverFn,
-    );
+    return https.createServer(getSslCertificate(), serverFn);
   }
 
   const server = ssl ? httpsCdn() : httpCdn();

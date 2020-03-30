@@ -1,15 +1,17 @@
 import path from 'path';
 import globby from 'globby';
 import { getProjectArtifactId } from 'yoshi-helpers/utils';
+import { isTypescriptProject } from 'yoshi-helpers/build/queries';
 import resolve from 'resolve';
 import fs from 'fs-extra';
 import { Config } from 'yoshi-config/build/config';
 
 export interface FlowEditorModel {
   appName: string;
-  appDefId: string;
+  appDefId: string | null;
   artifactId: string;
   initApp: string;
+  editorEntryFileName: string | null;
   components: Array<ComponentModel>;
 }
 
@@ -56,16 +58,27 @@ export async function generateFlowEditorModel(
     throw new Error(`artifact id not provided.
     Please insert <artifactId>yourArtifactId</artifactId> in your "pom.xml"`);
   }
+  const fileExtension = isTypescriptProject() ? 'ts' : 'js';
 
   const rootPath = process.cwd();
-  const initApp = resolveFrom(path.join(rootPath, 'src'), 'app');
+  const srcPath = path.join(rootPath, 'src');
+  let initApp = resolveFrom(srcPath, 'init.app');
+  if (!initApp) {
+    initApp = resolveFrom(srcPath, 'app');
+    console.warn(
+      `\`app.${fileExtension}\` is deprecated in favour of \`init.app.${fileExtension}\`. Please run \`mv ${srcPath}/app.ts ${srcPath}/init.app.ts\` 🙏`,
+    );
+  }
+  const editorEntryFileName = resolveFrom(srcPath, 'editor.app');
   const appConfigFileName = resolveFrom(rootPath, '.application');
   const appConfig =
     appConfigFileName && getLocalConfig<AppConfig>(appConfigFileName);
 
   if (!initApp) {
     throw new Error(`Missing app file.
-    Please create "app.js/ts" file in "${path.resolve('./src')}" directory`);
+    Please create "init.app.${fileExtension}" file in "${path.resolve(
+      './src',
+    )}" directory`);
   }
 
   if (!appConfig || !appConfig.appDefinitionId) {
@@ -105,12 +118,12 @@ For more info, visit http://tiny.cc/dev-center-registration`);
 
       if (!controllerFileName) {
         throw new Error(`Missing controller file for the component in "${componentPathRelativeToRoot}".
-        Please create "controller.js/ts" file in "${componentPathRelativeToRoot}" directory`);
+        Please create "controller.${fileExtension}" file in "${componentPathRelativeToRoot}" directory`);
       }
 
       if (!widgetFileName && !pageFileName) {
         throw new Error(`Missing widget or page file for the component in "${componentPathRelativeToRoot}".
-        Please create either Widget.js/ts/tsx or Page.js/ts/tsx file in "${componentPathRelativeToRoot}" directory`);
+        Please create either Widget.${fileExtension} or Page.${fileExtension} file in "${componentPathRelativeToRoot}" directory`);
       }
 
       return {
@@ -126,7 +139,8 @@ For more info, visit http://tiny.cc/dev-center-registration`);
 
   return {
     appName: config.name,
-    appDefId: appConfig ? appConfig.appDefinitionId : '',
+    appDefId: appConfig ? appConfig.appDefinitionId : null,
+    editorEntryFileName,
     artifactId,
     initApp,
     components: componentsModel,

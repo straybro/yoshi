@@ -234,6 +234,20 @@ export default class DevEnvironment {
     }
   }
 
+  private static getSslCertificate(https: boolean) {
+    const customCertPath = process.env.CUSTOM_CERT_PATH;
+    const customCertKeyPath = process.env.CUSTOM_CERT_KEY_PATH;
+
+    if (customCertPath && customCertKeyPath) {
+      return {
+        cert: customCertPath,
+        key: customCertKeyPath,
+      };
+    }
+
+    return https;
+  }
+
   startWebWorkerHotUpdate(compiler: webpack.Compiler) {
     compiler.watch({}, async (error, stats) => {
       // We save the result of this build to webpack-dev-server's internal state so the last
@@ -461,7 +475,7 @@ export default class DevEnvironment {
     if (clientCompiler) {
       webpackDevServer = new WebpackDevServer(clientCompiler, {
         publicPath: publicPath!, // we have public path if we have clientCompiler
-        https,
+        https: DevEnvironment.getSslCertificate(https),
         port: webpackDevServerPort,
         appName,
         suricate,

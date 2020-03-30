@@ -26,7 +26,7 @@ const start: cliCommand = async function(argv, config) {
     console.log(
       `
       Description
-        Starts the application in development mode
+        Start a development server which rebuilds on any change
 
       Usage
         $ yoshi-library start
@@ -52,7 +52,7 @@ const start: cliCommand = async function(argv, config) {
 
   const webpackConfigs = [];
 
-  if (config.bundle) {
+  if (config.bundleConfig) {
     const clientConfig = createClientWebpackConfig(config, {
       isDev: true,
       isHot: false,
@@ -63,7 +63,8 @@ const start: cliCommand = async function(argv, config) {
 
   const devEnvironment = await DevEnvironment.create({
     webpackConfigs: webpackConfigs as [webpack.Configuration?],
-    webpackDevServerPort: config.port,
+    // @ts-ignore - we won't need this port if we won't have clientConfig
+    webpackDevServerPort: config.bundleConfig.port,
     https: false,
     appName: config.pkgJson.name!,
     enableClientHotUpdates: false,

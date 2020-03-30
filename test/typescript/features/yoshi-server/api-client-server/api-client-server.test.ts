@@ -18,5 +18,11 @@ describe.each(['prod', 'dev'] as const)(
         expect(title).toBe('hello Yaniv');
       });
     });
+
+    it('component tests', async () => {
+      await scripts[mode](async () => {
+        await scripts.test(mode);
+      });
+    });
   },
 );

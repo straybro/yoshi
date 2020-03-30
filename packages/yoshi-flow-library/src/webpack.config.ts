@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import { createBaseWebpackConfig } from 'yoshi-common/build/webpack.config';
 import { isSingleEntry } from 'yoshi-helpers/build/queries';
-import { Config } from './config/types';
+import { Config, BundleConfig } from './config/types';
 
 const stripOrganization = (name: string): string =>
   name.slice(name.indexOf('/') + 1);
@@ -22,7 +22,8 @@ export function createClientWebpackConfig(
     forceEmitSourceMaps?: boolean;
   } = {},
 ): webpack.Configuration {
-  const entry = config.entry;
+  const bundleConfig = config.bundleConfig as BundleConfig;
+  const { entry, url, library, externals } = bundleConfig;
 
   const name = stripOrganization(config.pkgJson.name!);
 
@@ -30,14 +31,16 @@ export function createClientWebpackConfig(
     name,
     useTypeScript: true,
     typeCheckTypeScript: false,
-    devServerUrl: config.url,
+    devServerUrl: url,
     configName: 'client',
     target: 'web',
     isDev,
     isHot,
     isAnalyze,
     forceEmitSourceMaps,
-    exportAsLibraryName: config.umd,
+    // it's actually being passed as a Library to webpack
+    // @ts-ignore and not as a string
+    exportAsLibraryName: library,
     cssModules: true,
     separateCss: true,
   });
@@ -46,8 +49,9 @@ export function createClientWebpackConfig(
     ? { [stripOrganization(name)]: entry as string }
     : entry;
 
-  clientConfig.externals = config.externals;
+  clientConfig.externals = externals;
   clientConfig.output!.filename = isDev ? '[name].umd.js' : '[name].umd.min.js';
+  clientConfig.output!.umdNamedDefine = true;
 
   return clientConfig;
 }

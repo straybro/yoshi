@@ -4,6 +4,7 @@ import fs from 'fs-extra';
 import defaultsDeep from 'lodash/defaultsDeep';
 import { ciEnv, localEnv } from '../scripts/utils/constants';
 import serve from '../packages/yoshi-common/serve';
+import writeJson from '../packages/yoshi-common/build/write-json';
 import {
   waitForPort,
   waitForStdout,
@@ -124,10 +125,8 @@ export default class Scripts {
       packageJSONfileContents,
       scripts,
     );
-    fs.outputFileSync(
-      packageJSONPath,
-      JSON.stringify(newPackageJSONfileContents, null, 2),
-    );
+
+    writeJson(packageJSONPath, newPackageJSONfileContents);
 
     // we have __node_modules__ in our feature templates, in order to mock some devendency data
     if (fs.pathExistsSync(path.join(featureDir, '__node_modules__'))) {

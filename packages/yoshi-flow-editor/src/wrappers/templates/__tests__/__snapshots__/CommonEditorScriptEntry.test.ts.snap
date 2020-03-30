@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonEditorScriptEntry template generates correct template with entry editorScript file 1`] = `
+"
+  export * from 'project/src/editor.app.ts';
+"
+`;

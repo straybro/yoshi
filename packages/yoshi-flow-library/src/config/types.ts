@@ -6,27 +6,30 @@ type WebpackEntry = string | Array<string> | Entry | EntryFunc;
 
 type WebpackExternals = ExternalsElement | Array<ExternalsElement>;
 
+// Webpack types doesn't expose this
+type Library = string | Array<string> | { [key: string]: string };
+
+export type InitialBundleConfig = {
+  library?: Library;
+  entry?: WebpackEntry;
+  externals?: WebpackExternals;
+  port?: number;
+  https?: boolean;
+};
+
 export type InitialConfig = {
-  bundle: {
-    umd?: string;
-    entry?: WebpackEntry;
-    externals?: WebpackExternals;
-    port?: number;
-    https?: boolean;
-  };
+  bundle: InitialBundleConfig | boolean;
   storybook?: boolean;
 };
+
+export type BundleConfig = RequiredRecursively<
+  Partial<InitialBundleConfig> & { url: string }
+>;
 
 export type Config = {
   pkgJson: PackageJson;
   jestConfig: unknown;
-  bundle: boolean;
-  entry: WebpackEntry;
-  umd?: string;
-  port: number;
-  https: boolean;
-  url: string;
-  externals: WebpackExternals;
+  bundleConfig: BundleConfig | null;
   storybook: boolean;
 };
 

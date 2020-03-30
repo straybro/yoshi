@@ -2,15 +2,19 @@
 process.env.BABEL_ENV = 'test';
 process.env.NODE_ENV = 'test';
 
+import path from 'path';
 import arg from 'arg';
 import chalk from 'chalk';
 import execa from 'execa';
 import { startCDN } from 'yoshi-common/build/cdn';
-import {
-  hasBundleInStaticsDir,
-  hasE2ETests,
-} from 'yoshi-helpers/build/queries';
+import { hasE2ETests } from 'yoshi-helpers/build/queries';
+import { STATICS_DIR } from 'yoshi-config/build/paths';
+import globby from 'globby';
 import { cliCommand } from '../cli';
+
+const hasBundleInStatics = () => {
+  return globby.sync(path.resolve(STATICS_DIR, '*.umd.js')).length > 0;
+};
 
 const test: cliCommand = async function(argv, config) {
   const args = arg(
@@ -31,7 +35,7 @@ const test: cliCommand = async function(argv, config) {
     console.log(
       `
       Description
-        Running the tests
+        Run the tests
 
       Usage
         $ yoshi-library test
@@ -48,7 +52,8 @@ const test: cliCommand = async function(argv, config) {
   let closeCdn = () => {};
 
   if (hasE2ETests() && !watch) {
-    if (!hasBundleInStaticsDir()) {
+    console.log(!hasBundleInStatics());
+    if (!hasBundleInStatics()) {
       console.error();
       console.error(
         chalk.red(
@@ -62,7 +67,11 @@ const test: cliCommand = async function(argv, config) {
       console.error();
     }
 
-    closeCdn = (await startCDN({ ssl: false, port: config.port })).close;
+    if (config.bundleConfig) {
+      closeCdn = (
+        await startCDN({ ssl: false, port: config.bundleConfig.port })
+      ).close;
+    }
   }
 
   const jestCliOptions = [

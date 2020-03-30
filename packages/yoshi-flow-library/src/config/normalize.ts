@@ -1,28 +1,44 @@
 import { PackageJson } from 'read-pkg';
-import { Config, InitialConfig } from './types';
+import defaultsDeep from 'lodash/defaultsDeep';
+import {
+  Config,
+  InitialConfig,
+  BundleConfig,
+  InitialBundleConfig,
+} from './types';
 
 export default (initialConfig: InitialConfig, pkgJson: PackageJson): Config => {
   const { jest = {} } = pkgJson;
 
-  const cdnPort = initialConfig.bundle?.port ?? 3300;
-  const cdnHttps = initialConfig.bundle?.https ?? false;
-  const cdnUrl = `${cdnHttps ? 'https:' : 'http:'}//localhost:${cdnPort}/`;
+  const bundleDefaults: InitialBundleConfig = {
+    port: 3300,
+    https: false,
+    entry: 'index.ts',
+    externals: [],
+    library: pkgJson.name,
+  };
 
-  // If there is a bundle property, default to umd with package.json name
-  const umd = initialConfig.bundle
-    ? initialConfig.bundle.umd || pkgJson.name
-    : undefined;
+  let bundleConfig: BundleConfig | null = null;
+
+  if (initialConfig.bundle) {
+    if (initialConfig.bundle === true) {
+      initialConfig.bundle = {};
+    }
+
+    bundleConfig = defaultsDeep(
+      initialConfig.bundle,
+      bundleDefaults,
+    ) as BundleConfig;
+
+    bundleConfig.url = `${bundleConfig.https ? 'https:' : 'http:'}//localhost:${
+      bundleConfig.port
+    }/`;
+  }
 
   const config: Config = {
     pkgJson,
-    port: cdnPort,
-    https: cdnHttps,
-    url: cdnUrl,
-    umd,
-    bundle: !!initialConfig.bundle,
-    entry: initialConfig.bundle?.entry || 'index.ts',
-    externals: initialConfig.bundle?.externals ?? [],
     jestConfig: jest,
+    bundleConfig,
     storybook: initialConfig.storybook ?? false,
   };
 

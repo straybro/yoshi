@@ -66,6 +66,17 @@ export default ({
 
   tsFiles.forEach(_transpileFile);
 
+  const gracefullTranspileFile = (filePath: string) => {
+    try {
+      _transpileFile(filePath);
+    } catch (error) {
+      // We don't want to throw in case there is a babel parsing error
+      // This happens during watch mode
+      // Throwing an error and exiting the watch mode is not good
+      console.error(error);
+    }
+  };
+
   if (copyFiles) {
     copyFilesSync({ watch, outDir: CJS_DIR, rootDir: SRC_DIR, cwd });
   }
@@ -76,6 +87,8 @@ export default ({
       ignoreInitial: true,
     });
 
-    watcher.on('add', _transpileFile).on('change', _transpileFile);
+    watcher
+      .on('add', gracefullTranspileFile)
+      .on('change', gracefullTranspileFile);
   }
 };

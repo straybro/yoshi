@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { withStyles } from '@wix/native-components-infra';
 import { IHostProps } from '@wix/native-components-infra/dist/src/types/types';
 import { IWixStatic } from '@wix/native-components-infra/dist/es/src/types/wix-sdk';
@@ -22,8 +22,11 @@ interface IFrameworkProps {
   cssBaseUrl?: string;
 }
 
+// Bolt ssr environment doesn't contain window.
+const globalWix = typeof window !== 'undefined' ? window.Wix : undefined;
+
 const PublicDataProvider: typeof React.Component =
-  typeof window.Wix === 'undefined'
+  typeof globalWix === 'undefined'
     ? PublicDataProviderViewer
     : PublicDataProviderEditor;
 
@@ -43,16 +46,14 @@ const getWidgetWrapper = (
     return (
       <div>
         <ErrorBoundary handleException={error => console.log(error)}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <PublicDataProvider data={props.__publicData__} Wix={window.Wix}>
-              <ControllerProvider data={props}>
-                <UserComponent
-                  {...createInstances({ experiments: props.experiments })}
-                  {...props}
-                />
-              </ControllerProvider>
-            </PublicDataProvider>
-          </Suspense>
+          <PublicDataProvider data={props.__publicData__} Wix={globalWix}>
+            <ControllerProvider data={props}>
+              <UserComponent
+                {...createInstances({ experiments: props.experiments })}
+                {...props}
+              />
+            </ControllerProvider>
+          </PublicDataProvider>
         </ErrorBoundary>
       </div>
     );

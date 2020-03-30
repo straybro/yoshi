@@ -105,7 +105,7 @@ const build: cliCommand = async function(argv, config) {
   // builds the cjs directory without typecheck
   runBabel({ cwd });
 
-  if (config.bundle) {
+  if (config.bundleConfig) {
     const clientDebugConfig = createClientWebpackConfig(config, {
       isDev: true,
       forceEmitSourceMaps,

@@ -43,7 +43,7 @@ export const host = '0.0.0.0';
 
 export class WebpackDevServer extends OriginalWebpackDevServer {
   public port: number;
-  public https: boolean;
+  public https: boolean | https.ServerOptions;
   public compiler: webpack.Compiler;
   public suricate: boolean;
   public appName: string;
@@ -59,7 +59,7 @@ export class WebpackDevServer extends OriginalWebpackDevServer {
       cwd = process.cwd(),
     }: {
       publicPath: string;
-      https: boolean;
+      https: boolean | https.ServerOptions;
       port: number;
       suricate: boolean;
       appName: string;

@@ -1,8 +1,8 @@
-import os from 'os';
 import path from 'path';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import { isEqual } from 'lodash';
+import writeJson from 'yoshi-common/build/write-json';
 import { LoadGraphResult } from './load-package-graph';
 
 export default async function verifyTypeScriptReferences({
@@ -34,11 +34,7 @@ export default async function verifyTypeScriptReferences({
           ),
         );
 
-        await fs.writeFile(
-          tsconfigPath,
-          JSON.stringify(clonedTsconfig, null, 2).replace(/\n/g, os.EOL) +
-            os.EOL,
-        );
+        writeJson(tsconfigPath, clonedTsconfig);
       }
     }),
   );

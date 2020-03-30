@@ -2,6 +2,7 @@ import path from 'path';
 import writeComponentWrapping from './wrappers/componentWrapping';
 import writeEditorAppWrapping from './wrappers/editorAppWrapping';
 import writeSettingsWrapping from './wrappers/settingsWrapping';
+import writeCommonEditorScriptWrapping from './wrappers/commonEditorScriptWrapping';
 import writeWidgetViewerScriptWrapping from './wrappers/widgetViewerScriptWrapping';
 import writeCommonViewerScriptWrapping from './wrappers/commonViewerScriptWrapping';
 import wixPrivateMockWrapping from './wrappers/wixPrivateMockWrapping';
@@ -23,6 +24,11 @@ export const buildEditorPlatformEntries = (model: FlowEditorModel) => {
     model,
   );
 
+  const editorScritEntry = writeCommonEditorScriptWrapping(
+    generatedWidgetEntriesPath,
+    model,
+  );
+
   const wixPrivateMockEntry = wixPrivateMockWrapping();
 
   return {
@@ -30,6 +36,7 @@ export const buildEditorPlatformEntries = (model: FlowEditorModel) => {
     ...componentEntries,
     ...editorAppEntries,
     ...settingsEntries,
+    ...editorScritEntry,
   };
 };
 

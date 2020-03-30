@@ -11,7 +11,6 @@ import normalizeDebuggingArgs from 'yoshi-common/build/normalize-debugging-args'
 import chalk from 'chalk';
 import { Config } from './config/types';
 import loadConfig from './config/loadConfig';
-import * as yoshiEgg from './yoshi-egg';
 
 const defaultCommand = 'start';
 
@@ -80,7 +79,6 @@ Promise.resolve().then(async () => {
     // We log it here for fast feedback to the user
     console.log();
     console.log(chalk.cyan(`Starting development environment...\n`));
-    yoshiEgg.print();
 
     process.env.NODE_ENV = 'development';
     process.env.BABEL_ENV = 'development';
