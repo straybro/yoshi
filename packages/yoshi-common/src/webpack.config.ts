@@ -19,6 +19,8 @@ import {
   inTeamCity as checkInTeamCity,
 } from 'yoshi-helpers/build/queries';
 // @ts-ignore - missing types
+import { StatsWriterPlugin } from 'webpack-stats-plugin';
+// @ts-ignore - missing types
 import ModuleNotFoundPlugin from 'react-dev-utils/ModuleNotFoundPlugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import { toIdentifier, getProjectArtifactId } from 'yoshi-helpers/utils';
@@ -53,6 +55,9 @@ const isProduction = checkIsProduction();
 const inTeamCity = checkInTeamCity();
 
 const disableModuleConcat = process.env.DISABLE_MODULE_CONCATENATION === 'true';
+
+const enableStatsOutput = process.env.ENABLE_WEBPACK_STATS_OUTPUT === 'true';
+const statsOutputPath = process.env.WEBPACK_STATS_OUTPUT_PATH;
 
 const reScript = /\.js?$/;
 const reStyle = /\.(css|less|scss|sass)$/;
@@ -625,6 +630,17 @@ export function createBaseWebpackConfig({
           ]
         : []),
 
+      ...(enableStatsOutput
+        ? [
+            new StatsWriterPlugin({
+              filename: statsOutputPath,
+              stats: {
+                all: true,
+                maxModules: Infinity,
+              },
+            }),
+          ]
+        : []),
       ...(useCustomSourceMapPlugin
         ? target === 'node'
           ? [sourceMapPlugin({ inline: true, showPathOnDisk: true })]
