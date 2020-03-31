@@ -66,6 +66,18 @@ function prependNameWith(filename: string, prefix: string) {
   return filename.replace(/\.[0-9a-z]+$/i, match => `.${prefix}${match}`);
 }
 
+const commonStylableWebpackConfig = {
+  filename: '[name].stylable.bundle.css',
+  optimize: {
+    classNameOptimizations: false,
+    shortNamespaces: false,
+  },
+  generate: {
+    runtimeStylesheetId: 'namespace',
+  },
+  resolveNamespace: resolveNamespaceFactory(name),
+};
+
 export const getStyleLoaders = ({
   name,
   embedCss = false,
@@ -560,19 +572,11 @@ export function createBaseWebpackConfig({
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
             new StylableWebpackPlugin({
+              ...commonStylableWebpackConfig,
               outputCSS: separateStylableCss,
-              filename: '[name].stylable.bundle.css',
               includeCSSInJS: !separateStylableCss,
-              optimize: {
-                classNameOptimizations: false,
-                shortNamespaces: false,
-              },
               runtimeMode: 'shared',
               globalRuntimeId: '__stylable_yoshi__',
-              generate: {
-                runtimeStylesheetId: 'namespace',
-              },
-              resolveNamespace: resolveNamespaceFactory(name),
             }),
 
             new ManifestPlugin({ fileName: 'manifest', isDev }),
@@ -613,6 +617,11 @@ export function createBaseWebpackConfig({
               ),
               raw: true,
               entryOnly: false,
+            }),
+            new StylableWebpackPlugin({
+              ...commonStylableWebpackConfig,
+              outputCSS: false,
+              includeCSSInJS: false,
             }),
           ]
         : []),
