@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "files": [
+    "./src/test-types.d.ts"
+  ]
+}
