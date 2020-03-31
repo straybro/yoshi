@@ -630,7 +630,7 @@ export function createBaseWebpackConfig({
           ]
         : []),
 
-      ...(isProduction && !isDev && enableStatsOutput
+      ...(inTeamCity && isProduction && !isDev && enableStatsOutput
         ? [
             new StatsWriterPlugin({
               filename: statsOutputPath,
