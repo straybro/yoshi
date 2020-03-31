@@ -630,7 +630,7 @@ export function createBaseWebpackConfig({
           ]
         : []),
 
-      ...(enableStatsOutput
+      ...(isProduction && !isDev && enableStatsOutput
         ? [
             new StatsWriterPlugin({
               filename: statsOutputPath,
