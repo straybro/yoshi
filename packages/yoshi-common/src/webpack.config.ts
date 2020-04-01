@@ -12,6 +12,7 @@ import {
   TEMPLATES_DIR,
   TEMPLATES_BUILD_DIR,
   SERVER_CHUNKS_DIR,
+  STATS_FILE,
 } from 'yoshi-config/build/paths';
 import resolve from 'resolve';
 import {
@@ -56,8 +57,7 @@ const inTeamCity = checkInTeamCity();
 
 const disableModuleConcat = process.env.DISABLE_MODULE_CONCATENATION === 'true';
 
-const enableStatsOutput = process.env.ENABLE_WEBPACK_STATS_OUTPUT === 'true';
-const statsOutputPath = process.env.WEBPACK_STATS_OUTPUT_PATH;
+const disableStatsOutput = process.env.DISABLE_WEBPACK_STATS_OUTPUT === 'true';
 
 const reScript = /\.js?$/;
 const reStyle = /\.(css|less|scss|sass)$/;
@@ -630,10 +630,10 @@ export function createBaseWebpackConfig({
           ]
         : []),
 
-      ...(inTeamCity && isProduction && !isDev && enableStatsOutput
+      ...(inTeamCity && isProduction && !isDev && !disableStatsOutput
         ? [
             new StatsWriterPlugin({
-              filename: statsOutputPath,
+              filename: STATS_FILE,
               stats: {
                 all: true,
                 maxModules: Infinity,
