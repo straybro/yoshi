@@ -1,17 +1,16 @@
 import Scripts from '../../../../scripts';
 
-jest.setTimeout(40 * 1000);
-
 const scripts = Scripts.setupProjectFromTemplate({
   templateDir: __dirname,
   projectType: 'typescript',
 });
 
-describe('Stylable SSR', () => {
-  it('Should allow importing *.st.css files in ssr', async () => {
-    await scripts.build();
-    const serverBundle = require(`${scripts.testDirectory}/dist/server.js`);
-    expect(serverBundle.style).toBeTruthy();
-    expect(Object.keys(serverBundle.style.classes).includes('root')).toBe(true);
+describe.each(['dev', 'prod'] as const)('ssr-st-css [%s]', mode => {
+  it('Should allow consuming *.st.css in server', async () => {
+    await scripts[mode](async () => {
+      await page.goto(scripts.serverUrl);
+      const result = await page.$eval('#stylable-div', elm => elm.textContent);
+      expect(result).toBe('Rendered with Stylable');
+    });
   });
 });

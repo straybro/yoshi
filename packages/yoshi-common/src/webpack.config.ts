@@ -67,7 +67,6 @@ function prependNameWith(filename: string, prefix: string) {
 }
 
 const getCommonStylbleWebpackConfig = (name: string) => ({
-  filename: '[name].stylable.bundle.css',
   optimize: {
     classNameOptimizations: false,
     shortNamespaces: false,
@@ -573,6 +572,7 @@ export function createBaseWebpackConfig({
 
             new StylableWebpackPlugin({
               ...getCommonStylbleWebpackConfig(name),
+              filename: '[name].stylable.bundle.css',
               outputCSS: separateStylableCss,
               includeCSSInJS: !separateStylableCss,
               runtimeMode: 'shared',
