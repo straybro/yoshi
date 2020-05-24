@@ -9,7 +9,7 @@ export type TemplateControllerConfig = {
   id: string | null;
   controllerFileName: string;
   widgetType: WidgetType;
-  controllerType?: string;
+  controllerId?: string;
 };
 
 type Opts = {
@@ -37,7 +37,7 @@ const importsForControllers = t<{
 `;
 
 const getControllerScriptId = (controller: TemplateControllerConfig) => {
-  const controllerScriptId = controller.controllerType || controller.id;
+  const controllerScriptId = controller.controllerId || controller.id;
 
   return controllerScriptId ? `"${controllerScriptId}"` : controllerScriptId;
 };

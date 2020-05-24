@@ -52,10 +52,11 @@ describe('CommonViewerScriptEntry template', () => {
     expect(generateControllerEntryContent).toMatchSnapshot();
   });
 
-  it('generates correct template with controllerType override', () => {
+  it('generates correct template with controllerId override', () => {
     const generateControllerEntryContent = commonViewerScriptEntry({
       viewerScriptWrapperPath:
         'yoshi-flow-editor-runtime/build/viewerScript.js',
+      sentryConfig: null,
       controllersMeta: [
         {
           controllerFileName: 'project/src/components/todo/controller.ts',
@@ -65,10 +66,13 @@ describe('CommonViewerScriptEntry template', () => {
         {
           controllerFileName: 'project/src/components/todo/controller.ts',
           id: '567',
-          controllerType: '09876',
+          controllerId: '09876',
           widgetType: PLATFORM_WIDGET_COMPONENT_TYPE,
         },
       ],
+      experimentsConfig: {
+        scope: 'test-scope',
+      },
       viewerAppFileName: 'project/src/app.ts',
     });
 
