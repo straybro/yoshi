@@ -41,7 +41,7 @@ import controller1 from 'project/src/components/todo/controller.ts';
           widgetType: \\"STUDIO_WIDGET\\",
           id: \\"123\\" }, { method: controller1,
           widgetType: \\"STUDIO_WIDGET\\",
-          id: \\"09876\\" }], importedApp.mapPlatformStateToAppData);
+          id: \\"09876\\" }]);
 "
 `;
 
