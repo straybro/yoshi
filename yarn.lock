@@ -4699,10 +4699,10 @@
   dependencies:
     "@wix/wix-bi-logger-client" latest
 
-"@wix/bob-widget-services@^1.30.0":
-  version "1.30.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/bob-widget-services/-/@wix/bob-widget-services-1.30.0.tgz#05abbc8e5dbdabeb37cc6fa29b2ba35df2e09896"
-  integrity sha1-Bau8jl29q+s3zG+imyujXfLgmJY=
+"@wix/bob-widget-services@^2.0.0":
+  version "2.0.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/bob-widget-services/-/@wix/bob-widget-services-2.0.0.tgz#f37899820b2f827c956204da702eb06dd85a5082"
+  integrity sha1-83iZggsvgnyVYgTacC6wbdhaUII=
   dependencies:
     lodash "^4.17.15"
 

@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@wix/add-sentry": "^1.0.0",
-    "@wix/bob-widget-services": "^1.30.0",
+    "@wix/bob-widget-services": "^2.0.0",
     "arg": "^4.1.1",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
@@ -51,6 +51,6 @@
     "@wix/wix-http-testkit": "^1.0.1318"
   },
   "peerDependencies": {
-    "@wix/bob-widget-services": "^1.30.0"
+    "@wix/bob-widget-services": "^2.0.0"
   }
 }

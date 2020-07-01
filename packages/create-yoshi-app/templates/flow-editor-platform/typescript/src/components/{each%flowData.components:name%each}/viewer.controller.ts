@@ -4,6 +4,7 @@ import {
   WixCodeAPI,
   WidgetAPI,
   ControllerConfig,
+  AppParams,
 } from '@wix/bob-widget-services/dist/src/types/viewerTypes';
 
 const DEFAULT_PROPS = {
@@ -11,11 +12,13 @@ const DEFAULT_PROPS = {
   textFromButton: 'You clicked the button',
 };
 
-function createWidget(
-  config: ControllerConfig,
-  $w: WixSelector,
-  $widget: WidgetAPI,
-) {
+function createWidget({
+  $w,
+  $widget,
+}: {
+  $w: WixSelector;
+  $widget: WidgetAPI;
+}) {
   return {
     pageReady: async () => {
       $w('#widgetText').text = $widget.props.initialText;
@@ -39,5 +42,6 @@ export default ({
     config: ControllerConfig;
     $w: WixSelector;
     wixCodeApi: WixCodeAPI;
+    appParams: AppParams;
   };
 }) => widgetViewerController(controllerConfig);
