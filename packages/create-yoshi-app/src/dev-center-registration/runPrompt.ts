@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import LocalAppTemplateModel from '../TemplateModel';
 import extendedPropmts, { Answers } from '../extended-prompts';
 import { initAPIService } from '../api';
@@ -46,8 +47,17 @@ export default async (
       console.error(e);
       return fallback();
     }
+    console.log(e);
     console.log();
     console.log('Aborting ...');
+    process.exit(0);
+  }
+
+  if (!answers.components.length) {
+    console.error(
+      chalk.red(`⛔️ Can't initialize an app without components.
+You have to either to create at least one component or select it from the already created app.`),
+    );
     process.exit(0);
   }
 

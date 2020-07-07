@@ -22,6 +22,10 @@ type OOIComponent = typeof WIDGET_OUT_OF_IFRAME | typeof PAGE_OUT_OF_IFRAME;
 type StudioComponent = typeof STUDIO_WIDGET;
 type PlatformComponent = typeof PLATFORM;
 
+const withPlatformScript = (components: Array<DevCenterComponent>): boolean => {
+  return components.some((component) => component.type === PLATFORM);
+};
+
 const formatAppOption = (app: {
   name: string;
   appId: string;
@@ -262,7 +266,7 @@ export const addOOIComponentStep = (
               if (!answers.components) {
                 answers.components = [];
               }
-              if (!context.isViewerScriptRegistered) {
+              if (!context.isPlatformComponentRegistered) {
                 await createComponent({
                   name: 'Platform',
                   appId: answers.appId,
@@ -272,7 +276,7 @@ export const addOOIComponentStep = (
                     PLATFORM,
                   ),
                 });
-                context.isViewerScriptRegistered = true;
+                context.isPlatformComponentRegistered = true;
               }
               answers.components = answers.components.concat(
                 await createComponent({
@@ -406,6 +410,23 @@ export default (): Array<ExtendedPromptObject<string>> => {
               },
               hint: '- Space to select. Return to submit',
               warn: "This type of component can't be imported",
+              next(answers, context: any) {
+                const isPlatformComponentRegistered = withPlatformScript(
+                  context.app.components,
+                );
+                const isEmptyApp =
+                  (isPlatformComponentRegistered &&
+                    context.app.components.length === 1) ||
+                  answers.components.length === 0;
+                if (
+                  isEmptyApp &&
+                  isOutOfIframe(context.templateDefinition.name)
+                ) {
+                  context.isPlatformComponentRegistered = isPlatformComponentRegistered;
+                  return [addOOIComponentStep({ multiple: true })];
+                }
+                return [];
+              },
               async getDynamicChoices(answers, context: any) {
                 const { app } = context;
                 const components = app.components;

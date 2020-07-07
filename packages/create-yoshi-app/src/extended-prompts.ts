@@ -58,9 +58,12 @@ async function run<T>(
     if (question.getDynamicChoices) {
       question.choices = await question.getDynamicChoices(answers, context);
     }
-    const answer = await prompts([promptifyQuestion(question)], {
-      onCancel,
-    });
+    let answer = {};
+    if (!question.choices || question.choices.length) {
+      answer = await prompts([promptifyQuestion(question)], {
+        onCancel,
+      });
+    }
     answers = { ...answers, ...answer };
 
     if (question.after) {
