@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.115.0 (2020-07-07)
+
+#### :rocket: New Feature
+* `yoshi-serverless-testing`
+  * [#2671](https://github.com/wix/yoshi/pull/2671) Yoshi Serverless: remove local setup ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :bug: Bug Fix
+* `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  * [#2676](https://github.com/wix/yoshi/pull/2676) Fix typescript errors in editor flow ([@yavorsky](https://github.com/yavorsky))
+* `create-yoshi-app`
+  * [#2675](https://github.com/wix/yoshi/pull/2675) Prevent cases of editor flow app generation w/o components ([@yavorsky](https://github.com/yavorsky))
+
 ## 4.114.0 (2020-07-06)
 
 #### :rocket: New Feature
