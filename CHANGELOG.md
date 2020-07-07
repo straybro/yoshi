@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.115.1 (2020-07-07)
+
+#### :nail_care: Polish
+* `yoshi-flow-editor`
+  * [#2677](https://github.com/wix/yoshi/pull/2677) Remove lodash from the widget bundle ([@yavorsky](https://github.com/yavorsky))
+
 ## 4.115.0 (2020-07-07)
 
 #### :rocket: New Feature
