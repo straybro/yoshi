@@ -1,6 +1,6 @@
 {
   "name": "yoshi-serverless-testing",
-  "version": "4.110.1",
+  "version": "4.115.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
