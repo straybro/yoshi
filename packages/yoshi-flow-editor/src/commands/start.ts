@@ -16,10 +16,10 @@ import {
   createWebWorkerWebpackConfig,
 } from '../webpack.config';
 import {
-  buildEditorPlatformEntries,
+  buildClientEntries,
   buildViewerScriptEntry,
   webWorkerExternals,
-} from '../buildEditorEntires';
+} from '../buildEntires';
 import { URLsConfig } from '../model';
 import { overrideBILoggerTypes } from '../wrappers/biLoggerTypes';
 import getDevEnvironmentLogger from './dev-environment-logger';
@@ -79,7 +79,7 @@ const start: cliCommand = async function (argv, config, model) {
   const clientConfig = createClientWebpackConfig(config, {
     isDev: true,
     isHot: config.hmr as boolean,
-    customEntry: buildEditorPlatformEntries(model),
+    customEntry: buildClientEntries(model),
   });
 
   const serverConfig = createServerWebpackConfig(config, {

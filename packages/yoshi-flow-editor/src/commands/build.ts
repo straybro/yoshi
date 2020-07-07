@@ -17,10 +17,10 @@ import {
 } from '../webpack.config';
 import { cliCommand } from '../cli';
 import {
-  buildEditorPlatformEntries,
+  buildClientEntries,
   buildViewerScriptEntry,
   webWorkerExternals,
-} from '../buildEditorEntires';
+} from '../buildEntires';
 import { overrideBILoggerTypes } from '../wrappers/biLoggerTypes';
 import { writeCiConfig } from './ciConfigGenerator';
 import { generateEditorHTMLFiles } from './htmlGenerator';
@@ -100,19 +100,19 @@ const build: cliCommand = async function (argv, config, model) {
     ]);
   }
 
-  const customEntry = buildEditorPlatformEntries(model);
+  const clientEntries = buildClientEntries(model);
 
   const clientDebugConfig = createClientWebpackConfig(config, {
     isDev: true,
     forceEmitSourceMaps,
-    customEntry,
+    customEntry: clientEntries,
   });
 
   const clientOptimizedConfig = createClientWebpackConfig(config, {
     isAnalyze,
     forceEmitSourceMaps,
     forceEmitStats,
-    customEntry,
+    customEntry: clientEntries,
   });
 
   const serverConfig = createServerWebpackConfig(config, {

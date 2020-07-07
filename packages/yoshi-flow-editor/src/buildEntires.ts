@@ -13,12 +13,18 @@ const generatedWidgetEntriesPath = path.resolve(
   '../.custom-entries',
 );
 
-export const buildEditorPlatformEntries = (model: FlowEditorModel) => {
+export const buildViewerEntries = (model: FlowEditorModel) => {
   const componentEntries = writeComponentWrapping(
     generatedWidgetEntriesPath,
     model,
   );
 
+  return {
+    ...componentEntries,
+  };
+};
+
+export const buildEditorEntries = (model: FlowEditorModel) => {
   const editorAppEntries = writeEditorAppWrapping(
     generatedWidgetEntriesPath,
     model,
@@ -37,10 +43,16 @@ export const buildEditorPlatformEntries = (model: FlowEditorModel) => {
 
   return {
     ...wixPrivateMockEntry,
-    ...componentEntries,
     ...editorAppEntries,
     ...settingsEntries,
     ...editorScritEntry,
+  };
+};
+
+export const buildClientEntries = (model: FlowEditorModel) => {
+  return {
+    ...buildEditorEntries(model),
+    ...buildViewerEntries(model),
   };
 };
 

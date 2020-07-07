@@ -12,6 +12,10 @@
     <script
       src="https://${clientTopology.staticsDomain}/unpkg/react-dom@16.9.0/umd/react-dom#if(${debug}).development#else.production.min#{end}.js"
       crossorigin="anonymous"></script>
+    <script
+      src="https://${clientTopology.staticsDomain}/unpkg/lodash@4.17.15/lodash#if(!${debug}).min#{end}.js"
+      crossorigin="anonymous"></script>
+
     #if (${sentryScript})
       ${sentryScript}
     #end

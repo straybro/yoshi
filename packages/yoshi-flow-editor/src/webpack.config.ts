@@ -7,6 +7,29 @@ import { isTypescriptProject } from 'yoshi-helpers/build/queries';
 
 const useTypeScript = isTypescriptProject();
 
+const clientExternals = {
+  lodash: {
+    commonjs: 'lodash',
+    commonjs2: 'lodash',
+    amd: 'lodash',
+    root: '_',
+  },
+  react: {
+    amd: 'react',
+    umd: 'react',
+    commonjs: 'react',
+    commonjs2: 'react',
+    root: 'React',
+  },
+  'react-dom': {
+    amd: 'reactDOM',
+    umd: 'react-dom',
+    commonjs: 'react-dom',
+    commonjs2: 'react-dom',
+    root: 'ReactDOM',
+  },
+};
+
 const createDefaultOptions = (config: Config) => {
   return {
     name: config.name as string,
@@ -48,6 +71,7 @@ export function createClientWebpackConfig(
     isHot,
     isAnalyze,
     forceEmitSourceMaps,
+    externalizeRelativeLodash: true,
     forceEmitStats,
     exportAsLibraryName: '[name]',
     ...defaultOptions,
@@ -55,22 +79,7 @@ export function createClientWebpackConfig(
 
   clientConfig.entry = customEntry;
   clientConfig.resolve!.alias = config.resolveAlias;
-  clientConfig.externals = {
-    react: {
-      amd: 'react',
-      umd: 'react',
-      commonjs: 'react',
-      commonjs2: 'react',
-      root: 'React',
-    },
-    'react-dom': {
-      amd: 'reactDOM',
-      umd: 'react-dom',
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      root: 'ReactDOM',
-    },
-  };
+  clientConfig.externals = clientExternals;
 
   return clientConfig;
 }
