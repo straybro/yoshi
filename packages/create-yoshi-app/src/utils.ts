@@ -93,6 +93,7 @@ export const isInsideGitRepo = (dir: string) => {
 
 export const OOI_TEMPLATE_NAME = 'flow-editor-ooi';
 export const PLATFORM_TEMPLATE_NAME = 'flow-editor-platform';
+export const FLOW_BM_TEMPLATE_NAME = 'flow-bm';
 
 export const isOutOfIframe = (str: string): boolean => {
   return str === OOI_TEMPLATE_NAME;
@@ -100,4 +101,8 @@ export const isOutOfIframe = (str: string): boolean => {
 
 export const isAppBuilder = (str: string): boolean => {
   return str === PLATFORM_TEMPLATE_NAME;
+};
+
+export const isBMFlow = (str: string) => {
+  return str === FLOW_BM_TEMPLATE_NAME;
 };

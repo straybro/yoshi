@@ -14,7 +14,7 @@ const generateModuleCode = ({
   methods,
   pages,
   moduleInitPath,
-  config: { moduleId, moduleConfigurationId, sentryDsn },
+  config: { moduleId, moduleConfigurationId, sentry },
 }: FlowBMModel) => `
 import { createModule } from 'yoshi-flow-bm-runtime';
 
@@ -56,7 +56,7 @@ createModule({
       : ''
   }
   ${moduleInitPath ? `moduleInit: require('${moduleInitPath}').default,` : ''}
-  ${sentryDsn ? `sentryDsn: '${sentryDsn}',` : ''}
+  ${sentry?.DSN ? `sentryDsn: '${sentry.DSN}',` : ''}
 });`;
 
 export const getModuleEntry = (model: FlowBMModel): Entry => ({

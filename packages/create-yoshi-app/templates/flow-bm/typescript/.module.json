@@ -3,6 +3,12 @@
   "experimentsScopes": [
     "{%projectName%}"
   ],
+  "sentry": {
+    "DSN": "{%sentryData.DSN%}",
+    "id": "{%sentryData.id%}",
+    "projectName": "{%sentryData.projectName%}",
+    "teamName": "{%sentryData.teamName%}"
+  },
   "topology": {
     "someonesUrl": "https://www.wix.com"
   }

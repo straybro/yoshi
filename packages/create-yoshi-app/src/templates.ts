@@ -1,6 +1,10 @@
 import { resolve } from 'path';
 import { TemplateDefinition } from './TemplateModel';
-import { OOI_TEMPLATE_NAME, PLATFORM_TEMPLATE_NAME } from './utils';
+import {
+  FLOW_BM_TEMPLATE_NAME,
+  OOI_TEMPLATE_NAME,
+  PLATFORM_TEMPLATE_NAME,
+} from './utils';
 
 const toTemplatePath = (templateName: string) =>
   resolve(__dirname, '../templates', templateName);
@@ -41,8 +45,8 @@ const templates: Array<TemplateDefinition> = [
 
 if (process.env.EXPERIMENTAL_FLOW_BM === 'true') {
   templates.push({
-    name: 'flow-bm',
-    path: toTemplatePath('flow-bm'),
+    name: FLOW_BM_TEMPLATE_NAME,
+    path: toTemplatePath(FLOW_BM_TEMPLATE_NAME),
     availableLanguages: ['typescript'],
   });
 }

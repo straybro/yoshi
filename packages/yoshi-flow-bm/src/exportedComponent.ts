@@ -36,7 +36,7 @@ export default wrapComponent(Component, [
   }
   ${
     addSentry
-      ? `createSentryProvider(${JSON.stringify(model.config.sentryDsn)}),`
+      ? `createSentryProvider(${JSON.stringify(model.config.sentry!.DSN)}),`
       : ''
   }
   ${

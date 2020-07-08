@@ -6,6 +6,7 @@ import {
   lintFix,
   npmInstall,
   gitCommit,
+  isBMFlow,
 } from './utils';
 import generateProject from './generateProject';
 import TemplateModel from './TemplateModel';
@@ -19,6 +20,13 @@ export interface CreateAppOptions {
   lint?: boolean;
   commit?: boolean;
 }
+
+const shouldRegisterSentry = ({ templateDefinition }: TemplateModel) =>
+  isBMFlow(templateDefinition.name) ||
+  templateDefinition.name.includes('flow-editor');
+
+const shouldRegisterDevCenter = ({ templateDefinition }: TemplateModel) =>
+  templateDefinition.name.includes('flow-editor');
 
 export default async ({
   workingDir,
@@ -43,10 +51,20 @@ export default async ({
     >;
   }
 
-  if (templateModel.templateDefinition.name.includes('flow-editor')) {
+  if (shouldRegisterSentry(templateModel)) {
+    const {
+      default: runSentryRegistrationPrompt,
+    } = require('./sentry-registration/runPrompt');
+
+    const sentryModel = (await runSentryRegistrationPrompt(
+      templateModel,
+    )) as SentryTemplateModel;
+
+    templateModel.setSentryData(sentryModel);
+  }
+
+  if (shouldRegisterDevCenter(templateModel)) {
     const runDevCenterRegistrationPrompt = require('./dev-center-registration/runPrompt')
-      .default;
-    const runSentryRegistrationPrompt = require('./sentry-registration/runPrompt')
       .default;
 
     const setupAutoRelease = require('./auto-release/setupAutoRelease').default;
@@ -56,11 +74,6 @@ export default async ({
     )) as DevCenterTemplateModel;
     templateModel.setFlowData(devCenterModel);
 
-    const sentryModel = (await runSentryRegistrationPrompt(
-      templateModel,
-    )) as SentryTemplateModel;
-
-    templateModel.setSentryData(sentryModel);
     await setupAutoRelease(templateModel);
   }
 

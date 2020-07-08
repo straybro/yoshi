@@ -7,7 +7,7 @@ const fs = require('fs');
 const mock = require('mock-require');
 
 const { verifyRegistry } = require('../src/index');
-const { isOutOfIframe, isAppBuilder } = require('../src/utils');
+const { isOutOfIframe, isAppBuilder, isBMFlow } = require('../src/utils');
 const TemplateModel = require('../src/TemplateModel').default;
 const { publishMonorepo } = require('../../../scripts/utils/publishMonorepo');
 const { testRegistry } = require('../../../scripts/utils/constants');
@@ -60,7 +60,7 @@ const mockSentryData = (teamName, projectName) => {
       return {
         teamName: `test-${teamName}`,
         projectName: `test-${projectName}`,
-        DSN: 'https://xxx@123',
+        DSN: 'https://foo@bar/baz',
         id: 'xxx',
       };
     },
@@ -138,6 +138,11 @@ const testTemplate = (mockedAnswers) => {
           mockedAnswers.templateDefinition.projectName,
         );
         mockAutoRelease();
+      } else if (isBMFlow(mockedAnswers.templateDefinition.name)) {
+        mockSentryData(
+          'some-team',
+          mockedAnswers.templateDefinition.projectName,
+        );
       }
       const { createApp } = mock.reRequire('../src/index');
 

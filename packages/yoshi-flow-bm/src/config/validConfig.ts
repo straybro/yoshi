@@ -11,7 +11,18 @@ export const validModuleConfig: InitialModuleConfig = {
   moduleConfigurationId: 'parent-module-id',
   appDefId: '00000000-0000-0000-0000-000000000000',
   routeNamespace: 'some-route',
-  sentryDsn: '1337',
+  sentry: multipleValidOptions(
+    undefined,
+    {
+      DSN: 'some-sentry-dsn',
+    },
+    {
+      DSN: 'some-other-sentry-dsn',
+      id: 'some-sentry-id',
+      teamName: 'some-sentry-team',
+      projectName: 'some-sentry-project',
+    },
+  ),
   experimentsScopes: ['yoshi', 'wos'],
   moduleBundleName: 'some-module',
   topology: multipleValidOptions(

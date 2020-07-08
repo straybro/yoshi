@@ -115,7 +115,13 @@ The following configurations are available by creating a `.module.json` file:
       "artifactId": "com.wixpress.some-artifact"
     }
   },
-  "experimentsScopes": ["some-petri-scope"]
+  "experimentsScopes": ["some-petri-scope"],
+  "sentry": {
+    "DSN": "https://2119191543ba436f81cde38969ecf354@sentry.wixpress.com/470",
+    "id": "sentry-id",
+    "teamName": "sentry-team",
+    "projectName": "sentry-project"
+  }
 }
 ```
 
@@ -187,6 +193,50 @@ export default () => {
   );
 };
 ```
+
+#### `sentry.DSN`
+
+Your Sentry DSN string, it is auto-generated for you on project generation. 
+
+When passed, wraps your pages & exported-components with a Sentry client to be consumed as follows:
+
+```typescript jsx
+import { useSentry } from "yoshi-flow-bm-runtime";
+
+export default () => {
+  const sentryClient = useSentry();
+  
+  const clickHandler = () => {
+    try {
+      doSomething();
+    } catch (error) {
+      sentryClient.captureException(error);
+    }
+  }
+
+  return (
+    <div />
+  );
+};
+```
+
+#### `sentry.id` (optional)
+
+Your Sentry ID.
+
+It is auto-generated for you on project generation, but is not required for built-in Sentry integration.
+
+#### `sentry.teamName` (optional)
+
+Your Sentry team name.
+
+It is auto-generated for you on project generation, but is not required for built-in Sentry integration.
+
+#### `sentry.projectName` (optional)
+
+Your Sentry project name.
+
+It is auto-generated for you on project generation, but is not required for built-in Sentry integration.
 
 ### Page-level Configuration
 

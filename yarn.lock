@@ -5668,6 +5668,19 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/identification-api/-/@wix/identification-api-1.0.397.tgz#bd2410428a82472d8672c698159802236a514932"
   integrity sha1-vSQQQoqCRy2GcsaYFZgCI2pRSTI=
 
+"@wix/iframe-app-bi-context@^1.0.1":
+  version "1.0.490"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-context/-/@wix/iframe-app-bi-context-1.0.490.tgz#4926c40de40e388ea60deca038febe1a3d5a18e3"
+  integrity sha1-SSbEDeQOOI6mDeygOP6+Gj1aGOM=
+
+"@wix/iframe-app-bi-logger@^2.0.42":
+  version "2.0.48"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-logger/-/@wix/iframe-app-bi-logger-2.0.48.tgz#7b4ca1eba93b2780d78bb51c2b4ce5791fabb20d"
+  integrity sha1-e0yh66k7J4DXi7UcK0zleR+rsg0=
+  dependencies:
+    "@wix/iframe-app-bi-context" "^1.0.1"
+    "@wix/web-bi-logger" "^2.0.863"
+
 "@wix/key-value-store@latest":
   version "0.1.533"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/key-value-store/-/@wix/key-value-store-0.1.533.tgz#2d7e558a489f54aabb4ab63946af6adf0d16e735"
@@ -5892,6 +5905,13 @@
   version "2.0.896"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.896.tgz#3d8da3d1892f933df0016f3b56cb44c0513a2e83"
   integrity sha1-PY2j0Ykvkz3wAW87VstEwFE6LoM=
+  dependencies:
+    "@wix/wix-bi-logger-client" latest
+
+"@wix/web-bi-logger@^2.0.863":
+  version "2.0.909"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.909.tgz#6714b8e6cd57ce95d52c8baf3e69fb70b2b99d1f"
+  integrity sha1-ZxS45s1XzpXVLIuvPmn7cLK5nR8=
   dependencies:
     "@wix/wix-bi-logger-client" latest
 
@@ -25242,7 +25262,7 @@ resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=
 
-resolve-cwd@3.0.0:
+resolve-cwd@3.0.0, resolve-cwd@^3.0.0:
   version "3.0.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/resolve-cwd/-/resolve-cwd-3.0.0.tgz#0f0075f1bb2544766cf73ba6a6e2adfebcb13f2d"
   integrity sha1-DwB18bslRHZs9zumpuKt/ryxPy0=
