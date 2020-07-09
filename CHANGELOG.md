@@ -1,22 +1,36 @@
 # Changelog
 
+## 4.116.0 (2020-07-09)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-monorepo`
+  - [#2681](https://github.com/wix/yoshi/pull/2681) Create `.chunks.jsons` files per compilation ([@ronami](https://github.com/ronami))
+- `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#2678](https://github.com/wix/yoshi/pull/2678) Add module lifecycle hooks (`init`, `config`) to BM Flow ([@amitdahan](https://github.com/amitdahan))
+- `create-yoshi-app`, `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#2674](https://github.com/wix/yoshi/pull/2674) Add Sentry integration to BM Flow ([@amitdahan](https://github.com/amitdahan))
+
 ## 4.115.1 (2020-07-07)
 
 #### :nail_care: Polish
-* `yoshi-flow-editor`
-  * [#2677](https://github.com/wix/yoshi/pull/2677) Remove lodash from the widget bundle ([@yavorsky](https://github.com/yavorsky))
+
+- `yoshi-flow-editor`
+  - [#2677](https://github.com/wix/yoshi/pull/2677) Remove lodash from the widget bundle ([@yavorsky](https://github.com/yavorsky))
 
 ## 4.115.0 (2020-07-07)
 
 #### :rocket: New Feature
-* `yoshi-serverless-testing`
-  * [#2671](https://github.com/wix/yoshi/pull/2671) Yoshi Serverless: remove local setup ([@yanivefraim](https://github.com/yanivefraim))
+
+- `yoshi-serverless-testing`
+  - [#2671](https://github.com/wix/yoshi/pull/2671) Yoshi Serverless: remove local setup ([@yanivefraim](https://github.com/yanivefraim))
 
 #### :bug: Bug Fix
-* `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
-  * [#2676](https://github.com/wix/yoshi/pull/2676) Fix typescript errors in editor flow ([@yavorsky](https://github.com/yavorsky))
-* `create-yoshi-app`
-  * [#2675](https://github.com/wix/yoshi/pull/2675) Prevent cases of editor flow app generation w/o components ([@yavorsky](https://github.com/yavorsky))
+
+- `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  - [#2676](https://github.com/wix/yoshi/pull/2676) Fix typescript errors in editor flow ([@yavorsky](https://github.com/yavorsky))
+- `create-yoshi-app`
+  - [#2675](https://github.com/wix/yoshi/pull/2675) Prevent cases of editor flow app generation w/o components ([@yavorsky](https://github.com/yavorsky))
 
 ## 4.114.0 (2020-07-06)
 
