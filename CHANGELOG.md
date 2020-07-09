@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.117.0 (2020-07-09)
+
+#### :rocket: New Feature
+
+- `yoshi-server-tools`
+  - [#2682](https://github.com/wix/yoshi/pull/2682) Yoshi Serverless - wait for GA ([@yanivefraim](https://github.com/yanivefraim))
+- `create-yoshi-app`, `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  - [#2680](https://github.com/wix/yoshi/pull/2680) Refactor translations. Add it to editor script. ([@yavorsky](https://github.com/yavorsky))
+
 ## 4.116.0 (2020-07-09)
 
 #### :rocket: New Feature
