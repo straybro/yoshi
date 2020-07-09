@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-bm",
-  "version": "4.113.0",
+  "version": "4.116.0",
   "bin": {
     "yoshi-bm": "./build/bin/yoshi-bm.js"
   },
@@ -34,6 +34,6 @@
     "@types/react-dev-utils": "9.0.4",
     "@types/uuid": "7.0.4",
     "@types/webpack": "4.41.17",
-    "yoshi-flow-bm-runtime": "4.113.0"
+    "yoshi-flow-bm-runtime": "4.116.0"
   }
 }
