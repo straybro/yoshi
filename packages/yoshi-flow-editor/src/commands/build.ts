@@ -18,7 +18,7 @@ import {
 import { cliCommand } from '../cli';
 import {
   buildClientEntries,
-  buildViewerScriptEntry,
+  buildWorkerEntries,
   webWorkerExternals,
 } from '../buildEntires';
 import { overrideBILoggerTypes } from '../wrappers/biLoggerTypes';
@@ -119,7 +119,7 @@ const build: cliCommand = async function (argv, config, model) {
     isDev: true,
   });
 
-  const webWorkerCustomEntry = buildViewerScriptEntry(model);
+  const webWorkerCustomEntry = buildWorkerEntries(model);
 
   const webWorkerConfig = createWebWorkerWebpackConfig(config, {
     isDev: true,

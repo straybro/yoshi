@@ -82,6 +82,8 @@ const createEditorAppForWixSDK = ({
       ),
       initAppForPage: initAppForPageWrapper({
         initAppForPage: customInitAppForPage,
+        defaultTranslations,
+        translationsConfig,
         sentryConfig: sentry,
         experimentsConfig,
         inEditor: true,

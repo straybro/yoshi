@@ -1,11 +1,13 @@
 import Experiments from '@wix/wix-experiments';
 import { IWidgetControllerConfig } from '@wix/native-components-infra/dist/src/types/types';
 import {
+  controllerConfigMock,
+  controllerFlowAPIMock,
+} from 'yoshi-flow-editor-runtime/test';
+import {
   appName,
   experiments as experimentsConfig,
 } from '../../../.application.json';
-import getControllerConfigMock from '../../../__tests__/helpers/controllerConfig.mock';
-import getFlowAPIMock from '../../../__tests__/helpers/flowAPI.mock';
 import mockExperiments from '../../../__tests__/helpers/experiments.mock';
 import createAppController from './controller';
 
@@ -17,7 +19,7 @@ describe('createController', () => {
     mockExperiments(experimentsConfig.scope, experiments.all());
     const setPropsSpy = jest.fn();
     const appDefinitionId = 'APP_DEF_ID';
-    const controllerConfig: IWidgetControllerConfig = getControllerConfigMock({
+    const controllerConfig: IWidgetControllerConfig = controllerConfigMock({
       setProps: setPropsSpy,
       appParams: {
         instance: '1',
@@ -29,7 +31,7 @@ describe('createController', () => {
       },
     });
 
-    const flowAPI = getFlowAPIMock({
+    const flowAPI = controllerFlowAPIMock({
       experimentsConfig,
       controllerConfig,
       widgetId: 'someWidget',

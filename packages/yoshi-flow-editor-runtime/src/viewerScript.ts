@@ -15,12 +15,17 @@ import {
   DefaultTranslations,
   BIConfig,
 } from './constants';
+import Translations from './i18next/Translations';
 import { InitAppForPageFn, CreateControllerFn } from './types';
-import { ViewerScriptFlowAPI, ControllerFlowAPI } from './FlowAPI';
+import {
+  ViewerScriptFlowAPI,
+  ControllerFlowAPI,
+} from './flow-api/ViewerScript';
 import { VisitorBILoggerFactory } from './generated/bi-logger-types';
 import { biLoggerToProps } from './utils';
 
 let viewerScriptFlowAPI: ViewerScriptFlowAPI;
+let viewerScriptTranslationsPromise: Promise<Translations> | undefined;
 let appData: any = {};
 
 let isCSRLoaded = false;
@@ -61,7 +66,6 @@ const defaultControllerWrapper = (
     appDefinitionId: controllerConfig.appParams.appDefinitionId,
     widgetId: controllerDescriptor.id,
     translationsConfig: controllerDescriptor.translationsConfig,
-    defaultTranslations: controllerDescriptor.defaultTranslations,
     controllerConfig,
   });
   return controllerDescriptor.method({
@@ -106,7 +110,6 @@ function ooiControllerWrapper(
   const flowAPI = new ControllerFlowAPI({
     viewerScriptFlowAPI,
     appDefinitionId,
-    defaultTranslations: controllerDescriptor.defaultTranslations,
     translationsConfig: controllerDescriptor.translationsConfig,
     widgetId: controllerDescriptor.id,
     controllerConfig,
@@ -119,7 +122,7 @@ function ooiControllerWrapper(
   });
 
   const wrappedController = Promise.all([
-    flowAPI.getTranslations(),
+    viewerScriptTranslationsPromise,
     flowAPI.getExperiments(),
     Promise.resolve(userControllerPromise).catch((error) => {
       if (!flowAPI.inEditor) {
@@ -133,8 +136,6 @@ function ooiControllerWrapper(
       return { _controllerError: error };
     }),
   ]).then(([translations, experiments, userController]) => {
-    delete flowAPI._translationsPromise;
-
     const { biMethods, biUtil } = biLoggerToProps(flowAPI.biLogger);
 
     return {
@@ -144,7 +145,7 @@ function ooiControllerWrapper(
         setProps({
           __publicData__: controllerConfig.config.publicData,
           _language: flowAPI.getSiteLanguage(),
-          _translations: translations,
+          _translations: translations?.all || {},
           _experiments: experiments.all(),
           _biMethods: biMethods,
           _biUtil: biUtil,
@@ -269,6 +270,8 @@ interface InitAppForPageWrapperOptions {
   biLogger: VisitorBILoggerFactory;
   appName: string | null;
   projectName: string;
+  defaultTranslations: DefaultTranslations | null;
+  translationsConfig: TranslationsConfig | null;
 }
 
 export const initAppForPageWrapper = ({
@@ -277,6 +280,8 @@ export const initAppForPageWrapper = ({
   experimentsConfig = null,
   inEditor = false,
   projectName,
+  defaultTranslations,
+  translationsConfig,
   biConfig,
   biLogger,
   appName = null,
@@ -291,11 +296,17 @@ export const initAppForPageWrapper = ({
     projectName,
     sentry: sentryConfig,
     platformServices,
+    wixAPI: namespaces,
+    translationsConfig,
+    defaultTranslations,
     inEditor,
     biConfig,
     biLogger,
     appName,
   });
+
+  viewerScriptTranslationsPromise = viewerScriptFlowAPI.translations?.init();
+  await viewerScriptTranslationsPromise;
 
   if (initAppForPage) {
     try {

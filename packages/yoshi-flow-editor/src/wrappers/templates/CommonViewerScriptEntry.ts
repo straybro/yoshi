@@ -66,35 +66,21 @@ const getControllerScriptId = (controller: TemplateControllerConfig) => {
 
 const controllerConfigs = t<{
   controllersMeta: Array<TemplateControllerConfig>;
-  translationsConfig: TranslationsConfig | null;
-  defaultTranslations: DefaultTranslations | null;
   experimentsConfig: ExperimentsConfig | null;
   biConfig: BIConfig | null;
   appName: string | null;
   projectName: string;
-}>`${({
-  controllersMeta,
-  translationsConfig,
-  experimentsConfig,
-  biConfig,
-  defaultTranslations,
-  appName,
-  projectName,
-}) =>
+}>`${({ controllersMeta, experimentsConfig, biConfig, appName, projectName }) =>
   controllersMeta
     .map(
       (controller, i) =>
         `{ method: ${getControllerVariableName(i)},
           widgetType: "${controller.widgetType}",
-          translationsConfig: ${
-            translationsConfig ? JSON.stringify(translationsConfig) : 'null'
-          },
+          translationsConfig: translationsConfig,
           experimentsConfig: ${
             experimentsConfig ? JSON.stringify(experimentsConfig) : 'null'
           },
-          defaultTranslations: ${
-            defaultTranslations ? JSON.stringify(defaultTranslations) : 'null'
-          },
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: ${biConfig ? JSON.stringify(biConfig) : 'null'},
           controllerFileName: "${controller.controllerFileName}",
@@ -129,6 +115,9 @@ export default t<Opts>`
   var translationsConfig = ${({ translationsConfig }) =>
     translationsConfig ? JSON.stringify(translationsConfig) : 'null'};
 
+  var defaultTranslations = ${({ defaultTranslations }) =>
+    defaultTranslations ? JSON.stringify(defaultTranslations) : 'null'};
+
   ${({ visitorBiLoggerPath }) =>
     visitorBiLoggerPath
       ? `import biLogger from '${visitorBiLoggerPath}'`
@@ -145,13 +134,12 @@ export default t<Opts>`
       biConfig ? JSON.stringify(biConfig) : 'null'},
     appName: ${({ appName }) => (appName ? `"${appName}"` : 'null')},
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([${({
     controllersMeta,
     appName,
-    translationsConfig,
-    defaultTranslations,
     projectName,
     biConfig,
     experimentsConfig,
@@ -161,8 +149,6 @@ export default t<Opts>`
       appName,
       projectName,
       biConfig,
-      translationsConfig,
-      defaultTranslations,
       experimentsConfig,
     })}]);
 `;

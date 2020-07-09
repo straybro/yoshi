@@ -5,6 +5,12 @@ describe('CommonEditorScriptEntry template', () => {
     const generateEditorScriptEntryContent = commonEditorScriptEntry({
       editorEntryFileName: 'project/src/editor.app.ts',
       artifactId: 'some-app',
+      translationsConfig: {
+        default: 'en',
+      },
+      defaultTranslations: {
+        a: 'b',
+      },
       experimentsConfig: {
         scope: 'test-scope',
       },
@@ -22,6 +28,12 @@ describe('CommonEditorScriptEntry template', () => {
     const generateEditorScriptEntryContent = commonEditorScriptEntry({
       editorEntryFileName: 'project/src/editor.app.ts',
       experimentsConfig: null,
+      translationsConfig: {
+        default: 'en',
+      },
+      defaultTranslations: {
+        a: 'b',
+      },
       sentry: {
         DSN: 'kkk',
         id: '1',
@@ -42,6 +54,8 @@ describe('CommonEditorScriptEntry template', () => {
     const generateEditorScriptEntryContent = commonEditorScriptEntry({
       editorEntryFileName: null,
       experimentsConfig: null,
+      translationsConfig: null,
+      defaultTranslations: null,
       sentry: null,
       artifactId: 'some-app',
       editorScriptWrapperPath:
@@ -56,6 +70,8 @@ describe('CommonEditorScriptEntry template', () => {
   it('generates correct template with entry editorScript file for app builder components', () => {
     const generateEditorScriptEntryContent = commonEditorScriptEntry({
       editorEntryFileName: 'project/src/editor.app.ts',
+      translationsConfig: null,
+      defaultTranslations: null,
       artifactId: 'some-app',
       experimentsConfig: {
         scope: 'test-scope',
@@ -81,6 +97,8 @@ describe('CommonEditorScriptEntry template', () => {
   it('generates correct template with entry editorScript file for multiple app builder components', () => {
     const generateEditorScriptEntryContent = commonEditorScriptEntry({
       editorEntryFileName: 'project/src/editor.app.ts',
+      translationsConfig: null,
+      defaultTranslations: null,
       artifactId: 'some-app',
       experimentsConfig: {
         scope: 'test-scope',

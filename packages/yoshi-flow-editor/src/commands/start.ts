@@ -17,7 +17,7 @@ import {
 } from '../webpack.config';
 import {
   buildClientEntries,
-  buildViewerScriptEntry,
+  buildWorkerEntries,
   webWorkerExternals,
 } from '../buildEntires';
 import { URLsConfig } from '../model';
@@ -90,7 +90,7 @@ const start: cliCommand = async function (argv, config, model) {
   const webWorkerConfig = createWebWorkerWebpackConfig(config, {
     isDev: true,
     isHot: true,
-    customEntry: buildViewerScriptEntry(model),
+    customEntry: buildWorkerEntries(model),
     webWorkerExternals,
   });
 

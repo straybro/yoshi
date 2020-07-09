@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { PLATFORM_WIDGET_COMPONENT_TYPE } from 'yoshi-flow-editor-runtime/build/constants';
 import { FlowEditorModel, ComponentModel } from '../model';
+import { getDefaultTranslations } from '../utils';
 import editorScriptEntry from './templates/CommonEditorScriptEntry';
 import { TemplateControllerConfig } from './templates/CommonViewerScriptEntry';
 
@@ -49,6 +50,8 @@ const editorScriptWrapper = (
     sentry: model.sentry,
     controllersMeta,
     shouldUseAppBuilder,
+    defaultTranslations: getDefaultTranslations(model),
+    translationsConfig: model.translationsConfig,
   });
 
   fs.outputFileSync(

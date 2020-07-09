@@ -34,18 +34,12 @@ export const buildEditorEntries = (model: FlowEditorModel) => {
     model,
   );
 
-  const editorScritEntry = writeCommonEditorScriptWrapping(
-    generatedWidgetEntriesPath,
-    model,
-  );
-
   const wixPrivateMockEntry = wixPrivateMockWrapping();
 
   return {
     ...wixPrivateMockEntry,
     ...editorAppEntries,
     ...settingsEntries,
-    ...editorScritEntry,
   };
 };
 
@@ -56,19 +50,14 @@ export const buildClientEntries = (model: FlowEditorModel) => {
   };
 };
 
-export const buildViewerScriptEntry = (model: FlowEditorModel) => {
+export const buildWorkerEntries = (model: FlowEditorModel) => {
   return {
-    // TODO: Disable it if we don't need to generate viewerScript for each widget.
     ...writeWidgetViewerScriptWrapping(generatedWidgetEntriesPath, model),
     ...writeCommonViewerScriptWrapping(generatedWidgetEntriesPath, model),
+    ...writeCommonEditorScriptWrapping(generatedWidgetEntriesPath, model),
   };
 };
 
 export const webWorkerExternals = {
-  lodash: {
-    commonjs: 'lodash',
-    commonjs2: 'lodash',
-    amd: 'lodash',
-    root: '_',
-  },
+  lodash: 'root _',
 };

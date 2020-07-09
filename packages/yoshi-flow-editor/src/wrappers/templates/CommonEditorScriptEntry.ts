@@ -1,6 +1,8 @@
 import {
   SentryConfig,
   ExperimentsConfig,
+  TranslationsConfig,
+  DefaultTranslations,
 } from 'yoshi-flow-editor-runtime/build/constants';
 import t from './template';
 import { TemplateControllerConfig } from './CommonViewerScriptEntry';
@@ -12,6 +14,8 @@ type Opts = {
   editorScriptWrapperPath: string;
   sentry: SentryConfig | null;
   experimentsConfig: ExperimentsConfig | null;
+  translationsConfig: TranslationsConfig | null;
+  defaultTranslations: DefaultTranslations | null;
   artifactId: string;
 };
 
@@ -62,6 +66,8 @@ export default t<Opts>`
     editorScriptWrapperPath,
     artifactId,
     experimentsConfig,
+    translationsConfig,
+    defaultTranslations,
     sentry,
   }) =>
     !shouldUseAppBuilder
@@ -88,8 +94,23 @@ export default t<Opts>`
       : 'null'
   };
 
+  var translationsConfig = ${
+    translationsConfig ? JSON.stringify(translationsConfig) : 'null'
+  };
+
+  var defaultTranslations = ${
+    defaultTranslations ? JSON.stringify(defaultTranslations) : 'null'
+  };
+
   if (editorReady) {
-    editorReady = editorReadyWrapper(editorReady, sentry, experimentsConfig, '${artifactId}');
+    editorReady = editorReadyWrapper({
+      editorReady: editorReady,
+      sentry: sentry,
+      experimentsConfig: experimentsConfig,
+      translationsConfig: translationsConfig,
+      defaultTranslations: defaultTranslations,
+      artifactId: '${artifactId}'
+    });
   }
 
   module.exports = editorScriptEntry.default || {

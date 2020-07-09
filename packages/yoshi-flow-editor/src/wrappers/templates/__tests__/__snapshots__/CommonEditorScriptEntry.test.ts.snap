@@ -16,8 +16,19 @@ exports[`CommonEditorScriptEntry template generates correct template with entry 
     scope: 'test-scope'
   };
 
+  var translationsConfig = {\\"default\\":\\"en\\"};
+
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   if (editorReady) {
-    editorReady = editorReadyWrapper(editorReady, sentry, experimentsConfig, 'some-app');
+    editorReady = editorReadyWrapper({
+      editorReady: editorReady,
+      sentry: sentry,
+      experimentsConfig: experimentsConfig,
+      translationsConfig: translationsConfig,
+      defaultTranslations: defaultTranslations,
+      artifactId: 'some-app'
+    });
   }
 
   module.exports = editorScriptEntry.default || {
@@ -47,8 +58,19 @@ exports[`CommonEditorScriptEntry template generates correct template with entry 
 
   var experimentsConfig = null;
 
+  var translationsConfig = {\\"default\\":\\"en\\"};
+
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   if (editorReady) {
-    editorReady = editorReadyWrapper(editorReady, sentry, experimentsConfig, 'some-app');
+    editorReady = editorReadyWrapper({
+      editorReady: editorReady,
+      sentry: sentry,
+      experimentsConfig: experimentsConfig,
+      translationsConfig: translationsConfig,
+      defaultTranslations: defaultTranslations,
+      artifactId: 'some-app'
+    });
   }
 
   module.exports = editorScriptEntry.default || {
@@ -143,8 +165,19 @@ exports[`CommonEditorScriptEntry template generates correct template without ent
 
   var experimentsConfig = null;
 
+  var translationsConfig = null;
+
+  var defaultTranslations = null;
+
   if (editorReady) {
-    editorReady = editorReadyWrapper(editorReady, sentry, experimentsConfig, 'some-app');
+    editorReady = editorReadyWrapper({
+      editorReady: editorReady,
+      sentry: sentry,
+      experimentsConfig: experimentsConfig,
+      translationsConfig: translationsConfig,
+      defaultTranslations: defaultTranslations,
+      artifactId: 'some-app'
+    });
   }
 
   module.exports = editorScriptEntry.default || {

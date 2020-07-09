@@ -7,10 +7,10 @@ import {
   IAppData,
 } from '@wix/native-components-infra/dist/src/types/types';
 import {
-  EditorScriptFlowAPI,
   ViewerScriptFlowAPI,
   ControllerFlowAPI,
-} from './FlowAPI';
+} from './flow-api/ViewerScript';
+import { EditorScriptFlowAPI } from './flow-api/EditorScript';
 
 export type ReportError = (error: Error | ErrorEvent | string) => void;
 

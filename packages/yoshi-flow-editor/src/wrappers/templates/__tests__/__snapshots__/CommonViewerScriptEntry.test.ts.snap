@@ -17,6 +17,8 @@ exports[`CommonViewerScriptEntry template generates correct template w/o control
 
   var translationsConfig = {\\"default\\":\\"en\\"};
 
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   import biLogger from 'a/b/c';
 
   export const initAppForPage = initAppForPageWrapper({
@@ -29,6 +31,7 @@ exports[`CommonViewerScriptEntry template generates correct template w/o control
     biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
     appName: \\"someApp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([]);
@@ -52,6 +55,8 @@ exports[`CommonViewerScriptEntry template generates correct template with a sing
 
   var translationsConfig = null;
 
+  var defaultTranslations = {};
+
   import biLogger from 'a/b/c';
 
   export const initAppForPage = initAppForPageWrapper({
@@ -64,13 +69,14 @@ exports[`CommonViewerScriptEntry template generates correct template with a sing
     biConfig: {},
     appName: \\"someapp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([{ method: controller0,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
-          translationsConfig: null,
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {},
           controllerFileName: \\"project/src/components/button/controller.ts\\",
@@ -97,6 +103,8 @@ exports[`CommonViewerScriptEntry template generates correct template with a sing
 
   var translationsConfig = {\\"default\\":\\"en\\"};
 
+  var defaultTranslations = null;
+
   import biLogger from 'a/b/c';
 
   export const initAppForPage = initAppForPageWrapper({
@@ -109,13 +117,14 @@ exports[`CommonViewerScriptEntry template generates correct template with a sing
     biConfig: {},
     appName: \\"someApp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([{ method: controller0,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: null,
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {},
           controllerFileName: \\"project/src/components/button/controller.ts\\",
@@ -144,6 +153,8 @@ import controller1 from 'project/src/components/todo/controller.ts';
 
   var translationsConfig = {\\"default\\":\\"en\\"};
 
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   var biLogger = null;
 
   export const initAppForPage = initAppForPageWrapper({
@@ -156,13 +167,14 @@ import controller1 from 'project/src/components/todo/controller.ts';
     biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
     appName: \\"someapp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([{ method: controller0,
           widgetType: \\"STUDIO_WIDGET\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {\\"a\\":\\"b\\"},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
           controllerFileName: \\"project/src/components/todo/controller.ts\\",
@@ -171,9 +183,9 @@ import controller1 from 'project/src/components/todo/controller.ts';
           componentName: \\"SomeWidget\\",
           id: \\"CONTROLLER_ID\\" }, { method: controller1,
           widgetType: \\"STUDIO_WIDGET\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {\\"a\\":\\"b\\"},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
           controllerFileName: \\"project/src/components/todo/controller.ts\\",
@@ -202,6 +214,8 @@ import controller1 from 'project/src/components/todo/controller.ts';
 
   var translationsConfig = {\\"default\\":\\"en\\"};
 
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   import biLogger from 'a/b/c';
 
   export const initAppForPage = initAppForPageWrapper({
@@ -214,13 +228,14 @@ import controller1 from 'project/src/components/todo/controller.ts';
     biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
     appName: \\"someapp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([{ method: controller0,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {\\"a\\":\\"b\\"},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
           controllerFileName: \\"project/src/components/todo/controller.ts\\",
@@ -229,9 +244,9 @@ import controller1 from 'project/src/components/todo/controller.ts';
           componentName: \\"SomeWidget\\",
           id: \\"CONTROLLER_ID\\" }, { method: controller1,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {\\"a\\":\\"b\\"},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
           controllerFileName: \\"project/src/components/todo/controller.ts\\",
@@ -264,6 +279,8 @@ exports[`CommonViewerScriptEntry template generates correct template with sentry
 
   var translationsConfig = {\\"default\\":\\"en\\"};
 
+  var defaultTranslations = {\\"a\\":\\"b\\"};
+
   var biLogger = null;
 
   export const initAppForPage = initAppForPageWrapper({
@@ -276,13 +293,14 @@ exports[`CommonViewerScriptEntry template generates correct template with sentry
     biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
     appName: \\"someApp\\",
     translationsConfig: translationsConfig,
+    defaultTranslations: defaultTranslations,
   });
 
   export const createControllers = createControllersWithDescriptors([{ method: controller0,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
-          translationsConfig: {\\"default\\":\\"en\\"},
+          translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
-          defaultTranslations: {\\"a\\":\\"b\\"},
+          defaultTranslations: defaultTranslations,
           biLogger: biLogger,
           biConfig: {\\"visitor\\":\\"visitor-bi-package\\",\\"owner\\":\\"owner-bi-package\\"},
           controllerFileName: \\"project/src/components/button/controller.ts\\",

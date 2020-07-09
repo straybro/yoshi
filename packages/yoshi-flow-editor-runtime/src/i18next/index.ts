@@ -7,6 +7,8 @@ import { getQueryParams } from '../utils';
 declare let __webpack_public_path__: string;
 const DEFAULT_LANGUAGE = 'en';
 
+export const i18nInstance = i18next.createInstance();
+
 export function getSiteTranslations(
   language: string,
   defaultTranslations: DefaultTranslations | null = {},
@@ -33,8 +35,6 @@ export function getSiteTranslations(
     return r.json();
   });
 }
-
-export const i18nInstance = i18next.createInstance();
 
 export interface I18nConfig {
   language: string;

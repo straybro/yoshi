@@ -139,7 +139,8 @@ it('should send a BI event on button click', async () => {
 ## `translate`
 It's a HOC from `react-i18next` that allows using translations for `Widget` and `Settings` components.
 
-All translations should be located under `assets/locales/messages_:LANGUAGE.json`.
+All translations should be located under `assets/locales/messages_:LANGUAGE.json` by default.
+If you want to change the prefix of translations file name, set `prefix` field to `.application.json`'s translations object.
 
 ⚠️ You should not use `I18NextProvider`. Editor flow already provides needed context based on website's language.
 

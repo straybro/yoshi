@@ -1,12 +1,13 @@
+import { IWidgetControllerConfig } from '@wix/native-components-infra/dist/src/types/types';
+import { aDefaultPlatformServices } from '@wix/native-components-infra/dist/test/builders/platformServices.builder';
+import { ExperimentsConfig } from '../../constants';
 import {
   ViewerScriptFlowAPI,
   ControllerFlowAPI,
-} from 'yoshi-flow-editor-runtime/build/FlowAPI';
-import { IWidgetControllerConfig } from '@wix/native-components-infra/dist/src/types/types';
-import { aDefaultPlatformServices } from '@wix/native-components-infra/dist/test/builders/platformServices.builder';
-import { ExperimentsConfig } from 'yoshi-flow-editor-runtime/build/constants';
+} from '../../flow-api/ViewerScript';
+import { wixCodeAPIMock } from './controllerConfig.mock';
 
-export default ({
+export const controllerFlowAPIMock = ({
   experimentsConfig,
   controllerConfig,
   appDefinitionId,
@@ -27,6 +28,10 @@ export default ({
       biLogger: null,
       inEditor: false,
       platformServices: aDefaultPlatformServices(),
+      wixAPI: wixCodeAPIMock,
+      translationsConfig: {
+        default: 'en',
+      },
     }),
     translationsConfig: {
       default: 'en',

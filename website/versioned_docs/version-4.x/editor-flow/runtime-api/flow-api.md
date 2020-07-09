@@ -154,24 +154,50 @@ export default ({ flowAPI }) => {
 ```
 
 ## Translations
+_Available for the `controller`, `viewer.app.ts` and `editor.app.ts`._
 > Note, Since translations feature is common for Widget but not a controller, in most cases you won't need these calls.
 For Widget you just need to use `translations` HOC. For more info, check [structure-api docs](../structure-api/application.md#locales).
 
-### getTranslations
-_Available for the `controller`._
+To access translations object, use `flowAPI.translations`.
 
-Returns a pending `Promise` which will be resolved with translations for the current site's language.
+### `t`
+Regular i18Next `t` helper already configured for your translations.
+You can specify either one key as a String or multiple keys as an Array of Strings. The first one that resolves will be returned.
 
-_Since we want to start fetching translations as soon as possible, this call won't create a new network call.
-It will just return a promise for an already created call by the editor flow._
-
+You can use it in `controller` or `initAppForPage` for viewer script:
+*controller.ts*
 ```ts
 export default async function({ flowAPI }) => {
   return {
     pageReady() {
-      const translations = await flowAPI.getTranslations();
+      console.log(flowAPI.translations.t('app.widget.hello'));
+    }
+  };
+}
+```
 
-      console.log(translations['app.widget.hello']);
+Or in `editor.app.ts` for editor script.
+*editor.app.ts*
+```ts
+export const editorReady: EditorReadyFn = async (
+  sdk,
+  appDefId,
+  platformOptions,
+  flowAPI,
+) => {
+  console.log(flowAPI.translations.t('app.editor.welcome'));
+};
+```
+
+### `all`
+Returns an object with all resolved translations.
+
+*controller.ts*
+```ts
+export default async function({ flowAPI }) => {
+  return {
+    pageReady() {
+      console.log(flowAPI.translations.all['app.widget.hello']);
     }
   };
 }
