@@ -7,7 +7,7 @@ import {
 } from 'yoshi-common/build/webpack-utils';
 // @ts-ignore
 import { StatsWriterPlugin } from 'webpack-stats-plugin';
-import { createBaseWebpackConfig } from 'yoshi-common/build/webpack.config';
+import { createBaseWebpackConfig as createCommonWebpackConfig } from 'yoshi-common/build/webpack.config';
 import { defaultEntry } from 'yoshi-helpers/build/constants';
 import { Config } from 'yoshi-config/build/config';
 import {
@@ -33,6 +33,34 @@ const defaultSplitChunksConfig = {
   name: 'commons',
   minChunks: 2,
 };
+
+function createBaseWebpackConfig(
+  ...args: Parameters<typeof createCommonWebpackConfig>
+) {
+  const [options] = args;
+  const config = createCommonWebpackConfig(...args);
+
+  if (isProduction && !options.isDev) {
+    config.plugins!.push(
+      new StatsWriterPlugin({
+        filename: `${options.configName}.${options.target}.chunks.min.json`,
+        // https://webpack.js.org/configuration/stats/#stats
+        stats: {
+          all: false,
+          assets: true,
+        },
+        transform(data: webpack.Stats.ToJsonOutput) {
+          return JSON.stringify({
+            name: `${options.configName}.${options.target}`,
+            chunks: data.assetsByChunkName,
+          });
+        },
+      }),
+    );
+  }
+
+  return config;
+}
 
 const createDefaultOptions = (
   pkg: PackageGraphNode,
