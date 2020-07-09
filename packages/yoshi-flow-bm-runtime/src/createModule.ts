@@ -9,7 +9,7 @@ import { ModuleRegistry, ReactLoadableComponent } from 'react-module-container';
 import { ComponentType } from 'react';
 import { BrowserClient } from '@sentry/browser';
 import { IBMModuleParams } from './hooks/ModuleProvider';
-import { MethodFn, ModuleInitFn } from './types';
+import { MethodFn, ModuleConfigFn, ModuleInitFn } from './types';
 
 interface ModuleOptions {
   moduleId: string;
@@ -28,6 +28,7 @@ interface ModuleOptions {
     loadMethod(): MethodFn;
   }>;
   moduleInit?: ModuleInitFn;
+  moduleConfig?: ModuleConfigFn;
   sentryDsn?: string;
 }
 
@@ -38,6 +39,7 @@ export default function createModule({
   exportedComponents,
   methods,
   moduleInit,
+  moduleConfig,
   sentryDsn,
 }: ModuleOptions) {
   const sentryClient = sentryDsn
@@ -97,6 +99,17 @@ export default function createModule({
       this.moduleParams = moduleParams;
       if (moduleInit) {
         moduleInit.call(this, { module: this, moduleParams });
+      }
+    }
+
+    config(sourceModule: ModuleId, configPayload: any) {
+      if (moduleConfig) {
+        moduleConfig.call(
+          this,
+          { module: this, moduleParams: this.moduleParams },
+          sourceModule,
+          configPayload,
+        );
       }
     }
   }

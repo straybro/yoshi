@@ -21,7 +21,7 @@ export const METHODS_DIR = 'src/methods';
 export const METHODS_PATTERN = `${METHODS_DIR}/**/*.${EXTENSIONS}`;
 export const METHODS_CONFIG_PATTERN = `${METHODS_DIR}/**/*.${CONFIG_EXT}`;
 
-export const MODULE_INIT_PATTERN = `src/moduleInit.${EXTENSIONS}`;
+export const MODULE_HOOKS_PATTERN = `src/module.${EXTENSIONS}`;
 
 export const TRANSLATIONS_DIR = 'translations';
 

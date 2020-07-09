@@ -15,7 +15,7 @@ import {
   METHODS_DIR,
   METHODS_PATTERN,
   CONFIG_PATH,
-  MODULE_INIT_PATTERN,
+  MODULE_HOOKS_PATTERN,
   PAGES_CONFIG_PATTERN,
   PAGES_DIR,
   PAGES_PATTERN,
@@ -48,7 +48,7 @@ export interface FlowBMModel {
   pages: Array<PageModel>;
   exportedComponents: Array<ExportedComponentModel>;
   methods: Array<MethodModel>;
-  moduleInitPath?: string;
+  moduleHooksPath?: string;
   localePath?: string;
   config: ModuleConfig;
 }
@@ -133,7 +133,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
 
   const methods = globFiles(METHODS_PATTERN).map(getMethodModel);
 
-  const [moduleInitPath] = globFiles(MODULE_INIT_PATTERN);
+  const [moduleHooksPath] = globFiles(MODULE_HOOKS_PATTERN);
   const [localePath] = globDirs(TRANSLATIONS_DIR);
 
   return {
@@ -142,7 +142,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     exportedComponents,
     methods,
     localePath,
-    moduleInitPath,
+    moduleHooksPath,
   };
 }
 
@@ -159,7 +159,7 @@ export function watchFlowBMModel(
       EXPORTED_COMPONENTS_CONFIG_PATTERN,
       METHODS_PATTERN,
       METHODS_CONFIG_PATTERN,
-      MODULE_INIT_PATTERN,
+      MODULE_HOOKS_PATTERN,
       TRANSLATIONS_DIR,
     ],
     {

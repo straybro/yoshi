@@ -13,7 +13,7 @@ const generateModuleCode = ({
   exportedComponents,
   methods,
   pages,
-  moduleInitPath,
+  moduleHooksPath,
   config: { moduleId, moduleConfigurationId, sentry },
 }: FlowBMModel) => `
 import { createModule } from 'yoshi-flow-bm-runtime';
@@ -55,7 +55,10 @@ createModule({
       ? `moduleConfigurationId: '${moduleConfigurationId}',`
       : ''
   }
-  ${moduleInitPath ? `moduleInit: require('${moduleInitPath}').default,` : ''}
+  ${moduleHooksPath ? `moduleInit: require('${moduleHooksPath}').init,` : ''}
+  ${
+    moduleHooksPath ? `moduleConfig: require('${moduleHooksPath}').config,` : ''
+  }
   ${sentry?.DSN ? `sentryDsn: '${sentry.DSN}',` : ''}
 });`;
 

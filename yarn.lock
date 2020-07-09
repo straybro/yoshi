@@ -5669,14 +5669,14 @@
   integrity sha1-vSQQQoqCRy2GcsaYFZgCI2pRSTI=
 
 "@wix/iframe-app-bi-context@^1.0.1":
-  version "1.0.490"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-context/-/@wix/iframe-app-bi-context-1.0.490.tgz#4926c40de40e388ea60deca038febe1a3d5a18e3"
-  integrity sha1-SSbEDeQOOI6mDeygOP6+Gj1aGOM=
+  version "1.0.492"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-context/-/@wix/iframe-app-bi-context-1.0.492.tgz#a106a690921fd884a5f331432fe63261f80a55ec"
+  integrity sha1-oQamkJIf2ISl8zFDL+YyYfgKVew=
 
 "@wix/iframe-app-bi-logger@^2.0.42":
-  version "2.0.48"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-logger/-/@wix/iframe-app-bi-logger-2.0.48.tgz#7b4ca1eba93b2780d78bb51c2b4ce5791fabb20d"
-  integrity sha1-e0yh66k7J4DXi7UcK0zleR+rsg0=
+  version "2.0.50"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/iframe-app-bi-logger/-/@wix/iframe-app-bi-logger-2.0.50.tgz#0f2ff7c9c2d83cf5db62281091999fb6d0d0087f"
+  integrity sha1-Dy/3ycLYPPXbYigQkZmfttDQCH8=
   dependencies:
     "@wix/iframe-app-bi-context" "^1.0.1"
     "@wix/web-bi-logger" "^2.0.863"
@@ -5909,9 +5909,9 @@
     "@wix/wix-bi-logger-client" latest
 
 "@wix/web-bi-logger@^2.0.863":
-  version "2.0.909"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.909.tgz#6714b8e6cd57ce95d52c8baf3e69fb70b2b99d1f"
-  integrity sha1-ZxS45s1XzpXVLIuvPmn7cLK5nR8=
+  version "2.0.912"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.912.tgz#dc8fb75c9246d47cd81cd148d1c682cbfbe45df7"
+  integrity sha1-3I+3XJJG1HzYHNFI0caCy/vkXfc=
   dependencies:
     "@wix/wix-bi-logger-client" latest
 
