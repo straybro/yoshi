@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-editor",
-  "version": "4.116.0",
+  "version": "4.117.0",
   "description": "Yoshi Editor-Platform Flow",
   "main": "index.js",
   "bin": {
@@ -20,7 +20,7 @@
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
-    "create-yoshi-app": "4.116.0",
+    "create-yoshi-app": "4.117.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
     "import-cwd": "^3.0.0",
@@ -34,8 +34,8 @@
     "velocity": "^0.7.2",
     "yoshi-common": "4.113.0",
     "yoshi-config": "4.110.1",
-    "yoshi-flow-editor-runtime": "4.115.0",
-    "yoshi-flow-legacy": "4.113.0",
+    "yoshi-flow-editor-runtime": "4.117.0",
+    "yoshi-flow-legacy": "4.117.0",
     "yoshi-helpers": "4.111.0"
   },
   "devDependencies": {
