@@ -1,8 +1,13 @@
 import path from 'path';
 import simpleGit from 'simple-git';
+import retry from 'async-retry';
+import fetch from 'node-fetch';
 import fs from 'fs-extra';
 import { Config } from 'yoshi-config/build/config';
-import { getServerlessScope } from 'yoshi-helpers/build/utils';
+import {
+  getServerlessScope,
+  getServerlessBase,
+} from 'yoshi-helpers/build/utils';
 
 export default async function publishServerless(config: Config) {
   if (!config.yoshiServer || !process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
@@ -28,10 +33,13 @@ export default async function publishServerless(config: Config) {
   console.log(`deploy #serverless ${getServerlessScope()}`);
   const git = simpleGit(__dirname);
 
+  console.log('cloning git@github.com:wix-a/yoshi-serverless.git');
   await git.clone(
     'git@github.com:wix-a/yoshi-serverless.git',
     path.resolve('temp'),
+    { depth: 1 },
   );
+  console.log('clone complete');
 
   fs.copySync(path.resolve('serverless'), path.resolve('temp/serverless'));
   if (Object.keys(dependencies).length) {
@@ -44,5 +52,24 @@ export default async function publishServerless(config: Config) {
   await git.add('serverless/*');
   await git.commit(`deploy #serverless ${getServerlessScope()}`, '--no-verify');
   await git.push('origin', 'master');
+  // Wait for Publish to Serverless to be finished
+  await retry(
+    async () => {
+      console.log('Ping to check if Service is up');
+      const res = await fetch(
+        `http://www.wix.com${getServerlessBase(getServerlessScope())}/_api_`,
+      );
+      const resText = await res?.text();
+
+      if (resText === '406') {
+        return;
+      }
+      console.log('Service is not up, yet');
+      throw new Error('Service is not up, yet');
+    },
+    {
+      retries: 20,
+    },
+  );
   console.log('Publish to Serverless complete');
 }
