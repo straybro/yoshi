@@ -47,7 +47,7 @@ module.exports = function (wallaby) {
       { pattern: '__tests__/**/*.+(spec|it).[j|t]s', ignore: true },
       { pattern: '__tests__/**/*.+(spec|it).[j|t]sx', ignore: true },
       { pattern: '__tests__/**/*.e2e.[j|t]s', ignore: true },
-      { pattern: '__tests__/*-setup.[j|t]s', ignore: true },
+      { pattern: '__tests__/*-setup.[j|t]s', instrument: false },
       { pattern: 'src/**/*.+(spec|it).[j|t]s', ignore: true },
       { pattern: 'src/**/*.+(spec|it).[j|t]sx', ignore: true },
       { pattern: 'src/assets/**', instrument: false },
