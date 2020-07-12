@@ -7,7 +7,7 @@ describe('Counter', () => {
     counter = new Counter();
   });
 
-  describe('constructor', () => {
+  describe('constructor()', () => {
     it('should create a new count property', () => {
       expect(counter.getCount()).toBe(0);
     });
