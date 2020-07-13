@@ -141,7 +141,11 @@ export function createServerWebpackConfig(
 
 export function createWebWorkerWebpackConfig(
   config: Config,
-  { isDev, isHot }: { isDev?: boolean; isHot?: boolean } = {},
+  {
+    isDev,
+    isHot,
+    isAnalyze,
+  }: { isDev?: boolean; isHot?: boolean; isAnalyze?: boolean } = {},
 ): webpack.Configuration {
   const defaultOptions = createDefaultOptions(config);
 
@@ -150,6 +154,7 @@ export function createWebWorkerWebpackConfig(
     target: 'webworker',
     isDev,
     isHot,
+    isAnalyze,
     ...defaultOptions,
   });
 

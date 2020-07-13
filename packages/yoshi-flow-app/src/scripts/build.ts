@@ -116,7 +116,9 @@ const build: cliCommand = async function (argv, config) {
       isDev: true,
     });
 
-    webWorkerOptimizeConfig = createWebWorkerWebpackConfig(config);
+    webWorkerOptimizeConfig = createWebWorkerWebpackConfig(config, {
+      isAnalyze,
+    });
   }
 
   const { stats } = await runWebpack([
