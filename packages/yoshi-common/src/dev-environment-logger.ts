@@ -144,16 +144,19 @@ export type DevEnvironmentLogger = (opts: {
   state: State;
   appName: string;
   suricate: boolean;
+  suffix: string;
 }) => void;
 
 const logger: DevEnvironmentLogger = ({
   state,
   appName,
   suricate,
+  suffix,
 }: {
   state: State;
   appName: string;
   suricate: boolean;
+  suffix: string;
 }) => {
   if (shouldClearConsole()) {
     clearConsole();
@@ -183,6 +186,10 @@ const logger: DevEnvironmentLogger = ({
     `To create a production build, use ${chalk.cyan('npm run build')}.`,
   );
   console.log();
+
+  if (suffix) {
+    console.log(suffix);
+  }
 };
 
 export default logger;

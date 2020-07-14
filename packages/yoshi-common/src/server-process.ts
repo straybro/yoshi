@@ -40,6 +40,8 @@ export class ServerProcess {
   private useAppName?: boolean;
   public appName: string;
   private inspectArg?: string;
+  private logs = '';
+  private enableInMemoryLogs = true;
 
   constructor({
     cwd = process.cwd(),
@@ -110,6 +112,7 @@ export class ServerProcess {
 
     serverOutLogStream.pipe(serverLogWriteStream);
     serverOutLogStream.pipe(process.stdout);
+    serverOutLogStream.on('data', this.appendToLog);
 
     const serverErrorLogStream = this.child.stderr!.pipe(
       serverLogPrefixer(this.useAppName ? this.appName : undefined),
@@ -117,6 +120,7 @@ export class ServerProcess {
 
     serverErrorLogStream.pipe(serverLogWriteStream);
     serverErrorLogStream.pipe(process.stderr);
+    serverErrorLogStream.on('data', this.appendToLog);
 
     await waitPort({
       port: this.port,
@@ -149,6 +153,21 @@ export class ServerProcess {
 
     await this.initialize();
   }
+
+  getLogs() {
+    return this.logs;
+  }
+
+  disableInMemoryLogs() {
+    this.enableInMemoryLogs = false;
+    this.logs = '';
+  }
+
+  private appendToLog = (chunk: string) => {
+    if (this.enableInMemoryLogs) {
+      this.logs += chunk;
+    }
+  };
 }
 
 export class ServerProcessWithHMR extends ServerProcess {

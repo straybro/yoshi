@@ -67,6 +67,7 @@ type DevEnvironmentProps = {
 export default class DevEnvironment {
   private props: DevEnvironmentProps;
   public store: Store<State>;
+  private initialServerLogsEmitted = false;
 
   constructor(props: DevEnvironmentProps) {
     this.props = props;
@@ -384,6 +385,23 @@ export default class DevEnvironment {
     }
   }
 
+  getInitialServerLogsOnce() {
+    // one-time emit all server logs that were printed before server started
+    // listening and reprint them, because terminal cleaned on app server start
+    if (this.store.getState().AppServer && !this.initialServerLogsEmitted) {
+      this.initialServerLogsEmitted = true;
+
+      const logs = this.props.serverProcess!.getLogs();
+
+      // prevent memory size to grow infinitely
+      this.props.serverProcess!.disableInMemoryLogs();
+
+      return logs;
+    } else {
+      return '';
+    }
+  }
+
   static async create({
     webpackConfigs,
     serverFilePath,
@@ -567,7 +585,10 @@ export default class DevEnvironment {
     }
 
     devEnvironment.store.subscribe(
-      debounce((state: State) => logger({ state, appName, suricate }), 300),
+      debounce((state: State) => {
+        const suffix = devEnvironment.getInitialServerLogsOnce();
+        logger({ state, appName, suricate, suffix });
+      }, 300),
     );
 
     return devEnvironment;
