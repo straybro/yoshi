@@ -1,5 +1,23 @@
 # Changelog
 
+## 4.119.0 (2020-07-14)
+
+#### :rocket: New Feature
+* `yoshi-flow-app`
+  * [#2683](https://github.com/wix/yoshi/pull/2683) fix(flow-app): add isAnalyze to web worker webpack config ([@kobiburnley](https://github.com/kobiburnley))
+
+#### :bug: Bug Fix
+* `yoshi-flow-editor`
+  * [#2690](https://github.com/wix/yoshi/pull/2690) Fix `generate-bi-types` call ([@yavorsky](https://github.com/yavorsky))
+* `create-yoshi-app`
+  * [#2687](https://github.com/wix/yoshi/pull/2687) fix: templates counter constructor suites rename ([@kobiburnley](https://github.com/kobiburnley))
+* `yoshi`
+  * [#2684](https://github.com/wix/yoshi/pull/2684) Fix wallaby config for `*-setup` files ([@amitdahan](https://github.com/amitdahan))
+
+#### :memo: Documentation
+* [#2692](https://github.com/wix/yoshi/pull/2692) Added `YOSHI_PUBLIC_PATH` documentation ([@illBeRoy](https://github.com/illBeRoy))
+
+
 ## 4.117.0 (2020-07-09)
 
 #### :rocket: New Feature
