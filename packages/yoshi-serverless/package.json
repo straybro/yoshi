@@ -22,6 +22,7 @@
     "path-to-regexp": "3.2.0",
     "react-dev-utils": "7.0.5",
     "resolve-from": "5.0.0",
+    "serialize-error": "4.1.0",
     "sockjs-client": "1.4.0",
     "yoshi-config": "4.83.0",
     "youch": "2.0.10"

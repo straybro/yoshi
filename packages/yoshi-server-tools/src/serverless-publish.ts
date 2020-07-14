@@ -59,9 +59,9 @@ export default async function publishServerless(config: Config) {
       const res = await fetch(
         `http://www.wix.com${getServerlessBase(getServerlessScope())}/_api_`,
       );
-      const resText = await res?.text();
+      const resStatus = await res?.status;
 
-      if (resText === '406') {
+      if (resStatus === 406) {
         return;
       }
       console.log('Service is not up, yet');

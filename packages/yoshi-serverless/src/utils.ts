@@ -5,6 +5,16 @@ import { ROUTES_BUILD_DIR } from 'yoshi-config/build/paths';
 
 const routesBuildDir = path.resolve(__dirname, ROUTES_BUILD_DIR);
 
+export class HttpError extends Error {
+  public messages: Array<any>;
+  public status: number;
+  constructor(messages: Array<any>, status: number) {
+    super();
+    this.messages = messages;
+    this.status = status;
+  }
+}
+
 export function relativeFilePath(from: string, to: string) {
   return path.relative(from, to.replace(/\.[^/.]+$/, ''));
 }

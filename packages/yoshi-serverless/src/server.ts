@@ -7,7 +7,12 @@ import importFresh from 'import-fresh';
 import { WebRequest, FunctionContext } from '@wix/serverless-api';
 import { ROUTES_BUILD_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 import { RouteFunction, InitServerFunction } from './types';
-import { pathMatch, connectToYoshiServerHMR, buildRoute } from './utils';
+import {
+  pathMatch,
+  connectToYoshiServerHMR,
+  buildRoute,
+  HttpError,
+} from './utils';
 import nonWebpackRequireFresh from './non-webpack-require-fresh';
 
 export type Route = {
@@ -56,26 +61,22 @@ export default class Server {
   };
 
   public handle = async (req: WebRequest): Promise<any> => {
-    try {
-      const { pathname } = parseUrl(req.path as string, true);
+    const { pathname } = parseUrl(req.path as string, true);
 
-      for (const { handler, route } of this.routes) {
-        const params = pathMatch(
-          route,
-          // for Businss Manager apps, routes are mapped (in Fryingpan or BM testkit):
-          // '/_api/projectName/_api_' -> '/api/_api_'
-          pathname?.replace('/api/_api_', '/_api_') as string,
-        );
+    for (const { handler, route } of this.routes) {
+      const params = pathMatch(
+        route,
+        // for Businss Manager apps, routes are mapped (in Fryingpan or BM testkit):
+        // '/_api/projectName/_api_' -> '/api/_api_'
+        pathname?.replace('/api/_api_', '/_api_') as string,
+      );
 
-        if (params) {
-          return await handler(req, params);
-        }
+      if (params) {
+        return handler(req, params);
       }
-    } catch (error) {
-      return '500';
     }
 
-    return '404';
+    throw new HttpError([`not found: ${req.path}`], 404);
   };
 
   private createRoutes(): Array<Route> {

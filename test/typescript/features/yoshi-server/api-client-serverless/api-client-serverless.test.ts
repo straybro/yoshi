@@ -17,6 +17,7 @@ describe.each(['dev'] as const)(
         await page.waitForFunction(
           `document.getElementById('my-text').innerText !== ''`,
         );
+
         const title = await page.$eval('h2', (elm) => elm.innerHTML);
         expect(title).toBe('hello Yaniv');
       });

@@ -15,6 +15,8 @@ describe.each(['dev'] as const)(
     afterEach(() => page.close());
     it('run tests', async () => {
       await scripts[mode](async () => {
+        // the default page instance has an error handler which
+        // fails tests in case of an error while navigation
         page = await browser.newPage();
         await page.goto(`${scripts.serverUrl}/app`);
         await page.waitForSelector('.popover');

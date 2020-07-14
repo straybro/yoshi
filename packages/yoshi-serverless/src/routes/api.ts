@@ -1,9 +1,11 @@
 import path from 'path';
 import globby from 'globby';
 import { isLeft } from 'fp-ts/lib/Either';
+import { PathReporter } from 'io-ts/lib/PathReporter';
+import serializeError from 'serialize-error';
 import { BUILD_DIR } from 'yoshi-config/build/paths';
 import { requestPayloadCodec, DSL } from '../types';
-import { relativeFilePath, connectToYoshiServerHMR } from '../utils';
+import { relativeFilePath, connectToYoshiServerHMR, HttpError } from '../utils';
 import { route } from '..';
 import nonWebpackRequireFresh from '../non-webpack-require-fresh';
 
@@ -49,20 +51,17 @@ export default route(async function () {
   const validation = requestPayloadCodec.decode(body);
 
   if (isLeft(validation)) {
-    return '406';
-    // return send(this.res, 406, {
-    //   errors: PathReporter.report(validation),
-    // });
+    throw new HttpError(PathReporter.report(validation), 406);
   }
 
   const { fileName, functionName, args } = validation.right;
   const fn = functions?.[fileName]?.[functionName]?.__fn__;
 
   if (!fn) {
-    return '406';
-    // return send(this.res, 406, {
-    //   errors: `Function ${functionName}() was not found in file ${fileName}`,
-    // });
+    throw new HttpError(
+      [`Function ${functionName}() was not found in file ${fileName}`],
+      406,
+    );
   }
 
   try {
@@ -74,14 +73,9 @@ export default route(async function () {
 
     return { payload: await fn.apply(fnThis, args) };
   } catch (error) {
-    return '500';
-    // if (process.env.NODE_ENV === 'production') {
-    //   return send(this.res, 500, {
-    //     errors: ['internal server error'],
-    //   });
-    // }
-    // return send(this.res, 500, {
-    //   errors: [serializeError(error)],
-    // });
+    if (process.env.NODE_ENV === 'production') {
+      throw new HttpError(['internal server error'], 500);
+    }
+    throw new HttpError([serializeError(error)], 500);
   }
 });

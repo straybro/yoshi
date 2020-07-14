@@ -1,15 +1,16 @@
 import { Page } from 'puppeteer';
 import Scripts from '../../../../scripts';
 
-jest.setTimeout(30 * 1000);
+jest.setTimeout(50 * 1000);
 
 const scripts = Scripts.setupProjectFromTemplate({
   templateDir: __dirname,
-  projectType: 'yoshi-server-typescript',
+  projectType: 'yoshi-serverless-typescript',
+  ignoreWarnings: true,
 });
 
 describe.each(['dev'] as const)(
-  'yoshi-server api client to server - show an error message for development [%s]',
+  'yoshi-serverless api client to server - show an error message for development [%s]',
   (mode) => {
     let page: Page;
     afterEach(() => page.close());
@@ -18,9 +19,9 @@ describe.each(['dev'] as const)(
         // the default page instance has an error handler which
         // fails tests in case of an error while navigation
         page = await browser.newPage();
-        await page.goto(`${scripts.serverUrl}/app`);
-        await page.waitForSelector('.popover');
 
+        await page.goto(`${scripts.serverlessUrl}/app`);
+        await page.waitForSelector('.popover');
         expect(await page.$eval('.popover', (el) => el.innerHTML)).toMatch(
           'A cool error',
         );
