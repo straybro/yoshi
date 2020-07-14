@@ -39,3 +39,11 @@ PROFILE=true yoshi build
 ```
 PROFILE=true yoshi start
 ```
+
+### YOSHI_PUBLIC_PATH
+
+Every app bundle can be potentially divided into multiple files, which are loaded asynchrnously. The `YOSHI_PUBLIC_PATH` parameter lets you configure where these files can be found in production. By default, most Wix frontend applications will work just fine without setting this environment variable, as most of them are served from `static.parastorage.com`. You should use it only if you're serving your files from a non-standard location in production.
+
+```
+YOSHI_PUBLIC_PATH="https://special.wix.com/files/"
+```
