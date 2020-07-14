@@ -5,9 +5,11 @@ import { AppConfig } from '../model';
 import { overrideBILoggerTypes } from '../wrappers/biLoggerTypes';
 import { normalizeBIConfig } from '../utils';
 
-const appConfig = importCwd.silent('.application.json') as AppConfig;
+export default () => {
+  const appConfig = importCwd.silent('.application.json') as AppConfig;
 
-const normalizedConfig = normalizeBIConfig(appConfig?.bi);
-if (normalizedConfig) {
-  overrideBILoggerTypes(normalizedConfig);
-}
+  const normalizedConfig = normalizeBIConfig(appConfig?.bi);
+  if (normalizedConfig) {
+    overrideBILoggerTypes(normalizedConfig);
+  }
+};
