@@ -38,6 +38,9 @@ import * as fakeTpaResponse from './fake-tpa-response.json';
     getLocale() {
       return 'en';
     },
+    getSiteOwnerId() {
+      return '';
+    },
     getDeviceType() {
       return 'desktop';
     },
