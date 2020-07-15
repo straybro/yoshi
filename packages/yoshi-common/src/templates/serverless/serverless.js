@@ -35,6 +35,9 @@ module.exports = (functionsBuilder) => {
     addOptionsCors(functionsBuilder);
   }
   return functionsBuilder
+    .withSecurityOptions({
+      requireHttps: true,
+    })
     .addWebFunction('POST', '*', async (ctx, req) => {
       try {
         const server = await Server.create(ctx);
