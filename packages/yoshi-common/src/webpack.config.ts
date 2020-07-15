@@ -629,7 +629,10 @@ export function createBaseWebpackConfig({
       new ModuleNotFoundPlugin(cwd),
       new CaseSensitivePathsPlugin(),
 
-      ...(useTypeScript && typeCheckTypeScript && isDev
+      ...(useTypeScript &&
+      typeCheckTypeScript &&
+      isDev &&
+      configName === 'client'
         ? [
             new (require('fork-ts-checker-webpack-plugin'))({
               tsconfig: join(TSCONFIG_FILE),
