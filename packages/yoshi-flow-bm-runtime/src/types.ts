@@ -22,3 +22,8 @@ export type MethodFn = (
 ) => any;
 
 export type FilesFn = (this: any, options: ModuleOptions) => Array<string>;
+
+export type ResolveFn<P extends {}> = (
+  this: any,
+  options: ModuleOptions,
+) => Promise<P> | P;

@@ -9,7 +9,18 @@ import { ModuleRegistry, ReactLoadableComponent } from 'react-module-container';
 import React, { ComponentType, useMemo } from 'react';
 import { BrowserClient } from '@sentry/browser';
 import { IBMModuleParams } from './hooks/ModuleProvider';
-import { FilesFn, MethodFn, ModuleConfigFn, ModuleInitFn } from './types';
+import {
+  FilesFn,
+  MethodFn,
+  ModuleConfigFn,
+  ModuleInitFn,
+  ResolveFn,
+} from './types';
+
+interface ModuleHooks {
+  files?: FilesFn;
+  resolve?: ResolveFn<any>;
+}
 
 interface ModuleOptions {
   moduleId: string;
@@ -17,16 +28,12 @@ interface ModuleOptions {
   pages: Array<{
     componentId: string;
     componentName: string;
-    moduleHooks: {
-      files?: FilesFn;
-    };
+    moduleHooks: ModuleHooks;
     loadComponent(): Promise<ComponentType<any>>;
   }>;
   exportedComponents: Array<{
     componentId: string;
-    moduleHooks: {
-      files?: FilesFn;
-    };
+    moduleHooks: ModuleHooks;
     loadComponent(): Promise<ComponentType<any>>;
   }>;
   methods: Array<{
@@ -76,11 +83,7 @@ export default function createModule({
 
           this.registerPageComponent(
             componentName,
-            this.createLazyComponent(
-              componentId,
-              loadComponent,
-              moduleHooks.files,
-            ),
+            this.createLazyComponent(componentId, loadComponent, moduleHooks),
           );
         },
       );
@@ -89,11 +92,7 @@ export default function createModule({
         ({ componentId, loadComponent, moduleHooks }) => {
           this.registerComponentWithModuleParams(
             componentId,
-            this.createLazyComponent(
-              componentId,
-              loadComponent,
-              moduleHooks.files,
-            ),
+            this.createLazyComponent(componentId, loadComponent, moduleHooks),
           );
         },
       );
@@ -116,12 +115,8 @@ export default function createModule({
     private createLazyComponent(
       id: string,
       loadComponent: () => Promise<ComponentType<any>>,
-      files?: FilesFn,
+      { files, resolve }: ModuleHooks,
     ): ComponentType<IBMModuleParams> {
-      if (!files) {
-        return ReactLoadableComponent(id, loadComponent);
-      }
-
       // A thin "synchronous" component is created
       // to grab `moduleParams` from props and create
       // the true lazy wrapper once we can call
@@ -131,8 +126,17 @@ export default function createModule({
           () =>
             ReactLoadableComponent(
               id,
-              loadComponent,
-              files.call(this, { module: this, moduleParams: props }),
+              resolve
+                ? () =>
+                    Promise.all([
+                      loadComponent(),
+                      resolve.call(this, { module: this, moduleParams: props }),
+                    ]).then(([component, resolved = {}]) => ({
+                      default: component,
+                      ...resolved,
+                    }))
+                : loadComponent,
+              files?.call(this, { module: this, moduleParams: props }),
             ),
           [],
         );

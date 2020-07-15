@@ -50,7 +50,7 @@ For example:
 
 #### Loading external scripts
 
-Create a file ending with `.module.ts` next to your existing page.
+Create a file ending with `.module.ts` (if it doesn't exist) next to your existing page.
 For example:
 
 ```typescript
@@ -60,6 +60,25 @@ import { FilesFn } from 'yoshi-flow-bm-runtime';
 export const files: FilesFn = ({ moduleParams }) => [
   `https://.../${moduleParams.config.topology.someArtifactsTopology}/...`
 ]
+```
+
+#### Resolving data parallel to page load
+
+Create a file ending with `.module.ts` (if it doesn't exist) next to your existing page.
+For example:
+
+```typescript
+// src/pages/foo.module.ts
+import { ResolveFn } from 'yoshi-flow-bm-runtime';
+
+// Will be injected to configured component
+interface ResolvedProps {
+  foo: string;
+}
+
+export const resolve: ResolveFn<ResolvedProps> = async ({ moduleParams }) => ({
+  foo: await fetchBar(moduleParams),
+});
 ```
 
 ### Exported Components
@@ -86,6 +105,25 @@ import { FilesFn } from 'yoshi-flow-bm-runtime';
 export const files: FilesFn = ({ moduleParams }) => [
   `https://.../${moduleParams.config.topology.someArtifactsTopology}/...`
 ]
+```
+
+#### Resolving parallel to component load
+   
+Create a file ending with `.module.ts` (if it doesn't exist) next to your existing component.
+For example:
+
+```typescript
+// src/exported-components/shared-modal.module.ts
+import { ResolveFn } from 'yoshi-flow-bm-runtime';
+
+// Will be injected to configured component
+interface ResolvedProps {
+  foo: string;
+}
+
+export const resolve: ResolveFn<ResolvedProps> = async ({ moduleParams }) => ({
+  foo: await fetchBar(moduleParams),
+});
 ```
 
 ### Methods

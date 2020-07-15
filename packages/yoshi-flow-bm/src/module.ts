@@ -31,6 +31,11 @@ createModule({
           ${
             moduleHooksPath ? `files: require('${moduleHooksPath}').files,` : ''
           }
+          ${
+            moduleHooksPath
+              ? `resolve: require('${moduleHooksPath}').resolve,`
+              : ''
+          }
         },
       },
     `,
@@ -45,6 +50,11 @@ createModule({
         moduleHooks: {
           ${
             moduleHooksPath ? `files: require('${moduleHooksPath}').files,` : ''
+          }
+          ${
+            moduleHooksPath
+              ? `resolve: require('${moduleHooksPath}').resolve,`
+              : ''
           }
         },
       },
