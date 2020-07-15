@@ -1,7 +1,9 @@
 import path from 'path';
 import execa from 'execa';
+import fetch from 'node-fetch';
 import fs from 'fs-extra';
 import defaultsDeep from 'lodash/defaultsDeep';
+import retry from 'async-retry';
 import { getServerlessScope } from '../packages/yoshi-helpers/build/utils';
 import { ciEnv, localEnv } from '../scripts/utils/constants';
 import serve from '../packages/yoshi-common/serve';
@@ -206,6 +208,24 @@ export default class Scripts {
     });
   }
 
+  private async waitForServerless() {
+    // Wait for serverless testkit to be up
+    return retry(
+      async () => {
+        const res = await fetch(`${this.serverlessUrl}/_api_`);
+
+        const resStatus = await res?.status;
+        if (resStatus === 406) {
+          return;
+        }
+        throw new Error('Service is not up, yet');
+      },
+      {
+        retries: 20,
+      },
+    );
+  }
+
   async dev(
     callback: TestCallback = async () => {},
     opts: ScriptOpts & { extraStartArgs?: Array<string> } = {},
@@ -280,6 +300,9 @@ export default class Scripts {
             : Promise.resolve(''),
           opts.waitForStorybook
             ? waitForPort(this.storybookServerPort, { timeout: 60 * 1000 })
+            : Promise.resolve(),
+          this.projectType === 'yoshi-serverless-typescript'
+            ? this.waitForServerless()
             : Promise.resolve(),
         ]),
         startProcess,
