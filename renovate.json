@@ -1,65 +1,24 @@
 {
+  "extends": [
+    "config:base",
+    ":maintainLockFilesWeekly"
+  ],
   "enabledManagers": [
     "npm"
   ],
   "labels": [
     "PR: Chore :construction_worker:"
   ],
-  "major": {
-    "enabled": false
-  },
-  "ignoreDeps": [
-    "webpack-dev-server",
-    "typescript",
-    "@sentry/browser",
-    "@types/react",
-    "@types/webpack"
-  ],
   "packageRules": [
     {
-      "packageNames": ["react"],
+      "packageNames": ["react", "@sentry/browser"],
       "paths": ["packages/yoshi-flow-bm-runtime"],
       "enabled": false
     },
     {
-      "packagePatterns": ["^@babel/"],
-      "groupName": "babel",
-      "schedule": ["after 3:00am and before 7:00am on sunday"]
-    },
-    {
       "packagePatterns": ["^@stylable/"],
-      "groupName": "stylable",
-      "schedule": ["after 3:00am and before 7:00am on sunday"]
-    },
-    {
-      "excludePackagePatterns": [
-        "^@babel/",
-        "^@stylable/"
-      ],
-      "updateTypes": ["minor", "patch"],
-      "depTypeList": ["dependencies"],
-      "groupName": "dependencies (weekly)",
-      "schedule": ["after 3:00am and before 7:00am on sunday"]
-    },
-    {
-      "excludePackagePatterns": [
-        "^@babel/",
-        "^@stylable/"
-      ],
-      "updateTypes": ["minor", "patch"],
-      "depTypeList": ["devDependencies"],
-      "groupName": "devDependencies (weekly)",
-      "schedule": ["after 3:00am and before 7:00am on sunday"]
+      "groupName": "stylable"
     }
   ],
-  "ignorePaths": [
-    "**/test/**",
-    "**/__tests__/**"
-  ],
-  "masterIssue": true,
-  "lockFileMaintenance": {
-    "enabled": true,
-    "groupName": "lockfile (weekly)",
-    "schedule": ["after 3:00am and before 7:00am on tuesday"]
-  }
+  "masterIssue": true
 }
