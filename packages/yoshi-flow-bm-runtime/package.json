@@ -17,7 +17,7 @@
     "@wix/wix-experiments": "3.0.442",
     "@wix/wix-experiments-react": "4.0.51",
     "axios": "0.19.2",
-    "react-module-container": "1.0.2290"
+    "react-module-container": "1.0.2308"
   },
   "devDependencies": {
     "@types/history": "4.7.6",

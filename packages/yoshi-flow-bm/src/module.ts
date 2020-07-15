@@ -22,21 +22,31 @@ createModule({
   moduleId: '${moduleId}',
   pages: [
     ${pages.map(
-      ({ componentId, componentName, relativePath }) => `
+      ({ componentId, componentName, relativePath, moduleHooksPath }) => `
       {
         componentId: '${componentId}',
         componentName: '${componentName}',
         loadComponent: async () => (await import(/* webpackChunkName: "${componentName}" */'./${PAGES_DIR}/${relativePath}')).default,
+        moduleHooks: {
+          ${
+            moduleHooksPath ? `files: require('${moduleHooksPath}').files,` : ''
+          }
+        },
       },
     `,
     )}
   ],
   exportedComponents: [
     ${exportedComponents.map(
-      ({ componentId, relativePath }) => `
+      ({ componentId, relativePath, moduleHooksPath }) => `
       {
         componentId: '${componentId}',
         loadComponent: async () => (await import(/* webpackChunkName: "${componentId}" */'./${EXPORTED_COMPONENTS_DIR}/${relativePath}')).default,
+        moduleHooks: {
+          ${
+            moduleHooksPath ? `files: require('${moduleHooksPath}').files,` : ''
+          }
+        },
       },
     `,
     )}

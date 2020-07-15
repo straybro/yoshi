@@ -6,10 +6,10 @@ import {
   registerPageComponentMonitors,
 } from '@wix/business-manager-api';
 import { ModuleRegistry, ReactLoadableComponent } from 'react-module-container';
-import { ComponentType } from 'react';
+import React, { ComponentType, useMemo } from 'react';
 import { BrowserClient } from '@sentry/browser';
 import { IBMModuleParams } from './hooks/ModuleProvider';
-import { MethodFn, ModuleConfigFn, ModuleInitFn } from './types';
+import { FilesFn, MethodFn, ModuleConfigFn, ModuleInitFn } from './types';
 
 interface ModuleOptions {
   moduleId: string;
@@ -17,10 +17,16 @@ interface ModuleOptions {
   pages: Array<{
     componentId: string;
     componentName: string;
+    moduleHooks: {
+      files?: FilesFn;
+    };
     loadComponent(): Promise<ComponentType<any>>;
   }>;
   exportedComponents: Array<{
     componentId: string;
+    moduleHooks: {
+      files?: FilesFn;
+    };
     loadComponent(): Promise<ComponentType<any>>;
   }>;
   methods: Array<{
@@ -60,25 +66,37 @@ export default function createModule({
         this.setModuleConfigurationId(moduleConfigurationId as ModuleId);
       }
 
-      pages.forEach(({ componentId, componentName, loadComponent }) => {
-        if (sentryClient) {
-          registerPageComponentMonitors(componentId as PageComponentId, {
-            sentryClient,
-          });
-        }
+      pages.forEach(
+        ({ componentId, componentName, loadComponent, moduleHooks }) => {
+          if (sentryClient) {
+            registerPageComponentMonitors(componentId as PageComponentId, {
+              sentryClient,
+            });
+          }
 
-        this.registerPageComponent(
-          componentName,
-          ReactLoadableComponent(componentName, loadComponent),
-        );
-      });
+          this.registerPageComponent(
+            componentName,
+            this.createLazyComponent(
+              componentId,
+              loadComponent,
+              moduleHooks.files,
+            ),
+          );
+        },
+      );
 
-      exportedComponents.forEach(({ componentId, loadComponent }) => {
-        this.registerComponentWithModuleParams(
-          componentId,
-          ReactLoadableComponent(componentId, loadComponent),
-        );
-      });
+      exportedComponents.forEach(
+        ({ componentId, loadComponent, moduleHooks }) => {
+          this.registerComponentWithModuleParams(
+            componentId,
+            this.createLazyComponent(
+              componentId,
+              loadComponent,
+              moduleHooks.files,
+            ),
+          );
+        },
+      );
 
       methods
         .map(({ methodId, loadMethod }) => ({
@@ -93,6 +111,34 @@ export default function createModule({
             }),
           );
         });
+    }
+
+    private createLazyComponent(
+      id: string,
+      loadComponent: () => Promise<ComponentType<any>>,
+      files?: FilesFn,
+    ): ComponentType<IBMModuleParams> {
+      if (!files) {
+        return ReactLoadableComponent(id, loadComponent);
+      }
+
+      // A thin "synchronous" component is created
+      // to grab `moduleParams` from props and create
+      // the true lazy wrapper once we can call
+      // `files(moduleParams)`.
+      return (props) => {
+        const Component = useMemo(
+          () =>
+            ReactLoadableComponent(
+              id,
+              loadComponent,
+              files.call(this, { module: this, moduleParams: props }),
+            ),
+          [],
+        );
+
+        return <Component {...props} />;
+      };
     }
 
     init(moduleParams: IBMModuleParams) {

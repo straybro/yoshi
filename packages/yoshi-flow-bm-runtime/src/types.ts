@@ -1,29 +1,24 @@
 import { ModuleId } from '@wix/business-manager-api';
 import { IBMModuleParams } from './moduleParams';
 
-export interface ModuleInitOptions {
+export interface ModuleOptions {
   module: any;
   moduleParams: IBMModuleParams;
 }
 
-export type ModuleInitFn = (this: any, options: ModuleInitOptions) => void;
-
-export type ModuleConfigOptions = ModuleInitOptions;
+export type ModuleInitFn = (this: any, options: ModuleOptions) => void;
 
 export type ModuleConfigFn = (
   this: any,
-  options: ModuleConfigOptions,
+  options: ModuleOptions,
   sourceModuleId: ModuleId,
   configPayload: any,
 ) => void;
 
-export interface MethodOptions {
-  module: any;
-  moduleParams: IBMModuleParams;
-}
-
 export type MethodFn = (
   this: any,
-  options: MethodOptions,
+  options: ModuleOptions,
   ...args: Array<any>
 ) => any;
+
+export type FilesFn = (this: any, options: ModuleOptions) => Array<string>;

@@ -48,6 +48,20 @@ For example:
 | `src/pages/foo.tsx`     | `/foo`     |
 | `src/pages/foo/bar.tsx` | `/foo/bar` |
 
+#### Loading external scripts
+
+Create a file ending with `.module.ts` next to your existing page.
+For example:
+
+```typescript
+// src/pages/foo.module.ts
+import { FilesFn } from 'yoshi-flow-bm-runtime';
+
+export const files: FilesFn = ({ moduleParams }) => [
+  `https://.../${moduleParams.config.topology.someArtifactsTopology}/...`
+]
+```
+
 ### Exported Components
 
 Similar to [pages](#pages), exposing components from your Business-Manager module is done by creating a new file in the special `src/exported-components` directory:
@@ -58,6 +72,20 @@ Similar to [pages](#pages), exposing components from your Business-Manager modul
 export default () => {
   return <Modal>...</Modal>;
 };
+```
+
+#### Loading external scripts
+
+Create a file ending with `.module.ts` next to your existing component.
+For example:
+
+```typescript
+// src/exported-components/shared-modal.module.ts
+import { FilesFn } from 'yoshi-flow-bm-runtime';
+
+export const files: FilesFn = ({ moduleParams }) => [
+  `https://.../${moduleParams.config.topology.someArtifactsTopology}/...`
+]
 ```
 
 ### Methods

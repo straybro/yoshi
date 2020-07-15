@@ -20,6 +20,9 @@ import {
   PAGES_DIR,
   PAGES_PATTERN,
   TRANSLATIONS_DIR,
+  PAGES_MODULE_HOOKS_PATTERN,
+  EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN,
+  MODULE_HOOKS_EXT,
 } from './constants';
 import {
   ExportedComponentConfig,
@@ -31,6 +34,7 @@ export interface ExportedComponentModel {
   componentId: string;
   absolutePath: string;
   relativePath: string;
+  moduleHooksPath?: string;
   config: ExportedComponentConfig;
 }
 export interface PageModel extends ExportedComponentModel {
@@ -53,11 +57,16 @@ export interface FlowBMModel {
   config: ModuleConfig;
 }
 
+const getModuleHooksPattern = (absolutePath: string) => {
+  const { dir, name } = path.parse(absolutePath);
+  return `${dir}/${name}.${MODULE_HOOKS_EXT}`;
+};
+
 export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
-  const globFiles = (pattern: string) =>
+  const globFiles = (pattern: string | ReadonlyArray<string>) =>
     globby.sync(pattern, { cwd, absolute: true, onlyFiles: true });
 
-  const globDirs = (pattern: string) =>
+  const globDirs = (pattern: string | ReadonlyArray<string>) =>
     globby.sync(pattern, {
       cwd,
       absolute: true,
@@ -72,6 +81,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     const pageConfig = loadPageConfig(config, absolutePath);
 
     const relativePath = path.relative(path.join(cwd, PAGES_DIR), absolutePath);
+    const [moduleHooksPath] = globFiles(getModuleHooksPattern(absolutePath));
 
     const route = path.join(
       config.routeNamespace,
@@ -84,6 +94,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
       componentName: pageConfig.componentName,
       absolutePath,
       relativePath,
+      moduleHooksPath,
       route,
       config: pageConfig,
     };
@@ -97,6 +108,8 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
       absolutePath,
     );
 
+    const [moduleHooksPath] = globFiles(getModuleHooksPattern(absolutePath));
+
     const relativePath = path.relative(
       path.join(cwd, EXPORTED_COMPONENTS_DIR),
       absolutePath,
@@ -106,6 +119,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
       componentId: exportedComponentConfig.componentId,
       absolutePath,
       relativePath,
+      moduleHooksPath,
       config: exportedComponentConfig,
     };
   };
@@ -125,11 +139,15 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     };
   };
 
-  const pages = globFiles(PAGES_PATTERN).map(getPageModel);
+  const pages = globFiles([
+    PAGES_PATTERN,
+    `!${PAGES_MODULE_HOOKS_PATTERN}`,
+  ]).map(getPageModel);
 
-  const exportedComponents = globFiles(EXPORTED_COMPONENTS_PATTERN).map(
-    getExportedComponentModel,
-  );
+  const exportedComponents = globFiles([
+    EXPORTED_COMPONENTS_PATTERN,
+    `!${EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN}`,
+  ]).map(getExportedComponentModel);
 
   const methods = globFiles(METHODS_PATTERN).map(getMethodModel);
 
@@ -155,8 +173,10 @@ export function watchFlowBMModel(
       CONFIG_PATH,
       PAGES_PATTERN,
       PAGES_CONFIG_PATTERN,
+      PAGES_MODULE_HOOKS_PATTERN,
       EXPORTED_COMPONENTS_PATTERN,
       EXPORTED_COMPONENTS_CONFIG_PATTERN,
+      EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN,
       METHODS_PATTERN,
       METHODS_CONFIG_PATTERN,
       MODULE_HOOKS_PATTERN,
