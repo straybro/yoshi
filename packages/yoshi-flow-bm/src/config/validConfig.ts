@@ -24,6 +24,7 @@ export const validModuleConfig: InitialModuleConfig = {
     },
   ),
   experimentsScopes: ['yoshi', 'wos'],
+  bi: 'some-schema-logger-name',
   moduleBundleName: 'some-module',
   topology: multipleValidOptions(
     {

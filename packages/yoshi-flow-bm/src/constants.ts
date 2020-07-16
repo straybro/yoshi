@@ -28,8 +28,13 @@ export const MODULE_HOOKS_PATTERN = `src/module.${EXTENSIONS}`;
 
 export const TRANSLATIONS_DIR = 'translations';
 
-export const GENERATED_DIR = path.resolve(__dirname, '../tmp');
+export const GENERATED_DIR = path.resolve(__dirname, '../generated');
 
 export const MODULE_ENTRY_PATH = path.join(GENERATED_DIR, 'module.ts');
 
 export const GENERATED_LEGACY_DIR = path.join(GENERATED_DIR, 'legacy');
+
+export const BI_LOGGER_DEFINITIONS_PATH = path.join(
+  GENERATED_DIR,
+  'biLogger.d.ts',
+);

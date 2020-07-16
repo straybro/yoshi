@@ -8,13 +8,15 @@ import {
   MODULE_ENTRY_PATH,
   PAGES_DIR,
 } from './constants';
+import { shouldAddBI } from './queries';
+import updateBILoggerDefinitions from './biLoggerDefinitions';
 
 const generateModuleCode = ({
   exportedComponents,
   methods,
   pages,
   moduleHooksPath,
-  config: { moduleId, moduleConfigurationId, sentry },
+  config: { moduleId, moduleConfigurationId, sentry, bi },
 }: FlowBMModel) => `
 import { createModule } from 'yoshi-flow-bm-runtime';
 
@@ -80,6 +82,7 @@ createModule({
     moduleHooksPath ? `moduleConfig: require('${moduleHooksPath}').config,` : ''
   }
   ${sentry?.DSN ? `sentryDsn: '${sentry.DSN}',` : ''}
+  ${bi ? `bi: '${bi}',` : ''}
 });`;
 
 export const getModuleEntry = (model: FlowBMModel): Entry => ({
@@ -87,6 +90,10 @@ export const getModuleEntry = (model: FlowBMModel): Entry => ({
 });
 
 export const renderModule = (model: FlowBMModel) => {
+  if (shouldAddBI(model)) {
+    updateBILoggerDefinitions(model);
+  }
+
   model.pages.forEach((page) => renderPage(page, model));
 
   model.exportedComponents.forEach((component) =>

@@ -13,6 +13,7 @@ export interface ModuleConfig {
   appDefId?: string;
   experimentsScopes: Array<string>;
   sentry?: SentryConfig;
+  bi?: string;
   routeNamespace: string;
   topology: Record<string, { artifactId: string }>;
   moduleBundleName: string;

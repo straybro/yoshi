@@ -43,6 +43,7 @@ interface ModuleOptions {
   moduleInit?: ModuleInitFn;
   moduleConfig?: ModuleConfigFn;
   sentryDsn?: string;
+  bi?: string;
 }
 
 export default function createModule({

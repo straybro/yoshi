@@ -187,7 +187,8 @@ The following configurations are available by creating a `.module.json` file:
     "id": "sentry-id",
     "teamName": "sentry-team",
     "projectName": "sentry-project"
-  }
+  },
+  "bi": "@wix/bi-logger-yoshi"
 }
 ```
 
@@ -303,6 +304,28 @@ It is auto-generated for you on project generation, but is not required for buil
 Your Sentry project name.
 
 It is auto-generated for you on project generation, but is not required for built-in Sentry integration.
+
+#### `bi` (optional)
+
+The package name of your BI Schema Logger, for example `@wix/bi-logger-yoshi`.
+
+When passed, provides an initialized BI Logger with the given schema to be consumed via hook or HOC:
+
+> Make sure you have the given package name installed in your `dependencies`! 
+
+```typescript jsx
+import { useBILogger } from 'yoshi-flow-bm-runtime';
+
+export default () => {
+  const biLogger = useBILogger();
+  
+  const clickHandler = () => {
+    biLogger.someBIEvent({ /* ... */ });
+  };
+  
+  return <button onClick={clickHandler}>Click Me!</button>;
+};
+```
 
 ### Page-level Configuration
 

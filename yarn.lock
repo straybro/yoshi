@@ -5901,6 +5901,13 @@
     glob "7.1.6"
     uuid "8.1.0"
 
+"@wix/web-bi-logger@2.0.917":
+  version "2.0.917"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.917.tgz#8ee4937d22274dabb4bd03b49beb3ca160b2819f"
+  integrity sha1-juSTfSInTau0vQO0m+s8oWCygZ8=
+  dependencies:
+    "@wix/wix-bi-logger-client" latest
+
 "@wix/web-bi-logger@^2.0.0", "@wix/web-bi-logger@^2.0.195", "@wix/web-bi-logger@^2.0.879":
   version "2.0.896"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/web-bi-logger/-/@wix/web-bi-logger-2.0.896.tgz#3d8da3d1892f933df0016f3b56cb44c0513a2e83"

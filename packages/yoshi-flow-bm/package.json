@@ -4,6 +4,9 @@
   "bin": {
     "yoshi-bm": "./build/bin/yoshi-bm.js"
   },
+  "scripts": {
+    "postinstall": "node ./postinstall"
+  },
   "description": "Yoshi Business-Manager Flow",
   "author": "Amit Dahan <amitda@wix.com>",
   "dependencies": {
