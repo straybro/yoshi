@@ -10425,6 +10425,26 @@ change-emitter@^0.1.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
   integrity sha1-6LL+PX8at9aaMhma/5HqaTFAlRU=
 
+changelog-prepend-consts@^1.7.0:
+  version "1.7.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend-consts/-/changelog-prepend-consts-1.7.0.tgz#2d9fdd02b9ba392b9ddafc65795d0a2889b1f7d5"
+  integrity sha1-LZ/dArm6OSud2vxleV0KKImx99U=
+
+changelog-prepend-read-changelog@^1.7.0:
+  version "1.7.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend-read-changelog/-/changelog-prepend-read-changelog-1.7.0.tgz#44167ef55a6da60a228235a05e060eb7d8b4d98f"
+  integrity sha1-RBZ+9VptpgoigjWgXgYOt9i02Y8=
+  dependencies:
+    changelog-prepend-consts "^1.7.0"
+
+changelog-prepend@^1.7.0:
+  version "1.7.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend/-/changelog-prepend-1.7.0.tgz#f7f461fa50a561b44d0e4cfdbe2e77795d6be414"
+  integrity sha1-9/Rh+lClYbRNDkz9vi53eV1r5BQ=
+  dependencies:
+    changelog-prepend-consts "^1.7.0"
+    changelog-prepend-read-changelog "^1.7.0"
+
 char-regex@^1.0.2:
   version "1.0.2"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"

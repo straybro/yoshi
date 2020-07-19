@@ -218,42 +218,26 @@ This is the same as adding the `.verbose()` method to each and every test.
 
 > **Note:** Make sure you fetched up-to date tags from remote: `git fetch --tags` and that you pulled all of master's last changes.
 
-Start by heading to the [CHANGELOG.md](https://github.com/wix/yoshi/blob/master/CHANGELOG.md) and insert the version's changes.
-For changes to appear in the changelog, the PRs should be tagged [with tags](https://github.com/wix/yoshi/blob/89b2b566bbfe961a14123f8de92cd4af9a4a952a/lerna.json#L10-L15) like `PR: New Feature :rocket:`.
+> Make sure your git working directory is clean
 
-To autogenerate a changelog using last tagged PR's run:
+run:
 
 ```bash
-npm run changelog
+npm run manual-release
 ```
+
+This command will generate changelog, bump the version, and create a git commit & tag.
 
 > **Note:** For first time you'll need to [export a GITHUB_AUTH token](https://github.com/lerna/lerna-changelog#github-token)
 
-> **Note:** In this stage we choose the version bump (`patch`/`minor`), we follow semver.
+> **Note:** Version bump is always minor.
 
 - New releases can be issued from branch `master`.
 
 - `alpha`/`beta`/`rc` versions should be issued from a branch named `version_${version_name}`.
 
-Now commit the changes - `git commit -m "changelog for v1.2.3"`
+Now push the release commit & tag
 
 ```bash
-npm run createVersion
+git push --follow-tags origin master
 ```
-
-This command will open an interactive UI for choosing the version, it will bump it in the relevant packages and add a git tag.
-
-> It runs [lerna publish --skip-npm](https://github.com/lerna/lerna#--skip-npm) under the hood
-
-> **Note:** Use the same version as in the changelog.
-
-during the release creation process, it will also generate the website according to the new version.
-
-> Verify to run `yarn` in the `website` directory, which is needed for creating the website locally.
-> Now Push the commits and tag to GitHub
-
-```bash
-git push origin master/version_* --follow-tags
-```
-
-Push your changes including the tags, a [build](http://ci.dev.wix/viewType.html?buildTypeId=Wix_Angular_WixHaste_HastePresetYoshi) will run in the CI, and after a successful build `wix-ci-publisher` will publish the relevant packages to npm.
