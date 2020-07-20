@@ -4378,10 +4378,17 @@
     "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
 
-"@types/babel__traverse@*", "@types/babel__traverse@7.0.12", "@types/babel__traverse@^7.0.6":
+"@types/babel__traverse@*", "@types/babel__traverse@^7.0.6":
   version "7.0.12"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/babel__traverse/-/babel__traverse-7.0.12.tgz#22f49a028e69465390f87bb103ebd61bd086b8f5"
   integrity sha1-IvSaAo5pRlOQ+HuxA+vWG9CGuPU=
+  dependencies:
+    "@babel/types" "^7.3.0"
+
+"@types/babel__traverse@7.0.13":
+  version "7.0.13"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/babel__traverse/-/babel__traverse-7.0.13.tgz#1874914be974a492e1b4cb00585cabb274e8ba18"
+  integrity sha1-GHSRS+l0pJLhtMsAWFyrsnTouhg=
   dependencies:
     "@babel/types" "^7.3.0"
 
