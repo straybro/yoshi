@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.121.0 (2020-07-20)
+
+#### :bug: Bug Fix
+
+- `create-yoshi-app`, `jest-yoshi-preset`, `yoshi-common`, `yoshi-flow-legacy`, `yoshi-flow-monorepo`, `yoshi-helpers`, `yoshi-server-tools`, `yoshi-serverless-testing`
+  - [#2754](https://github.com/wix/yoshi/pull/2754) Revert "Use the ci-build-info library" ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.120.0 (2020-07-20)
 
 #### :rocket: New Feature
