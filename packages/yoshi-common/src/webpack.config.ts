@@ -49,10 +49,7 @@ import TpaStyleWebpackPlugin from 'tpa-style-webpack-plugin';
 import { mdsvex } from 'mdsvex';
 import WebpackBar from 'webpackbar';
 import isCi from 'is-ci';
-import {
-  stripOrganization,
-  getProjectArtifactVersion,
-} from 'yoshi-helpers/build/utils';
+import { stripOrganization } from 'yoshi-helpers/build/utils';
 import { resolveNamespaceFactory } from './@stylable/node';
 import StylableWebpackPlugin, {
   globalRuntimeId,
@@ -503,10 +500,6 @@ export function createBaseWebpackConfig({
     },
   };
 
-  const artifactVersion = inTeamCity
-    ? getProjectArtifactVersion(name)
-    : '0.0.0';
-
   const config: webpack.Configuration = {
     context: join(SRC_DIR),
 
@@ -544,7 +537,7 @@ export function createBaseWebpackConfig({
         ? {
             path: join(
               process.env.EXPERIMENTAL_YOSHI_SERVERLESS
-                ? SERVERLESS_SCOPE_BUILD_DIR(getServerlessScope(name))
+                ? SERVERLESS_SCOPE_BUILD_DIR(getServerlessScope())
                 : BUILD_DIR,
             ),
             filename: '[name].js',
@@ -809,14 +802,18 @@ export function createBaseWebpackConfig({
                 isProduction ? 'production' : 'development',
               ),
               'process.env.IS_MINIFIED': isDev ? 'false' : 'true',
-              'window.__CI_APP_VERSION__': JSON.stringify(artifactVersion),
+              'window.__CI_APP_VERSION__': JSON.stringify(
+                process.env.ARTIFACT_VERSION
+                  ? process.env.ARTIFACT_VERSION
+                  : '0.0.0',
+              ),
               'process.env.ARTIFACT_ID': JSON.stringify(getProjectArtifactId()),
             }
           : {}),
         ...(useYoshiServer && process.env.EXPERIMENTAL_YOSHI_SERVERLESS
           ? {
               'process.env.YOSHI_SERVERLESS_BASE': JSON.stringify(
-                getServerlessBase(getServerlessScope(name)),
+                getServerlessBase(getServerlessScope()),
               ),
             }
           : {}),

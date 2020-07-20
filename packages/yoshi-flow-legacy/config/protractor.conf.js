@@ -41,7 +41,7 @@ const merged = ld.mergeWith(
     exclude: [],
     directConnect: true,
 
-    ...(shouldDeployToCDN(config.name) && {
+    ...(shouldDeployToCDN() && {
       capabilities: {
         browserName: 'chrome',
         chromeOptions: {
@@ -66,12 +66,9 @@ const merged = ld.mergeWith(
           }).css,
       });
 
-      if (shouldDeployToCDN(config.name)) {
+      if (shouldDeployToCDN()) {
         startRewriteForwardProxy({
-          search: getProjectCDNBasePath(
-            config.name,
-            config.experimentalBuildHtml,
-          ),
+          search: getProjectCDNBasePath(config.experimentalBuildHtml),
           rewrite: config.servers.cdn.url,
           port: forwardProxyPort,
         });

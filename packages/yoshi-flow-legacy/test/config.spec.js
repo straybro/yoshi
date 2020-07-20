@@ -53,7 +53,7 @@ describe('Lookup and read configuration', () => {
           app: './app2.js',
         }
       };`,
-        'package.json': '{ "name": "a" }',
+        'package.json': '{}',
       })
       .execute('build');
     expect(res.code).to.equal(0);

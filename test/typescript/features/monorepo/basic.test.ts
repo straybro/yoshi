@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import rimraf from 'rimraf';
 import Scripts from '../../../scripts';
-import { localEnv } from '../../../../scripts/utils/constants';
 
 const scripts = Scripts.setupProjectFromTemplate({
   templateDir: __dirname,
@@ -39,7 +38,7 @@ describe('monorepo', () => {
   it('selective build', async () => {
     rimraf.sync(path.join(scripts.testDirectory, 'packages/*/dist'));
 
-    await scripts.build(localEnv, ['monorepo-app']);
+    await scripts.build({}, ['monorepo-app']);
     const bundlePath = 'dist/statics/app.bundle.js';
 
     expect(

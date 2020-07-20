@@ -5,7 +5,6 @@ const sh = require('shelljs');
 const spawn = require('cross-spawn');
 const stripAnsi = require('strip-ansi');
 const tempy = require('tempy');
-const { testkit: ciBuildInfoTestkit } = require('@wix/ci-build-info');
 
 const yoshiCliBin = path.resolve(
   __dirname,
@@ -35,10 +34,6 @@ class Test {
     fs.symlinkSync(yoshiNodeModulesPath, tmpNodeModules);
   }
 
-  ciBuildInfo() {
-    return this.buildInfo;
-  }
-
   setup(tree, hooks = []) {
     const flat = flattenTree(tree);
 
@@ -47,14 +42,6 @@ class Test {
     });
 
     hooks.forEach((hook) => hook(this.tmp));
-
-    const {
-      buildInfo,
-      env: ciBuildInfoEnv,
-    } = ciBuildInfoTestkit.createBuildInfo({ packages: [{ path: this.tmp }] });
-    this.ciBuildInfoEnv = ciBuildInfoEnv;
-    this.buildInfo = buildInfo;
-
     return this;
   }
 
@@ -64,12 +51,7 @@ class Test {
         options = options || [];
         options = Array.isArray(options) ? options : options.split(' ');
 
-        const env = Object.assign(
-          {},
-          this.env,
-          environment,
-          this.ciBuildInfoEnv,
-        );
+        const env = Object.assign({}, this.env, environment);
         this.child = spawn(
           'node',
           [`${this.script}`, `${command}`].concat(options),
@@ -122,7 +104,7 @@ class Test {
     execOptions = {},
   ) {
     const args = [command].concat(cliArgs).join(' ');
-    const env = Object.assign({}, this.env, environment, this.ciBuildInfoEnv);
+    const env = Object.assign({}, this.env, environment);
     const options = Object.assign(
       {},
       { cwd: this.tmp, env, silent: this.silent },

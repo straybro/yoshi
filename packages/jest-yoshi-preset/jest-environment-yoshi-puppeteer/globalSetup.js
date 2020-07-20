@@ -10,7 +10,7 @@ const chalk = require('chalk');
 const puppeteer = require('puppeteer');
 const child_process = require('child_process');
 const waitPort = require('wait-port');
-const { servers, name: packageName } = require('yoshi-config');
+const { servers } = require('yoshi-config');
 const { WS_ENDPOINT_PATH, IS_DEBUG_MODE } = require('./constants');
 const { shouldRunE2Es } = require('./utils');
 const { shouldDeployToCDN } = require('yoshi-helpers/build/queries');
@@ -41,7 +41,7 @@ module.exports = async (config) => {
 
     const forwardProxyPort = process.env.FORWARD_PROXY_PORT || 3333;
 
-    if (shouldDeployToCDN(packageName)) {
+    if (shouldDeployToCDN()) {
       await cdnProxy.start(forwardProxyPort);
     }
 
@@ -63,7 +63,7 @@ module.exports = async (config) => {
       args: [
         '--no-sandbox',
         ...(servers.cdn.ssl ? ['--ignore-certificate-errors'] : []),
-        ...(shouldDeployToCDN(packageName)
+        ...(shouldDeployToCDN()
           ? [
               '--no-sandbox',
               '--disable-setuid-sandbox',

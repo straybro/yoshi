@@ -1,6 +1,5 @@
 import monorepoServe from 'yoshi-flow-monorepo/serve';
 import Scripts from '../../../scripts';
-import { localEnv } from '../../../../scripts/utils/constants';
 
 const scripts = Scripts.setupProjectFromTemplate({
   templateDir: __dirname,
@@ -12,7 +11,7 @@ describe('monorepo', () => {
 
   it('serves a built monorepo', async () => {
     const monorepoRoot = scripts.testDirectory;
-    await scripts.build(localEnv);
+    await scripts.build();
 
     stopServers = await monorepoServe({ cwd: monorepoRoot });
 

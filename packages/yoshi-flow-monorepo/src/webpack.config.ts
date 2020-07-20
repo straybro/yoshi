@@ -150,7 +150,7 @@ export function createClientWebpackConfig(
       clientConfig.plugins!.push(
         new SentryWebpackPlugin({
           include: path.join(pkg.location, STATICS_DIR),
-          release: getProjectArtifactVersion(pkg.name),
+          release: getProjectArtifactVersion(),
         }),
       );
     }

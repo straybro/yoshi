@@ -4,6 +4,7 @@ const fx = require('../../../test-helpers/fixtures');
 const {
   outsideTeamCity,
   insideTeamCity,
+  teamCityArtifactVersion,
 } = require('../../../test-helpers/env-variables');
 const {
   takePort,
@@ -241,18 +242,20 @@ describe('Aggregator: Test', () => {
           `,
       });
 
-      const buildResponse = project.execute('build', [], insideTeamCity);
+      const buildResponse = project.execute('build', [], {
+        ...insideTeamCity,
+        ...teamCityArtifactVersion,
+      });
 
       expect(buildResponse.code).to.equal(0);
       expect(test.content('./dist/statics/app.bundle.min.js')).to.contain(
         staticsDomain,
       );
 
-      const testResponse = project.execute(
-        'test',
-        ['--protractor'],
-        insideTeamCity,
-      );
+      const testResponse = project.execute('test', ['--protractor'], {
+        ...insideTeamCity,
+        ...teamCityArtifactVersion,
+      });
 
       expect(testResponse.code).to.equal(0);
     }).timeout(30000);
@@ -576,18 +579,20 @@ describe('Aggregator: Test', () => {
             `,
         });
 
-        const buildResponse = project.execute('build', [], insideTeamCity);
+        const buildResponse = project.execute('build', [], {
+          ...insideTeamCity,
+          ...teamCityArtifactVersion,
+        });
 
         expect(buildResponse.code).to.equal(0);
         expect(test.content('./dist/statics/app.bundle.min.js')).to.contain(
           staticsDomain,
         );
 
-        const testResponse = project.execute(
-          'test',
-          ['--jest'],
-          insideTeamCity,
-        );
+        const testResponse = project.execute('test', ['--jest'], {
+          ...insideTeamCity,
+          ...teamCityArtifactVersion,
+        });
 
         expect(testResponse.code).to.equal(0);
       }).timeout(40000);

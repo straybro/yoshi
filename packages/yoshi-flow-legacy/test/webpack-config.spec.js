@@ -7,6 +7,8 @@ const fx = require('../../../test-helpers/fixtures');
 const {
   insideTeamCity,
   outsideTeamCity,
+  teamCityArtifactVersion,
+  noArtifactVersion,
 } = require('../../../test-helpers/env-variables');
 
 describe('Webpack basic configs', () => {
@@ -117,7 +119,9 @@ describe('Webpack basic configs', () => {
     });
 
     describe('public path', () => {
-      it('should construct the public path according to the existence of pom.xml', () => {
+      const ARTIFACT_VERSION = '1.2.3-SNAPSHOT';
+
+      it('should construct the public path according to pom.xml "artifactId" and ARTIFACT_VERSION environment variable', () => {
         test
           .setup({
             'src/client.js': `console.log('test');`,
@@ -125,13 +129,27 @@ describe('Webpack basic configs', () => {
           })
           .execute('build', [], {
             ...insideTeamCity,
+            ARTIFACT_VERSION,
           });
 
-        const expectedUrl = test.ciBuildInfo().v1.packages['a'].artifact.cdnUrl
-          .versioned;
+        expect(test.content('dist/statics/app.bundle.js')).to.contain(
+          `__webpack_require__.p = "https://static.parastorage.com/services/app-id/1.2.3/"`,
+        );
+      });
+
+      it('should construct the public path according to pom.xml "artifactId" and SRC_MD5 environment variable', () => {
+        test
+          .setup({
+            'src/client.js': `console.log('test');`,
+            'pom.xml': fx.pom(),
+          })
+          .execute('build', [], {
+            ...insideTeamCity,
+            SRC_MD5: 'this_is_hash',
+          });
 
         expect(test.content('dist/statics/app.bundle.js')).to.contain(
-          `__webpack_require__.p = "${expectedUrl}"`,
+          `__webpack_require__.p = "https://static.parastorage.com/services/app-id/this_is_hash/"`,
         );
       });
 
@@ -142,6 +160,7 @@ describe('Webpack basic configs', () => {
           })
           .execute('build', [], {
             ...outsideTeamCity,
+            ARTIFACT_VERSION: '',
           });
 
         expect(test.content('dist/statics/app.bundle.js')).to.contain(
@@ -176,6 +195,7 @@ describe('Webpack basic configs', () => {
           })
           .execute('build', [], {
             ...insideTeamCity,
+            ARTIFACT_VERSION,
           });
 
         expect(test.content('dist/statics/app.bundle.js')).to.contain(
@@ -236,13 +256,10 @@ describe('Webpack basic configs', () => {
         .setup({
           'src/client.js': `const foo = window.__CI_APP_VERSION__;`,
         })
-        .execute('build', [], insideTeamCity);
+        .execute('build', [], teamCityArtifactVersion);
 
       expect(res.code).to.equal(0);
-      const expectedVersion = test.ciBuildInfo().v1.packages['a'].fingerprint;
-      expect(test.content('dist/statics/app.bundle.js')).to.contain(
-        `"${expectedVersion}"`,
-      );
+      expect(test.content('dist/statics/app.bundle.js')).to.contain('"1.0.0"');
     });
 
     it('Should default to 0.0.0 when not in CI', () => {
@@ -250,7 +267,7 @@ describe('Webpack basic configs', () => {
         .setup({
           'src/client.js': `const foo = window.__CI_APP_VERSION__;`,
         })
-        .execute('build', [], outsideTeamCity);
+        .execute('build', [], noArtifactVersion);
 
       expect(res.code).to.equal(0);
       expect(test.content('dist/statics/app.bundle.js')).to.contain('"0.0.0"');

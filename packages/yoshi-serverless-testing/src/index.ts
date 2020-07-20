@@ -1,7 +1,7 @@
 const { app } = require('@wix/serverless-testkit');
 const { getServerlessScope } = require('yoshi-helpers/build/utils');
 
-const scope = getServerlessScope('yoshi-serverless-testing');
+const scope = getServerlessScope();
 
 // start the server as an embedded app
 module.exports.bootstrap = () => {
