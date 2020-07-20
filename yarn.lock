@@ -15547,10 +15547,10 @@ graphql-tag@2.10.3, graphql-tag@^2.10.1:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/graphql-tag/-/graphql-tag-2.10.3.tgz#ea1baba5eb8fc6339e4c4cf049dabe522b0edf03"
   integrity sha1-6hurpeuPxjOeTEzwSdq+UisO3wM=
 
-graphql@14.6.0, graphql@^14.1.1:
-  version "14.6.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/graphql/-/graphql-14.6.0.tgz#57822297111e874ea12f5cd4419616930cd83e49"
-  integrity sha1-V4IilxEeh06hL1zUQZYWkwzYPkk=
+graphql@14.7.0:
+  version "14.7.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/graphql/-/graphql-14.7.0.tgz#7fa79a80a69be4a31c27dda824dc04dac2035a72"
+  integrity sha1-f6eagKab5KMcJ92oJNwE2sIDWnI=
   dependencies:
     iterall "^1.2.2"
 

@@ -55,7 +55,7 @@
     "fs-extra": "7.0.1",
     "glob": "7.1.6",
     "globby": "9.2.0",
-    "graphql": "14.6.0",
+    "graphql": "14.7.0",
     "haste-core": "0.3.1",
     "haste-task-clean": "0.3.1",
     "haste-task-copy": "0.3.1",
