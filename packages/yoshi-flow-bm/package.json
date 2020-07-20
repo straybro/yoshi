@@ -19,7 +19,7 @@
     "fs-extra": "8.1.0",
     "globby": "10.0.2",
     "jest-validate": "25.5.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "prompts": "2.3.2",
     "react-dev-utils": "9.1.0",
     "uuid": "7.0.3",

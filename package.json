@@ -120,7 +120,7 @@
     "lerna": "^3.15.0",
     "lerna-changelog": "^0.8.3",
     "lint-staged": "^10.0.7",
-    "lodash": "^4.17.15",
+    "lodash": "4.17.19",
     "minimist": "^1.2.0",
     "mocha": "^5.2.0",
     "mocha-env-reporter": "^3.0.0",
