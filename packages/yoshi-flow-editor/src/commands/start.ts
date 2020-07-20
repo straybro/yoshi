@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 import { mapValues } from 'lodash';
+import * as telemetry from 'yoshi-common/build/telemetry';
 import { cliCommand } from '../cli';
 import {
   joinDirs,
@@ -25,6 +26,8 @@ import { overrideBILoggerTypes } from '../wrappers/biLoggerTypes';
 import getDevEnvironmentLogger from './dev-environment-logger';
 
 const start: cliCommand = async function (argv, config, model) {
+  telemetry.startInit('Editor', config.name);
+
   const args = arg(
     {
       // Types

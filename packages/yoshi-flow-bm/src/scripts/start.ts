@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 import { getServerStartFile } from 'yoshi-helpers/build/server-start-file';
+import * as telemetry from 'yoshi-common/build/telemetry';
 import { CliCommand } from '../bin/yoshi-bm';
 import {
   createClientWebpackConfig,
@@ -19,6 +20,8 @@ import getEntries from '../entries';
 const join = (...dirs: Array<string>) => path.join(process.cwd(), ...dirs);
 
 const start: CliCommand = async function (argv, yoshiConfig) {
+  telemetry.startInit('BM', yoshiConfig.name);
+
   const args = arg(
     {
       // Types

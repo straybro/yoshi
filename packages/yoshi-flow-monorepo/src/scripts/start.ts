@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { getServerStartFile } from 'yoshi-helpers/build/server-start-file';
 import { stripOrganization } from 'yoshi-helpers/build/utils';
+import * as telemetry from 'yoshi-common/build/telemetry';
 import { cliCommand } from '../bin/yoshi-monorepo';
 import {
   createClientWebpackConfig,
@@ -14,6 +15,8 @@ import {
 import { isSiteAssetsModule } from '../utils';
 
 const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
+  telemetry.startInit('Monorepo', rootConfig.name);
+
   const args = arg(
     {
       // Types

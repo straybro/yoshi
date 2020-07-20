@@ -27,6 +27,7 @@ const {
   petriSpecsConfig,
   clientProjectName,
   startUrl,
+  name,
 } = require('yoshi-config');
 const globs = require('yoshi-config/build/globs');
 const {
@@ -47,6 +48,7 @@ const wixAppServer = require('../tasks/app-server');
 const createBabelConfig = require('yoshi-common/build/create-babel-config')
   .default;
 const openBrowser = require('yoshi-common/build/open-browser').default;
+const telemetry = require('yoshi-common/build/telemetry');
 
 const runner = createRunner({
   logger: new LoggerPlugin(),
@@ -70,6 +72,7 @@ try {
 
 module.exports = runner.command(
   async (tasks) => {
+    telemetry.startInit('Legacy', name);
     const { sass, less, copy, clean, typescript } = tasks;
 
     const wixCdn = tasks[require.resolve('../tasks/cdn')];

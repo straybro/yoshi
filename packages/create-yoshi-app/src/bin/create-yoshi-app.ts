@@ -10,6 +10,7 @@ import verifyDirectoryName from '../verifyDirectoryName';
 import verifyWorkingDirectory from '../verifyWorkingDirectory';
 import verifyRegistry from '../verifyRegistry';
 import verifyNodeVersion from '../verifyNodeVersion';
+import * as telemetry from '../telemetry';
 
 // Cannot be `import` as it's not under TS root dir
 const pkg = require('../../package.json');
@@ -45,18 +46,25 @@ if (customProjectDir) {
 verifyWorkingDirectory(workingDir);
 verifyRegistry(workingDir);
 
-const templateModel = answersFile
+const maybeTemplateModel = answersFile
   ? TemplateModel.fromFilePath(answersFile)
   : undefined;
 
 createApp({
   workingDir,
-  templateModel,
-}).then(({ projectName }) => {
+  templateModel: maybeTemplateModel,
+}).then((templateModel) => {
+  telemetry.createProject(
+    templateModel.templateDefinition.name,
+    templateModel.projectName,
+    templateModel.language,
+    templateModel.authorEmail,
+  );
+
   console.log(
-    `\nSuccess! 🙌  Created ${chalk.magenta(projectName)} at ${chalk.green(
-      workingDir,
-    )}`,
+    `\nSuccess! 🙌  Created ${chalk.magenta(
+      templateModel.projectName,
+    )} at ${chalk.green(workingDir)}`,
   );
 
   console.log('You can run the following commands:\n');

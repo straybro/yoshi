@@ -9613,10 +9613,10 @@ bfj@^6.1.1:
     hoopy "^0.1.4"
     tryer "^1.0.1"
 
-bi-logger-yoshi@^1.0.158:
-  version "1.0.170"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/bi-logger-yoshi/-/bi-logger-yoshi-1.0.170.tgz#7760c1889e977eb4fc94d652143b099f4c48c972"
-  integrity sha1-d2DBiJ6XfrT8lNZSFDsJn0xIyXI=
+bi-logger-yoshi@^1.0.201:
+  version "1.0.201"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/bi-logger-yoshi/-/bi-logger-yoshi-1.0.201.tgz#ba8b9d3d8d32079436d4b43b9bfdf85cc0e0ff17"
+  integrity sha1-uoudPY0yB5Q21LQ7m/34XMDg/xc=
   dependencies:
     "@wix/bi-logger-testkit" latest
     is-url-superb "^2.0.0"
@@ -29714,6 +29714,11 @@ wix-bi-logger-client@0.0.787:
   version "0.0.787"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/wix-bi-logger-client/-/wix-bi-logger-client-0.0.787.tgz#0846c2c6b84a04d3db21fc8b60873bc39fdd3fc0"
   integrity sha1-CEbCxrhKBNPbIfyLYIc7w5/dP8A=
+
+wix-bi-logger-client@0.0.790:
+  version "0.0.790"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/wix-bi-logger-client/-/wix-bi-logger-client-0.0.790.tgz#3f8430a2e30506963415d3115f7318429034c7d8"
+  integrity sha1-P4QwouMFBpY0FdMRX3MYQpA0x9g=
 
 wix-bootstrap-bo-auth@^1.0.1888:
   version "1.0.2010"

@@ -5,12 +5,16 @@ import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import webpack from 'webpack';
+import * as telemetry from 'yoshi-common/build/telemetry';
 import { cliCommand } from '../cli';
+
 import { createClientWebpackConfig } from '../webpack.config';
 
 const join = (...dirs: Array<string>) => path.join(process.cwd(), ...dirs);
 
-const start: cliCommand = async function (argv, config) {
+const start: cliCommand = async function (argv, config, pkgJson) {
+  telemetry.startInit('Library', pkgJson.name!);
+
   const args = arg(
     {
       // Types

@@ -33,7 +33,7 @@ import { isSiteAssetsModule, isThunderboltAppModule } from '../utils';
 const inTeamCity = checkInTeamCity();
 
 const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
-  telemetry.buildStart('App', rootConfig.name);
+  telemetry.buildStart('Monorepo', rootConfig.name);
 
   const args = arg(
     {

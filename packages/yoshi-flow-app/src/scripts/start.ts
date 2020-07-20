@@ -6,6 +6,7 @@ import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 import { isWebWorkerBundle } from 'yoshi-helpers/build/queries';
 import { getServerStartFile } from 'yoshi-helpers/build/server-start-file';
+import * as telemetry from 'yoshi-common/build/telemetry';
 import { cliCommand } from '../bin/yoshi-app';
 import {
   createClientWebpackConfig,
@@ -16,6 +17,8 @@ import {
 const join = (...dirs: Array<string>) => path.join(process.cwd(), ...dirs);
 
 const start: cliCommand = async function (argv, config) {
+  telemetry.startInit('App', config.name);
+
   const args = arg(
     {
       // Types
