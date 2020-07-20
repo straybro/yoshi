@@ -22813,10 +22813,10 @@ performance-now@^2.1.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-petri-specs@1.3.285:
-  version "1.3.285"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/petri-specs/-/petri-specs-1.3.285.tgz#87c2aee8d583aab0bd4fc0b45a2df1a2d3810de8"
-  integrity sha1-h8Ku6NWDqrC9T8C0Wi3xotOBDeg=
+petri-specs@1.3.288:
+  version "1.3.288"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/petri-specs/-/petri-specs-1.3.288.tgz#1e909c4392d676f2b22531bab2feeb2dda7a580f"
+  integrity sha1-HpCcQ5LWdvKyJTG6sv7rLdp6WA8=
   dependencies:
     ab-translate "~1.1.0"
     ajv "^6.12.2"
