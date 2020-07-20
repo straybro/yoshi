@@ -10624,10 +10624,10 @@ chownr@^1.1.1, chownr@^1.1.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha1-b8nXtC0ypYNZYzdmbn0ICE2izGs=
 
-chrome-launcher@0.13.3:
-  version "0.13.3"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/chrome-launcher/-/chrome-launcher-0.13.3.tgz#5dd72ae4e9b3de19ce3fe1941f89551c0ceb1d30"
-  integrity sha1-Xdcq5Omz3hnOP+GUH4lVHAzrHTA=
+chrome-launcher@0.13.4:
+  version "0.13.4"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/chrome-launcher/-/chrome-launcher-0.13.4.tgz#4c7d81333c98282899c4e38256da23e00ed32f73"
+  integrity sha1-TH2BMzyYKCiZxOOCVtoj4A7TL3M=
   dependencies:
     "@types/node" "*"
     escape-string-regexp "^1.0.5"

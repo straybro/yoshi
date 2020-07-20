@@ -31,7 +31,7 @@
     "@wix/add-sentry": "^1.0.0",
     "axios": "^0.19.2",
     "chalk": "^2.4.1",
-    "chrome-launcher": "0.13.3",
+    "chrome-launcher": "0.13.4",
     "commander": "^2.16.0",
     "constant-case": "^2.0.0",
     "execa": "^2.1.0",
