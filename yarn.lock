@@ -8643,14 +8643,14 @@ atob@^2.1.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-autoprefixer@9.8.1:
-  version "9.8.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/autoprefixer/-/autoprefixer-9.8.1.tgz#09ebdf209ddeb6900b310c71219f367138950ddd"
-  integrity sha1-CevfIJ3etpALMQxxIZ82cTiVDd0=
+autoprefixer@9.8.5:
+  version "9.8.5"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/autoprefixer/-/autoprefixer-9.8.5.tgz#2c225de229ddafe1d1424c02791d0c3e10ccccaa"
+  integrity sha1-LCJd4indr+HRQkwCeR0MPhDMzKo=
   dependencies:
     browserslist "^4.12.0"
-    caniuse-lite "^1.0.30001084"
-    kleur "^4.0.1"
+    caniuse-lite "^1.0.30001097"
+    colorette "^1.2.0"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.32"
@@ -10394,6 +10394,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000929, caniuse-lite@^1.0.30000989, can
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/caniuse-lite/-/caniuse-lite-1.0.30001085.tgz#bed28bd51ff7425d33ee23e730c7f3b703711db6"
   integrity sha1-vtKL1R/3Ql0z7iPnMMfztwNxHbY=
 
+caniuse-lite@^1.0.30001097:
+  version "1.0.30001100"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/caniuse-lite/-/caniuse-lite-1.0.30001100.tgz#2a58615e0c01cf716ab349b20ca4d86ef944aa4e"
+  integrity sha1-KlhhXgwBz3Fqs0myDKTYbvlEqk4=
+
 capture-exit@^2.0.0:
   version "2.0.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/capture-exit/-/capture-exit-2.0.0.tgz#fb953bfaebeb781f62898239dabb426d08a509a4"
@@ -10957,6 +10962,11 @@ color@^3.0.0:
   dependencies:
     color-convert "^1.9.1"
     color-string "^1.5.2"
+
+colorette@^1.2.0:
+  version "1.2.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
+  integrity sha1-TQuSEyXBT6+SYzCGpTbbbolWSxs=
 
 colorful@2.1.0, colorful@~2.1.0:
   version "2.1.0"

@@ -44,7 +44,7 @@
     "@stylable/webpack-plugin": "1.4.0",
     "@svgr/webpack": "4.3.3",
     "@zeit/webpack-asset-relocator-loader": "^0.7.0",
-    "autoprefixer": "9.8.1",
+    "autoprefixer": "9.8.5",
     "babel-loader": "8.1.0",
     "babel-preset-yoshi": "4.113.0",
     "bi-logger-yoshi": "^1.0.158",
