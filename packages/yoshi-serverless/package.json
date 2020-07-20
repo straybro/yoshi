@@ -13,7 +13,7 @@
     "@wix/serverless-api": "^1.0.541",
     "@wix/serverless-testkit": "^1.0.0",
     "ejs": "2.7.4",
-    "fp-ts": "2.6.6",
+    "fp-ts": "2.7.0",
     "fs-extra": "^8.1.0",
     "globby": "10.0.2",
     "import-fresh": "3.2.1",
