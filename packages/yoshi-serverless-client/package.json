@@ -1,6 +1,6 @@
 {
   "name": "yoshi-serverless-client",
-  "version": "4.111.0",
+  "version": "4.120.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
@@ -19,6 +19,6 @@
     "yoshi-serverless": "^4.14.0"
   },
   "devDependencies": {
-    "yoshi-serverless": "4.111.0"
+    "yoshi-serverless": "4.120.0"
   }
 }

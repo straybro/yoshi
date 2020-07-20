@@ -1,22 +1,66 @@
 # Changelog
 
+## v4.120.0 (2020-07-20)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#2693](https://github.com/wix/yoshi/pull/2693) Add BI Logger integration to BM Flow ([@amitdahan](https://github.com/amitdahan))
+  - [#2685](https://github.com/wix/yoshi/pull/2685) Add a `resolve` module "hook" in BM Flow ([@amitdahan](https://github.com/amitdahan))
+  - [#2679](https://github.com/wix/yoshi/pull/2679) Add a `files` module "hook" in BM Flow ([@amitdahan](https://github.com/amitdahan))
+- `yoshi-common`
+  - [#2695](https://github.com/wix/yoshi/pull/2695) Yoshi Serverless: add `requireHttps` by default ([@yanivefraim](https://github.com/yanivefraim))
+- `yoshi-common`, `yoshi-server-tools`, `yoshi-serverless`
+  - [#2688](https://github.com/wix/yoshi/pull/2688) Yoshi serverless: handle errors ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-bm`
+  - [#2729](https://github.com/wix/yoshi/pull/2729) Fix BI integration for exported-components in BM flow ([@amitdahan](https://github.com/amitdahan))
+- `yoshi-flow-editor-runtime`
+  - [#2691](https://github.com/wix/yoshi/pull/2691) Add `getSiteOwnerId`to settings e2e test mock ([@yavorsky](https://github.com/yavorsky))
+- Other
+  - [#2698](https://github.com/wix/yoshi/pull/2698) Yoshi Serverless: fix flaky test ([@yanivefraim](https://github.com/yanivefraim))
+- `yoshi-common`
+  - [#2694](https://github.com/wix/yoshi/pull/2694) reprint initial server logs ([@roymiloh](https://github.com/roymiloh))
+
+#### :nail_care: Polish
+
+- `yoshi-common`
+  - [#2700](https://github.com/wix/yoshi/pull/2700) Run fork-ts-checker-webpack-plugin only on client debug compilation ([@ranyitz](https://github.com/ranyitz))
+
+#### :memo: Documentation
+
+- [#2712](https://github.com/wix/yoshi/pull/2712) Remove a comment which is no longer relevant ([@ranyitz](https://github.com/ranyitz))
+
+#### :house: Internal
+
+- `create-yoshi-app`, `yoshi-common`, `yoshi-flow-app`, `yoshi-flow-bm`, `yoshi-flow-editor`, `yoshi-flow-legacy`, `yoshi-flow-library`, `yoshi-flow-monorepo`
+  - [#2746](https://github.com/wix/yoshi/pull/2746) add bi events (startInit & createProject) and add buildStart for monorepo flow ([@ranyitz](https://github.com/ranyitz))
+- `create-yoshi-app`, `jest-yoshi-preset`, `yoshi-common`, `yoshi-flow-legacy`, `yoshi-flow-monorepo`, `yoshi-helpers`, `yoshi-server-tools`, `yoshi-serverless-testing`
+  - [#2699](https://github.com/wix/yoshi/pull/2699) Use the ci-build-info library ([@ohana54](https://github.com/ohana54))
+- Other
+  - [#2726](https://github.com/wix/yoshi/pull/2726) auto release ([@kobiburnley](https://github.com/kobiburnley))
+
 ## 4.119.0 (2020-07-14)
 
 #### :rocket: New Feature
-* `yoshi-flow-app`
-  * [#2683](https://github.com/wix/yoshi/pull/2683) fix(flow-app): add isAnalyze to web worker webpack config ([@kobiburnley](https://github.com/kobiburnley))
+
+- `yoshi-flow-app`
+  - [#2683](https://github.com/wix/yoshi/pull/2683) fix(flow-app): add isAnalyze to web worker webpack config ([@kobiburnley](https://github.com/kobiburnley))
 
 #### :bug: Bug Fix
-* `yoshi-flow-editor`
-  * [#2690](https://github.com/wix/yoshi/pull/2690) Fix `generate-bi-types` call ([@yavorsky](https://github.com/yavorsky))
-* `create-yoshi-app`
-  * [#2687](https://github.com/wix/yoshi/pull/2687) fix: templates counter constructor suites rename ([@kobiburnley](https://github.com/kobiburnley))
-* `yoshi`
-  * [#2684](https://github.com/wix/yoshi/pull/2684) Fix wallaby config for `*-setup` files ([@amitdahan](https://github.com/amitdahan))
+
+- `yoshi-flow-editor`
+  - [#2690](https://github.com/wix/yoshi/pull/2690) Fix `generate-bi-types` call ([@yavorsky](https://github.com/yavorsky))
+- `create-yoshi-app`
+  - [#2687](https://github.com/wix/yoshi/pull/2687) fix: templates counter constructor suites rename ([@kobiburnley](https://github.com/kobiburnley))
+- `yoshi`
+  - [#2684](https://github.com/wix/yoshi/pull/2684) Fix wallaby config for `*-setup` files ([@amitdahan](https://github.com/amitdahan))
 
 #### :memo: Documentation
-* [#2692](https://github.com/wix/yoshi/pull/2692) Added `YOSHI_PUBLIC_PATH` documentation ([@illBeRoy](https://github.com/illBeRoy))
 
+- [#2692](https://github.com/wix/yoshi/pull/2692) Added `YOSHI_PUBLIC_PATH` documentation ([@illBeRoy](https://github.com/illBeRoy))
 
 ## 4.117.0 (2020-07-09)
 

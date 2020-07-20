@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-bm-runtime",
-  "version": "4.116.0",
+  "version": "4.120.0",
   "description": "",
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
@@ -13,10 +13,10 @@
     "@sentry/browser": "5.7.1",
     "@wix/business-manager-api": "1.0.1047",
     "@wix/fedops-logger": "5.12.3",
+    "@wix/web-bi-logger": "2.0.917",
     "@wix/wix-axios-config": "2.0.2268",
     "@wix/wix-experiments": "3.0.442",
     "@wix/wix-experiments-react": "4.0.51",
-    "@wix/web-bi-logger": "2.0.917",
     "axios": "0.19.2",
     "react-module-container": "1.0.2320"
   },
