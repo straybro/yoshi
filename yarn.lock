@@ -4101,14 +4101,14 @@
     postcss-value-parser "^3.3.1"
     url-regex "^4.1.1"
 
-"@stylable/core@3.7.2", "@stylable/core@^3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/core/-/core-3.7.2.tgz#1d257651c454ef77a2adc4e402e5e06fbbc7449f"
-  integrity sha1-HSV2UcRU73eircTkAuXgb7vHRJ8=
+"@stylable/core@3.8.1", "@stylable/core@^3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/core/-/core-3.8.1.tgz#072936653606a9f1d498e425066676c2c1ab2085"
+  integrity sha1-Byk2ZTYGqfHUmOQlBmZ2wsGrIIU=
   dependencies:
     css-selector-tokenizer "^0.7.2"
     deindent "^0.1.0"
-    enhanced-resolve "^4.2.0"
+    enhanced-resolve "^4.3.0"
     is-url-superb "^4.0.0"
     is-vendor-prefixed "^3.3.1"
     jest-docblock "^26.0.0"
@@ -4117,7 +4117,7 @@
     murmurhash "^1.0.0"
     postcss "^7.0.32"
     postcss-js "^2.0.3"
-    postcss-nested "^4.2.1"
+    postcss-nested "^4.2.3"
     postcss-safe-parser "^4.0.2"
     postcss-selector-matches "^4.0.0"
     postcss-value-parser "^4.1.0"
@@ -4138,21 +4138,21 @@
     "@stylable/node" "^1.4.0"
     "@stylable/runtime" "^1.4.0"
 
-"@stylable/jest@3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/jest/-/jest-3.7.2.tgz#7516fda8e9f90deb1950f4bffbdb279dc28a46ad"
-  integrity sha1-dRb9qOn5DesZUPS/+9snncKKRq0=
+"@stylable/jest@3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/jest/-/jest-3.8.1.tgz#9a78311ddc164c405c35a6eb243aff6cb81bee2c"
+  integrity sha1-mngxHdwWTEBcNabrJDr/bLgb7iw=
   dependencies:
-    "@stylable/core" "^3.7.2"
-    "@stylable/module-utils" "^3.7.2"
-    "@stylable/runtime" "^3.7.0"
+    "@stylable/core" "^3.8.1"
+    "@stylable/module-utils" "^3.8.1"
+    "@stylable/runtime" "^3.8.1"
 
-"@stylable/module-utils@3.7.2", "@stylable/module-utils@^3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/module-utils/-/module-utils-3.7.2.tgz#b3129f2791f3b9d62c86d3c8c9428d8f903c0c3f"
-  integrity sha1-sxKfJ5HzudYshtPIyUKNj5A8DD8=
+"@stylable/module-utils@3.8.1", "@stylable/module-utils@^3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/module-utils/-/module-utils-3.8.1.tgz#169e84c38406197934893a6190657678ce879c86"
+  integrity sha1-Fp6Ew4QGGXk0iTphkGV2eM6HnIY=
   dependencies:
-    "@stylable/core" "^3.7.2"
+    "@stylable/core" "^3.8.1"
 
 "@stylable/node@1.4.0", "@stylable/node@^1.4.0":
   version "1.4.0"
@@ -4163,38 +4163,33 @@
     find-config "^1.0.0"
     murmurhash "^0.0.2"
 
-"@stylable/node@3.7.2", "@stylable/node@^3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/node/-/node-3.7.2.tgz#f09be2fb60735cff4ad5082034fad87d493fff28"
-  integrity sha1-8Jvi+2BzXP9K1QggNPrYfUk//yg=
+"@stylable/node@3.8.1", "@stylable/node@^3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/node/-/node-3.8.1.tgz#d6ba74fde309bb0695be39bd35b761996d28c805"
+  integrity sha1-1rp0/eMJuwaVvjm9NbdhmW0oyAU=
   dependencies:
-    "@stylable/core" "^3.7.2"
-    "@stylable/module-utils" "^3.7.2"
+    "@stylable/core" "^3.8.1"
+    "@stylable/module-utils" "^3.8.1"
     find-config "^1.0.0"
 
-"@stylable/optimizer@^3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/optimizer/-/optimizer-3.7.2.tgz#4c5d44231fc5438156a35d0a86413914419bc128"
-  integrity sha1-TF1EIx/FQ4FWo10KhkE5FEGbwSg=
+"@stylable/optimizer@^3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/optimizer/-/optimizer-3.8.1.tgz#591ec4817eb488537285e357f58145cbbf2dc051"
+  integrity sha1-WR7EgX60iFNyheNX9YFFy78twFE=
   dependencies:
-    "@stylable/core" "^3.7.2"
+    "@stylable/core" "^3.8.1"
     csso "^4.0.3"
     postcss "^7.0.32"
 
-"@stylable/runtime@3.7.0", "@stylable/runtime@^3.7.0":
-  version "3.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/runtime/-/runtime-3.7.0.tgz#835ff499cb341ba79fe1fe4bcd97835f3f4087f7"
-  integrity sha1-g1/0mcs0G6ef4f5LzZeDXz9Ah/c=
+"@stylable/runtime@3.8.1", "@stylable/runtime@^3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/runtime/-/runtime-3.8.1.tgz#86fd2aa22a7d22b0e8f5259a52f87ee0b1ec742a"
+  integrity sha1-hv0qoip9IrDo9SWaUvh+4LHsdCo=
 
 "@stylable/runtime@^1.4.0":
   version "1.4.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/runtime/-/runtime-1.4.0.tgz#b3887229e1b8836cbd134a6ca54ff45d989872f4"
   integrity sha1-s4hyKeG4g2y9E0pspU/0XZiYcvQ=
-
-"@stylable/runtime@^3.2.0":
-  version "3.6.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/runtime/-/runtime-3.6.2.tgz#88d4dc8aa443b35d526a05d7a481df56cd812f69"
-  integrity sha1-iNTciqRDs11SagXXpIHfVs2BL2k=
 
 "@stylable/uni-driver@^2.4.1":
   version "2.5.3"
@@ -4211,15 +4206,15 @@
     find-config "^1.0.0"
     webpack-sources "^1.3.0"
 
-"@stylable/webpack-plugin@3.7.2":
-  version "3.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/webpack-plugin/-/webpack-plugin-3.7.2.tgz#7b5d2bc580f3fc25a5d12187bbeb601848ed1b41"
-  integrity sha1-e10rxYDz/CWl0SGHu+tgGEjtG0E=
+"@stylable/webpack-plugin@3.8.1":
+  version "3.8.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/webpack-plugin/-/webpack-plugin-3.8.1.tgz#fff04ecb6f8b42800815d928290ce5edeeba3e55"
+  integrity sha1-//BOy2+LQoAIFdkoKQzl7e66PlU=
   dependencies:
-    "@stylable/module-utils" "^3.7.2"
-    "@stylable/node" "^3.7.2"
-    "@stylable/optimizer" "^3.7.2"
-    "@stylable/runtime" "^3.7.0"
+    "@stylable/module-utils" "^3.8.1"
+    "@stylable/node" "^3.8.1"
+    "@stylable/optimizer" "^3.8.1"
+    "@stylable/runtime" "^3.8.1"
     find-config "^1.0.0"
     webpack-sources "^1.4.3"
 
@@ -13129,10 +13124,19 @@ engine.io@~3.1.0:
   optionalDependencies:
     uws "~9.14.0"
 
-enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0, enhanced-resolve@^4.2.0:
+enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
   version "4.2.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/enhanced-resolve/-/enhanced-resolve-4.2.0.tgz#5d43bda4a0fd447cb0ebbe71bef8deff8805ad0d"
   integrity sha1-XUO9pKD9RHyw675xvvje/4gFrQ0=
+  dependencies:
+    graceful-fs "^4.1.2"
+    memory-fs "^0.5.0"
+    tapable "^1.0.0"
+
+enhanced-resolve@^4.3.0:
+  version "4.3.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/enhanced-resolve/-/enhanced-resolve-4.3.0.tgz#3b806f3bfafc1ec7de69551ef93cca46c1704126"
+  integrity sha1-O4BvO/r8HsfeaVUe+TzKRsFwQSY=
   dependencies:
     graceful-fs "^4.1.2"
     memory-fs "^0.5.0"
@@ -23292,12 +23296,20 @@ postcss-modules-values@^3.0.0:
     icss-utils "^4.0.0"
     postcss "^7.0.6"
 
-postcss-nested@^4.1.2, postcss-nested@^4.2.1:
+postcss-nested@^4.1.2:
   version "4.2.1"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/postcss-nested/-/postcss-nested-4.2.1.tgz#4bc2e5b35e3b1e481ff81e23b700da7f82a8b248"
   integrity sha1-S8Lls147Hkgf+B4jtwDaf4Koskg=
   dependencies:
     postcss "^7.0.21"
+    postcss-selector-parser "^6.0.2"
+
+postcss-nested@^4.2.3:
+  version "4.2.3"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/postcss-nested/-/postcss-nested-4.2.3.tgz#c6f255b0a720549776d220d00c4b70cd244136f6"
+  integrity sha1-xvJVsKcgVJd20iDQDEtwzSRBNvY=
+  dependencies:
+    postcss "^7.0.32"
     postcss-selector-parser "^6.0.2"
 
 postcss-normalize-charset@^4.0.1:
