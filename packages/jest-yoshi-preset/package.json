@@ -47,7 +47,7 @@
     "@stylable/jest": "^1.0.0",
     "babel-preset-yoshi": "4.113.0",
     "graphql": "14.7.0",
-    "graphql-tag": "^2.10.1",
+    "graphql-tag": "2.10.4",
     "jest-transform-graphql": "^2.1.0",
     "typescript": "3.7.5"
   }
