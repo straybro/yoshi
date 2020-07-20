@@ -35,9 +35,9 @@
     "type-fest": "0.16.0"
   },
   "dependencies": {
-    "@babel/core": "7.10.4",
+    "@babel/core": "7.10.5",
     "@babel/preset-typescript": "7.10.4",
-    "@babel/register": "7.10.4",
+    "@babel/register": "7.10.5",
     "@stylable/core": "1.4.0",
     "@stylable/jest": "1.4.0",
     "@stylable/node": "1.4.0",
