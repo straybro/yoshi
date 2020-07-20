@@ -101,7 +101,7 @@
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react": "7.20.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-wix-style-react": "^1.0.2",
     "execa": "^3.2.0",
