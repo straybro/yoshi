@@ -17,7 +17,7 @@
     "fs-extra": "^8.1.0",
     "globby": "10.0.2",
     "import-fresh": "3.2.1",
-    "io-ts": "2.2.6",
+    "io-ts": "2.2.9",
     "parent-module": "2.0.0",
     "path-to-regexp": "3.2.0",
     "react-dev-utils": "7.0.5",
