@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.122.0 (2020-07-21)
+
+#### :rocket: New Feature
+
+- `yoshi-server-tools`
+  - [#2752](https://github.com/wix/yoshi/pull/2752) Yoshi Serverless: deploy to Yoshi Serverless sandbox ([@yanivefraim](https://github.com/yanivefraim))
+
 ## v4.121.0 (2020-07-20)
 
 #### :bug: Bug Fix
