@@ -16,7 +16,7 @@
     "chokidar": "3.4.1",
     "constant-case": "3.0.3",
     "cosmiconfig": "6.0.0",
-    "fs-extra": "8.1.0",
+    "fs-extra": "9.0.1",
     "globby": "10.0.2",
     "jest-validate": "25.5.0",
     "lodash": "4.17.19",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/cosmiconfig": "6.0.0",
-    "@types/fs-extra": "8.1.1",
+    "@types/fs-extra": "9.0.1",
     "@types/lodash": "4.14.157",
     "@types/react-dev-utils": "9.0.4",
     "@types/uuid": "7.0.4",

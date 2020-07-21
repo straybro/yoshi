@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/cosmiconfig": "5.0.3",
-    "@types/fs-extra": "8.1.1",
+    "@types/fs-extra": "9.0.1",
     "@types/lodash": "4.14.157",
     "@types/webpack": "4.41.17"
   },
@@ -28,7 +28,7 @@
     "chalk": "2.4.2",
     "cosmiconfig": "5.2.1",
     "execa": "4.0.2",
-    "fs-extra": "8.1.0",
+    "fs-extra": "9.0.1",
     "globby": "11.0.1",
     "jest": "24.9.0",
     "jest-teamcity": "1.7.0",

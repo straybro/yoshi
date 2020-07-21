@@ -52,7 +52,7 @@
     "execa": "1.0.0",
     "express": "4.17.1",
     "find-pkg": "2.0.0",
-    "fs-extra": "7.0.1",
+    "fs-extra": "9.0.1",
     "glob": "7.1.6",
     "globby": "9.2.0",
     "graphql": "14.7.0",
