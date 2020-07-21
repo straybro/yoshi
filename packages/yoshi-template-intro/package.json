@@ -15,16 +15,16 @@
     "test": "yoshi test --jest"
   },
   "devDependencies": {
-    "enzyme": "~2.9.0",
-    "husky": "^4.2.1",
+    "enzyme": "2.9.1",
+    "husky": "4.2.5",
     "jest-yoshi-preset": "4.122.0",
-    "lint-staged": "^10.0.7",
-    "node-sass": "^4.12.0",
-    "prop-types": "~15.7.0",
-    "puppeteer": "^1.15.0",
+    "lint-staged": "10.2.11",
+    "node-sass": "4.14.1",
+    "prop-types": "15.7.2",
+    "puppeteer": "1.20.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
-    "react-test-renderer": "~15.6.0",
+    "react-test-renderer": "15.6.2",
     "yoshi": "4.122.0",
     "yoshi-style-dependencies": "4.71.0"
   },

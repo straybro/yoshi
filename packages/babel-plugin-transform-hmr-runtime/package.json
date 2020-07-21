@@ -18,8 +18,8 @@
     "@babel/core": "7.10.5",
     "@babel/helper-plugin-test-runner": "7.10.4",
     "@babel/plugin-syntax-jsx": "7.10.4",
-    "babel-core": "^7.0.0-0",
-    "jest": "^24.1.0"
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "24.9.0"
   },
   "babel": {
     "plugins": [
