@@ -4815,12 +4815,13 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/newrelic/-/newrelic-6.4.0.tgz#f0e2eb6cf49e4300958e25c7b9211dfe57b22a59"
   integrity sha1-8OLrbPSeQwCVjiXHuSEd/leyKlk=
 
-"@types/node-fetch@1.6.9":
-  version "1.6.9"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node-fetch/-/node-fetch-1.6.9.tgz#a750fb0f4cf2960bf72b462e4c86908022dd69c5"
-  integrity sha1-p1D7D0zylgv3K0YuTIaQgCLdacU=
+"@types/node-fetch@2.5.7":
+  version "2.5.7"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node-fetch/-/node-fetch-2.5.7.tgz#20a2afffa882ab04d44ca786449a276f9f6bbf3c"
+  integrity sha1-IKKv/6iCqwTUTKeGRJonb59rvzw=
   dependencies:
     "@types/node" "*"
+    form-data "^3.0.0"
 
 "@types/node-rsa@1.0.0":
   version "1.0.0"
@@ -11015,7 +11016,7 @@ combine-lists@^1.0.0:
   dependencies:
     lodash "^4.5.0"
 
-combined-stream@^1.0.5, combined-stream@^1.0.6, combined-stream@~1.0.5, combined-stream@~1.0.6:
+combined-stream@^1.0.5, combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.5, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
   integrity sha1-w9RaizT9cwYxoRCoolIGgrMdWn8=
@@ -14670,6 +14671,15 @@ fork-ts-checker-webpack-plugin@1.6.0:
     semver "^5.6.0"
     tapable "^1.0.0"
     worker-rpc "^0.1.0"
+
+form-data@^3.0.0:
+  version "3.0.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/form-data/-/form-data-3.0.0.tgz#31b7e39c85f1355b7139ee0c647cf0de7f83c682"
+  integrity sha1-MbfjnIXxNVtxOe4MZHzw3n+DxoI=
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.8"
+    mime-types "^2.1.12"
 
 form-data@~2.0.0:
   version "2.0.0"

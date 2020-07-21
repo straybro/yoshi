@@ -10,7 +10,7 @@
   "author": "Ronen Amiel",
   "license": "ISC",
   "dependencies": {
-    "@types/node-fetch": "1.6.9",
+    "@types/node-fetch": "2.5.7",
     "@wix/headers": "^1.7.0",
     "isomorphic-unfetch": "3.0.0",
     "toastify-js": "1.8.0"
