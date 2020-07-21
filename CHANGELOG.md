@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.124.0 (2020-07-21)
+
+#### :rocket: New Feature
+
+- `babel-preset-yoshi`
+  - [#2728](https://github.com/wix/yoshi/pull/2728) require babel helpers instead of inlining them ([@roymiloh](https://github.com/roymiloh))
+
 ## v4.123.0 (2020-07-21)
 
 #### :rocket: New Feature
