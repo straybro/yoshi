@@ -90,7 +90,7 @@ module.exports = function (api, opts = {}) {
         requireDefault('@babel/plugin-transform-runtime'),
         {
           // 2 options blow are usually handled by polyfill.io.
-          helpers: false,
+          helpers: process.env.EXPERIMENTAL_BABEL_SHARED_HELPERS === 'true',
           regenerator: true,
         },
       ],
