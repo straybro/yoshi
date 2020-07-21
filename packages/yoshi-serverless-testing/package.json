@@ -1,6 +1,6 @@
 {
   "name": "yoshi-serverless-testing",
-  "version": "4.121.0",
+  "version": "4.122.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@wix/serverless-testkit": "^1.0.0",
-    "yoshi-helpers": "4.121.0"
+    "yoshi-helpers": "4.122.0"
   },
   "peerDependencies": {
     "yoshi-serverless": "^4.14.0",
