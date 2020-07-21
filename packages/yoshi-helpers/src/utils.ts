@@ -209,7 +209,10 @@ export const getServerlessBase = (scope: string) => {
   ) {
     return `http://localhost:${serverlessPort}/serverless/${scope}`;
   }
-  return `/_serverless/${scope}`;
+  // Default baseUrl is now `serverless-yoshi-sandbox1`.
+  // Later on, we will have multiple environments, and we will have to make this
+  // a dynamic baseurl
+  return `/serverless-yoshi-sandbox1/${scope}`;
 };
 
 export const getProjectArtifactVersion = () => {
