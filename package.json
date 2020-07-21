@@ -138,7 +138,7 @@
     "shelljs": "0.8.4",
     "string-length": "3.1.0",
     "strip-ansi": "4.0.0",
-    "tempy": "0.5.0",
+    "tempy": "0.6.0",
     "terminate": "2.1.2",
     "ts-jest": "24.3.0",
     "ts-node": "8.10.2",

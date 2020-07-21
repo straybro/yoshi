@@ -27563,14 +27563,14 @@ temp@^0.8.1:
   dependencies:
     rimraf "~2.6.2"
 
-tempy@0.5.0:
-  version "0.5.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/tempy/-/tempy-0.5.0.tgz#2785c89df39fcc4d1714fc554813225e1581d70b"
-  integrity sha1-J4XInfOfzE0XFPxVSBMiXhWB1ws=
+tempy@0.6.0:
+  version "0.6.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/tempy/-/tempy-0.6.0.tgz#65e2c35abc06f1124a97f387b08303442bde59f3"
+  integrity sha1-ZeLDWrwG8RJKl/OHsIMDRCveWfM=
   dependencies:
     is-stream "^2.0.0"
     temp-dir "^2.0.0"
-    type-fest "^0.12.0"
+    type-fest "^0.16.0"
     unique-string "^2.0.0"
 
 tempy@^0.2.1:
@@ -28283,7 +28283,7 @@ type-detect@4.0.8, type-detect@^4.0.0, type-detect@^4.0.5:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha1-dkb7XxiHHPu3dJ5pvTmmOI63RQw=
 
-type-fest@0.16.0:
+type-fest@0.16.0, type-fest@^0.16.0:
   version "0.16.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/type-fest/-/type-fest-0.16.0.tgz#3240b891a78b0deae910dbeb86553e552a148860"
   integrity sha1-MkC4kaeLDerpENvrhlU+VSoUiGA=
@@ -28297,11 +28297,6 @@ type-fest@^0.11.0:
   version "0.11.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/type-fest/-/type-fest-0.11.0.tgz#97abf0872310fed88a5c466b25681576145e33f1"
   integrity sha1-l6vwhyMQ/tiKXEZrJWgVdhReM/E=
-
-type-fest@^0.12.0:
-  version "0.12.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/type-fest/-/type-fest-0.12.0.tgz#f57a27ab81c68d136a51fd71467eff94157fa1ee"
-  integrity sha1-9Xonq4HGjRNqUf1xRn7/lBV/oe4=
 
 type-fest@^0.13.1:
   version "0.13.1"
