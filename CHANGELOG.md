@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.123.0 (2020-07-21)
+
+#### :rocket: New Feature
+
+- `yoshi-helpers`
+  - [#2762](https://github.com/wix/yoshi/pull/2762) Yoshi Serverless: change serverless base url to use Yoshi Serverless Sandbox ([@yanivefraim](https://github.com/yanivefraim))
+
 ## v4.122.0 (2020-07-21)
 
 #### :rocket: New Feature
