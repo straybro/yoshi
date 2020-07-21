@@ -93,7 +93,7 @@
     "chai": "4.2.0",
     "chalk": "2.4.2",
     "changelog-prepend": "1.7.0",
-    "chokidar": "3.4.0",
+    "chokidar": "3.4.1",
     "cross-spawn": "6.0.5",
     "eslint": "6.8.0",
     "eslint-import-resolver-typescript": "2.0.0",

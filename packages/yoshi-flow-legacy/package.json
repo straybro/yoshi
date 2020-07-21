@@ -33,7 +33,7 @@
     "babel-plugin-transform-hmr-runtime": "4.124.0",
     "boxen": "4.2.0",
     "chalk": "2.4.2",
-    "chokidar": "2.1.8",
+    "chokidar": "3.4.1",
     "commander": "2.20.3",
     "cross-spawn": "6.0.5",
     "dargs": "6.1.0",

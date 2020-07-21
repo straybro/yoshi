@@ -61,7 +61,7 @@
     "@types/prompts": "2.0.8",
     "@types/semver": "7.3.1",
     "@types/validate-npm-package-name": "3.0.0",
-    "chokidar": "2.1.8",
+    "chokidar": "3.4.1",
     "clipboardy": "1.2.3",
     "expect": "23.6.0",
     "find-cache-dir": "2.1.0",
