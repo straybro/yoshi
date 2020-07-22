@@ -65,6 +65,7 @@ import SveltePreprocessSSR from './svelte-server-side-preprocess';
 import { asyncWebWorkerTarget } from './AsyncWebWorkerTarget/AsyncWebWorkerTarget';
 import { sourceMapPlugin } from './source-map-plugin';
 import HtmlRenderingDataPlugin from './html-rendering-data-plugin';
+import { getStylableManifestPlugin } from './@stylable/manifest-plugin';
 
 export type CompilationTarget =
   | 'web'
@@ -340,14 +341,21 @@ export const getStyleLoaders = ({
                     },
                     // expected to be installed on the project that tests this experimental feature
                     // eslint-disable-next-line import/no-extraneous-dependencies
-                    require('@stylable/experimental-loader').stylableLoaders.transform(),
+                    require('@stylable/experimental-loader').stylableLoaders.transform(
+                      {
+                        resolveNamespace: resolveNamespaceFactory(name),
+                      },
+                    ),
                   ]
                 : // https://github.com/wix/stylable/tree/master/packages/experimental-loader#ssr-exportsonly
                   [
                     // expected to be installed on the project that tests this experimental feature
                     // eslint-disable-next-line import/no-extraneous-dependencies
                     require('@stylable/experimental-loader').stylableLoaders.transform(
-                      { exportsOnly: true },
+                      {
+                        exportsOnly: true,
+                        resolveNamespace: resolveNamespaceFactory(name),
+                      },
                     ),
                   ]),
             ],
@@ -767,7 +775,7 @@ export function createBaseWebpackConfig({
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
             ...(process.env.EXPERIMENTAL_STYLABLE_LOADER
-              ? []
+              ? [getStylableManifestPlugin(name)]
               : [
                   new StylableWebpackPlugin({
                     ...getCommonStylbleWebpackConfig(name),
