@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.125.0 (2020-07-22)
+
+#### :rocket: New Feature
+
+- `yoshi-common`
+  - [#2761](https://github.com/wix/yoshi/pull/2761) Support stylable manifest plugin [EXPERIMENTAL_STYLABLE_LOADER](<[@NitayRabi](https://github.com/NitayRabi)>)
+- `create-yoshi-app`, `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#2730](https://github.com/wix/yoshi/pull/2730) Add `@wix/wix-i18n-config` integration to BM flow ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.124.0 (2020-07-21)
 
 #### :rocket: New Feature
