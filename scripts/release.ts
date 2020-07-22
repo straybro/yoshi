@@ -14,12 +14,14 @@ async function main() {
       throw new Error('Must provide GITHUB_AUTH');
     }
 
+    console.log(`Fetching tags...`);
+    await execa('git', ['fetch', '--tags']);
+
     const { version: prevVersion } = JSON.parse(
       (await fs.readFile('lerna.json')).toString('utf8'),
     );
 
     console.log(`Bumping version with ${chalk.bold('lerna version')}...`);
-
     await execa('./node_modules/.bin/lerna', [
       'version',
       '--bump',
@@ -38,10 +40,13 @@ async function main() {
         'lerna-changelog',
       )}...`,
     );
-
     await prependChangelog({
       prevVersion,
     });
+
+    console.log('Re-creating tags...');
+    execa('git', ['tag', '-d', `v${nextVersion}`]);
+    execa('git', ['tag', '-a', `v${nextVersion}`, '-m', `v${nextVersion}`]);
 
     console.log(
       chalk.green(`✔ New version & changelog were created: v${nextVersion}`),
