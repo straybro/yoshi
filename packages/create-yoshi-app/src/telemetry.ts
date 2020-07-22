@@ -4,7 +4,6 @@ import biLoggerClient, { BiLoggerFactory } from 'wix-bi-logger-client';
 import initSchemaLogger, { getLoggerConf } from 'bi-logger-yoshi';
 import isCI from 'is-ci';
 import fetch from 'node-fetch';
-import getWixEmail from './getWixEmail';
 
 const debug = require('debug')('yoshi:telemetry');
 
@@ -34,7 +33,6 @@ biLogger.util.updateDefaults({
   isCI,
   nodeVersion: `${semver.parse(process.version)?.major}`,
   yoshiVersion: `${semver.parse(yoshiVersion)?.major}`,
-  email: getWixEmail(),
 });
 
 export function createProject(

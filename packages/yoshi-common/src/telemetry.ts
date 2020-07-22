@@ -5,6 +5,7 @@ import initSchemaLogger, { getLoggerConf } from 'bi-logger-yoshi';
 import { isTypescriptProject } from 'yoshi-helpers/build/queries';
 import isCI from 'is-ci';
 import fetch from 'node-fetch';
+import getWixEmail from './getWixEmail';
 
 const debug = require('debug')('yoshi:telemetry');
 
@@ -40,6 +41,7 @@ biLogger.util.updateDefaults({
   nodeVersion: `${semver.parse(process.version)?.major}`,
   yoshiVersion: `${semver.parse(yoshiVersion)?.major}`,
   projectLanguage: isTypescriptProject() ? 'ts' : 'js',
+  email: getWixEmail(),
 });
 
 export function buildStart(yoshiFlow: yoshiFlow, pkgJsonName: string) {
