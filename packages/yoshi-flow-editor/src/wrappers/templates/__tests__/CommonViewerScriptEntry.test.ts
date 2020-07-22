@@ -12,6 +12,7 @@ describe('CommonViewerScriptEntry template', () => {
       sentryConfig: null,
       projectName: 'someProject',
       defaultTranslations: {},
+      createControllersStrategy: 'all',
       biConfig: {},
       visitorBiLoggerPath: 'a/b/c',
       translationsConfig: null,
@@ -43,6 +44,7 @@ describe('CommonViewerScriptEntry template', () => {
       appName: 'someApp',
       visitorBiLoggerPath: 'a/b/c',
       defaultTranslations: null,
+      createControllersStrategy: 'all',
       biConfig: {},
       translationsConfig: {
         default: 'en',
@@ -72,6 +74,7 @@ describe('CommonViewerScriptEntry template', () => {
       appName: 'someapp',
       visitorBiLoggerPath: 'a/b/c',
       projectName: 'someProject',
+      createControllersStrategy: 'controller',
       defaultTranslations: { a: 'b' },
       biConfig: {
         visitor: 'visitor-bi-package',
@@ -112,6 +115,7 @@ describe('CommonViewerScriptEntry template', () => {
       sentryConfig: null,
       projectName: 'someProject',
       appName: 'someapp',
+      createControllersStrategy: 'all',
       defaultTranslations: { a: 'b' },
       visitorBiLoggerPath: null,
       biConfig: {
@@ -152,6 +156,7 @@ describe('CommonViewerScriptEntry template', () => {
         'yoshi-flow-editor-runtime/build/viewerScript.js',
       sentryConfig: null,
       projectName: 'someProject',
+      createControllersStrategy: 'all',
       visitorBiLoggerPath: 'a/b/c',
       biConfig: {
         visitor: 'visitor-bi-package',
@@ -179,6 +184,7 @@ describe('CommonViewerScriptEntry template', () => {
       },
       defaultTranslations: { a: 'b' },
       projectName: 'someProject',
+      createControllersStrategy: 'all',
       biConfig: {
         visitor: 'visitor-bi-package',
         owner: 'owner-bi-package',

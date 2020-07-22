@@ -53,6 +53,7 @@ const viewerScriptWrapper = (
     controllersMeta,
     appName: model.appName,
     projectName: model.projectName,
+    createControllersStrategy: model.createControllersStrategy,
     experimentsConfig: model.experimentsConfig,
     defaultTranslations: getDefaultTranslations(model),
     visitorBiLoggerPath,

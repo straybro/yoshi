@@ -1,4 +1,5 @@
 import path from 'path';
+import { VisitorBILoggerFactory } from './generated/bi-logger-types';
 
 export const DEFAULT_WIX_SDK_SRC =
   'https://static.parastorage.com/services/js-sdk/1.469.0/js/wix-private.min.js';
@@ -41,3 +42,20 @@ export const biLoggerTypesFilename = path.resolve(
   __dirname,
   './generated/bi-logger-types.d.ts',
 );
+
+export type ControllerDescriptor = {
+  id: string | null;
+  method: Function;
+  experimentsConfig: ExperimentsConfig | null;
+  translationsConfig: TranslationsConfig | null;
+  defaultTranslations: DefaultTranslations | null;
+  projectName: string;
+  biLogger: VisitorBILoggerFactory;
+  widgetType: WidgetType;
+  biConfig: BIConfig;
+  controllerFileName: string | null;
+  appName: string | null;
+  componentName: string | null;
+};
+
+export type CreateControllersStrategy = 'all' | 'controller';

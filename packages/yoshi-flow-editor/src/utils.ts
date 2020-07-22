@@ -20,6 +20,7 @@ const urlOriginToSupportedOverridesMap: Record<string, Array<string>> = {
     'widgetsUrlOverride',
     'tpaSettingsUrlOverride',
     'viewerPlatformOverrides',
+    'controllersUrlOverride',
     'overridePlatformBaseUrls',
   ],
   editorUrl: [
@@ -53,6 +54,13 @@ const widgetUrlFormatter = (component: ComponentModel, baseUrl: string) => {
   return `${component.id}=${urlJoin(
     baseUrl,
     `${component.name}ViewerWidget.bundle.js`,
+  )}`;
+};
+
+const controllerUrlFormatter = (component: ComponentModel, baseUrl: string) => {
+  return `${component.id}=${urlJoin(
+    baseUrl,
+    `${component.name}Controller.bundle.js`,
   )}`;
 };
 
@@ -120,6 +128,13 @@ export const overrideQueryParamsWithModel = (
     urlWithParams.searchParams.set(
       'tpaSettingsUrlOverride',
       editorComponentsWithFormatter(tpaUrlFormatterForType('settings')),
+    );
+
+  model.createControllersStrategy === 'controller' &&
+    isOverrideSupportedForOrigin(origin, 'controllersUrlOverride') &&
+    urlWithParams.searchParams.set(
+      'controllersUrlOverride',
+      viewerComponentsWithFormatter(controllerUrlFormatter),
     );
 
   isOverrideSupportedForOrigin(origin, 'widgetsUrlOverride') &&

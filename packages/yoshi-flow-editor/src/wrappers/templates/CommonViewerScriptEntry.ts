@@ -5,6 +5,7 @@ import {
   DefaultTranslations,
   TranslationsConfig,
   BIConfig,
+  CreateControllersStrategy,
 } from 'yoshi-flow-editor-runtime/build/constants';
 import t from './template';
 
@@ -18,6 +19,7 @@ export type TemplateControllerConfig = {
 
 type Opts = {
   viewerScriptWrapperPath: string;
+  createControllersStrategy: CreateControllersStrategy;
   viewerEntryFileName: string | null;
   sentryConfig: SentryConfig | null;
   translationsConfig: TranslationsConfig | null;
@@ -46,15 +48,18 @@ export const viewerScriptOptionalImport = t<ViewerScriptOpts>`
 
 const importsForControllers = t<{
   controllersMeta: Array<TemplateControllerConfig>;
+  createControllersStrategy: CreateControllersStrategy;
 }>`
-  ${({ controllersMeta }) => {
-    return controllersMeta
-      .map((controller, i) => {
-        return `import ${getControllerVariableName(i)} from '${
-          controller.controllerFileName
-        }';`;
-      })
-      .join('\n');
+  ${({ controllersMeta, createControllersStrategy }) => {
+    return createControllersStrategy === 'controller'
+      ? ''
+      : controllersMeta
+          .map((controller, i) => {
+            return `import ${getControllerVariableName(i)} from '${
+              controller.controllerFileName
+            }';`;
+          })
+          .join('\n');
   }}
 `;
 
@@ -66,15 +71,27 @@ const getControllerScriptId = (controller: TemplateControllerConfig) => {
 
 const controllerConfigs = t<{
   controllersMeta: Array<TemplateControllerConfig>;
+  createControllersStrategy: CreateControllersStrategy;
   experimentsConfig: ExperimentsConfig | null;
   biConfig: BIConfig | null;
   appName: string | null;
   projectName: string;
-}>`${({ controllersMeta, experimentsConfig, biConfig, appName, projectName }) =>
+}>`${({
+  controllersMeta,
+  experimentsConfig,
+  biConfig,
+  appName,
+  projectName,
+  createControllersStrategy,
+}) =>
   controllersMeta
     .map(
       (controller, i) =>
-        `{ method: ${getControllerVariableName(i)},
+        `{ method: ${
+          createControllersStrategy === 'controller'
+            ? 'null'
+            : getControllerVariableName(i)
+        },
           widgetType: "${controller.widgetType}",
           translationsConfig: translationsConfig,
           experimentsConfig: ${
@@ -95,7 +112,8 @@ export default t<Opts>`
   import {createControllersWithDescriptors, initAppForPageWrapper} from '${({
     viewerScriptWrapperPath,
   }) => viewerScriptWrapperPath}';
-  ${({ controllersMeta }) => importsForControllers({ controllersMeta })}
+  ${({ controllersMeta, createControllersStrategy }) =>
+    importsForControllers({ controllersMeta, createControllersStrategy })}
   ${({ viewerEntryFileName }) =>
     viewerScriptOptionalImport({ viewerEntryFileName })}
 
@@ -139,6 +157,7 @@ export default t<Opts>`
 
   export const createControllers = createControllersWithDescriptors([${({
     controllersMeta,
+    createControllersStrategy,
     appName,
     projectName,
     biConfig,
@@ -147,6 +166,7 @@ export default t<Opts>`
     controllerConfigs({
       controllersMeta,
       appName,
+      createControllersStrategy,
       projectName,
       biConfig,
       experimentsConfig,

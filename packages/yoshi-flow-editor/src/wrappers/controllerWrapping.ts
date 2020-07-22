@@ -1,12 +1,12 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { FlowEditorModel, ComponentModel } from '../model';
-import controllerEntry from './templates/WidgetViewerScriptEntry';
+import controllerEntry from './templates/ControllerEntry';
 
-const viewerScriptWrapperPath =
-  'yoshi-flow-editor-runtime/build/viewerScript.js';
+const controllerWrapperPath =
+  'yoshi-flow-editor-runtime/build/controllerWrapper.js';
 
-const viewerScriptWrapper = (
+const controllersWrapper = (
   generatedWidgetEntriesPath: string,
   model: FlowEditorModel,
 ) => {
@@ -14,13 +14,12 @@ const viewerScriptWrapper = (
     (acc: Record<string, string>, component: ComponentModel) => {
       const generatedWidgetEntryPath = path.join(
         generatedWidgetEntriesPath,
-        `${component.name}ViewerScript.js`,
+        `${component.name}Controller.js`,
       );
 
       const generateControllerEntryContent = controllerEntry({
-        viewerScriptWrapperPath,
+        controllerWrapperPath,
         controllerFileName: component.viewerControllerFileName,
-        viewerEntryFileName: model.viewerEntryFileName,
       });
 
       fs.outputFileSync(
@@ -28,7 +27,7 @@ const viewerScriptWrapper = (
         generateControllerEntryContent,
       );
       // Generate controllers for each widget.
-      acc[`${component.name}Controller`] = component.viewerControllerFileName;
+      acc[`${component.name}Controller`] = generatedWidgetEntryPath;
 
       return acc;
     },
@@ -36,4 +35,4 @@ const viewerScriptWrapper = (
   );
 };
 
-export default viewerScriptWrapper;
+export default controllersWrapper;

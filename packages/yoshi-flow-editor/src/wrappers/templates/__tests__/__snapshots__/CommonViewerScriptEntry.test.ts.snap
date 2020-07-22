@@ -200,8 +200,7 @@ exports[`CommonViewerScriptEntry template generates correct template with multip
 "
   import {createControllersWithDescriptors, initAppForPageWrapper} from 'yoshi-flow-editor-runtime/build/viewerScript.js';
   
-  import controller0 from 'project/src/components/todo/controller.ts';
-import controller1 from 'project/src/components/todo/controller.ts';
+  
 
   
   import * as viewerApp from 'project/src/app.ts';
@@ -231,7 +230,7 @@ import controller1 from 'project/src/components/todo/controller.ts';
     defaultTranslations: defaultTranslations,
   });
 
-  export const createControllers = createControllersWithDescriptors([{ method: controller0,
+  export const createControllers = createControllersWithDescriptors([{ method: null,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
           translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},
@@ -242,7 +241,7 @@ import controller1 from 'project/src/components/todo/controller.ts';
           appName: \\"someapp\\",
           projectName: \\"someProject\\",
           componentName: \\"SomeWidget\\",
-          id: \\"CONTROLLER_ID\\" }, { method: controller1,
+          id: \\"CONTROLLER_ID\\" }, { method: null,
           widgetType: \\"WIDGET_OUT_OF_IFRAME\\",
           translationsConfig: translationsConfig,
           experimentsConfig: {\\"scope\\":\\"test-scope\\"},

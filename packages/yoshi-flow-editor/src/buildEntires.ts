@@ -3,7 +3,7 @@ import writeComponentWrapping from './wrappers/componentWrapping';
 import writeEditorAppWrapping from './wrappers/editorAppWrapping';
 import writeSettingsWrapping from './wrappers/settingsWrapping';
 import writeCommonEditorScriptWrapping from './wrappers/commonEditorScriptWrapping';
-import writeWidgetViewerScriptWrapping from './wrappers/widgetViewerScriptWrapping';
+import writeControllerWrapping from './wrappers/controllerWrapping';
 import writeCommonViewerScriptWrapping from './wrappers/commonViewerScriptWrapping';
 import wixPrivateMockWrapping from './wrappers/wixPrivateMockWrapping';
 import { FlowEditorModel } from './model';
@@ -52,7 +52,9 @@ export const buildClientEntries = (model: FlowEditorModel) => {
 
 export const buildWorkerEntries = (model: FlowEditorModel) => {
   return {
-    ...writeWidgetViewerScriptWrapping(generatedWidgetEntriesPath, model),
+    ...(model.createControllersStrategy === 'controller'
+      ? writeControllerWrapping(generatedWidgetEntriesPath, model)
+      : {}),
     ...writeCommonViewerScriptWrapping(generatedWidgetEntriesPath, model),
     ...writeCommonEditorScriptWrapping(generatedWidgetEntriesPath, model),
   };

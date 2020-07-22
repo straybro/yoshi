@@ -12,6 +12,7 @@ import {
   TranslationsConfig,
   OOI_WIDGET_COMPONENT_TYPE,
   PLATFORM_WIDGET_COMPONENT_TYPE,
+  CreateControllersStrategy,
   BIConfig,
 } from 'yoshi-flow-editor-runtime/build/constants';
 import {
@@ -38,6 +39,7 @@ export interface FlowEditorModel {
   translationsConfig: TranslationsConfig | null;
   biConfig: BIConfig | null;
   components: Array<ComponentModel>;
+  createControllersStrategy: CreateControllersStrategy;
   sentry: SentryConfig | null;
   urls: URLsConfig;
 }
@@ -66,6 +68,7 @@ export interface AppConfig {
   translations?: TranslationsConfig | null;
   sentry?: SentryConfig;
   bi?: BIConfig | string;
+  createControllersStrategy?: CreateControllersStrategy;
 }
 export interface ComponentConfig {
   id: string;
@@ -282,6 +285,7 @@ For more info, visit http://tiny.cc/dev-center-registration`);
     artifactId,
     viewerEntryFileName,
     components: componentModels,
+    createControllersStrategy: appConfig.createControllersStrategy || 'all',
     urls: {
       viewerUrl: (urlsConfig && urlsConfig.viewerUrl) || null,
       editorUrl: (urlsConfig && urlsConfig.editorUrl) || null,

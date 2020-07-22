@@ -8,12 +8,12 @@ import {
 } from '@wix/native-components-infra/dist/src/types/types';
 import {
   SentryConfig,
-  WidgetType,
   OOI_WIDGET_COMPONENT_TYPE,
   ExperimentsConfig,
   TranslationsConfig,
   DefaultTranslations,
   BIConfig,
+  ControllerDescriptor,
 } from './constants';
 import Translations from './i18next/Translations';
 import { InitAppForPageFn, CreateControllerFn } from './types';
@@ -34,21 +34,6 @@ const onCSRLoaded = (flowAPI: ControllerFlowAPI) => () => {
     flowAPI.fedopsLogger.appLoaded();
     isCSRLoaded = true;
   }
-};
-
-type ControllerDescriptor = {
-  id: string | null;
-  method: Function;
-  experimentsConfig: ExperimentsConfig | null;
-  translationsConfig: TranslationsConfig | null;
-  defaultTranslations: DefaultTranslations | null;
-  projectName: string;
-  biLogger: VisitorBILoggerFactory;
-  widgetType: WidgetType;
-  biConfig: BIConfig;
-  controllerFileName: string | null;
-  appName: string | null;
-  componentName: string | null;
 };
 
 const getFirstDescriptor = (descriptors: Array<ControllerDescriptor>) => {
@@ -239,9 +224,15 @@ export const createControllers = (
 
 export const createControllersWithDescriptors = (
   controllerDescriptors: Array<ControllerDescriptor>,
-) => (controllerConfigs: Array<IWidgetControllerConfig>) => {
-  // It should be called inside initAppForPage
-
+) => (
+  controllerConfigs: Array<IWidgetControllerConfig>,
+  controllerInstance?: {
+    [paramKey: string]:
+      | { default: CreateControllerFn }
+      | CreateControllerFn
+      | Function;
+  },
+) => {
   const wrappedControllers = controllerConfigs.map((controllerConfig) => {
     // [Platform surprise] `type` here, is a widgetId. :(
     const { type } = controllerConfig;
@@ -253,6 +244,15 @@ export const createControllersWithDescriptors = (
       throw new Error(
         `Descriptor for widgetId: "${controllerConfig.type}" was not found. Please create a ".component.json" file for current widget`,
       );
+    }
+
+    if (controllerInstance?.[type]) {
+      const method = controllerInstance?.[type];
+      if (typeof method === 'function') {
+        controllerDescriptor.method = method;
+      } else if (typeof method.default === 'function') {
+        controllerDescriptor.method = method.default;
+      }
     }
 
     return wrapControllerByWidgetType(controllerDescriptor, controllerConfig);

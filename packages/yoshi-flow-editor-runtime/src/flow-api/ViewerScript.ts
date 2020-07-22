@@ -118,7 +118,7 @@ export class ViewerScriptFlowAPI extends FlowAPI {
     appName,
   }: {
     experimentsConfig: ExperimentsConfig | null;
-    platformServices: IPlatformServices;
+    platformServices?: IPlatformServices;
     sentry: SentryConfig | null;
     wixAPI: IWixAPI;
     biConfig: BIConfig | null;
@@ -148,12 +148,12 @@ export class ViewerScriptFlowAPI extends FlowAPI {
       defaultLanguage: translationsConfig?.default,
     });
 
-    const platformBI = platformServices.bi;
+    const platformBI = platformServices?.bi;
 
     if (
       biConfig?.visitor &&
       platformBI &&
-      platformServices.biLoggerFactory &&
+      platformServices?.biLoggerFactory &&
       biLogger
     ) {
       const biFactory = platformServices.biLoggerFactory();
@@ -176,7 +176,7 @@ export class ViewerScriptFlowAPI extends FlowAPI {
         getArtifact(),
       );
 
-      this.sentryMonitor = platformServices.monitoring.createMonitor(
+      this.sentryMonitor = platformServices?.monitoring.createMonitor(
         sentryOptions.dsn,
         (config) => ({
           ...config,
@@ -184,9 +184,11 @@ export class ViewerScriptFlowAPI extends FlowAPI {
         }),
       );
 
-      this.reportError = this.sentryMonitor.captureException.bind(
-        this.sentryMonitor,
-      );
+      if (this.sentryMonitor) {
+        this.reportError = this.sentryMonitor.captureException.bind(
+          this.sentryMonitor,
+        );
+      }
     }
   }
   getTranslations = async () => {
