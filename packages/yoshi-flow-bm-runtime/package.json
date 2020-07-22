@@ -17,6 +17,7 @@
     "@wix/wix-axios-config": "2.0.2268",
     "@wix/wix-experiments": "3.0.442",
     "@wix/wix-experiments-react": "4.0.51",
+    "@wix/wix-i18n-config": "5.0.0",
     "axios": "0.19.2",
     "react-module-container": "1.0.2320"
   },

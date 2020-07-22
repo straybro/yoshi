@@ -1,5 +1,8 @@
 {
   "routeNamespace": "{%projectName%}",
+  "translations": {
+    "default": "en"
+  },
   "experimentsScopes": [
     "{%projectName%}"
   ],

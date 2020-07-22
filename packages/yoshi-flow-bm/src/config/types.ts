@@ -7,10 +7,16 @@ export interface SentryConfig {
   projectName?: string;
 }
 
+export interface TranslationConfig {
+  default: string;
+  suspense?: boolean;
+}
+
 export interface ModuleConfig {
   moduleId: string;
   moduleConfigurationId?: string;
   appDefId?: string;
+  translations?: TranslationConfig;
   experimentsScopes: Array<string>;
   sentry?: SentryConfig;
   bi?: string;

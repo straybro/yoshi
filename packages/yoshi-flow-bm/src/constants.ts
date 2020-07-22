@@ -26,7 +26,7 @@ export const METHODS_CONFIG_PATTERN = `${METHODS_DIR}/**/*.${CONFIG_EXT}`;
 
 export const MODULE_HOOKS_PATTERN = `src/module.${EXTENSIONS}`;
 
-export const TRANSLATIONS_DIR = 'translations';
+export const TRANSLATIONS_DIR = 'src/assets/locale';
 
 export const GENERATED_DIR = path.resolve(__dirname, '../generated');
 

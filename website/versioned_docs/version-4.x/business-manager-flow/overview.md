@@ -181,6 +181,10 @@ The following configurations are available by creating a `.module.json` file:
       "artifactId": "com.wixpress.some-artifact"
     }
   },
+  "translations": {
+    "default": "en",
+    "suspense": true
+  },
   "experimentsScopes": ["some-petri-scope"],
   "sentry": {
     "DSN": "https://2119191543ba436f81cde38969ecf354@sentry.wixpress.com/470",
@@ -241,6 +245,30 @@ Defaults to:
   }
 }
 ```
+
+#### `translations.default`
+
+Opts-in to [`@wix/wix-i18n-config`](https://github.com/wix-private/fed-infra/tree/master/wix-i18n-config) integration.
+When passed, wraps your pages & components with an initialized `<I18nextProvider />` pointing to `src/assets/locale/messages_{LOCALE}.json`.
+
+For more info, see [`@wix/wix-i18n-config`](https://github.com/wix-private/fed-infra/tree/master/wix-i18n-config).
+
+Example usage:
+```typescript jsx
+import { useTranslation } from 'yoshi-flow-bm-runtime';
+
+export default () => {
+  const [t] = useTranslation();
+
+  return (
+    <div>{t('some.translation.key')}</div>
+  );
+};
+```
+
+#### `translations.suspense`
+
+Defaults to `true`. Use this to disable Suspense in `@wix/wix-i18n-config`. 
 
 #### `experimentsScopes`
 

@@ -29,6 +29,13 @@ export const normalizeModuleConfig = (
     moduleBundleName: 'module',
   };
 
+  if (initialConfig.translations) {
+    moduleConfigDefaults.translations = {
+      default: 'en',
+      suspense: true,
+    };
+  }
+
   return defaultsDeep(initialConfig, moduleConfigDefaults) as ModuleConfig;
 };
 
