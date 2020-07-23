@@ -1,5 +1,9 @@
-import unfetch from 'isomorphic-unfetch';
 import { DSL, FunctionResult, FunctionArgs } from 'yoshi-serverless/types';
+
+// we replaced `isomorphic-unfetch` because we want it to support web-workers
+// see: https://github.com/developit/unfetch/pull/109
+const unfetch = require('./isomorphic-unfetch');
+
 // https://github.com/developit/unfetch/issues/46
 const fetch = unfetch;
 

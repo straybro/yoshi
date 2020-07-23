@@ -1,4 +1,3 @@
-import unfetch from 'isomorphic-unfetch';
 import {
   FunctionArgs,
   FunctionResult,
@@ -8,6 +7,10 @@ import {
 } from 'yoshi-serverless/types';
 import { createHeaders } from '@wix/headers';
 import { joinUrls, showToast } from './utils';
+
+// we replaced `isomorphic-unfetch` because we want it to support web-workers
+// see: https://github.com/developit/unfetch/pull/109
+const unfetch = require('./isomorphic-unfetch');
 
 type Options = {
   baseUrl?: string;

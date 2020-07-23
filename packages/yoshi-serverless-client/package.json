@@ -12,8 +12,9 @@
   "dependencies": {
     "@types/node-fetch": "2.5.7",
     "@wix/headers": "^1.7.0",
-    "isomorphic-unfetch": "3.0.0",
-    "toastify-js": "1.8.0"
+    "node-fetch": "2.6.0",
+    "toastify-js": "1.8.0",
+    "unfetch": "4.1.0"
   },
   "peerDependencies": {
     "yoshi-serverless": "^4.14.0"

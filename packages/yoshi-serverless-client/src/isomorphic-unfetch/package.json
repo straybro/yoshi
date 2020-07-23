@@ -1,0 +1,7 @@
+{
+  "name": "isomorphic-unfetch",
+  "version": "0.0.0",
+  "private": true,
+  "browser": "browser.js",
+  "main": "index.js"
+}
