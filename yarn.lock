@@ -18441,12 +18441,10 @@ jest-specific-snapshot@^2.0.0:
   dependencies:
     jest-snapshot "^24.1.0"
 
-jest-teamcity@1.7.0:
-  version "1.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-teamcity/-/jest-teamcity-1.7.0.tgz#31401d3b353c62809c2a51aac215c4986df088f8"
-  integrity sha1-MUAdOzU8YoCcKlGqwhXEmG3wiPg=
-  dependencies:
-    lodash "^4.17.15"
+jest-teamcity@1.8.0:
+  version "1.8.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-teamcity/-/jest-teamcity-1.8.0.tgz#7ca482ca8562bf3dbea42546d5f6e6cc3029b306"
+  integrity sha1-fKSCyoVivz2+pCVG1fbmzDApswY=
 
 jest-transform-graphql@^2.1.0:
   version "2.1.0"

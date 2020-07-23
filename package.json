@@ -116,7 +116,7 @@
     "jest-environment-puppeteer": "3.9.1",
     "jest-puppeteer": "4.4.0",
     "jest-runner": "24.9.0",
-    "jest-teamcity": "1.7.0",
+    "jest-teamcity": "1.8.0",
     "lerna": "3.22.1",
     "lerna-changelog": "1.0.1",
     "lint-staged": "10.2.11",
