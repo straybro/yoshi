@@ -125,8 +125,8 @@ function sslCredentials(keyPath, certificatePath, passphrase) {
 
   if (customCertPath && customCertKeyPath) {
     return {
-      cert: fs.readFileSync(customCertPath, 'utf8'),
-      key: fs.readFileSync(customCertKeyPath, 'utf8'),
+      cert: customCertPath,
+      key: customCertKeyPath,
     };
   }
 
