@@ -30,7 +30,14 @@
       #if (${usePrivateSDKMock})
         window.__USE_PRIVATE_SDK_MOCK__ = true;
       #end
+
+      var script = document.createElement('script');
+      var query = new URLSearchParams(window.location.search);
+      var deviceType = query.get('deviceType');
+      var isMobile = typeof deviceType === 'string' && deviceType.toLowerCase() === 'mobile';
+      script.setAttribute('src', '${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel' + (isMobile ? '.mobile' : '') + '.bundle#if(!${debug}).min#{end}.js');
+
+      document.body.appendChild(script);
     </script>
-    <script src="${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel.bundle#if(!${debug}).min#{end}.js"></script>
   </body>
 </html>

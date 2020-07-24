@@ -39,6 +39,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/comp/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/comp/settings.ts',
+            settingsMobileFileName: 'proj/comp/settings.mobile.ts',
           },
         ],
       },
@@ -47,7 +48,7 @@ describe('addOverrideQueryParamsWithModel', () => {
     const urlWithParams = overrideParams('https://mysite.com', 'editorUrl');
 
     expect(urlWithParams).toBe(
-      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=${serverUrl}/editor/comp&tpaSettingsUrlOverride=WIDGET_ID=${serverUrl}/settings/comp&widgetsUrlOverride=WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=${cdnUrl}editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
+      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=${serverUrl}/editor/comp&tpaMobileUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp&tpaSettingsUrlOverride=WIDGET_ID=${serverUrl}/settings/comp&widgetsUrlOverride=WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=${cdnUrl}editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
     );
   });
 
@@ -80,6 +81,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/comp/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/comp/settings.ts',
+            settingsMobileFileName: 'proj/comp/settings.mobile.ts',
           },
           {
             name: 'page',
@@ -89,6 +91,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/page/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/page/settings.ts',
+            settingsMobileFileName: 'proj/comp/settings.mobile.ts',
           },
         ],
       },
@@ -97,7 +100,7 @@ describe('addOverrideQueryParamsWithModel', () => {
     const urlWithParams = overrideParams('https://mysite.com', 'editorUrl');
 
     expect(urlWithParams).toBe(
-      `https://mysite.com/?tpaWidgetUrlOverride=COMP_WIDGET_ID=${serverUrl}/editor/comp,PAGE_WIDGET_ID=${serverUrl}/editor/page&tpaSettingsUrlOverride=COMP_WIDGET_ID=${serverUrl}/settings/comp,PAGE_WIDGET_ID=${serverUrl}/settings/page&widgetsUrlOverride=COMP_WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js,PAGE_WIDGET_ID=${cdnUrl}pageViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=${cdnUrl}editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
+      `https://mysite.com/?tpaWidgetUrlOverride=COMP_WIDGET_ID=${serverUrl}/editor/comp,PAGE_WIDGET_ID=${serverUrl}/editor/page&tpaMobileUrlOverride=COMP_WIDGET_ID=https://localhost:5004/editor/comp,PAGE_WIDGET_ID=https://localhost:5004/editor/page&tpaSettingsUrlOverride=COMP_WIDGET_ID=${serverUrl}/settings/comp,PAGE_WIDGET_ID=${serverUrl}/settings/page&widgetsUrlOverride=COMP_WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js,PAGE_WIDGET_ID=${cdnUrl}pageViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=${cdnUrl}editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
     );
   });
 
@@ -127,6 +130,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/comp/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/comp/settings.ts',
+            settingsMobileFileName: null,
           },
         ],
       },
@@ -135,7 +139,7 @@ describe('addOverrideQueryParamsWithModel', () => {
     const urlWithParams = overrideParams('https://mysite.com', 'editorUrl');
 
     expect(urlWithParams).toBe(
-      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=${serverUrl}/editor/comp&tpaSettingsUrlOverride=WIDGET_ID=${serverUrl}/settings/comp&widgetsUrlOverride=WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=https://localhost:5005/editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
+      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=${serverUrl}/editor/comp&tpaMobileUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp&tpaSettingsUrlOverride=WIDGET_ID=${serverUrl}/settings/comp&widgetsUrlOverride=WIDGET_ID=${cdnUrl}compViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=${cdnUrl}viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=https://localhost:5005/editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"${cdnUrl}"}`,
     );
   });
 
@@ -168,6 +172,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/comp/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/comp/settings.ts',
+            settingsMobileFileName: 'proj/comp/settings.mobile.ts',
           },
         ],
       },
@@ -209,6 +214,7 @@ describe('addOverrideQueryParamsWithModel', () => {
             viewerControllerFileName: 'proj/comp/controller.ts',
             editorControllerFileName: null,
             settingsFileName: 'proj/comp/settings.ts',
+            settingsMobileFileName: 'proj/comp/settings.mobile.ts',
           },
         ],
       },

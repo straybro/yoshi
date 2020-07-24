@@ -17,6 +17,7 @@ export const joinDirs = (...dirs: Array<string>) =>
 const urlOriginToSupportedOverridesMap: Record<string, Array<string>> = {
   viewerUrl: [
     'tpaWidgetUrlOverride',
+    'tpaMobileUrlOverride',
     'widgetsUrlOverride',
     'tpaSettingsUrlOverride',
     'viewerPlatformOverrides',
@@ -27,6 +28,7 @@ const urlOriginToSupportedOverridesMap: Record<string, Array<string>> = {
     'tpaWidgetUrlOverride',
     'widgetsUrlOverride',
     'tpaSettingsUrlOverride',
+    'tpaMobileUrlOverride',
     'viewerPlatformOverrides',
     'editorScriptUrlOverride',
     'overridePlatformBaseUrls',
@@ -121,6 +123,12 @@ export const overrideQueryParamsWithModel = (
   isOverrideSupportedForOrigin(origin, 'tpaWidgetUrlOverride') &&
     urlWithParams.searchParams.set(
       'tpaWidgetUrlOverride',
+      editorComponentsWithFormatter(tpaUrlFormatterForType('editor')),
+    );
+
+  isOverrideSupportedForOrigin(origin, 'tpaMobileUrlOverride') &&
+    urlWithParams.searchParams.set(
+      'tpaMobileUrlOverride',
       editorComponentsWithFormatter(tpaUrlFormatterForType('editor')),
     );
 

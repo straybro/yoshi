@@ -59,5 +59,5 @@ export default t<Opts>`
     }`
       : 'null'};
 
-  ReactDOM.render(React.createElement(SettingsWrapper(Settings, { sentry, translationsConfig, experimentsConfig, defaultTranslations, biConfig, biLogger, projectName, appName }), null), document.getElementById('root'));
+  ReactDOM.render(React.createElement(SettingsWrapper({ Settings, sentry, translationsConfig, experimentsConfig, defaultTranslations, biConfig, biLogger, projectName, appName }), null), document.getElementById('root'));
 `;

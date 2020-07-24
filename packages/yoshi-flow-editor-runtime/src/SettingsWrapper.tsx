@@ -52,26 +52,25 @@ const getBiLoggerInstance = memoize(
   },
 );
 
-const SettingsWrapper = (
-  UserComponent: typeof React.Component,
-  {
-    sentry,
-    translationsConfig,
-    defaultTranslations,
-    experimentsConfig,
-    appName,
-    projectName,
-    biLogger,
-  }: {
-    sentry: SentryConfig | null;
-    appName: string | null;
-    translationsConfig: TranslationsConfig | null;
-    defaultTranslations: DefaultTranslations | null;
-    experimentsConfig: ExperimentsConfig | null;
-    projectName: string;
-    biLogger: OwnerBILoggerFactory;
-  },
-) => (props: SettingsWrapperProps) => {
+const SettingsWrapper = ({
+  Settings,
+  sentry,
+  translationsConfig,
+  defaultTranslations,
+  experimentsConfig,
+  appName,
+  projectName,
+  biLogger,
+}: {
+  Settings: typeof React.Component;
+  sentry: SentryConfig | null;
+  appName: string | null;
+  translationsConfig: TranslationsConfig | null;
+  defaultTranslations: DefaultTranslations | null;
+  experimentsConfig: ExperimentsConfig | null;
+  projectName: string;
+  biLogger: OwnerBILoggerFactory;
+}) => (props: SettingsWrapperProps) => {
   const { editorSDKSrc } = getEditorParams();
 
   const availableProviders: ProvidersList<{
@@ -177,7 +176,7 @@ const SettingsWrapper = (
                 providers={availableProviders}
                 additionalProps={{ sdk }}
               >
-                <UserComponent />
+                <Settings />
               </WithProviders>
             );
           }}

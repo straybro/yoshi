@@ -101,3 +101,39 @@ const Settings = () => {
 
 export default Settings;
 ```
+
+## `Settings.mobile`
+*(optional)*
+
+An entry module for mobile settings exported React Component that will be rendered in mobile mode instead of regular `Settings`.
+
+>Currently, the Dev Center doesn't allow you to enable mobile settings. In order to do it, you have to ask someone in #dev-center slack channel to update your app service component or do it manually by creating an experiment, adding it to the client-spec-map-experiments and creating a new entry with `mobileSettingsEnabled` option.
+For example: https://bo.wix.com/client-spec-map-experiment-server/experiments/specs.challenges.OOIEnableMobileSettingsPanel/2936472a-a1ed-4ae5-9f71-614313a9f4e7
+To read more it, check the [client-spec-map-experiments README](https://github.com/wix-private/meta-site/tree/de1b02fabc9fec541ba9f37f356d535022220cb4/wix-meta-site-server/app-store-service/client-spec-map-experiment-server).
+In future, this option will be normally supported in Dev Center configuration 👀.
+
+*Settings.mobile*
+```tsx
+import { TpaSettingsProvider } from '@wix/tpa-settings/dist/src/contexts';
+import { SettingsTabLayout } from '@wix/tpa-settings/dist/src/components';
+import { WixSDK } from 'yoshi-flow-editor-runtime';
+import 'yoshi-flow-editor-runtime/styles/wix-base-ui.global.scss';
+
+const MobileSettings = () => {
+  return (
+    <WixSDK>{({ Wix }) => (
+      <TpaSettingsProvider Wix={Wix}>
+        <SettingsTabLayout>
+          <SettingsTabLayout.Tab
+            title={t('settings.mobile.tab.main')}
+            articleId="78c122c7-ef06-47c1-a137-07abfae7ed89"
+            Component={() => <MobileTab />}
+          />
+        </SettingsTabLayout>
+      </TpaSettingsProvider>
+    )}</WixSDK>
+  );
+};
+
+export default MobileSettings;
+```

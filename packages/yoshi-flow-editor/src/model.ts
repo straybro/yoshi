@@ -20,6 +20,7 @@ import {
   VIEWER_CONTROLLER_FILENAME,
   EDITOR_CONTROLLER_FILENAME,
   SETTINGS_CONTROLLER_FILENAME,
+  SETTINGS_MOBILE_CONTROLLER_FILENAME,
   APPLICATION_CONFIG_FILENAME,
   COMPONENT_CONFIG_FILENAME,
   VIEWER_APP_FILENAME,
@@ -57,6 +58,7 @@ export interface ComponentModel {
   viewerControllerFileName: string;
   editorControllerFileName: string | null;
   settingsFileName: string | null;
+  settingsMobileFileName: string | null;
   id: string | null;
   controllerId?: string;
 }
@@ -256,6 +258,10 @@ For more info, visit http://tiny.cc/dev-center-registration`);
         SETTINGS_CONTROLLER_FILENAME,
       );
 
+      const settingsMobileFileName = resolveFromComponents(
+        SETTINGS_MOBILE_CONTROLLER_FILENAME,
+      );
+
       const componentModel: ComponentModel = {
         name: componentName,
         widgetFileName,
@@ -263,6 +269,7 @@ For more info, visit http://tiny.cc/dev-center-registration`);
         viewerControllerFileName,
         editorControllerFileName,
         settingsFileName,
+        settingsMobileFileName,
         id: componentConfig.id,
         controllerId: componentConfig.controllerId,
       };
