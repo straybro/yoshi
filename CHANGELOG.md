@@ -1,5 +1,29 @@
 # Changelog
 
+## v4.126.0 (2020-07-26)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  - [#2782](https://github.com/wix/yoshi/pull/2782) Mobile settings support for editor flow ([@yavorsky](https://github.com/yavorsky))
+  - [#2777](https://github.com/wix/yoshi/pull/2777) Allow using separate controller bundles instead of single viewer script one. ([@yavorsky](https://github.com/yavorsky))
+- `yoshi-serverless-client`
+  - [#2786](https://github.com/wix/yoshi/pull/2786) Yoshi Serverless Client: temporary replace `isomorphic-unfetch` ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-legacy`
+  - [#2788](https://github.com/wix/yoshi/pull/2788) fixed a small bug with certificates on legacy cdn ([@amiryonatan](https://github.com/amiryonatan))
+- Other
+  - [#2778](https://github.com/wix/yoshi/pull/2778) upgrade lerna-changelog 1.0.1 ([@kobiburnley](https://github.com/kobiburnley))
+
+#### :house: Internal
+
+- Other
+  - [#2785](https://github.com/wix/yoshi/pull/2785) Update nvmrc tests to match CYA and template versions ([@yavorsky](https://github.com/yavorsky))
+- `create-yoshi-app`, `yoshi-common`
+  - [#2771](https://github.com/wix/yoshi/pull/2771) correctly provide the user email on build and start bi events ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.125.0 (2020-07-22)
 
 #### :rocket: New Feature
