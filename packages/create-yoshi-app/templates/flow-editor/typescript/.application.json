@@ -14,5 +14,6 @@
   "bi": "bi-logger-editor-flow-template",
   "experiments": {
     "scope": "test"
-  }
+  },
+  "createControllersStrategy": "controller"
 }

@@ -75,6 +75,7 @@ const generateOOIComponentData = (
   if (componentType === WIDGET_OUT_OF_IFRAME) {
     return {
       componentUrl: `${baseUrl}/${componentName}ViewerWidget.bundle.min.js`,
+      controllerUrl: `${baseUrl}/${componentName}Controller.bundle.min.js`,
       widgetData: {
         addOnlyOnce: false,
         default: true,
@@ -91,6 +92,7 @@ const generateOOIComponentData = (
   }
   return {
     componentUrl: `${baseUrl}/${componentName}ViewerWidget.bundle.min.js`,
+    controllerUrl: `${baseUrl}/${componentName}Controller.bundle.min.js`,
     pageData: {
       addStrechButton: false,
       default: true,
