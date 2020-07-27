@@ -25,7 +25,7 @@ export function createClientWebpackConfig(
   const bundleConfig = config.bundleConfig as BundleConfig;
   const { entry, url, library, externals } = bundleConfig;
 
-  const name = stripOrganization(config.pkgJson.name!);
+  const name = config.pkgJson.name!;
 
   const clientConfig = createBaseWebpackConfig({
     name,
