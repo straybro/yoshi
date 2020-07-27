@@ -17,29 +17,47 @@ export default class Translations {
   t: i18next.TranslationFunction = defaultTranslationsFunction;
   all: Record<string, string> = {};
   config: ITranslationsConfig;
+  // _autoFetchDisabled - is a way to disable any fetching if user didn't configure translations
+  private autoFetchDisabled: boolean;
   constructor({
     language,
     defaultTranslations,
     prefix,
     defaultLanguage,
-  }: ITranslationsConfig) {
+    autoFetchDisabled,
+  }: ITranslationsConfig & { autoFetchDisabled?: boolean }) {
     this.config = {
       language,
       defaultTranslations,
       prefix,
       defaultLanguage,
     };
+    this.autoFetchDisabled = !!autoFetchDisabled;
   }
-  init = async () => {
+  init = async ({
+    prepopulated,
+  }: {
+    prepopulated?: Record<string, string>;
+  } = {}) => {
     const { config } = this;
-    const translations = await getSiteTranslations(
-      config.language,
-      config.defaultTranslations,
-      config.prefix,
-      config.defaultLanguage,
-    );
 
-    this.i18n = i18n({ translations, language: config.language });
+    if (this.autoFetchDisabled && !prepopulated) {
+      prepopulated = {};
+    }
+
+    const translations =
+      prepopulated ??
+      (await getSiteTranslations(
+        config.language,
+        config.defaultTranslations,
+        config.prefix,
+        config.defaultLanguage,
+      ));
+
+    this.i18n = i18n({
+      translations,
+      language: config.language,
+    });
     this.t = (
       key: string | Array<string>,
       options?: i18next.TranslationOptions<object>,

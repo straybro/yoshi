@@ -1,5 +1,3 @@
-import { VisitorLogger } from './generated/bi-logger-types';
-
 // from an object of promises to a promise of an object
 export function objectPromiseAll(target: Record<string, any>) {
   return Object.keys(target).reduce(async (acc, key) => {
@@ -94,12 +92,14 @@ export const getArtifact = () => {
 
 type ObjectWithFunctions = Record<string, Function>;
 
-interface BILoggerProps {
+export interface BILoggerProps {
   biMethods: ObjectWithFunctions;
   biUtil: ObjectWithFunctions;
 }
 
-const pickFunctions = (object: Record<string, any>): ObjectWithFunctions => {
+export const pickFunctions = (
+  object: Record<string, any>,
+): ObjectWithFunctions => {
   const result: ObjectWithFunctions = {};
   for (const key in object) {
     if (typeof object[key] === 'function') {
@@ -107,15 +107,6 @@ const pickFunctions = (object: Record<string, any>): ObjectWithFunctions => {
     }
   }
   return result;
-};
-
-export const biLoggerToProps = (
-  logger: VisitorLogger | null,
-): BILoggerProps => {
-  return {
-    biMethods: logger ? pickFunctions(logger) : {},
-    biUtil: logger ? pickFunctions(logger.util) : {},
-  };
 };
 
 export const biLoggerFromProps = ({

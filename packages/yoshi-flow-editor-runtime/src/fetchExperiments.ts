@@ -15,12 +15,13 @@ export function initExperimentsGetter(
   };
 }
 
-export function initEmptyExperimentsGetter(
+export function initLoadedExperimentsGetter(
+  prepopulatedExperiments = {},
   baseUrl = 'https://www.wix.com',
 ): () => Promise<Experiments> {
   const experiments = new Experiments({
     baseUrl,
-    experiments: {},
+    experiments: prepopulatedExperiments,
   });
   return async () => {
     return experiments;

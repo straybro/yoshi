@@ -22,19 +22,11 @@ import {
   ControllerFlowAPI,
 } from './flow-api/ViewerScript';
 import { VisitorBILoggerFactory } from './generated/bi-logger-types';
-import { biLoggerToProps } from './utils';
+import { wrapUserController } from './helpers/wrapUserController';
 
 let viewerScriptFlowAPI: ViewerScriptFlowAPI;
 let viewerScriptTranslationsPromise: Promise<Translations> | undefined;
 let appData: any = {};
-
-let isCSRLoaded = false;
-const onCSRLoaded = (flowAPI: ControllerFlowAPI) => () => {
-  if (!isCSRLoaded) {
-    flowAPI.fedopsLogger.appLoaded();
-    isCSRLoaded = true;
-  }
-};
 
 const getFirstDescriptor = (descriptors: Array<ControllerDescriptor>) => {
   if (descriptors.length === 1) {
@@ -51,6 +43,7 @@ const defaultControllerWrapper = (
     appDefinitionId: controllerConfig.appParams.appDefinitionId,
     widgetId: controllerDescriptor.id,
     translationsConfig: controllerDescriptor.translationsConfig,
+    biLogger: controllerDescriptor.biLogger,
     controllerConfig,
   });
   return controllerDescriptor.method({
@@ -97,6 +90,7 @@ function ooiControllerWrapper(
     appDefinitionId,
     translationsConfig: controllerDescriptor.translationsConfig,
     widgetId: controllerDescriptor.id,
+    biLogger: controllerDescriptor.biLogger,
     controllerConfig,
   });
 
@@ -109,7 +103,7 @@ function ooiControllerWrapper(
   const wrappedController = Promise.all([
     viewerScriptTranslationsPromise,
     flowAPI.getExperiments(),
-    Promise.resolve(userControllerPromise).catch((error) => {
+    Promise.resolve(userControllerPromise).catch((error: Error) => {
       if (!flowAPI.inEditor) {
         // Currently platform doesn't log errors happened in worker. We want to fix it here.
         console.error(
@@ -121,53 +115,18 @@ function ooiControllerWrapper(
       return { _controllerError: error };
     }),
   ]).then(([translations, experiments, userController]) => {
-    const { biMethods, biUtil } = biLoggerToProps(flowAPI.biLogger);
-
-    return {
-      ...userController,
-      pageReady: async (...args: Array<any>) => {
-        // In future we are going to get rid of current setProps call and override original one with wrapper, where we can populate user's call with flow's fields.
-        setProps({
-          __publicData__: controllerConfig.config.publicData,
-          _language: flowAPI.getSiteLanguage(),
-          _translations: translations?.all || {},
-          _experiments: experiments.all(),
-          _biMethods: biMethods,
-          _biUtil: biUtil,
-          _mobile: flowAPI.isMobile(),
-          _enabledHOCs: {
-            experiments: !!controllerDescriptor.experimentsConfig,
-            bi: !!flowAPI.biLogger,
-            translations:
-              controllerDescriptor.translationsConfig &&
-              !controllerDescriptor.translationsConfig.disabled,
-          },
-          // Set initial state
-          state: context.state,
-          // Set methods
-          methods: userController.methods,
-          onAppLoaded: onCSRLoaded(flowAPI),
-        });
-        let userPageReadyResult;
-
-        if (userController._controllerError) {
-          throw userController._controllerError;
-        }
-
-        // Optional `pageReady`
-        if (userController.pageReady) {
-          // TODO: handle errors from pageReady
-          userPageReadyResult = await userController.pageReady(...args);
-        }
-
-        if (flowAPI.isSSR()) {
-          flowAPI.fedopsLogger.appLoaded();
-        }
-
-        return userPageReadyResult;
-      },
-      exports: userController.corvid,
-    };
+    return wrapUserController({
+      controller: userController,
+      translations,
+      experiments,
+      biLogger: flowAPI.biLogger,
+      controllerConfig,
+      flowAPI,
+      experimentsConfig: controllerDescriptor.experimentsConfig,
+      translationsConfig: controllerDescriptor.translationsConfig,
+      state: context.state,
+      _controllerError: userController._controllerError,
+    });
   });
 
   return wrappedController;

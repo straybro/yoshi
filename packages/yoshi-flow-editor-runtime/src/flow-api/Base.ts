@@ -1,9 +1,9 @@
 import Experiments from '@wix/wix-experiments';
 import { ExperimentsConfig } from '../constants';
-import { ReportError } from '../types';
+import { ReportError, IPrepopulatedData } from '../types';
 import {
   initExperimentsGetter,
-  initEmptyExperimentsGetter,
+  initLoadedExperimentsGetter,
 } from '../fetchExperiments';
 
 export class FlowAPI {
@@ -11,13 +11,19 @@ export class FlowAPI {
 
   constructor({
     experimentsConfig,
+    prepopulatedData,
   }: {
     experimentsConfig: ExperimentsConfig | null;
+    prepopulatedData?: IPrepopulatedData;
   }) {
-    if (experimentsConfig) {
-      this.getExperiments = initExperimentsGetter(experimentsConfig);
+    const prepopulatedExperiments = prepopulatedData?.experiments;
+
+    if (prepopulatedExperiments || !experimentsConfig) {
+      this.getExperiments = initLoadedExperimentsGetter(
+        prepopulatedExperiments,
+      );
     } else {
-      this.getExperiments = initEmptyExperimentsGetter();
+      this.getExperiments = initExperimentsGetter(experimentsConfig);
     }
   }
 

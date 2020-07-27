@@ -18,6 +18,7 @@ import {
   VisitorLogger,
 } from '../generated/bi-logger-types';
 import Translations from '../i18next/Translations';
+import { IPrepopulatedData } from '../types';
 import { FlowAPI } from './Base';
 
 export class ControllerFlowAPI extends FlowAPI {
@@ -38,12 +39,16 @@ export class ControllerFlowAPI extends FlowAPI {
     appDefinitionId,
     translationsConfig,
     widgetId,
+    biLogger,
+    prepopulatedData,
   }: {
     viewerScriptFlowAPI: ViewerScriptFlowAPI;
     controllerConfig: IWidgetControllerConfig;
     appDefinitionId: string;
     translationsConfig: TranslationsConfig | null;
     widgetId: string | null;
+    biLogger: VisitorBILoggerFactory | null;
+    prepopulatedData?: IPrepopulatedData;
   }) {
     super({ experimentsConfig: null });
     this.widgetId = widgetId!;
@@ -53,19 +58,39 @@ export class ControllerFlowAPI extends FlowAPI {
     this.inEditor = viewerScriptFlowAPI.inEditor;
     this.translationsConfig = translationsConfig;
     const { platformAPIs } = controllerConfig;
-    this.fedopsLogger = platformAPIs.fedOpsLoggerFactory!.getLoggerForWidget({
-      appId: appDefinitionId,
-      widgetId,
-    });
+    this.biLogger = viewerScriptFlowAPI.biLogger;
+
+    // If viewer script bi logger wasn't initialized (in case viewer script is external or some error appear here),
+    // we still want to init bi logger in controller.
+    if (
+      !viewerScriptFlowAPI.biLogger &&
+      biLogger &&
+      controllerConfig.platformAPIs?.biLoggerFactory
+    ) {
+      const biFactory = controllerConfig.platformAPIs?.biLoggerFactory();
+      const biOptions = {
+        visitor_id: controllerConfig.platformAPIs.bi?.visitorId,
+        token: controllerConfig.platformAPIs.bi?.biToken,
+        origin: 'viewer',
+        appName: viewerScriptFlowAPI.appName,
+        projectName: viewerScriptFlowAPI.projectName,
+        _msid: controllerConfig.platformAPIs.bi?.metaSiteId,
+      };
+      this.biLogger = biLogger(biFactory)({});
+      this.biLogger.util.updateDefaults(biOptions);
+    }
+
+    this.fedopsLogger =
+      prepopulatedData?.fedopsLogger ??
+      platformAPIs.fedOpsLoggerFactory!.getLoggerForWidget({
+        appId: appDefinitionId,
+        widgetId,
+      });
 
     if (this.sentryMonitor) {
       this.reportError = this.sentryMonitor.captureException.bind(
         this.sentryMonitor,
       );
-    }
-
-    if (viewerScriptFlowAPI.biLogger) {
-      this.biLogger = viewerScriptFlowAPI.biLogger;
     }
 
     this.appLoadStarted();
@@ -102,6 +127,8 @@ export class ViewerScriptFlowAPI extends FlowAPI {
   inEditor: boolean;
   biLogger?: VisitorLogger | null;
   translations: Translations;
+  appName: string | null;
+  projectName: string;
   getSiteLanguage: (defaultLanguage?: string) => string;
 
   constructor({
@@ -116,6 +143,7 @@ export class ViewerScriptFlowAPI extends FlowAPI {
     inEditor,
     projectName,
     appName,
+    prepopulatedData,
   }: {
     experimentsConfig: ExperimentsConfig | null;
     platformServices?: IPlatformServices;
@@ -128,10 +156,13 @@ export class ViewerScriptFlowAPI extends FlowAPI {
     appName: string | null;
     translationsConfig: TranslationsConfig | null;
     defaultTranslations?: DefaultTranslations | null;
+    prepopulatedData?: IPrepopulatedData;
   }) {
-    super({ experimentsConfig });
+    super({ experimentsConfig, prepopulatedData });
 
     this.inEditor = inEditor;
+    this.appName = appName;
+    this.projectName = projectName;
 
     this.getSiteLanguage = (fallbackLanguage: string = 'en') => {
       return getSiteLanguage(
@@ -146,11 +177,14 @@ export class ViewerScriptFlowAPI extends FlowAPI {
       defaultTranslations,
       prefix: translationsConfig?.prefix,
       defaultLanguage: translationsConfig?.default,
+      autoFetchDisabled: !translationsConfig,
     });
 
     const platformBI = platformServices?.bi;
 
-    if (
+    if (prepopulatedData?.biLogger) {
+      this.biLogger = prepopulatedData?.biLogger;
+    } else if (
       biConfig?.visitor &&
       platformBI &&
       platformServices?.biLoggerFactory &&
@@ -169,7 +203,9 @@ export class ViewerScriptFlowAPI extends FlowAPI {
       this.biLogger.util.updateDefaults(biOptions);
     }
 
-    if (sentry) {
+    if (prepopulatedData?.sentryMonitor) {
+      this.sentryMonitor = prepopulatedData?.sentryMonitor;
+    } else if (sentry) {
       const sentryOptions = buildSentryOptions(
         sentry.DSN,
         'Viewer:Worker',
@@ -183,12 +219,12 @@ export class ViewerScriptFlowAPI extends FlowAPI {
           ...sentryOptions.config,
         }),
       );
+    }
 
-      if (this.sentryMonitor) {
-        this.reportError = this.sentryMonitor.captureException.bind(
-          this.sentryMonitor,
-        );
-      }
+    if (this.sentryMonitor) {
+      this.reportError = this.sentryMonitor.captureException.bind(
+        this.sentryMonitor,
+      );
     }
   }
   getTranslations = async () => {

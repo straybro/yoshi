@@ -19,6 +19,7 @@ export const controllerFlowAPIMock = ({
   widgetId: string;
 }) =>
   new ControllerFlowAPI({
+    biLogger: null,
     viewerScriptFlowAPI: new ViewerScriptFlowAPI({
       experimentsConfig,
       sentry: null,
