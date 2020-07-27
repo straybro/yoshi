@@ -9,6 +9,6 @@ export const shouldAddExperiments = (model: FlowBMModel) =>
 export const shouldAddSentry = (model: FlowBMModel) =>
   !!model.config.sentry?.DSN;
 
-export const shouldAddFedops = (_model: FlowBMModel) => false;
+export const shouldAddFedops = (model: FlowBMModel) => !!model.fedopsPath;
 
 export const shouldAddBI = (model: FlowBMModel) => !!model.config.bi;

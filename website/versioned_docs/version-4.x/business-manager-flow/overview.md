@@ -1,7 +1,7 @@
 ---
 id: overview
-title: Business-Manager Flow Overview
-sidebar_label: Overview
+title: Business-Manager Flow
+sidebar_label: BM Flow
 ---
 
 > 🧪 Experimental

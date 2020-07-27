@@ -23,6 +23,7 @@ import {
   PAGES_MODULE_HOOKS_PATTERN,
   EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN,
   MODULE_HOOKS_EXT,
+  FEDOPS_CONFIG_PATH,
 } from './constants';
 import {
   ExportedComponentConfig,
@@ -55,6 +56,7 @@ export interface FlowBMModel {
   moduleHooksPath?: string;
   localePath?: string;
   config: ModuleConfig;
+  fedopsPath?: string;
 }
 
 const getModuleHooksPattern = (absolutePath: string) => {
@@ -153,6 +155,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
 
   const [moduleHooksPath] = globFiles(MODULE_HOOKS_PATTERN);
   const [localePath] = globDirs(TRANSLATIONS_DIR);
+  const [fedopsPath] = globFiles(FEDOPS_CONFIG_PATH);
 
   return {
     config,
@@ -161,6 +164,7 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     methods,
     localePath,
     moduleHooksPath,
+    fedopsPath,
   };
 }
 

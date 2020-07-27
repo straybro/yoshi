@@ -28,6 +28,8 @@ export const MODULE_HOOKS_PATTERN = `src/module.${EXTENSIONS}`;
 
 export const TRANSLATIONS_DIR = 'src/assets/locale';
 
+export const FEDOPS_CONFIG_PATH = 'fedops.json';
+
 export const GENERATED_DIR = path.resolve(__dirname, '../generated');
 
 export const MODULE_ENTRY_PATH = path.join(GENERATED_DIR, 'module.ts');

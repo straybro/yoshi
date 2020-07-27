@@ -1,6 +1,6 @@
 import React, { FC, useEffect, Suspense } from 'react';
 import { notifyViewFinishedLoading } from '@wix/business-manager-api';
-import { useExperiments, useTranslation } from 'yoshi-flow-bm-runtime';
+import { useExperiments, useTranslation, useFedops } from 'yoshi-flow-bm-runtime';
 import s from './index.scss';
 
 const Experiment: FC = () => {
@@ -14,8 +14,11 @@ const Experiment: FC = () => {
 };
 
 const Index: FC = () => {
+  const fedops = useFedops();
+
   useEffect(() => {
     notifyViewFinishedLoading('{%projectName%}.pages.index');
+    fedops.appLoaded();
   }, []);
 
   const [t] = useTranslation();
