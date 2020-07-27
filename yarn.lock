@@ -5668,11 +5668,11 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/api-gateway-server-api/-/@wix/api-gateway-server-api-1.0.162.tgz#63f76ad43f25496c8b0d1d0436998a5598770dc1"
   integrity sha1-Y/dq1D8lSWyLDR0ENpmKVZh3DcE=
 
-"@wix/artifact-description@http://cdn.dev.wixpress.com/@wix/artifact-description/ff612e3e94386b0b749cef495b29a836ea2a17966ca69e2d7f628568":
-  version "0.0.0-ff612e3e94386b0b749cef495b29a836ea2a17966ca69e2d7f628568"
-  resolved "http://cdn.dev.wixpress.com/@wix/artifact-description/ff612e3e94386b0b749cef495b29a836ea2a17966ca69e2d7f628568#04ef91763d73daf03612b81ab9bc4b7d15382bc9"
+"@wix/artifact-description@http://cdn.dev.wixpress.com/@wix/artifact-description/4ae6f2c4cc049b4ddc326ad2bb2bbe6111ebafd4330f467f252c4e4a":
+  version "0.0.0-4ae6f2c4cc049b4ddc326ad2bb2bbe6111ebafd4330f467f252c4e4a"
+  resolved "http://cdn.dev.wixpress.com/@wix/artifact-description/4ae6f2c4cc049b4ddc326ad2bb2bbe6111ebafd4330f467f252c4e4a#8f3911f85b6966bb62735bf092bcf779d98d573a"
   dependencies:
-    "@wix/fed-build-flow-runner-error" "http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/c89eef4d125b584f88f7177bd1bdaeebe1b2e14290eaf0f841bfe86f"
+    "@wix/fed-build-flow-runner-error" "http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/39277ca848de37a497dda162380ea1e3a6d3777b97938e670ee6cf1f"
     fast-xml-parser "^3.17.4"
 
 "@wix/bi-logger-testkit@latest":
@@ -5719,12 +5719,12 @@
     tslib "^1.5.0"
     urijs "^1.18.12"
 
-"@wix/ci-build-info@^1.0.27":
-  version "1.0.27"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ci-build-info/-/@wix/ci-build-info-1.0.27.tgz#c82ce623e9cadde7ff84e0194c89474814f7c180"
-  integrity sha1-yCzmI+nK3ef/hOAZTIlHSBT3wYA=
+"@wix/ci-build-info@^1.0.30":
+  version "1.0.30"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ci-build-info/-/@wix/ci-build-info-1.0.30.tgz#4de4ab2b66fcfff38d76a95855aeb12976c60a6e"
+  integrity sha1-TeSrK2b8//ONdqlYVa6xKXbGCm4=
   dependencies:
-    "@wix/artifact-description" "http://cdn.dev.wixpress.com/@wix/artifact-description/ff612e3e94386b0b749cef495b29a836ea2a17966ca69e2d7f628568"
+    "@wix/artifact-description" "http://cdn.dev.wixpress.com/@wix/artifact-description/4ae6f2c4cc049b4ddc326ad2bb2bbe6111ebafd4330f467f252c4e4a"
     tempy "^0.5.0"
     zod "^1.7.1"
 
@@ -5772,9 +5772,9 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/extensions/-/@wix/extensions-1.0.368.tgz#7688e50ec0e08511f8df20a1511e392191540eec"
   integrity sha1-dojlDsDghRH43yChUR45IZFUDuw=
 
-"@wix/fed-build-flow-runner-error@http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/c89eef4d125b584f88f7177bd1bdaeebe1b2e14290eaf0f841bfe86f":
-  version "0.0.0-c89eef4d125b584f88f7177bd1bdaeebe1b2e14290eaf0f841bfe86f"
-  resolved "http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/c89eef4d125b584f88f7177bd1bdaeebe1b2e14290eaf0f841bfe86f#11864f54ebae569f8243337646a454e40cab463c"
+"@wix/fed-build-flow-runner-error@http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/39277ca848de37a497dda162380ea1e3a6d3777b97938e670ee6cf1f":
+  version "0.0.0-39277ca848de37a497dda162380ea1e3a6d3777b97938e670ee6cf1f"
+  resolved "http://cdn.dev.wixpress.com/@wix/fed-build-flow-runner-error/39277ca848de37a497dda162380ea1e3a6d3777b97938e670ee6cf1f#63ae03421cbb88b37b27a843d23f57dc9febccbc"
   dependencies:
     verror "^1.10.0"
 
