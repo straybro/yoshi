@@ -15,7 +15,10 @@ export const renderExportedComponent = (
   model: FlowBMModel,
 ) => {
   const componentEntry = getExportedComponentEntryPath(component);
-  fs.outputFileSync(componentEntry, generateComponentCode(component, model));
+  fs.outputFileSync(
+    componentEntry,
+    generateComponentCode(component, 'exported-component', model),
+  );
   if (component.config.legacyBundle) {
     renderLegacyExportedComponent(component);
   }

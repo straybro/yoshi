@@ -10,7 +10,7 @@ export const getPageEntryPath = ({ relativePath }: PageModel) =>
 
 export const renderPage = (page: PageModel, model: FlowBMModel) => {
   const pageEntry = getPageEntryPath(page);
-  fs.outputFileSync(pageEntry, generateComponentCode(page, model));
+  fs.outputFileSync(pageEntry, generateComponentCode(page, 'page', model));
 
   if (page.config.legacyBundle) {
     renderLegacyPage(page);
