@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.128.0 (2020-07-27)
+
+#### :rocket: New Feature
+
+- `create-yoshi-app`, `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#2739](https://github.com/wix/yoshi/pull/2739) Add "App Loaded" inntegration to Flow BM ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.127.0 (2020-07-27)
 
 #### :rocket: New Feature
