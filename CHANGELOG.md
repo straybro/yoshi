@@ -1,5 +1,28 @@
 # Changelog
 
+## v4.129.0 (2020-07-27)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  - [#2791](https://github.com/wix/yoshi/pull/2791) Extend controller with flowAPI features. ([@yavorsky](https://github.com/yavorsky))
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`
+  - [#2792](https://github.com/wix/yoshi/pull/2792) add dependency_test_mapping per FED policy checks ([@carmelc](https://github.com/carmelc))
+- `create-yoshi-app`, `yoshi-flow-bm-runtime`
+  - [#2737](https://github.com/wix/yoshi/pull/2737) Bump react & react-dom for BM projects ([@amitdahan](https://github.com/amitdahan))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-editor`
+  - [#2801](https://github.com/wix/yoshi/pull/2801) Add `react-custom-scroll` to be transpiled for editor flow projects. ([@yavorsky](https://github.com/yavorsky))
+
+#### :memo: Documentation
+
+- [#2793](https://github.com/wix/yoshi/pull/2793) docs structure ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.128.0 (2020-07-27)
 
 #### :rocket: New Feature
