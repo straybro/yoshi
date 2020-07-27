@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.127.0 (2020-07-27)
+
+#### :rocket: New Feature
+
+- `create-yoshi-app`, `yoshi-flow-bm`
+  - [#2736](https://github.com/wix/yoshi/pull/2736) Add Fedops integration to BM Flow ([@amitdahan](https://github.com/amitdahan))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-library`
+  - [#2794](https://github.com/wix/yoshi/pull/2794) Use full `pkgJson.name` as compilation name in Library Flow ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.126.0 (2020-07-26)
 
 #### :rocket: New Feature
