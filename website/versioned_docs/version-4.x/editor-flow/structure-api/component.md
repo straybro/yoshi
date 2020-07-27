@@ -25,7 +25,7 @@ Read more: [IControllerInfo in platform docs](https://bo.wix.com/wix-docs/client
 #### `flowAPI`
 Additional utilities to reduce runtime boilerplate.
 
-Follow [Flow API section](../runtime-API.md#flowapi) for more info.
+Follow [Flow API section](../runtime-api.md#flowapi) for more info.
 
 
 *controller.ts*

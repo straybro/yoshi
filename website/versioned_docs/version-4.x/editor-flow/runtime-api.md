@@ -1,5 +1,5 @@
 ---
-id: runtime-API
+id: runtime-api
 title: Runtime API
 sidebar_label: Runtime API
 ---
