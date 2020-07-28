@@ -19,7 +19,7 @@
     "@wix/wix-experiments-react": "4.0.51",
     "@wix/wix-i18n-config": "5.0.0",
     "axios": "0.19.2",
-    "react-module-container": "1.0.2320"
+    "react-module-container": "1.0.2327"
   },
   "devDependencies": {
     "@types/history": "4.7.6",
