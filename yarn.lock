@@ -4238,7 +4238,7 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/uni-driver/-/uni-driver-2.5.3.tgz#b3765b4bc561ef253f074abf8327e1031f15923b"
   integrity sha1-s3ZbS8Vh7yU/B0q/gyfhAx8Vkjs=
 
-"@stylable/webpack-extensions@^3.8.3":
+"@stylable/webpack-extensions@3.8.3":
   version "3.8.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@stylable/webpack-extensions/-/webpack-extensions-3.8.3.tgz#ee968e4dfff3a584a79a1a6fb33d9ed4772bba9e"
   integrity sha1-7paOTf/zpYSnmhpvsz2e1Hcrup4=
@@ -5729,7 +5729,7 @@
     tslib "^1.5.0"
     urijs "^1.18.12"
 
-"@wix/ci-build-info@^1.0.30":
+"@wix/ci-build-info@1.0.30":
   version "1.0.30"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ci-build-info/-/@wix/ci-build-info-1.0.30.tgz#4de4ab2b66fcfff38d76a95855aeb12976c60a6e"
   integrity sha1-TeSrK2b8//ONdqlYVa6xKXbGCm4=
