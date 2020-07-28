@@ -9689,7 +9689,15 @@ bfj@^6.1.1:
     hoopy "^0.1.4"
     tryer "^1.0.1"
 
-bi-logger-yoshi@1.0.201, bi-logger-yoshi@^1.0.201:
+bi-logger-yoshi@1.0.217:
+  version "1.0.217"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/bi-logger-yoshi/-/bi-logger-yoshi-1.0.217.tgz#c3d00801eef062f9cba4bbffdaf991cb872b1cca"
+  integrity sha1-w9AIAe7wYvnLpLv/2vmRy4crHMo=
+  dependencies:
+    "@wix/bi-logger-testkit" latest
+    is-url-superb "^2.0.0"
+
+bi-logger-yoshi@^1.0.201:
   version "1.0.201"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/bi-logger-yoshi/-/bi-logger-yoshi-1.0.201.tgz#ba8b9d3d8d32079436d4b43b9bfdf85cc0e0ff17"
   integrity sha1-uoudPY0yB5Q21LQ7m/34XMDg/xc=
