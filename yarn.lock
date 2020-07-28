@@ -2539,6 +2539,11 @@
   dependencies:
     debug "^4.1.1"
 
+"@kwsites/promise-deferred@^1.1.1":
+  version "1.1.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
+  integrity sha1-is5SWSVEJszvV/MXW8ZO1wle2Rk=
+
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
@@ -26520,12 +26525,13 @@ simple-fmt@~0.1.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-fmt/-/simple-fmt-0.1.0.tgz#191bf566a59e6530482cb25ab53b4a8dc85c3a6b"
   integrity sha1-GRv1ZqWeZTBILLJatTtKjchcOms=
 
-simple-git@2.9.0:
-  version "2.9.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-git/-/simple-git-2.9.0.tgz#060f87e2d81235f01200d4596b3397a458d76fbe"
-  integrity sha1-Bg+H4tgSNfASANRZazOXpFjXb74=
+simple-git@2.15.0:
+  version "2.15.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-git/-/simple-git-2.15.0.tgz#62636209e92a172f66a03e23f8505e3822c01898"
+  integrity sha1-YmNiCekqFy9moD4j+FBeOCLAGJg=
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
     debug "^4.1.1"
 
 simple-html-tokenizer@^0.1.1:
