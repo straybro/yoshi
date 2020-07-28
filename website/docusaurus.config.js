@@ -20,8 +20,13 @@ module.exports = {
   customFields: {
     flows,
   },
-
+  onBrokenLinks: 'log',
   themeConfig: {
+    // syntax highlighting
+    prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
+    },
     algolia: {
       apiKey: '5807169f7e8a322a659ac4145a3e5d8a',
       indexName: 'wix_yoshi',
@@ -39,7 +44,7 @@ module.exports = {
         alt: 'Yoshi Logo',
         src: 'img/yoshi.png',
       },
-      links: [
+      items: [
         {
           label: 'Docs',
           position: 'left',
@@ -108,12 +113,6 @@ module.exports = {
           showLastUpdateTime: true,
           // Docs will show the last author updated the doc
           showLastUpdateAuthor: true,
-
-          // syntax highlighting
-          prism: {
-            theme: require('prism-react-renderer/themes/github'),
-            darkTheme: require('prism-react-renderer/themes/dracula'),
-          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
