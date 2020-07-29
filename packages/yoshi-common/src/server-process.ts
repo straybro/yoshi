@@ -41,7 +41,7 @@ export class ServerProcess {
   public appName: string;
   private inspectArg?: string;
   private logs = '';
-  private enableInMemoryLogs = true;
+  public enableInMemoryLogs = true;
 
   constructor({
     cwd = process.cwd(),
@@ -149,6 +149,8 @@ export class ServerProcess {
   }
 
   async restart() {
+    this.enableInMemoryLogs = true;
+
     await this.close();
 
     await this.initialize();

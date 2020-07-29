@@ -91,13 +91,13 @@ const logProcessState = (
 };
 
 export const hasErrorsOrWarnings = (state: State): boolean => {
-  return Object.values(state).some((processState) =>
+  return Object.values(state.processes).some((processState) =>
     ['errors', 'warnings'].includes(processState?.status as string),
   );
 };
 
 export const logStateErrorsOrWarnings = (state: State) => {
-  const { DevServer, TypeScript, Storybook } = state;
+  const { DevServer, TypeScript, Storybook } = state.processes;
 
   if (TypeScript && TypeScript.status === 'errors') {
     console.log(TypeScript.errors?.join('\n\n'));
@@ -129,14 +129,19 @@ export const logStateErrorsOrWarnings = (state: State) => {
   }
 };
 
+const logRestarting = () => {
+  console.log();
+  console.log(' Restarting app server...');
+  console.log();
+};
+
 export const shouldClearConsole = () => {
   return isInteractive && !isDebug && !isProfiling;
 };
 
 export const isAllCompiled = (state: State): boolean => {
-  return Object.keys(state).every((stateName) => {
-    const processState = state[stateName as ProcessType];
-    return processState?.status === 'success';
+  return Object.values(state.processes).every((process) => {
+    return process?.status === 'success';
   });
 };
 
@@ -146,6 +151,14 @@ export type DevEnvironmentLogger = (opts: {
   suricate: boolean;
   suffix: string;
 }) => void;
+
+function logUsageInstructions(state: State) {
+  if (state.processes.AppServer) {
+    console.log(chalk.bold('Usage'));
+    console.log(` › Press ${chalk.bold('r')} to restart the app server`);
+    console.log();
+  }
+}
 
 const logger: DevEnvironmentLogger = ({
   state,
@@ -162,6 +175,10 @@ const logger: DevEnvironmentLogger = ({
     clearConsole();
   }
 
+  if (state.restarting) {
+    return logRestarting();
+  }
+
   if (hasErrorsOrWarnings(state)) {
     return logStateErrorsOrWarnings(state);
   }
@@ -172,9 +189,9 @@ const logger: DevEnvironmentLogger = ({
     console.log(chalk.bold('Compiling...'));
   }
 
-  for (const processTypeKey in state) {
+  for (const processTypeKey in state.processes) {
     const processType = processTypeKey as ProcessType;
-    const processState = state[processType];
+    const processState = state.processes[processType];
 
     processState &&
       logProcessState({ processType, suricate, appName }, processState);
@@ -186,6 +203,8 @@ const logger: DevEnvironmentLogger = ({
     `To create a production build, use ${chalk.cyan('npm run build')}.`,
   );
   console.log();
+
+  logUsageInstructions(state);
 
   if (suffix) {
     console.log(suffix);

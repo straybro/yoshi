@@ -117,7 +117,7 @@ const logProcessState = (
 };
 
 const logStateErrorsOrWarnings = (state: State) => {
-  const { DevServer, TypeScript } = state;
+  const { DevServer, TypeScript } = state.processes;
 
   if (TypeScript && TypeScript.status === 'errors') {
     console.log(TypeScript.errors?.join('\n\n'));
@@ -161,9 +161,9 @@ export default (model: FlowEditorModel, startUrl: URLsConfig) => ({
     console.log(`Your bundles for viewer and editor environment are ready! 🚀`);
     console.log('');
 
-    for (const processTypeKey in state) {
+    for (const processTypeKey in state.processes) {
       const processType = processTypeKey as ProcessType;
-      const processState = state[processType];
+      const processState = state.processes[processType];
 
       processState &&
         logProcessState({ model, processType, appName }, processState);

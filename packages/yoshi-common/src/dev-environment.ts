@@ -22,6 +22,7 @@ import devEnvironmentLogger, {
 import { formatTypescriptError } from './typescript/formatter';
 import TscProcess, { TscProcessEvent } from './typescript/tsc-process';
 import runBabel from './typescript/run-babel';
+import createUserActionsWatcher from './user-actions-watcher';
 
 type WebpackStatus = {
   errors: Array<string>;
@@ -48,7 +49,8 @@ export type ProcessType =
   | 'TypeScript';
 
 export type State = {
-  [type in ProcessType]?: ProcessState;
+  processes: { [type in ProcessType]?: ProcessState };
+  restarting: boolean;
 };
 
 type DevEnvironmentProps = {
@@ -67,11 +69,10 @@ type DevEnvironmentProps = {
 export default class DevEnvironment {
   private props: DevEnvironmentProps;
   public store: Store<State>;
-  private initialServerLogsEmitted = false;
 
   constructor(props: DevEnvironmentProps) {
     this.props = props;
-    this.store = createStore<State>();
+    this.store = createStore<State>({ processes: {}, restarting: false });
 
     const {
       multiCompiler,
@@ -83,8 +84,11 @@ export default class DevEnvironment {
     if (multiCompiler && webpackDevServer) {
       multiCompiler.hooks.invalid.tap('recompile-log', () => {
         this.store.setState({
-          DevServer: {
-            status: 'compiling',
+          processes: {
+            ...this.store.getState().processes,
+            DevServer: {
+              status: 'compiling',
+            },
           },
         });
       });
@@ -103,10 +107,13 @@ export default class DevEnvironment {
           );
 
           this.store.setState({
-            DevServer: {
-              status: 'success',
-              urls: devServerUrls,
-              ...messages,
+            processes: {
+              ...this.store.getState().processes,
+              DevServer: {
+                status: 'success',
+                urls: devServerUrls,
+                ...messages,
+              },
             },
           });
         } else if (messages.errors.length) {
@@ -115,16 +122,22 @@ export default class DevEnvironment {
           }
 
           this.store.setState({
-            DevServer: {
-              status: 'errors',
-              ...messages,
+            processes: {
+              ...this.store.getState().processes,
+              DevServer: {
+                status: 'errors',
+                ...messages,
+              },
             },
           });
         } else if (messages.warnings.length) {
           this.store.setState({
-            DevServer: {
-              status: 'warnings',
-              ...messages,
+            processes: {
+              ...this.store.getState().processes,
+              DevServer: {
+                status: 'warnings',
+                ...messages,
+              },
             },
           });
         }
@@ -150,12 +163,18 @@ export default class DevEnvironment {
     switch (message.type) {
       case 'error':
         this.store.setState({
-          Storybook: { status: 'errors', errors: [message.error] },
+          processes: {
+            ...this.store.getState().processes,
+            Storybook: { status: 'errors', errors: [message.error] },
+          },
         });
         break;
       case 'compiling':
         this.store.setState({
-          Storybook: { status: 'compiling', errors: [], warnings: [] },
+          processes: {
+            ...this.store.getState().processes,
+            Storybook: { status: 'compiling', errors: [], warnings: [] },
+          },
         });
         break;
       case 'listening':
@@ -169,23 +188,32 @@ export default class DevEnvironment {
         if (isSuccessful) {
           const urls = prepareUrls('http', host, Number(message.port));
           this.store.setState({
-            Storybook: { status: 'success', urls, ...messages },
+            processes: {
+              ...this.store.getState().processes,
+              Storybook: { status: 'success', urls, ...messages },
+            },
           });
         } else if (messages.errors.length) {
           if (messages.errors.length > 1) {
             messages.errors.length = 1;
           }
           this.store.setState({
-            Storybook: {
-              status: 'errors',
-              ...messages,
+            processes: {
+              ...this.store.getState().processes,
+              Storybook: {
+                status: 'errors',
+                ...messages,
+              },
             },
           });
         } else if (messages.warnings.length) {
           this.store.setState({
-            Storybook: {
-              status: 'warnings',
-              ...messages,
+            processes: {
+              ...this.store.getState().processes,
+              Storybook: {
+                status: 'warnings',
+                ...messages,
+              },
             },
           });
         }
@@ -200,19 +228,30 @@ export default class DevEnvironment {
         throw new Error(message.error);
       case 'compiling':
         this.store.setState({
-          TypeScript: { status: 'compiling' },
+          processes: {
+            ...this.store.getState().processes,
+            TypeScript: { status: 'compiling' },
+          },
         });
         break;
       case 'compile-successfully':
         this.store.setState({
-          TypeScript: { status: 'success' },
+          processes: {
+            ...this.store.getState().processes,
+            TypeScript: { status: 'success' },
+          },
         });
         break;
       case 'compile-with-errors':
         this.store.setState({
-          TypeScript: {
-            status: 'errors',
-            errors: message.errors.map((error) => formatTypescriptError(error)),
+          processes: {
+            ...this.store.getState().processes,
+            TypeScript: {
+              status: 'errors',
+              errors: message.errors.map((error) =>
+                formatTypescriptError(error),
+              ),
+            },
           },
         });
         break;
@@ -222,8 +261,8 @@ export default class DevEnvironment {
   private async triggerBrowserRefresh(jsonStats: webpack.Stats.ToJsonOutput) {
     const { webpackDevServer } = this.props;
     if (webpackDevServer) {
-      await webpackDevServer.send('hash', jsonStats.hash);
-      await webpackDevServer.send('ok', {});
+      webpackDevServer.send('hash', jsonStats.hash);
+      webpackDevServer.send('ok', {});
     }
   }
 
@@ -232,9 +271,9 @@ export default class DevEnvironment {
 
     if (webpackDevServer) {
       if (jsonStats.errors.length > 0) {
-        await webpackDevServer.send('errors', jsonStats.errors);
+        webpackDevServer.send('errors', jsonStats.errors);
       } else if (jsonStats.warnings.length > 0) {
-        await webpackDevServer.send('warnings', jsonStats.warnings);
+        webpackDevServer.send('warnings', jsonStats.warnings);
       }
     }
   }
@@ -371,9 +410,12 @@ export default class DevEnvironment {
       );
 
       this.store.setState({
-        AppServer: {
-          status: 'success',
-          urls: serverUrls,
+        processes: {
+          ...this.store.getState().processes,
+          AppServer: {
+            status: 'success',
+            urls: serverUrls,
+          },
         },
       });
 
@@ -383,14 +425,26 @@ export default class DevEnvironment {
 
       openBrowser(actualStartUrl);
     }
+
+    createUserActionsWatcher().on('r', async () => {
+      this.store.setState({ restarting: true });
+
+      await serverProcess?.restart();
+
+      this.store.setState({ restarting: false });
+    });
   }
 
   getInitialServerLogsOnce() {
     // one-time emit all server logs that were printed before server started
     // listening and reprint them, because terminal cleaned on app server start
-    if (this.store.getState().AppServer && !this.initialServerLogsEmitted) {
-      this.initialServerLogsEmitted = true;
+    const state = this.store.getState();
 
+    if (
+      state.processes?.AppServer &&
+      this.props.serverProcess!.enableInMemoryLogs &&
+      !state.restarting
+    ) {
       const logs = this.props.serverProcess!.getLogs();
 
       // prevent memory size to grow infinitely
