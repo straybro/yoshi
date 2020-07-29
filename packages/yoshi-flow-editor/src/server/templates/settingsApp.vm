@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>${title}</title>
-    <link rel="stylesheet" href="${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel#if(!${debug}).min#{end}.css">
-    <link rel="stylesheet" href="${clientTopology.staticsBaseUrl}${widgetName}ViewerWidget.stylable.bundle.css">
     <script src="https://${clientTopology.staticsDomain}/polyfill/v3/polyfill#if(!${debug}).min#{end}.js?features=default,es6,es7,es2017,es2018,es2019&flags=gated&unknown=polyfill"></script>
     <script
       src="https://${clientTopology.staticsDomain}/unpkg/react@16.9.0/umd/react#if(${debug}).development#else.production.min#{end}.js"
@@ -31,12 +29,17 @@
         window.__USE_PRIVATE_SDK_MOCK__ = true;
       #end
 
-      var script = document.createElement('script');
       var query = new URLSearchParams(window.location.search);
       var deviceType = query.get('deviceType');
       var isMobile = typeof deviceType === 'string' && deviceType.toLowerCase() === 'mobile';
-      script.setAttribute('src', '${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel' + (isMobile ? '.mobile' : '') + '.bundle#if(!${debug}).min#{end}.js');
 
+      var link = document.createElement("link");
+      link.setAttribute('rel', 'stylesheet');
+      link.setAttribute('href', '${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel' + (isMobile ? '.mobile' : '') + '#if(!${debug}).min#{end}.css');
+      document.head.appendChild(link);
+
+      var script = document.createElement('script');
+      script.setAttribute('src', '${clientTopology.staticsBaseUrl}${widgetName}SettingsPanel' + (isMobile ? '.mobile' : '') + '.bundle#if(!${debug}).min#{end}.js');
       document.body.appendChild(script);
     </script>
   </body>
