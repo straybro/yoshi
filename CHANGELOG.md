@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.131.0 (2020-07-29)
+
+#### :rocket: New Feature
+
+- `yoshi-common`, `yoshi-flow-editor`
+  - [#2789](https://github.com/wix/yoshi/pull/2789) restart server on r keypress ([@roymiloh](https://github.com/roymiloh))
+
 ## v4.130.0 (2020-07-29)
 
 #### :memo: Documentation
