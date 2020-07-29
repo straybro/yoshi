@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.130.0 (2020-07-29)
+
+#### :memo: Documentation
+
+- [#2797](https://github.com/wix/yoshi/pull/2797) Upgrade docusaurus ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.129.0 (2020-07-27)
 
 #### :rocket: New Feature
