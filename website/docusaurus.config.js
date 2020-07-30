@@ -112,6 +112,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Wix.com, Built with Docusaurus.`,
     },
   },
+  plugins: ['./dev-server-proxy-plugin'],
   presets: [
     [
       '@docusaurus/preset-classic',
