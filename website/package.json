@@ -6,8 +6,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "version": "docusaurus docs:version",
-    "publish-gh-pages": "docusaurus deploy",
-    "publish-surge": "npx teamcity-surge-autorelease --dist=build --verbose"
+    "publish-janet": "janet deploy --ci"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.59",
@@ -27,5 +26,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "janet": "^1.0.86"
   }
 }

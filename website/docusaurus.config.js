@@ -1,7 +1,19 @@
-// TODO - this is a temp hack until teamcity-autorelease-surge would support Base Url.
-const isPr =
-  process.env.VCS_BRANCH_NAME &&
-  !!process.env.VCS_BRANCH_NAME.replace(/\D+/g, '');
+const getPrNumber = () => {
+  const gitRefFromEnvVar = process.env.BRANCH != null ? process.env.BRANCH : '';
+  const prHeadMatcher = /^([0-9]+)\/head$/;
+
+  if (!prHeadMatcher.test(gitRefFromEnvVar)) {
+    throw new Error('Cannot find determine pull request number');
+  }
+
+  const prNumber = gitRefFromEnvVar.match(prHeadMatcher)[1];
+  return parseInt(prNumber, 10);
+};
+
+const baseUrl =
+  process.env.BRANCH == null
+    ? '/pages/yoshi/'
+    : `/pages/yoshi.pr_${getPrNumber()}/`;
 
 const versions = require('./versions.json');
 const flows = require('./flows.json');
@@ -9,8 +21,8 @@ const flows = require('./flows.json');
 module.exports = {
   title: 'Yoshi Universe',
   tagline: 'A Galaxy of toolkits to develop applications at Wix',
-  url: 'https://wix.github.io',
-  baseUrl: isPr ? '/' : '/yoshi/',
+  url: 'https://bo.wix.com/pages/yoshi',
+  baseUrl,
   favicon: 'img/favicon.ico',
 
   // Used for publishing and more
