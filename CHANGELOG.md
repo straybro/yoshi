@@ -1,5 +1,18 @@
 # Changelog
 
+## v4.132.0 (2020-07-30)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-editor`
+  - [#2821](https://github.com/wix-private/yoshi/pull/2821) Fix path for mobile css bundle ([@yavorsky](https://github.com/yavorsky))
+
+#### :memo: Documentation
+
+- [#2802](https://github.com/wix-private/yoshi/pull/2802) Algolia search bar eject ([@kobiburnley](https://github.com/kobiburnley))
+- [#2790](https://github.com/wix-private/yoshi/pull/2790) publish website to janet from CI ([@kobiburnley](https://github.com/kobiburnley))
+- [#2813](https://github.com/wix-private/yoshi/pull/2813) Reorganize BM Flow docs ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.131.0 (2020-07-29)
 
 #### :rocket: New Feature
