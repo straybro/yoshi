@@ -44,7 +44,7 @@ Search open/closed issues before submitting since someone might have asked the s
 
 ### 🌍 Your Environment
 
-<!--- yoshi v2.1.3 and above - Run `npx yoshi info` in your terminal and paste the output below -->
+<!--- yoshi v2.1.3 and above - Run `npx yoshi info | pbcopy` in your terminal and paste the output below -->
 <!--- yoshi v2.1.2 and below - Manually include as many relevant details about the environment you experienced the bug in. In addition, paste below your `yoshi` config block from your `package.json`. -->
 ```
 // PASTE HERE
