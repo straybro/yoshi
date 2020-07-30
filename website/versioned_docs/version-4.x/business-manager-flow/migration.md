@@ -94,7 +94,7 @@ Remove your `yoshi.config.js` file or the `yoshi` configuration section in your 
 }
 ```
 
-### [`BusinessManagerModule` bundle](overview#module-bundle)
+### [`BusinessManagerModule` bundle](./overview.md#module-bundle)
 
 The BM Flow generates the module bundle which will register all your pages, components & methods for you!
 So feel free to just remove your previous `module` (or other) entry altogether! :)
@@ -121,7 +121,7 @@ class Module extends BusinessManagerModule {
 }
 ```
 
-You would move the contents of the `init` method to a [`src/moduleInit.ts` file](overview#run-code-in-bms-init-phase) and remove `src/module.ts` entirely.
+You would move the contents of the `init` method to a [`src/moduleInit.ts` file](./overview.md#run-code-in-bms-init-phase) and remove `src/module.ts` entirely.
 
 > Found a use-case we don't cover? [Let us know!](#feedback)
 
@@ -136,7 +136,7 @@ If your `moduleId` differs from our default one and/or your bundle wasn't previo
 }
 ```
 
-### [Page Components](overview#pages)
+### [Page Components](./overview.md#pages)
 
 We automatically create & register (inside your module bundle) lazy wrappers of your page components that are in `src/pages`.
 
@@ -171,9 +171,9 @@ To override those, create a neighboring `.json` file:
 }
 ```
 
-> Read more about page route logic [here](overview#route)
+> Read more about page route logic [here](./overview.md#route)
 
-### [Exported Components](overview#exported-components)
+### [Exported Components](./overview.md#exported-components)
 
 Very similar to page components, but in `src/exported-components` and there's no significance (other than the default `componentId`) to the relative path inside `src/exported-components`:
 Move your existing exported components to `src/exported-components`
@@ -200,7 +200,7 @@ If needed, the `componentId` can be overridden:
 }
 ```
 
-### [Methods](overview#methods)
+### [Methods](./overview.md#methods)
 
 Move existing methods to their own file in `src/methods`:
 

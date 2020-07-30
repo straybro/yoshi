@@ -194,7 +194,15 @@
     },
     {
       "type": "doc",
+      "id": "version-4.x/business-manager-flow/configuration"
+    },
+    {
+      "type": "doc",
       "id": "version-4.x/business-manager-flow/runtime-api"
+    },
+    {
+      "type": "doc",
+      "id": "version-4.x/business-manager-flow/lifecycle-hooks"
     },
     {
       "type": "doc",
