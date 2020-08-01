@@ -15,7 +15,7 @@
 
 ## Read the documentation
 
-Check the [documentation](https://wix.github.io/yoshi) for more information about the different types of projects Yoshi can create, guides to specific parts of an application and Yoshi's complete reference.
+Check the [documentation](https://bo.wix.com/pages/yoshi/) for more information about the different types of projects Yoshi can create, guides to specific parts of an application and Yoshi's complete reference.
 
 ## Stay up to date
 
