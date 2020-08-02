@@ -5,6 +5,7 @@ import httpTestkit from '@wix/wix-http-testkit';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import importCwd from 'import-cwd';
+import { bootstrap } from 'yoshi-serverless-testing';
 import { AppConfig } from '../model';
 import velocityDataPrivate from './velocity.private.data.json';
 import velocityData from './velocity.data.json';
@@ -80,7 +81,12 @@ app.use('/settings/:widgetName', (req, res) => {
 
 // Launch the server
 server.start().then(
-  () => {},
+  async () => {
+    if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+      const serverlessApp = bootstrap();
+      await serverlessApp.start();
+    }
+  },
   (err) => {
     console.error(
       `Fake server failed to start on port ${process.env.PORT}: ${err.message}`,

@@ -131,11 +131,11 @@ const build: cliCommand = async function (argv, config) {
 
   const [, clientOptimizedStats, serverStats] = stats;
 
-  if (inTeamCity()) {
-    await publishServerless(config);
-  }
   printBuildResult({ webpackStats: [clientOptimizedStats, serverStats] });
   printBundleSizeSuggestion();
+  if (inTeamCity() && process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+    await publishServerless(config);
+  }
 };
 
 export default build;

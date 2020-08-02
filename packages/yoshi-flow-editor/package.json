@@ -36,7 +36,9 @@
     "yoshi-config": "4.122.0",
     "yoshi-flow-editor-runtime": "4.129.0",
     "yoshi-flow-legacy": "4.131.0",
-    "yoshi-helpers": "4.130.0"
+    "yoshi-helpers": "4.130.0",
+    "yoshi-server-tools": "4.130.0",
+    "yoshi-serverless-testing": "4.130.0"
   },
   "devDependencies": {
     "@babel/core": "7.10.5",

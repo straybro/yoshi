@@ -821,7 +821,7 @@ export function createBaseWebpackConfig({
               'process.env.ARTIFACT_ID': JSON.stringify(getProjectArtifactId()),
             }
           : {}),
-        ...(useYoshiServer && process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+        ...(process.env.EXPERIMENTAL_YOSHI_SERVERLESS
           ? {
               'process.env.YOSHI_SERVERLESS_BASE': JSON.stringify(
                 getServerlessBase(getServerlessScope(name)),
@@ -1007,7 +1007,7 @@ export function createBaseWebpackConfig({
           },
         },
 
-        ...(useYoshiServer
+        ...(useYoshiServer || process.env.EXPERIMENTAL_YOSHI_SERVERLESS
           ? [
               {
                 test: /\.api\.(js|ts)$/,
@@ -1308,10 +1308,20 @@ export function createBaseWebpackConfig({
               }
 
               // Everything in Yoshi Serverless (but ambassador deps) should be bundled
-              if (useYoshiServer && process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+              if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
                 // Ambassador RPC modules should be externals
                 const ambassadorRegex = /@wix\/ambassador-.+\/rpc/;
                 if (ambassadorRegex.test(res)) {
+                  return callback(undefined, `commonjs ${request}`);
+                }
+                // This is a temporary workaround, so `yoshi-serverless-testing` will not
+                // be part of the bundle:
+                // In yoshi-flow-editor, we bundle dev-server code (`Serfer.ts`, because of HMR).
+                // This makes `yoshi-serverless-testing` part of the bundle.
+                // It causes issues, because it tries to bundle `wix-serverless-testkit`,
+                // which cannot be bundled proparly.
+                const serverlesstesting = /yoshi-serverless-testing/;
+                if (serverlesstesting.test(res)) {
                   return callback(undefined, `commonjs ${request}`);
                 }
                 return callback();

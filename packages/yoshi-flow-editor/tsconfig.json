@@ -10,6 +10,8 @@
     { "path": "../yoshi-config" },
     { "path": "../yoshi-helpers" },
     { "path": "../yoshi-common" },
-    { "path": "../yoshi-flow-editor-runtime" }
+    { "path": "../yoshi-flow-editor-runtime" },
+    { "path": "../yoshi-server-tools" },
+    { "path": "../yoshi-serverless-testing" }
   ]
 }

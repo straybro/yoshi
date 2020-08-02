@@ -10,9 +10,6 @@ import {
 } from 'yoshi-helpers/build/utils';
 
 export default async function publishServerless(config: Config) {
-  if (!config.yoshiServer || !process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
-    return;
-  }
   console.log('Publishing to Serverless');
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve('package.json'), 'utf-8'),
@@ -30,7 +27,8 @@ export default async function publishServerless(config: Config) {
   );
 
   console.log('Deploy command:');
-  console.log(`deploy #serverless ${getServerlessScope(config.name)}`);
+  console.log(`deploy ${getServerlessScope(config.name)}`);
+
   const git = simpleGit(__dirname);
 
   console.log('cloning git@github.com:wix-a/yoshi-serverless.git');

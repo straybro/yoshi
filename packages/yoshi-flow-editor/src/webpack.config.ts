@@ -101,7 +101,7 @@ export function createServerWebpackConfig(
   serverConfig.entry = async () => {
     const serverEntry = '../node_modules/yoshi-flow-editor/build/server/server';
 
-    let entryConfig = config.yoshiServer
+    let entryConfig = process.env.EXPERIMENTAL_YOSHI_SERVERLESS
       ? createServerEntries(serverConfig.context as string)
       : {};
 

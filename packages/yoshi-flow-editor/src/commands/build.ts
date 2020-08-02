@@ -5,8 +5,13 @@ import {
   printBuildResult,
   printBundleSizeSuggestion,
 } from 'yoshi-common/build/print-build-results';
+import publishServerless from 'yoshi-server-tools/build/serverless-publish';
 import { copyTemplates } from 'yoshi-common/build/copy-assets';
-import { BUILD_DIR, TARGET_DIR } from 'yoshi-config/build/paths';
+import {
+  BUILD_DIR,
+  TARGET_DIR,
+  SERVERLESS_DIR,
+} from 'yoshi-config/build/paths';
 import { inTeamCity } from 'yoshi-helpers/build/queries';
 import fs from 'fs-extra';
 import * as telemetry from 'yoshi-common/build/telemetry';
@@ -74,6 +79,7 @@ const build: cliCommand = async function (argv, config, model) {
   await Promise.all([
     fs.emptyDir(join(BUILD_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
+    fs.emptyDir(join(SERVERLESS_DIR)),
   ]);
 
   await copyTemplates();
@@ -146,6 +152,9 @@ const build: cliCommand = async function (argv, config, model) {
   printBuildResult({ webpackStats: [clientOptimizedStats, serverStats] });
   printBundleSizeSuggestion();
   generateEditorHTMLFiles(model);
+  if (inTeamCity() && process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+    await publishServerless(config);
+  }
 };
 
 export default build;

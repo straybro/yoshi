@@ -207,7 +207,7 @@ export const getDevServerlessScope = (cwd = process.cwd()) => {
   return getProjectArtifactId(cwd) + '-' + artifactVersion;
 };
 
-export const serverlessPort = '3000';
+export const serverlessPort = '7777';
 
 export const getServerlessBase = (scope: string) => {
   if (

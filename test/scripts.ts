@@ -6,7 +6,10 @@ import defaultsDeep from 'lodash/defaultsDeep';
 import retry from 'async-retry';
 import globby from 'globby';
 import { testkit as ciBuildInfoTestkit } from '@wix/ci-build-info';
-import { getDevServerlessScope } from '../packages/yoshi-helpers/build/utils';
+import {
+  getDevServerlessScope,
+  serverlessPort,
+} from '../packages/yoshi-helpers/build/utils';
 import { ciEnv, localEnv } from '../scripts/utils/constants';
 import serve from '../packages/yoshi-common/serve';
 import writeJson from '../packages/yoshi-common/build/write-json';
@@ -117,9 +120,10 @@ export default class Scripts {
       when these tests would run in CI - there will be a mismatch - since `getServerlessScope` will
       create a production scope, while yoshi (in the test itself) will get the dev scope
     */
-    this.serverlessDevUrl = `http://localhost:${
-      this.serverProcessPort
-    }/serverless/${getDevServerlessScope(testDirectory)}`;
+    this.serverlessDevUrl = `http://localhost:${serverlessPort}/serverless/${getDevServerlessScope(
+      testDirectory,
+    )}`;
+
     this.staticsServerUrl = `http://localhost:${this.staticsServerPort}`;
     this.yoshiPublishDir = isPublish
       ? `${global.yoshiPublishDir}/node_modules`
@@ -321,7 +325,8 @@ export default class Scripts {
       await Promise.race([
         ...errorsArray,
         Promise.all([
-          this.projectType !== 'flow-library'
+          this.projectType !== 'flow-library' &&
+          this.projectType !== 'yoshi-serverless-typescript'
             ? waitForPort(this.serverProcessPort, { timeout: 60 * 1000 })
             : Promise.resolve(),
           waitForPort(this.staticsServerPort, { timeout: 60 * 1000 }),

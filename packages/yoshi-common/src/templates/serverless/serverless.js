@@ -5,7 +5,7 @@ const accessControlHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Request-Method': '*',
   'Access-Control-Allow-Headers':
-    'origin, x-requested-with, content-type, accept, x-wix-scheduler-instance, authorization',
+    'origin, x-wix-brand, x-requested-with, content-type, accept, x-wix-scheduler-instance, authorization',
 };
 
 const isDevelopment = process.env.NODE_ENV === 'development';
