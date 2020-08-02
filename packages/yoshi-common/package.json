@@ -8,7 +8,7 @@
   "author": "Ronen Amiel",
   "license": "ISC",
   "devDependencies": {
-    "@stylable/webpack-extensions": "3.8.3",
+    "@stylable/webpack-extensions": "3.8.5",
     "@types/case-sensitive-paths-webpack-plugin": "2.1.4",
     "@types/compression": "1.7.0",
     "@types/copy-webpack-plugin": "5.0.2",
