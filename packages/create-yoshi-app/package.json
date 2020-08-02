@@ -34,7 +34,7 @@
     "chalk": "^2.4.1",
     "chrome-launcher": "0.13.4",
     "commander": "^2.16.0",
-    "constant-case": "^2.0.0",
+    "constant-case": "^3.0.0",
     "debug": "4.1.1",
     "execa": "^2.1.0",
     "express": "^4.17.1",

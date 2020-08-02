@@ -1,4 +1,4 @@
-import constantCase from 'constant-case';
+import { constantCase } from 'constant-case';
 import { isString } from 'lodash';
 import pascalCase from 'pascal-case';
 import TemplateModel from './TemplateModel';
