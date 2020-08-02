@@ -144,4 +144,4 @@ it("should pass", async () => {
 
 # Browser E2E tests
 
-Browser/e2e tests shouldn't know anything about Yoshi Server inner implementation. Test your application as you normally do, using [sled](https://github.com/wix-private/sled) or [jest-yoshi-preset](https://wix.github.io/yoshi/docs/jest-yoshi-preset).
+Browser/e2e tests shouldn't know anything about Yoshi Server inner implementation. Test your application as you normally do, using [sled](https://github.com/wix-private/sled) or [jest-yoshi-preset](https://bo.wix.com/pages/yoshi/docs/jest-yoshi-preset).

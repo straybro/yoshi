@@ -14,7 +14,7 @@ By running `npm run test` we'll run both unit (jest) and e2e (sled) tests.
 Each unit test are being executed in [JSDOM](https://github.com/jsdom/jsdom) environment.
 OOI template generated with `create-yoshi-app` already have unit tests for `Widget`, `controller` and `Settings` parts.
 
-It's based on [`jest-yoshi-preset`](https://wix.github.io/yoshi/docs/jest-yoshi-preset), so it provides the same testing configuration as other yoshi apps.
+It's based on [`jest-yoshi-preset`](https://bo.wix.com/pages/yoshi/docs/jest-yoshi-preset), so it provides the same testing configuration as other yoshi apps.
 
 ### e2e (sled)
 *File pattern used to get sled tests is **`sled/**/*.e2e.spec.ts`***

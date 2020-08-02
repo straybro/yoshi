@@ -32,7 +32,7 @@ With Yoshi server, it will be easier to ship updates without breaking changes.
 
 ## Setup
 
-We recommend creating a new Yoshi Server app using the [`create-yoshi-app`](https://wix.github.io/yoshi/docs/getting-started/create-app). It is available for both Fullstack and Business Manager apps.
+We recommend creating a new Yoshi Server app using the [`create-yoshi-app`](https://bo.wix.com/pages/yoshi/docs/getting-started/create-app). It is available for both Fullstack and Business Manager apps.
 
 ```bash
 npx create-yoshi-app my-app-name
@@ -43,7 +43,7 @@ npx create-yoshi-app my-app-name
 ##### Prerequisits
 
 - A fullstack app (both server and client are together, using the same `package.json` file).
-- We currently support only projects using the `app-flow` ("projectType": "app" in your Yoshi configuration). If you do not use it, please migrate first (see https://wix.github.io/yoshi/docs/guides/app-flow for more details)
+- We currently support only projects using the `app-flow` ("projectType": "app" in your Yoshi configuration). If you do not use it, please migrate first (see https://bo.wix.com/pages/yoshi/docs/guides/app-flow for more details)
 
 Install `yoshi-server` and `yoshi-server-client`:
 

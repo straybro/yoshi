@@ -6,7 +6,7 @@ sidebar_label: Version 4 Migration guide
 
 Like any major release, Yoshi v4 comes with some breaking changes. It's recommended to go over them to make the migration go easily. If you encounter any problems, please [open an issue](https://github.com/wix/yoshi/issues/new/choose).
 
-This is the migration guide from v3 to v4. If you're still using Yoshi v1 or v2, follow their respective migration guides ([v1 -> v2](https://wix.github.io/yoshi/blog/2018/03/15/yoshi-2), [v2 -> v3](https://wix.github.io/yoshi/blog/2018/06/02/yoshi-3/#migration-guide)) first.
+This is the migration guide from v3 to v4. If you're still using Yoshi v1 or v2, follow their respective migration guides ([v1 -> v2](https://bo.wix.com/pages/yoshi/blog/2018/03/15/yoshi-2), [v2 -> v3](https://bo.wix.com/pages/yoshi/blog/2018/06/02/yoshi-3/#migration-guide)) first.
 
 ### Bump dependencies
 

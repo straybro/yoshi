@@ -29,7 +29,7 @@ export class FlowAPI {
 
   reportError: ReportError = (error) => {
     console.warn(
-      "You are trying to report an error, but didn't configure sentry in `.application.json`\n\nPlease read the docs for more information https://wix.github.io/yoshi/docs/editor-flow/structure-api/app-configuration/#applicationjson",
+      "You are trying to report an error, but didn't configure sentry in `.application.json`\n\nPlease read the docs for more information https://bo.wix.com/pages/yoshi/docs/editor-flow/structure-api/app-configuration/#applicationjson",
       'Error: ',
       error,
     );

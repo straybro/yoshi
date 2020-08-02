@@ -6,7 +6,7 @@ sidebar_label: Library Flow
 
 A zero configuraiton toolkit to create modern TypeScript libraries @ Wix.
 
-> See [App Flow](https://wix.github.io/yoshi/docs/guides/app-flow#__docusaurus) for developing client applications
+> See [App Flow](https://bo.wix.com/pages/yoshi/docs/guides/app-flow#__docusaurus) for developing client applications
 
 ![Editor-flow-example](https://user-images.githubusercontent.com/11733036/77347439-85e60400-6d40-11ea-8270-ae6ac2714a55.gif)
 
@@ -88,7 +88,7 @@ In Wix more than 80% of the frontend code is written with `TypeScript`. When cre
 There are 2 main ways to consume a libaray:
 
 1. **from `npm`** - import the library from the application's code and bundle it (Using `yoshi`'s app flow is guaranteed to work)
-2. **from the `cdn`** - Consume the already bundled library using a `<script src="library.umd.js">` tag. (You'll need to specify it in the [`externals`](https://wix.github.io/yoshi/docs/api/configuration#externals) configuration option)
+2. **from the `cdn`** - Consume the already bundled library using a `<script src="library.umd.js">` tag. (You'll need to specify it in the [`externals`](https://bo.wix.com/pages/yoshi/docs/api/configuration#externals) configuration option)
 
 Using the second method also enables the version of the library to be controlled by the library author, so things like `GA` of the library would be able to get to production without the application code needs to be modified.
 
