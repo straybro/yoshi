@@ -17982,10 +17982,10 @@ jasmine-core@~2.8.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jasmine-core/-/jasmine-core-2.8.0.tgz#bcc979ae1f9fd05701e45e52e65d3a5d63f1a24e"
   integrity sha1-vMl5rh+f0FcB5F5S5l06XWPxok4=
 
-jasmine-core@~3.5.0:
-  version "3.5.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jasmine-core/-/jasmine-core-3.5.0.tgz#132c23e645af96d85c8bca13c8758b18429fc1e4"
-  integrity sha1-Eywj5kWvlthci8oTyHWLGEKfweQ=
+jasmine-core@~3.6.0:
+  version "3.6.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
+  integrity sha1-SR87sjlBeZw1POt6RbOKlQ68WiA=
 
 jasmine-reporters@2.3.2:
   version "2.3.2"
@@ -18004,13 +18004,13 @@ jasmine@2.8.0:
     glob "^7.0.6"
     jasmine-core "~2.8.0"
 
-jasmine@3.5.0:
-  version "3.5.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jasmine/-/jasmine-3.5.0.tgz#7101eabfd043a1fc82ac24e0ab6ec56081357f9e"
-  integrity sha1-cQHqv9BDofyCrCTgq27FYIE1f54=
+jasmine@3.6.1:
+  version "3.6.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jasmine/-/jasmine-3.6.1.tgz#a20456b309a669b547a3c24bb2120f16f70cfc65"
+  integrity sha1-ogRWswmmabVHo8JLshIPFvcM/GU=
   dependencies:
-    glob "^7.1.4"
-    jasmine-core "~3.5.0"
+    fast-glob "^2.2.6"
+    jasmine-core "~3.6.0"
 
 jasminewd2@^2.1.0:
   version "2.2.0"
