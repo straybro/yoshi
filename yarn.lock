@@ -4887,7 +4887,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@12.12.17", "@types/node@8.10.61", "@types/node@>= 8", "@types/node@^12.0.0", "@types/node@^12.7.7", "@types/node@^13.7.0":
+"@types/node@*", "@types/node@12.12.17", "@types/node@8.10.62", "@types/node@>= 8", "@types/node@^12.0.0", "@types/node@^12.7.7", "@types/node@^13.7.0":
   version "12.12.51"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node/-/node-12.12.51.tgz#446a67af8c5ff98947d7cef296484c6ad47ddb16"
   integrity sha1-RGpnr4xf+YlH187ylkhMatR92xY=
