@@ -1,5 +1,17 @@
 # Changelog
 
+## list (2020-08-02)
+
+#### :rocket: New Feature
+
+- `yoshi-common`, `yoshi-flow-app`, `yoshi-flow-editor`, `yoshi-helpers`, `yoshi-server-tools`, `yoshi-serverless-testing`
+  - [#2779](https://github.com/wix-private/yoshi/pull/2779) Yoshi Serverless: adjust to work with editor-flow ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :memo: Documentation
+
+- `yoshi-flow-editor-runtime`, `yoshi-flow-library`
+  - [#2835](https://github.com/wix-private/yoshi/pull/2835) fix docs links ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.132.0 (2020-07-30)
 
 #### :bug: Bug Fix
