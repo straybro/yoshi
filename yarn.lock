@@ -14927,10 +14927,10 @@ forwarded@~0.1.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-fp-ts@2.7.0:
-  version "2.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/fp-ts/-/fp-ts-2.7.0.tgz#41de65a846715ca4df6889b91c6b3aa953165198"
-  integrity sha1-Qd5lqEZxXKTfaIm5HGs6qVMWUZg=
+fp-ts@2.7.1:
+  version "2.7.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/fp-ts/-/fp-ts-2.7.1.tgz#7bd754f3362f4b9bc4d272a97c0658e9a1bc16bc"
+  integrity sha1-e9dU8zYvS5vE0nKpfAZY6aG8Frw=
 
 fragment-cache@^0.2.1:
   version "0.2.1"
