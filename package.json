@@ -80,7 +80,7 @@
     "@types/is-ci": "2.0.0",
     "@types/jest": "24.9.1",
     "@types/jest-environment-puppeteer": "4.3.1",
-    "@types/lodash": "4.14.157",
+    "@types/lodash": "4.14.158",
     "@types/puppeteer": "1.20.6",
     "@types/rimraf": "3.0.0",
     "@types/semver": "7.3.1",

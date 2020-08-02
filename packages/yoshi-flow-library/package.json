@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/cosmiconfig": "5.0.3",
     "@types/fs-extra": "9.0.1",
-    "@types/lodash": "4.14.157",
+    "@types/lodash": "4.14.158",
     "@types/webpack": "4.41.17"
   },
   "dependencies": {
