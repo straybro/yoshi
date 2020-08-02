@@ -119,7 +119,7 @@
     "jest-runner": "24.9.0",
     "jest-teamcity": "1.8.0",
     "lerna": "3.22.1",
-    "lerna-changelog": "1.0.1",
+    "lerna-changelog": "0.8.3",
     "lint-staged": "10.2.11",
     "lodash": "4.17.19",
     "minimist": "1.2.5",
