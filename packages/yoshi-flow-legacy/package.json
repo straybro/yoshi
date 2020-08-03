@@ -43,7 +43,7 @@
     "eslint-config-yoshi": "4.125.0",
     "eslint-config-yoshi-base": "4.89.0",
     "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jest": "22.21.0",
+    "eslint-plugin-jest": "23.20.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.5",
