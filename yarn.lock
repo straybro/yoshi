@@ -11669,15 +11669,15 @@ env-paths@^2.2.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/env-paths/-/env-paths-2.2.0.tgz#cdca557dc009152917d6166e2febe1f039685e43"
   integrity sha1-zcpVfcAJFSkX1hZuL+vh8DloXkM=
 
-envinfo@5.12.1:
-  version "5.12.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/envinfo/-/envinfo-5.12.1.tgz#83068c33e0972eb657d6bc69a6df30badefb46ef"
-  integrity sha1-gwaMM+CXLrZX1rxppt8wut77Ru8=
-
 envinfo@7.5.1, envinfo@^7.3.1, envinfo@^7.5.0:
   version "7.5.1"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/envinfo/-/envinfo-7.5.1.tgz#93c26897225a00457c75e734d354ea9106a72236"
   integrity sha1-k8JolyJaAEV8dec001TqkQanIjY=
+
+envinfo@7.7.2:
+  version "7.7.2"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/envinfo/-/envinfo-7.7.2.tgz#098f97a0e902f8141f9150553c92dbb282c4cabe"
+  integrity sha1-CY+XoOkC+BQfkVBVPJLbsoLEyr4=
 
 enzyme@2.9.1:
   version "2.9.1"
