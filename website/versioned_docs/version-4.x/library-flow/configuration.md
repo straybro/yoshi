@@ -6,7 +6,7 @@ sidebar_label: Configuration
 
 We try to limit confugration, but there are still different use-cases that requires us to provide the following:
 
-### bundle
+## bundle
 
 Adding a umd bundle which will be created on `dist/statics/<packageJsonName>.umd.js`
 
@@ -108,3 +108,9 @@ Defaults to `false` (`http`)
   }
 }
 ```
+
+## target
+
+string enum (`web`/`node`) default to `web`
+
+When configured to `node` opts out from creating the `esm` directory.
