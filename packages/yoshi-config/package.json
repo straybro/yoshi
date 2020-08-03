@@ -20,7 +20,7 @@
     "chalk": "2.4.2",
     "cosmiconfig": "7.0.0",
     "execa": "2.1.0",
-    "find-up": "3.0.0",
+    "find-up": "4.1.0",
     "import-fresh": "3.2.1",
     "jest-validate": "24.9.0",
     "lodash": "4.17.19",
