@@ -513,7 +513,7 @@ describe('Loaders', () => {
 
         expect(res.code).to.equal(0);
         expect(test.content('dist/statics/app.bundle.js')).to.contain(
-          'createElement("svg"',
+          'react["createElement"]("svg"',
         );
       });
     });
@@ -539,7 +539,7 @@ describe('Loaders', () => {
 
         expect(res.code).to.equal(0);
         expect(test.content('dist/statics/app.bundle.js')).to.contain(
-          'createElement("svg"',
+          'react["createElement"]("svg"',
         );
       });
     });
