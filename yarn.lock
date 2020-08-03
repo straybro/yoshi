@@ -12866,10 +12866,10 @@ filesize@3.6.1, filesize@^3.6.1:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha1-CQuz7gG2+AGoqL6Z0xcQs0Irsxc=
 
-filesize@5.0.3:
-  version "5.0.3"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/filesize/-/filesize-5.0.3.tgz#2fa284185e9d2e8edbec2915b4dadce4043aac31"
-  integrity sha1-L6KEGF6dLo7b7CkVtNrc5AQ6rDE=
+filesize@6.1.0:
+  version "6.1.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/filesize/-/filesize-6.1.0.tgz#e81bdaa780e2451d714d71c0d7a4f3238d37ad00"
+  integrity sha1-6Bvap4DiRR1xTXHA16TzI403rQA=
 
 fill-range@^2.1.0:
   version "2.2.4"
