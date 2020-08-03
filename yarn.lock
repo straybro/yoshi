@@ -3731,10 +3731,10 @@
     "@types/node" "*"
     "@types/webpack" "*"
 
-"@types/cors@2.8.6":
-  version "2.8.6"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/cors/-/cors-2.8.6.tgz#cfaab33c49c15b1ded32f235111ce9123009bd02"
-  integrity sha1-z6qzPEnBWx3tMvI1ERzpEjAJvQI=
+"@types/cors@2.8.7":
+  version "2.8.7"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/cors/-/cors-2.8.7.tgz#ab2f47f1cba93bce27dfd3639b006cc0e5600889"
+  integrity sha1-qy9H8cupO84n39NjmwBswOVgCIk=
   dependencies:
     "@types/express" "*"
 
