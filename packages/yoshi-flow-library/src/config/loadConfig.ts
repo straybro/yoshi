@@ -1,5 +1,5 @@
 import readPkg from 'read-pkg';
-import cosmiconfig from 'cosmiconfig';
+import { cosmiconfigSync } from 'cosmiconfig';
 import { validate as validateConfig } from 'jest-validate';
 import boxen from 'boxen';
 import chalk from 'chalk';
@@ -7,17 +7,17 @@ import { Config, InitialConfig } from './types';
 import validConfig from './validConfig';
 import normalize from './normalize';
 
-const explorer = cosmiconfig('yoshiFlowLibrary', {
+const explorer = cosmiconfigSync('yoshiFlowLibrary', {
   searchPlaces: ['package.json'],
 });
 
 export default ({ validate = true, cwd = process.cwd() } = {}): Config => {
-  const result = explorer.searchSync(cwd);
+  const result = explorer.search(cwd);
 
   if (!result) {
-    const oldYoshiConfig = cosmiconfig('yoshi', {
+    const oldYoshiConfig = cosmiconfigSync('yoshi', {
       searchPlaces: ['package.json', 'yoshi.config.js'],
-    }).searchSync(cwd);
+    }).search(cwd);
 
     if (oldYoshiConfig) {
       // TODO improve message and send to a documentation link
