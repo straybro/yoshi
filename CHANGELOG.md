@@ -98,8 +98,8 @@
   - [#2778](https://github.com/wix/yoshi/pull/2778) upgrade lerna-changelog 1.0.1 ([@kobiburnley](https://github.com/kobiburnley))
 
 #### :house: Internal
-
 - Other
+  - [#2784](https://github.com/wix/yoshi/pull/2784) Use the `ci-build-info` library ([@ohana54](https://github.com/ohana54))
   - [#2785](https://github.com/wix/yoshi/pull/2785) Update nvmrc tests to match CYA and template versions ([@yavorsky](https://github.com/yavorsky))
 - `create-yoshi-app`, `yoshi-common`
   - [#2771](https://github.com/wix/yoshi/pull/2771) correctly provide the user email on build and start bi events ([@ranyitz](https://github.com/ranyitz))
