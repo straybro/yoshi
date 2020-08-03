@@ -4,8 +4,10 @@
   "customPublish": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix/yoshi.git"
+    "url": "git@github.com:wix-private/yoshi.git"
   },
+  "homepage": "https://github.com/wix-private/yoshi#readme",
+  "bugs": "https://github.com/wix-private/yoshi/issues/new/choose",
   "workspaces": [
     "packages/*"
   ],
