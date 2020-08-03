@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.136.0 (2020-08-03)
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`
+  - [#2907](https://github.com/wix-private/yoshi/pull/2907) remove chai from BM template ([@zivl](https://github.com/zivl))
+
+#### :nail_care: Polish
+
+- [#2904](https://github.com/wix-private/yoshi/pull/2904) Update package.json with homepage, repo and bugs properties ([@sidoruk-sv](https://github.com/sidoruk-sv))
+
 ## v4.135.0 (2020-08-03)
 
 #### :building_construction: Templates
