@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.135.0 (2020-08-03)
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`
+  - [#2861](https://github.com/wix-private/yoshi/pull/2861) npmrc updated to use @wix private registry ([@aristofun](https://github.com/aristofun))
+
 ## v4.134.0 (2020-08-03)
 
 #### :building_construction: Templates
