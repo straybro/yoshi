@@ -148,27 +148,17 @@ Create a `create-yoshi-app`'s template, and then install, build and test it.
 
 Command:
 
-`yarn test:{templateName}`
+`yarn test:templates:{templateName}`
 
-#### Running Template Tests Locally
+The E2E suite will create a corresponding E2E test for each template from `projects/create-yoshi-app/templates` directory.
+It will generate the project in a temporary directory, it will then run `npm install` & `npm test` to verify that it's not failing.
 
-The E2E suite will create a corresponding E2E test for each template from `projects/create-yoshi-app/templates` directory. It will generate the project in a temporary directory, it will then run `npm install` & `npm test` to verify that it's not failing.
+Check `create-yoshi-app/package.json` for details.
 
-- Verbose mode:
+Local running templates E2E tests is not advisable.
 
-`-v`/`--verbose` output verbose logs, good for debugging
-
-```bash
-node ./scripts/runE2E.js --verbose
-```
-
-- Focus specific templates using command lines arguments:
-
-**Example:** will match `client` project
-
-```bash
-node ./scripts/runE2E.js client
-```
+Since it's a heavy test, before pushing to CI you can manually QA your templates' using
+`yarn create-yoshi-app:dev` then running `npm test` in it etc.
 
 ### Legacy integration tests
 
