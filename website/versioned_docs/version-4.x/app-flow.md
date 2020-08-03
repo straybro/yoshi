@@ -42,7 +42,7 @@ Builds your app for production into the `/dist` directory. Normally, this comman
 Possible flags:
 
 - `--analyze`: Analyze production bundle. This is helpful to understand what is included in the bundle.
-- `--stats`: Generate Webpack stats into `dist/webpack-stats.json`.
+- `--stats`: Generate Webpack stats into `target/webpack-stats.json`.
 
 ### `yoshi test`
 
