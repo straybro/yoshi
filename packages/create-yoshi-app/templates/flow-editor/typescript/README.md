@@ -1,152 +1,52 @@
-# Out of IFrame App
+# {%flowData.appName%}
 
-- [Overview](#overview)
-- [Initial Setup](#initial-setup)
-- [Local Development](#local-development)
-- [Testing](#testing)
-  - [Viewer App](#viewer-app)
-    - [E2E Against Production](#e2e-against-production)
-    - [SSR](#ssr)
-  - [Editor App & Settings Panel](#editor-app--settings-panel)
-    - [E2E Against Locally Served HTMLs](#e2e-against-locally-served-htmls)
-  - [Component & Unit Tests](#component--unit-tests)
-- [Deployment](#deployment)
-  - [Register an App in Wix's Dev Center](#register-an-app-in-wix-s-dev-center)
-  - [Deploy a new version](#deploy-a-new-version)
-- [OOI Development App](#ooi-development-app)
+This is an **yoshi editor flow** (out of iframe) project.
 
-## Overview
+The main idea of Editor Flow is to provide the best developer experience, the most optimized bundle, and a lot of features to reduce boilerplate on the user's side.
 
-Take a look at the [RFC](https://github.com/wix/yoshi/issues/1489)
+Loading experiments and translations, sending errors to sentry, monitoring client-side and server-side rendering time, sled end-to-end testing, providing relevant bi logger, live reload, and local overrides - everything is being provided from the box and works automatically.
 
-**OOI app is constructed from 3 parts:**
+## Setup 🔧
 
-1. **Viewer App**
+##### Install dependencies:
 
-> Consists of 2 assets, the `viewerWidget` is the React component and the `viewerScript` is the "controller" part which runs in a web worker.
-
-2. **Editor App**
-3. **Settings Panel**
-
-> Both `EditorApp` and `SettingsPanel` are still being run inside an iframe, which means that a separate server will have to read [`editorApp.vm`](./src/templates/editorApp.vm) and [`settingsPanel.vm`](./src/templates/editorApp.vm) files and serve them as `HTML`.
-
-`out-of-iframe` is a code name for a platform that enables creating Wix Apps that lives in the Viewer's main frame. It's similar to the old TPA but should be more performant. For more information head to the [official docs](https://bo.wix.com/wix-docs/client/client-frameworks#out-of-iframe).
-
-## Initial Setup
-
-```
+```bash
 npm install
 ```
 
-**Configure chrome to allow invalid certificates for resources loaded from localhost**
+##### Start the project:
 
-> The viewer is running on `https`, thus we need to serve our application on `https` as well. Yoshi is using a self signed certificate which is `invalid` for chrome.
-
-Paste the following in Chrome's omnibox and change the highlighted flag from `Disabled` to `Enabled`.:
-
-```
-chrome://flags/#allow-insecure-localhost
-```
-
-## Local Development
-
-**Develop your local app on production platforms**
-
-```
+```bash
 npm start
 ```
 
-This command runs `yoshi start` and opens two tabs:
+In case you are starting it the first time - the basic editor flow guide will be opened. It includes steps you need to take to finish the configuration.
 
-1. Production **viewer** with a site that has the [ooi development app](#ooi-development-app), it points to your local _viewer script_ and _viewer widget_.
+If viewer and editor URLs were already configured in `dev/sites.js` - the flow will open chrome with 2 tabs - viewer and editor. Then you can just start to develop the out of iframe widget in a production environment with HMR and local overrides.
 
-2. Production **editor** with a site that has the [ooi development app](#ooi-development-app), It points to your local _editor app_ and _settings panel_.
+## Deployment 🚀
 
-## Testing
+Just commit changes you made and push it to github. The [auto-release](https://github.com/wix-private/devcenter/tree/master/serverless/app-service-autorelease) mechanism is configured from the box.
 
-Run `npm start`, open another terminal and run `npx jest --watch`
+> Be sure your app in dev center has `Wix TPA` checkbox enabled.
 
-> Tip - If you are using `iterm2` use `cmd`+`d` to split the window vertically
+## Testing 🤞
 
-### Viewer App
+The app contains e2e and unit tests.
 
-#### E2E Against Production
+- **e2e** tests are located under the `sled` directory.
+- **Unit** tests could be found in the components' source directory.
 
-Using the ooi development app that points to your local _viewer script_ and _viewer widget_.
+##### Running tests:
 
-See [`viewerApp/viewerApp.e2e.js`](./src/viewerApp/viewerApp.e2e.js) for an example.
-
-#### SSR
-
-> TBD
-
-### Editor App & Settings Panel
-
-#### E2E Against Locally Served HTMLs
-
-When running tests, Yoshi runs your [`dev/server.js`](./dev/server.js) as configured in [`jest-yoshi.config.js`](./jest-yoshi.config.js).
-
-See [`editorApp/editorApp.e2e.js`](./src/editorApp/editorApp.e2e.js) & [`settingsPanel/settingsPanel.e2e.js`](./src/settingsPanel/settingsPanel.e2e.js) for an example.
-
-> Testing against the production editor similarly to the viewer app is problematic due to the editor loading time and required authentication.
-
-### Component & Unit Tests
-
-Nothing special about the ooi platform, component tests should be written in the `components` directory. Unit tests can be written everywhere.
-
-## Deployment
-
-### Register an App in Wix's Dev Center
-
-Configure your app in the dev center, follow the step-by-step [instructions](https://bo.wix.com/wix-docs/rest/client-frameworks#out-of-iframe).
-
-### Deploy a new version
-
-> TBD
-
-## OOI Development App
-
-While there are multiple ways to test your app locally, we find that having a Wix app that points to your local machine is the best one.
-
-It's configured as follows:
-
-**Viewer App**
-
-```json
-{
-  "platform": {
-    "baseUrls": {
-      "staticsBaseUrl": "https://localhost:3200/"
-    },
-    "viewerScriptUrl": "https://localhost:3200/viewerScript.bundle.js"
-  }
-}
+```bash
+npm test
 ```
 
-```json
-{
-  "componentUrl": "https://localhost:3200/viewerWidget.bundle.js"
-}
-```
+## Useful URLs
 
-**Editor App (Widget URL)**
-
-```
-https://localhost:3000/editorApp
-```
-
-**Settings Panel (App Settings URL)**
-
-```
-https://localhost:3000/settingsPanel
-```
-
-> While you can create your own app, we think it is easier to just reuse the same app between sites.
-
-In order to **open the editor with an empty template** and an option to **add the ooi development app** follow [this link](https://editor.wix.com/html/editor/web/renderer/new?metaSiteId=a573279f-ae6f-46d1-8556-7c93ae9b2c84&siteId=cbf36d3a-49d0-41c2-9482-1bb58d5fdda3&openpanel=market&appDefinitionId=14f11194-f7f1-9b82-9568-f9c5ed98c9b1).
-
-If you want to add the development app into an existing site, open the editor and add the following query parameter to the URL
-
-```
-openpanel=market&appDefinitionId=14f11194-f7f1-9b82-9568-f9c5ed98c9b1
-```
+- [Yoshi Editor Flow](https://bo.wix.com/pages/yoshi/docs/editor-flow/overview)
+- [Viewer Platform ](https://bo.wix.com/wix-docs/client/viewer-platform---ooi)
+- [Editor Platform ](https://bo.wix.com/wix-docs/client/editor-platform)
+- [App's Dev Center Page](https://dev.wix.com/dc3/my-apps/{%flowData.appDefinitionId%}/dashboard)
+- [FED Handbook](https://github.com/wix-private/fed-handbook#welcome-to-the-fed-handbook)
