@@ -18068,7 +18068,7 @@ json3@3.3.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
   integrity sha1-PAQ0dD35Pi9cQq7nsZvLSDV19OE=
 
-json3@^3.3.2:
+json3@^3.3.2, json3@^3.3.3:
   version "3.3.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/json3/-/json3-3.3.3.tgz#7fc10e375fc5ae42c4705a5cc0aa6f62be305b81"
   integrity sha1-f8EON1/FrkLEcFpcwKpvYr4wW4E=
@@ -25966,6 +25966,18 @@ sockjs-client@1.4.0:
     json3 "^3.3.2"
     url-parse "^1.4.3"
 
+sockjs-client@1.5.0:
+  version "1.5.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/sockjs-client/-/sockjs-client-1.5.0.tgz#2f8ff5d4b659e0d092f7aba0b7c386bd2aa20add"
+  integrity sha1-L4/11LZZ4NCS96ugt8OGvSqiCt0=
+  dependencies:
+    debug "^3.2.6"
+    eventsource "^1.0.7"
+    faye-websocket "^0.11.3"
+    inherits "^2.0.4"
+    json3 "^3.3.3"
+    url-parse "^1.4.7"
+
 sockjs@0.3.19:
   version "0.3.19"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/sockjs/-/sockjs-0.3.19.tgz#d976bbe800af7bd20ae08598d582393508993c0d"
@@ -28315,7 +28327,7 @@ url-parse-lax@^3.0.0:
   dependencies:
     prepend-http "^2.0.0"
 
-url-parse@^1.4.3, url-parse@~1.4.3:
+url-parse@^1.4.3, url-parse@^1.4.7, url-parse@~1.4.3:
   version "1.4.7"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
   integrity sha1-qKg1NejACjFuQDpdtKwbm4U64ng=
