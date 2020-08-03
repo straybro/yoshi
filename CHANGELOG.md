@@ -1,5 +1,22 @@
 # Changelog
 
+## v4.134.0 (2020-08-03)
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`
+  - [#2834](https://github.com/wix-private/yoshi/pull/2834) Update readme for editor flow template ([@yavorsky](https://github.com/yavorsky))
+
+#### :bug: Bug Fix
+
+- `yoshi-serverless-testing`
+  - [#2862](https://github.com/wix-private/yoshi/pull/2862) Get the serverless scope according to the package name ([@ranyitz](https://github.com/ranyitz))
+
+#### :memo: Documentation
+
+- [#2837](https://github.com/wix-private/yoshi/pull/2837) Docs: Fix stats file location in app flow docs ([@ranyitz](https://github.com/ranyitz))
+- [#2849](https://github.com/wix-private/yoshi/pull/2849) Library flow docs: Add target configuration to docs ([@ranyitz](https://github.com/ranyitz))
+
 ## list (2020-08-02)
 
 #### :rocket: New Feature
@@ -98,6 +115,7 @@
   - [#2778](https://github.com/wix/yoshi/pull/2778) upgrade lerna-changelog 1.0.1 ([@kobiburnley](https://github.com/kobiburnley))
 
 #### :house: Internal
+
 - Other
   - [#2784](https://github.com/wix/yoshi/pull/2784) Use the `ci-build-info` library ([@ohana54](https://github.com/ohana54))
   - [#2785](https://github.com/wix/yoshi/pull/2785) Update nvmrc tests to match CYA and template versions ([@yavorsky](https://github.com/yavorsky))

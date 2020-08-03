@@ -1,6 +1,6 @@
 {
   "name": "yoshi-server-tools",
-  "version": "4.133.0",
+  "version": "4.134.0",
   "keywords": [
     "yoshi",
     "server"
@@ -19,6 +19,6 @@
     "node-fetch": "2.6.0",
     "simple-git": "2.15.0",
     "yoshi-config": "4.133.0",
-    "yoshi-helpers": "4.133.0"
+    "yoshi-helpers": "4.134.0"
   }
 }
