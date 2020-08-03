@@ -11582,10 +11582,10 @@ damerau-levenshtein@^1.0.6:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/damerau-levenshtein/-/damerau-levenshtein-1.0.6.tgz#143c1641cb3d85c60c32329e26899adea8701791"
   integrity sha1-FDwWQcs9hcYMMjKeJoma3qhwF5E=
 
-dargs@6.1.0, dargs@^6.0.0:
-  version "6.1.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/dargs/-/dargs-6.1.0.tgz#1f3b9b56393ecf8caa7cbfd6c31496ffcfb9b272"
-  integrity sha1-HzubVjk+z4yqfL/WwxSW/8+5snI=
+dargs@7.0.0:
+  version "7.0.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/dargs/-/dargs-7.0.0.tgz#04015c41de0bcb69ec84050f3d9be0caf8d6d5cc"
+  integrity sha1-BAFcQd4Ly2nshAUPPZvgyvjW1cw=
 
 dargs@^4.0.1:
   version "4.1.0"
@@ -11593,6 +11593,11 @@ dargs@^4.0.1:
   integrity sha1-A6nbtLXC8Tm/FK5T8LiipqhvThc=
   dependencies:
     number-is-nan "^1.0.0"
+
+dargs@^6.0.0:
+  version "6.1.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/dargs/-/dargs-6.1.0.tgz#1f3b9b56393ecf8caa7cbfd6c31496ffcfb9b272"
+  integrity sha1-HzubVjk+z4yqfL/WwxSW/8+5snI=
 
 dashdash@^1.12.0:
   version "1.14.1"
