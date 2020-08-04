@@ -1586,7 +1586,7 @@
     slash "^2.0.0"
     strip-ansi "^5.0.0"
 
-"@jest/environment@^24", "@jest/environment@^24.9.0":
+"@jest/environment@^24", "@jest/environment@^24.3.0", "@jest/environment@^24.9.0":
   version "24.9.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@jest/environment/-/environment-24.9.0.tgz#21e3afa2d65c0586cbd6cbefe208bafade44ab18"
   integrity sha1-IeOvotZcBYbL1svv4gi6+t5Eqxg=
@@ -1596,7 +1596,7 @@
     "@jest/types" "^24.9.0"
     jest-mock "^24.9.0"
 
-"@jest/fake-timers@^24", "@jest/fake-timers@^24.9.0":
+"@jest/fake-timers@^24", "@jest/fake-timers@^24.3.0", "@jest/fake-timers@^24.9.0":
   version "24.9.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@jest/fake-timers/-/fake-timers-24.9.0.tgz#ba3e6bf0eecd09a636049896434d306636540c93"
   integrity sha1-uj5r8O7NCaY2BJiWQ00wZjZUDJM=
@@ -1692,7 +1692,7 @@
     source-map "^0.6.1"
     write-file-atomic "2.4.1"
 
-"@jest/types@24.9.0", "@jest/types@^24", "@jest/types@^24.9.0":
+"@jest/types@24.9.0", "@jest/types@^24", "@jest/types@^24.3.0", "@jest/types@^24.9.0":
   version "24.9.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@jest/types/-/types-24.9.0.tgz#63cb26cb7500d069e5a389441a7c6ab5e909fc59"
   integrity sha1-Y8smy3UA0Gnlo4lEGnxqtekJ/Fk=
@@ -17345,14 +17345,17 @@ jest-each@^24.9.0:
     jest-util "^24.9.0"
     pretty-format "^24.9.0"
 
-jest-environment-jsdom-fourteen@^0.1.0:
-  version "0.1.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-environment-jsdom-fourteen/-/jest-environment-jsdom-fourteen-0.1.0.tgz#aad6393a9d4b565b69a609109bf469f62bf18ccc"
-  integrity sha1-qtY5Op1LVltppgkQm/Rp9ivxjMw=
+jest-environment-jsdom-fourteen@^1.0.0:
+  version "1.0.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-environment-jsdom-fourteen/-/jest-environment-jsdom-fourteen-1.0.1.tgz#4cd0042f58b4ab666950d96532ecb2fc188f96fb"
+  integrity sha1-TNAEL1i0q2ZpUNllMuyy/BiPlvs=
   dependencies:
-    jest-mock "^24.5.0"
-    jest-util "^24.5.0"
-    jsdom "^14.0.0"
+    "@jest/environment" "^24.3.0"
+    "@jest/fake-timers" "^24.3.0"
+    "@jest/types" "^24.3.0"
+    jest-mock "^24.0.0"
+    jest-util "^24.0.0"
+    jsdom "^14.1.0"
 
 jest-environment-jsdom@^24.9.0:
   version "24.9.0"
@@ -17524,7 +17527,7 @@ jest-message-util@^26.0.1:
     slash "^3.0.0"
     stack-utils "^2.0.2"
 
-jest-mock@^24, jest-mock@^24.5.0, jest-mock@^24.9.0:
+jest-mock@^24, jest-mock@^24.0.0, jest-mock@^24.9.0:
   version "24.9.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-mock/-/jest-mock-24.9.0.tgz#c22835541ee379b908673ad51087a2185c13f1c6"
   integrity sha1-wig1VB7jebkIZzrVEIeiGFwT8cY=
@@ -17674,7 +17677,7 @@ jest-transform-graphql@^2.1.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-transform-graphql/-/jest-transform-graphql-2.1.0.tgz#903cb66bb27bc2772fd3e5dd4f7e9b57230f5829"
   integrity sha1-kDy2a7J7wncv0+XdT36bVyMPWCk=
 
-jest-util@^24.5.0, jest-util@^24.9.0:
+jest-util@^24.0.0, jest-util@^24.9.0:
   version "24.9.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-util/-/jest-util-24.9.0.tgz#7396814e48536d2e85a37de3e4c431d7cb140162"
   integrity sha1-c5aBTkhTbS6Fo33j5MQx18sUAWI=
@@ -17941,7 +17944,7 @@ jsdom@^11.5.1:
     ws "^5.2.0"
     xml-name-validator "^3.0.0"
 
-jsdom@^14.0.0:
+jsdom@^14.1.0:
   version "14.1.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jsdom/-/jsdom-14.1.0.tgz#916463b6094956b0a6c1782c94e380cd30e1981b"
   integrity sha1-kWRjtglJVrCmwXgslOOAzTDhmBs=

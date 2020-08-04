@@ -27,7 +27,7 @@
     "fs-extra": "^9.0.0",
     "globby": "^11.0.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest-environment-jsdom-fourteen": "^0.1.0",
+    "jest-environment-jsdom-fourteen": "^1.0.0",
     "jest-environment-node": "^24.8.0",
     "jest-transform-graphql": "^2.1.0",
     "jest-watch-typeahead": "^0.6.0",
