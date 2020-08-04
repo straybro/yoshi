@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.138.0 (2020-08-04)
+
+#### :bug: Bug Fix
+
+- `yoshi-common`, `yoshi-flow-legacy`
+  - [#2906](https://github.com/wix-private/yoshi/pull/2906) Webpack stats duplication bugfix ([@aristofun](https://github.com/aristofun))
+- `yoshi-flow-editor`
+  - [#2911](https://github.com/wix-private/yoshi/pull/2911) fix(flow-editor): Add reset.css to editor env ([@bordi](https://github.com/bordi))
+
 ## v4.136.0 (2020-08-03)
 
 #### :building_construction: Templates
