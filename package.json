@@ -139,7 +139,7 @@
     "semver": "7.3.2",
     "serve": "11.3.2",
     "shelljs": "0.8.4",
-    "string-length": "3.1.0",
+    "string-length": "4.0.1",
     "strip-ansi": "4.0.0",
     "tempy": "0.6.0",
     "terminate": "2.1.2",
