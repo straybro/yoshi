@@ -21,7 +21,7 @@
     "@types/fs-extra": "9.0.1",
     "@types/lodash": "4.14.158",
     "@types/npm-package-arg": "6.1.0",
-    "@types/webpack": "4.41.17"
+    "@types/webpack": "4.41.21"
   },
   "dependencies": {
     "@sentry/webpack-plugin": "1.12.0",

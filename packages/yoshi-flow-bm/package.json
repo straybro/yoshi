@@ -23,7 +23,7 @@
     "prompts": "2.3.2",
     "react-dev-utils": "9.1.0",
     "uuid": "7.0.3",
-    "webpack": "4.43.0",
+    "webpack": "4.44.1",
     "yoshi-common": "4.136.0",
     "yoshi-config": "4.133.0",
     "yoshi-flow-legacy": "4.136.0",
@@ -36,7 +36,7 @@
     "@types/lodash": "4.14.158",
     "@types/react-dev-utils": "9.0.4",
     "@types/uuid": "7.0.4",
-    "@types/webpack": "4.41.17",
+    "@types/webpack": "4.41.21",
     "yoshi-flow-bm-runtime": "4.136.0"
   }
 }

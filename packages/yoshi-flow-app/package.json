@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/fs-extra": "9.0.1",
     "@types/lodash": "4.14.158",
-    "@types/webpack": "4.41.17"
+    "@types/webpack": "4.41.21"
   },
   "dependencies": {
     "arg": "4.1.3",

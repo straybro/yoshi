@@ -9,7 +9,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/babel__traverse": "7.0.13",
-    "@types/webpack": "4.41.17"
+    "@types/webpack": "4.41.21"
   },
   "dependencies": {
     "@babel/parser": "7.11.0",

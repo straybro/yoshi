@@ -14,7 +14,7 @@
     "@types/find-up": "2.1.1",
     "@types/lodash": "4.14.158",
     "@types/puppeteer": "1.20.6",
-    "@types/webpack": "4.41.17"
+    "@types/webpack": "4.41.21"
   },
   "dependencies": {
     "chalk": "2.4.2",
