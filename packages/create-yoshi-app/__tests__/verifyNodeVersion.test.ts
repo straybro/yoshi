@@ -19,19 +19,21 @@ const nvmrc = readNvmrc(path.resolve(__dirname, '..'));
 
 let exitSpy: jest.SpyInstance, logSpy: jest.SpyInstance;
 
+const chalkLevel = chalk.level;
+
 beforeEach(() => {
   exitSpy = jest
     .spyOn(process, 'exit')
     .mockImplementation(() => undefined as never);
   logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
-  chalk.enabled = false;
+  chalk.level = 0;
 });
 
 afterEach(() => {
   setNodeVersion(originalNodeVersion);
   exitSpy.mockRestore();
   logSpy.mockRestore();
-  chalk.enabled = true;
+  chalk.level = chalkLevel;
 });
 
 test('should match node version successfully against .nvmrc file', () => {
