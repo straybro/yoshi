@@ -5,6 +5,8 @@ import config from 'yoshi-config';
 import * as globs from 'yoshi-config/build/globs';
 import isCi from 'is-ci';
 import { getBuildInfo } from '@wix/ci-build-info';
+import importCwd from 'import-cwd';
+import { PackageJson } from 'type-fest';
 import { defaultEntry } from './constants';
 
 export { getBuildInfo };
@@ -57,6 +59,13 @@ export const shouldRunSass = () => {
 
 export const isTypescriptProject = () =>
   fs.existsSync(path.resolve('tsconfig.json'));
+
+export const getTypescriptVersion = () => {
+  const tsPkg = importCwd.silent('typescript/package.json') as
+    | PackageJson
+    | undefined;
+  return tsPkg?.version!;
+};
 
 export const isUsingTSLint = () => exists('tslint.*');
 

@@ -1,11 +1,19 @@
 import querystring from 'querystring';
 import semver from 'semver';
 import biLoggerClient, { BiLoggerFactory } from 'wix-bi-logger-client';
-import initSchemaLogger, { getLoggerConf } from 'bi-logger-yoshi';
-import { isTypescriptProject } from 'yoshi-helpers/build/queries';
+import initSchemaLogger, {
+  getLoggerConf,
+  buildStartParams as BuildStartParams,
+  startInitParams as StartInitParams,
+} from 'bi-logger-yoshi';
+import {
+  getTypescriptVersion,
+  isTypescriptProject,
+} from 'yoshi-helpers/build/queries';
 import isCI from 'is-ci';
 import fetch from 'node-fetch';
 import getWixEmail from './getWixEmail';
+import { Intersection } from './utils/types';
 
 const debug = require('debug')('yoshi:telemetry');
 
@@ -36,13 +44,16 @@ const biLogger = initSchemaLogger(biLoggerFactory)();
 
 const { version: yoshiVersion } = require('../package.json');
 
-biLogger.util.updateDefaults({
+const biDefaults: Intersection<StartInitParams, BuildStartParams> = {
   isCI,
   nodeVersion: `${semver.parse(process.version)?.major}`,
   yoshiVersion: `${semver.parse(yoshiVersion)?.major}`,
   projectLanguage: isTypescriptProject() ? 'ts' : 'js',
+  typescriptVersion: getTypescriptVersion(),
   email: getWixEmail(),
-});
+};
+
+biLogger.util.updateDefaults(biDefaults);
 
 export function buildStart(yoshiFlow: yoshiFlow, pkgJsonName: string) {
   return biLogger.buildStart({

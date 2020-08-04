@@ -18,6 +18,7 @@
     "globby": "11.0.1",
     "http-proxy": "1.18.1",
     "is-ci": "2.0.0",
+    "import-cwd": "3.0.0",
     "lodash": "4.17.19",
     "mkdirp": "0.5.5",
     "ps-tree": "1.2.0",
