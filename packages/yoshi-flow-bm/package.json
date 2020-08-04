@@ -17,7 +17,7 @@
     "constant-case": "3.0.3",
     "cosmiconfig": "7.0.0",
     "fs-extra": "9.0.1",
-    "globby": "10.0.2",
+    "globby": "11.0.1",
     "jest-validate": "25.5.0",
     "lodash": "4.17.19",
     "prompts": "2.3.2",
