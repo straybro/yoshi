@@ -3,7 +3,6 @@ const {
   createBaseWebpackConfig,
   getStyleLoaders: getCommonStyleLoaders,
 } = require('yoshi-common/build/webpack.config');
-const { validateServerEntry } = require('yoshi-common/build/webpack-utils');
 const projectConfig = require('yoshi-config');
 const {
   isSingleEntry,
@@ -11,7 +10,6 @@ const {
   inTeamCity: checkInTeamCity,
   isTypescriptProject: checkIsTypescriptProject,
 } = require('yoshi-helpers/build/queries');
-const { SERVER_ENTRY } = require('yoshi-config/build/paths');
 const { defaultEntry } = require('yoshi-helpers/build/constants');
 
 const isProduction = checkIsProduction();
@@ -75,8 +73,10 @@ function createClientWebpackConfig({
   isHmr,
   withLocalSourceMaps,
   includeStyleLoaders = true,
+  forceEmitStats = false,
 } = {}) {
   const webpackConfig = createBaseWebpackConfig({
+    configName: 'legacy-client',
     target: 'web',
     isDev: isDebug,
     isHot: isHmr,
@@ -85,6 +85,7 @@ function createClientWebpackConfig({
     forceEmitSourceMaps: withLocalSourceMaps,
     useYoshiServer,
     useProgressBar: false,
+    forceEmitStats,
     ...defaultOptions,
   });
 
@@ -113,38 +114,7 @@ function createClientWebpackConfig({
   return webpackConfig;
 }
 
-function createServerWebpackConfig({
-  isDebug = true,
-  isHmr = false,
-  // hmrPort,
-} = {}) {
-  const webpackConfig = createBaseWebpackConfig({
-    target: 'node',
-    isDev: isDebug,
-    isHot: isHmr,
-    useProgressBar: false,
-    ...defaultOptions,
-  });
-
-  webpackConfig.entry = async () => {
-    const serverEntry = validateServerEntry({
-      extensions: webpackConfig.resolve.extensions,
-    });
-
-    let entryConfig = {};
-
-    if (serverEntry) {
-      entryConfig = { ...entryConfig, [SERVER_ENTRY]: serverEntry };
-    }
-
-    return entryConfig;
-  };
-
-  return webpackConfig;
-}
-
 module.exports = {
   getStyleLoaders,
   createClientWebpackConfig,
-  createServerWebpackConfig,
 };

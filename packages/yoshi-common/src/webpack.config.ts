@@ -414,6 +414,7 @@ export function createBaseWebpackConfig({
   name: string;
   configName:
     | 'client'
+    | 'legacy-client'
     | 'server'
     | 'web-worker'
     | 'site-assets'
@@ -877,7 +878,7 @@ export function createBaseWebpackConfig({
               // /dist/statics to stats file /target/webpack-stats.json
               filename: path.join(
                 '../../',
-                configName === 'client'
+                !configName || configName === 'client'
                   ? STATS_FILE
                   : addExtensionPrefix(STATS_FILE, configName),
               ),

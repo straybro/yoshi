@@ -7,7 +7,6 @@ const parseArgs = require('minimist');
 const LoggerPlugin = require('../plugins/haste-plugin-yoshi-logger');
 const globs = require('yoshi-config/build/globs');
 const path = require('path');
-const { STATS_FILE } = require('yoshi-config/build/paths');
 const projectConfig = require('yoshi-config');
 const {
   watchMode,
@@ -92,12 +91,10 @@ module.exports = runner.command(
             {
               ...defaultOptions,
               callbackPath: productionCallbackPath,
-              statsFilename: cliArgs.stats
-                ? path.join(process.cwd(), STATS_FILE)
-                : false,
               configParams: {
                 isDebug: false,
                 isAnalyze: cliArgs.analyze,
+                forceEmitStats: cliArgs.stats,
                 withLocalSourceMaps: cliArgs['source-map'],
               },
             },
