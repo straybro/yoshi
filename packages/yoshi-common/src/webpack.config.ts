@@ -1314,16 +1314,6 @@ export function createBaseWebpackConfig({
                 if (ambassadorRegex.test(res)) {
                   return callback(undefined, `commonjs ${request}`);
                 }
-                // This is a temporary workaround, so `yoshi-serverless-testing` will not
-                // be part of the bundle:
-                // In yoshi-flow-editor, we bundle dev-server code (`Serfer.ts`, because of HMR).
-                // This makes `yoshi-serverless-testing` part of the bundle.
-                // It causes issues, because it tries to bundle `wix-serverless-testkit`,
-                // which cannot be bundled proparly.
-                const serverlesstesting = /yoshi-serverless-testing/;
-                if (serverlesstesting.test(res)) {
-                  return callback(undefined, `commonjs ${request}`);
-                }
                 return callback();
               }
 

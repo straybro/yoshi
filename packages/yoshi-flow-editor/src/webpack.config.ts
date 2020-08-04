@@ -98,17 +98,10 @@ export function createServerWebpackConfig(
     ...defaultOptions,
   });
 
-  serverConfig.entry = async () => {
-    const serverEntry = '../node_modules/yoshi-flow-editor/build/server/server';
-
-    let entryConfig = process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+  serverConfig.entry = async () =>
+    process.env.EXPERIMENTAL_YOSHI_SERVERLESS
       ? createServerEntries(serverConfig.context as string)
       : {};
-
-    entryConfig = { ...entryConfig, server: serverEntry };
-
-    return entryConfig;
-  };
 
   return serverConfig;
 }
