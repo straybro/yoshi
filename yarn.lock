@@ -4050,10 +4050,10 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest-environment-puppeteer@4.3.1":
-  version "4.3.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/jest-environment-puppeteer/-/jest-environment-puppeteer-4.3.1.tgz#597d16fa0594a5daf1b3c08262bfbb011e146c2d"
-  integrity sha1-WX0W+gWUpdrxs8CCYr+7AR4UbC0=
+"@types/jest-environment-puppeteer@4.3.2":
+  version "4.3.2"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/jest-environment-puppeteer/-/jest-environment-puppeteer-4.3.2.tgz#630ad931d433b8197d29e0c6cb42a9faa91f591e"
+  integrity sha1-YwrZMdQzuBl9KeDGy0Kp+qkfWR4=
   dependencies:
     "@jest/environment" "^24"
     "@jest/fake-timers" "^24"
@@ -13913,7 +13913,7 @@ find-pkg@^0.1.2:
   dependencies:
     find-file-up "^0.1.2"
 
-find-process@^1.2.1, find-process@^1.4.3:
+find-process@^1.4.3:
   version "1.4.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/find-process/-/find-process-1.4.3.tgz#25f9105dc32e42abad4636752c37c51cd57dce45"
   integrity sha1-JfkQXcMuQqutRjZ1LDfFHNV9zkU=
@@ -16169,7 +16169,7 @@ inquirer@6.5.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-inquirer@^6.2.0, inquirer@^6.2.1, inquirer@^6.2.2:
+inquirer@^6.2.0, inquirer@^6.2.2:
   version "6.5.2"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/inquirer/-/inquirer-6.5.2.tgz#ad50942375d036d327ff528c08bd5fab089928ca"
   integrity sha1-rVCUI3XQNtMn/1KMCL1fqwiZKMo=
@@ -17259,19 +17259,6 @@ jest-config@^24.9.0:
     pretty-format "^24.9.0"
     realpath-native "^1.1.0"
 
-jest-dev-server@^3.9.0:
-  version "3.9.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-dev-server/-/jest-dev-server-3.9.0.tgz#ee901248a5d183bf81dab86828ffedd0d97fbf2d"
-  integrity sha1-7pASSKXRg7+B2rhoKP/t0Nl/vy0=
-  dependencies:
-    chalk "^2.4.1"
-    cwd "^0.10.0"
-    find-process "^1.2.1"
-    inquirer "^6.2.1"
-    spawnd "^3.7.0"
-    tree-kill "^1.2.1"
-    wait-port "^0.2.2"
-
 jest-dev-server@^4.4.0:
   version "4.4.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-dev-server/-/jest-dev-server-4.4.0.tgz#557113faae2877452162696aa94c1e44491ab011"
@@ -17380,17 +17367,7 @@ jest-environment-node@^24.8.0, jest-environment-node@^24.9.0:
     jest-mock "^24.9.0"
     jest-util "^24.9.0"
 
-jest-environment-puppeteer@3.9.1:
-  version "3.9.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-environment-puppeteer/-/jest-environment-puppeteer-3.9.1.tgz#783f26884fe94a72789e413a0a9cdbd914a0d675"
-  integrity sha1-eD8miE/pSnJ4nkE6Cpzb2RSg1nU=
-  dependencies:
-    chalk "^2.4.1"
-    cwd "^0.10.0"
-    jest-dev-server "^3.9.0"
-    merge-deep "^3.0.2"
-
-jest-environment-puppeteer@^4.4.0:
+jest-environment-puppeteer@4.4.0, jest-environment-puppeteer@^4.4.0:
   version "4.4.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/jest-environment-puppeteer/-/jest-environment-puppeteer-4.4.0.tgz#d82a37e0e0c51b63cc6b15dea101d53967508860"
   integrity sha1-2Co34ODFG2PMaxXeoQHVOWdQiGA=
@@ -26080,16 +26057,6 @@ spawn-wrap@^1.4.2:
     signal-exit "^3.0.2"
     which "^1.3.0"
 
-spawnd@^3.7.0:
-  version "3.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/spawnd/-/spawnd-3.7.0.tgz#9807503ab408950771b93634e3f76115bcc8fe31"
-  integrity sha1-mAdQOrQIlQdxuTY04/dhFbzI/jE=
-  dependencies:
-    exit "^0.1.2"
-    signal-exit "^3.0.2"
-    tree-kill "^1.2.1"
-    wait-port "^0.2.2"
-
 spawnd@^4.4.0:
   version "4.4.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/spawnd/-/spawnd-4.4.0.tgz#bb52c5b34a22e3225ae1d3acb873b2cd58af0886"
@@ -27433,7 +27400,7 @@ tracer@~0.7.3:
     dateformat "1.0.11"
     tinytim "0.1.1"
 
-tree-kill@1.2.2, tree-kill@^1.2.1, tree-kill@^1.2.2:
+tree-kill@1.2.2, tree-kill@^1.2.2:
   version "1.2.2"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
   integrity sha1-TKCakJLIi3OnzcXooBtQeweQoMw=
