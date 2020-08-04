@@ -137,7 +137,7 @@
     "retry-promise": "1.0.0",
     "rimraf": "3.0.2",
     "semver": "7.3.2",
-    "serve": "10.1.2",
+    "serve": "11.3.2",
     "shelljs": "0.8.4",
     "string-length": "3.1.0",
     "strip-ansi": "4.0.0",
