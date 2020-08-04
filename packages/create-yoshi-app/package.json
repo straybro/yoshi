@@ -64,7 +64,7 @@
     "chokidar": "3.4.1",
     "clipboardy": "2.3.0",
     "expect": "23.6.0",
-    "find-cache-dir": "2.1.0",
+    "find-cache-dir": "3.3.1",
     "minimist": "1.2.5",
     "mocha": "5.2.0",
     "mocha-env-reporter": "3.0.2",
