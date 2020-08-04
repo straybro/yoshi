@@ -25709,10 +25709,10 @@ simple-fmt@~0.1.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-fmt/-/simple-fmt-0.1.0.tgz#191bf566a59e6530482cb25ab53b4a8dc85c3a6b"
   integrity sha1-GRv1ZqWeZTBILLJatTtKjchcOms=
 
-simple-git@2.15.0:
-  version "2.15.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-git/-/simple-git-2.15.0.tgz#62636209e92a172f66a03e23f8505e3822c01898"
-  integrity sha1-YmNiCekqFy9moD4j+FBeOCLAGJg=
+simple-git@2.17.0:
+  version "2.17.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/simple-git/-/simple-git-2.17.0.tgz#541205913734018d32d051af847ad9fec2f95901"
+  integrity sha1-VBIFkTc0AY0y0FGvhHrZ/sL5WQE=
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
