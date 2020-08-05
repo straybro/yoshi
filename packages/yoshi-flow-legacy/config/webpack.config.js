@@ -76,9 +76,10 @@ function createClientWebpackConfig({
   forceEmitStats = false,
 } = {}) {
   const webpackConfig = createBaseWebpackConfig({
-    configName: 'legacy-client',
+    configName: 'client',
     target: 'web',
     isDev: isDebug,
+    typeCheckTypeScript: false,
     isHot: isHmr,
     isAnalyze,
     includeStyleLoaders,

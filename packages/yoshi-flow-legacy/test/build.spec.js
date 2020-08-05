@@ -879,9 +879,7 @@ describe('Aggregator: Build', () => {
     });
 
     it('should generate stats files', () => {
-      expect(test.list('target')).to.contain(
-        'webpack-stats.legacy-client.json',
-      );
+      expect(test.list('target')).to.contain('webpack-stats.json');
     });
   });
 
