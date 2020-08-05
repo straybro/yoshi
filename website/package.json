@@ -6,7 +6,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "version": "docusaurus docs:version",
-    "publish-janet": "janet deploy --ci"
+    "publish-janet": "node ./scripts/janetPrPublish.js"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.59",
