@@ -21,6 +21,10 @@
     {
       "packagePatterns": ["^@stylable/"],
       "groupName": "stylable"
+    },
+    {
+      "packagePatterns": ["^@docusaurus/"],
+      "groupName": "docusaurus"
     }
   ],
   "masterIssue": true
