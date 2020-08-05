@@ -1,3 +1,4 @@
+import { isAbsolute } from 'path';
 import globby from 'globby';
 import { register } from 'ts-node';
 
@@ -15,8 +16,9 @@ const { extensions } = register({
   },
 });
 
+const cwd = process.cwd();
 // don't transpile with ts-node/register files ignored by git
-const shouldIgnore = globby.gitignore.sync({ cwd: process.cwd() });
+const shouldBeGitIgnore = globby.gitignore.sync({ cwd });
 
 // `ts-node` only supports regex ignore patterns, use custom extensions so functions can
 // be used
@@ -24,7 +26,11 @@ if (extensions.includes('.js')) {
   const originalTsNodeHandler = require.extensions['.js'];
 
   require.extensions['.js'] = function (m, filename) {
-    if (shouldIgnore(filename)) {
+    // do not run ts-node on absolute path files outside of current working directory
+    if (isAbsolute(filename) && !filename.startsWith(cwd)) {
+      return originalJsHandler(m, filename);
+      // do not run ts-node on files ignored by gitignore
+    } else if (shouldBeGitIgnore(filename)) {
       return originalJsHandler(m, filename);
     }
 
