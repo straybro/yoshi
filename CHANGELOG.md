@@ -1,5 +1,19 @@
 # Changelog
 
+## v4.139.0 (2020-08-05)
+
+#### :rocket: New Feature
+
+- `yoshi-common`, `yoshi-flow-legacy`, `yoshi-flow-monorepo`
+  - [#2915](https://github.com/wix-private/yoshi/pull/2915) experimental babel unambiguous source type ([@roymiloh](https://github.com/roymiloh))
+
+#### :bug: Bug Fix
+
+- `yoshi-common`
+  - [#2920](https://github.com/wix-private/yoshi/pull/2920) do not run ts-node on files outside of process.cwd ([@ranyitz](https://github.com/ranyitz))
+- `yoshi-common`, `yoshi-flow-legacy`
+  - [#2918](https://github.com/wix-private/yoshi/pull/2918) fix stats location to be back at webpack-stats.json for legacy flow ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.138.0 (2020-08-04)
 
 #### :bug: Bug Fix
