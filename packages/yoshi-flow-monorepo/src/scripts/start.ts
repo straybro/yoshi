@@ -112,38 +112,26 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
   let siteAssetConfigWeb;
 
   if (isSiteAssetsModule(pkg)) {
-    siteAssetConfigNode = createSiteAssetsWebpackConfig(
-      rootConfig,
-      pkg,
-      libs,
-      apps,
-      {
-        isDev: true,
-        target: 'node',
-      },
-    );
+    siteAssetConfigNode = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+      isDev: true,
+      target: 'node',
+    });
 
     if (process.env.CREATE_SITE_ASSETS_WEB) {
-      siteAssetConfigWeb = createSiteAssetsWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isDev: true,
-          target: 'web',
-        },
-      );
+      siteAssetConfigWeb = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+        isDev: true,
+        target: 'web',
+      });
     }
   } else {
-    clientConfig = createClientWebpackConfig(rootConfig, pkg, libs, apps, {
+    clientConfig = createClientWebpackConfig(pkg, libs, apps, {
       isDev: true,
       isHot: pkg.config.hmr as boolean,
       suricate: pkg.config.suricate,
     });
   }
 
-  const serverConfig = createServerWebpackConfig(rootConfig, pkg, libs, apps, {
+  const serverConfig = createServerWebpackConfig(pkg, libs, apps, {
     isDev: true,
     isHot: true,
   });
@@ -151,23 +139,16 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
   let webWorkerConfig;
 
   if (pkg.config.webWorkerEntry) {
-    webWorkerConfig = createWebWorkerWebpackConfig(
-      rootConfig,
-      pkg,
-      libs,
-      apps,
-      {
-        isDev: true,
-        isHot: true,
-      },
-    );
+    webWorkerConfig = createWebWorkerWebpackConfig(pkg, libs, apps, {
+      isDev: true,
+      isHot: true,
+    });
   }
 
   let webWorkerServerConfig;
 
   if (pkg.config.webWorkerServerEntry) {
     webWorkerServerConfig = createWebWorkerServerWebpackConfig(
-      rootConfig,
       pkg,
       libs,
       apps,

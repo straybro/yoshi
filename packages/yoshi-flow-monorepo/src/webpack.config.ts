@@ -9,7 +9,6 @@ import {
 import { StatsWriterPlugin } from 'webpack-stats-plugin';
 import { createBaseWebpackConfig as createCommonWebpackConfig } from 'yoshi-common/build/webpack.config';
 import { defaultEntry } from 'yoshi-helpers/build/constants';
-import { Config } from 'yoshi-config/build/config';
 import {
   isTypescriptProject,
   isSingleEntry,
@@ -66,7 +65,6 @@ const createDefaultOptions = (
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
-  rootConfig: Config,
 ) => {
   const separateCss =
     pkg.config.separateCss === 'prod'
@@ -81,18 +79,14 @@ const createDefaultOptions = (
     devServerUrl: pkg.config.servers.cdn.url,
     cssModules: pkg.config.cssModules,
     separateCss,
-    includeInTranspilation: [
-      ...[...apps, ...libs].map(({ location }) => path.join(location, SRC_DIR)),
-      ...rootConfig.externalUnprocessedModules.map(
-        (m) => new RegExp(`node_modules/${m}`),
-      ),
-    ],
+    includeSourcesInTranspilation: [...apps, ...libs].map(({ location }) =>
+      path.join(location, SRC_DIR),
+    ),
     umdNamedDefine: pkg.config.umdNamedDefine,
   };
 };
 
 export function createClientWebpackConfig(
-  rootConfig: Config,
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
@@ -114,7 +108,7 @@ export function createClientWebpackConfig(
 ): webpack.Configuration {
   const entry = pkg.config.entry || defaultEntry;
 
-  const defaultOptions = createDefaultOptions(pkg, libs, apps, rootConfig);
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const clientConfig = createBaseWebpackConfig({
     cwd: pkg.location,
@@ -212,13 +206,12 @@ export function createClientWebpackConfig(
 }
 
 export function createServerWebpackConfig(
-  rootConfig: Config,
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
   { isDev, isHot }: { isDev?: boolean; isHot?: boolean } = {},
 ): webpack.Configuration {
-  const defaultOptions = createDefaultOptions(pkg, libs, apps, rootConfig);
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const serverConfig = createBaseWebpackConfig({
     cwd: pkg.location,
@@ -271,7 +264,6 @@ export function createServerWebpackConfig(
 }
 
 export function createWebWorkerWebpackConfig(
-  rootConfig: Config,
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
@@ -287,7 +279,7 @@ export function createWebWorkerWebpackConfig(
     forceEmitStats?: boolean;
   } = {},
 ): webpack.Configuration {
-  const defaultOptions = createDefaultOptions(pkg, libs, apps, rootConfig);
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const workerConfig = createBaseWebpackConfig({
     cwd: pkg.location,
@@ -323,13 +315,12 @@ export function createWebWorkerWebpackConfig(
 }
 
 export function createWebWorkerServerWebpackConfig(
-  rootConfig: Config,
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
   { isDev, isHot }: { isDev?: boolean; isHot?: boolean } = {},
 ): webpack.Configuration {
-  const defaultOptions = createDefaultOptions(pkg, libs, apps, rootConfig);
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const workerConfig = createBaseWebpackConfig({
     cwd: pkg.location,
@@ -359,7 +350,6 @@ export function createWebWorkerServerWebpackConfig(
 }
 
 export function createSiteAssetsWebpackConfig(
-  rootConfig: Config,
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,
   apps: Array<PackageGraphNode>,
@@ -387,7 +377,7 @@ export function createSiteAssetsWebpackConfig(
 ): webpack.Configuration {
   const entry = pkg.config.entry || defaultEntry;
 
-  const defaultOptions = createDefaultOptions(pkg, libs, apps, rootConfig);
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const config = createBaseWebpackConfig({
     cwd: pkg.location,

@@ -58,6 +58,7 @@ import StylableWebpackPlugin, {
   globalRuntimeId,
 } from './@stylable/webpack-plugin';
 import shouldTranspileFile from './utils/should-transpile-file';
+import shouldTranspileExternalDep from './utils/should-transpile-external-dep';
 import InlineChunkHtmlPlugin from './html-inline-plugin';
 import { localIdentName } from './utils/constants';
 import ExportDefaultPlugin from './export-default-plugin';
@@ -391,7 +392,7 @@ export function createBaseWebpackConfig({
   createEjsTemplates = false,
   performanceBudget,
   includeStyleLoaders = true,
-  includeInTranspilation = shouldTranspileFile,
+  includeSourcesInTranspilation = shouldTranspileFile,
   enhancedTpaStyle = false,
   tpaStyle = false,
   forceEmitSourceMaps = false,
@@ -432,7 +433,7 @@ export function createBaseWebpackConfig({
   experimentalRtlCss?: boolean;
   cssModules?: boolean;
   cwd?: string;
-  includeInTranspilation?: Array<RuleSetCondition> | RuleSetCondition;
+  includeSourcesInTranspilation?: Array<RuleSetCondition> | RuleSetCondition;
   devServerUrl: string;
   externalizeRelativeLodash?: boolean;
   isAnalyze?: boolean;
@@ -514,6 +515,15 @@ export function createBaseWebpackConfig({
   const artifactVersion = inTeamCity
     ? getProjectArtifactVersion(name)
     : '0.0.0';
+
+  const includeAllInTranspilation = [
+    ...(Array.isArray(includeSourcesInTranspilation)
+      ? includeSourcesInTranspilation
+      : [includeSourcesInTranspilation]),
+    ...(Array.isArray(shouldTranspileExternalDep)
+      ? shouldTranspileExternalDep
+      : [shouldTranspileExternalDep]),
+  ];
 
   const config: webpack.Configuration = {
     context: join(SRC_DIR),
@@ -1050,7 +1060,7 @@ export function createBaseWebpackConfig({
           // Don't transpile the output of Carmi with Babel/TypeScript
           // https://github.com/wix/yoshi/pull/2227
           exclude: /\.carmi.(js|ts)$/,
-          include: includeInTranspilation,
+          include: includeAllInTranspilation,
           use: [
             {
               loader: 'thread-loader',
@@ -1111,7 +1121,7 @@ export function createBaseWebpackConfig({
 
         {
           test: reScript,
-          include: includeInTranspilation,
+          include: includeAllInTranspilation,
           // Optimize JS processing worker stuff excluded due to
           // https://github.com/webpack-contrib/worker-loader/issues/177
           exclude: [/\.inline\.worker\.js/, /\.carmi.(js|ts)$/],
@@ -1129,7 +1139,7 @@ export function createBaseWebpackConfig({
           ? [
               {
                 test: /\.carmi.(js|ts)$/,
-                include: includeInTranspilation,
+                include: includeAllInTranspilation,
                 use: [
                   {
                     loader: 'babel-loader',
@@ -1146,17 +1156,38 @@ export function createBaseWebpackConfig({
               },
             ]
           : []),
+
         {
           test: reScript,
           // Don't transpile the output of Carmi with Babel/TypeScript
           // https://github.com/wix/yoshi/pull/2227
           exclude: /\.carmi.js$/,
-          include: includeInTranspilation,
+          include: includeSourcesInTranspilation,
           use: [
             {
               loader: 'babel-loader',
               options: {
                 ...babelConfig,
+              },
+            },
+          ],
+        },
+
+        {
+          test: reScript,
+          // Don't transpile the output of Carmi with Babel/TypeScript
+          // https://github.com/wix/yoshi/pull/2227
+          exclude: /\.carmi.js$/,
+          include: shouldTranspileExternalDep,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                ...babelConfig,
+                sourceType:
+                  process.env.EXPERIMENTAL_BABEL_SHARED_HELPERS === 'true'
+                    ? 'unambiguous'
+                    : undefined,
               },
             },
           ],

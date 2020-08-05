@@ -54,31 +54,7 @@ module.exports = async ({
 
       if (transformHMRRuntime) {
         const entryFiles = getListOfEntries(configuredEntry || defaultEntry);
-        webpackConfig.module.rules.forEach((rule) => {
-          if (Array.isArray(rule.use)) {
-            rule.use = rule.use.map((useItem) => {
-              if (useItem === 'babel-loader') {
-                useItem = { loader: 'babel-loader' };
-              }
-              if (useItem.loader === 'babel-loader') {
-                if (!useItem.options) {
-                  useItem.options = {};
-                }
-                if (!useItem.options.plugins) {
-                  useItem.options.plugins = [];
-                }
-                useItem.options.plugins.push(
-                  require.resolve('react-hot-loader/babel'),
-                  [
-                    require.resolve('babel-plugin-transform-hmr-runtime'),
-                    { entryFiles },
-                  ],
-                );
-              }
-              return useItem;
-            });
-          }
-        });
+        applyBabelRuntimeLoaderToRules(webpackConfig.module.rules, entryFiles);
       }
 
       webpackConfig.entry = normalizeEntries(webpackConfig.entry);
@@ -118,6 +94,39 @@ module.exports = async ({
     serverFactory.listen(port, host, (err) => (err ? reject(err) : resolve()));
   });
 };
+
+function applyBabelRuntimeLoaderToRules(rules, entryFiles) {
+  rules.forEach((rule) => {
+    if (Array.isArray(rule.use)) {
+      rule.use = rule.use.map((item) =>
+        withBabelHmrRuntimeLoader(item, entryFiles),
+      );
+    } else if (rule.oneOf) {
+      applyBabelRuntimeLoaderToRules(rule.oneOf, entryFiles);
+    }
+  });
+}
+
+function withBabelHmrRuntimeLoader(useItem, entryFiles) {
+  if (useItem === 'babel-loader') {
+    useItem = { loader: 'babel-loader' };
+  }
+
+  if (useItem.loader === 'babel-loader') {
+    if (!useItem.options) {
+      useItem.options = {};
+    }
+    if (!useItem.options.plugins) {
+      useItem.options.plugins = [];
+    }
+    useItem.options.plugins.push(require.resolve('react-hot-loader/babel'), [
+      require.resolve('babel-plugin-transform-hmr-runtime'),
+      { entryFiles },
+    ]);
+  }
+
+  return useItem;
+}
 
 function sslCredentials(keyPath, certificatePath, passphrase) {
   const customCertPath = process.env.CUSTOM_CERT_PATH;

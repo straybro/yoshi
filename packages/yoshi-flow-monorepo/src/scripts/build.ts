@@ -161,104 +161,61 @@ const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
 
     if (isSiteAssetsModule(pkg)) {
       // for running in the server
-      clientDebugConfig = createSiteAssetsWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isDev: false,
-          target: 'node',
-          isAnalyze,
-          forceEmitSourceMaps,
-          forceEmitStats,
-          forceMinimizeServer: true,
-          disableEmitSourceMaps: true,
-          keepFunctionNames: true,
-        },
-      );
+      clientDebugConfig = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+        isDev: false,
+        target: 'node',
+        isAnalyze,
+        forceEmitSourceMaps,
+        forceEmitStats,
+        forceMinimizeServer: true,
+        disableEmitSourceMaps: true,
+        keepFunctionNames: true,
+      });
 
       // for running in the browser
-      clientOptimizedConfig = createSiteAssetsWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isDev: false,
-          target: 'web',
-          isAnalyze,
-          forceEmitSourceMaps,
-          forceEmitStats,
-          transpileCarmiOutput: true,
-        },
-      );
+      clientOptimizedConfig = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+        isDev: false,
+        target: 'web',
+        isAnalyze,
+        forceEmitSourceMaps,
+        forceEmitStats,
+        transpileCarmiOutput: true,
+      });
     } else {
-      clientDebugConfig = createClientWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isDev: true,
-          forceEmitSourceMaps,
-        },
-      );
+      clientDebugConfig = createClientWebpackConfig(pkg, libs, apps, {
+        isDev: true,
+        forceEmitSourceMaps,
+      });
 
-      clientOptimizedConfig = createClientWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isAnalyze,
-          forceEmitSourceMaps,
-          forceEmitStats,
-        },
-      );
+      clientOptimizedConfig = createClientWebpackConfig(pkg, libs, apps, {
+        isAnalyze,
+        forceEmitSourceMaps,
+        forceEmitStats,
+      });
     }
 
-    const serverConfig = createServerWebpackConfig(
-      rootConfig,
-      pkg,
-      libs,
-      apps,
-      {
-        isDev: true,
-      },
-    );
+    const serverConfig = createServerWebpackConfig(pkg, libs, apps, {
+      isDev: true,
+    });
 
     let webWorkerConfig;
     let webWorkerOptimizeConfig;
 
     if (pkg.config.webWorkerEntry) {
-      webWorkerConfig = createWebWorkerWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isDev: true,
-        },
-      );
+      webWorkerConfig = createWebWorkerWebpackConfig(pkg, libs, apps, {
+        isDev: true,
+      });
 
-      webWorkerOptimizeConfig = createWebWorkerWebpackConfig(
-        rootConfig,
-        pkg,
-        libs,
-        apps,
-        {
-          isAnalyze,
-          forceEmitStats,
-        },
-      );
+      webWorkerOptimizeConfig = createWebWorkerWebpackConfig(pkg, libs, apps, {
+        isAnalyze,
+        forceEmitStats,
+      });
     }
 
     let webWorkerServerConfig;
 
     if (pkg.config.webWorkerServerEntry) {
       webWorkerServerConfig = createWebWorkerServerWebpackConfig(
-        rootConfig,
         pkg,
         libs,
         apps,

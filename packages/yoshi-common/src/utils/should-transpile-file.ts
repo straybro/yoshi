@@ -22,16 +22,11 @@ export default (fileName: string): boolean => {
     return filePath.includes('node_modules/wix-style-react/src');
   };
 
-  const externalRegexList = config.externalUnprocessedModules.map(
-    (m) => new RegExp(`node_modules/${m}`),
-  );
-
   const isFlowEditorEntryPoint = (filePath: string) => {
     return filePath.includes('yoshi-flow-editor/.custom-entries');
   };
 
   return (
-    externalRegexList.some((regex) => regex.test(fileName)) ||
     allSourcesButExternalModules(fileName) ||
     isWixStyleReactSource(fileName) ||
     isFlowEditorEntryPoint(fileName) ||
