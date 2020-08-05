@@ -58,7 +58,7 @@
 - [#2837](https://github.com/wix-private/yoshi/pull/2837) Docs: Fix stats file location in app flow docs ([@ranyitz](https://github.com/ranyitz))
 - [#2849](https://github.com/wix-private/yoshi/pull/2849) Library flow docs: Add target configuration to docs ([@ranyitz](https://github.com/ranyitz))
 
-## list (2020-08-02)
+## v4.133.0 (2020-08-02)
 
 #### :rocket: New Feature
 
