@@ -105,6 +105,7 @@
     "yoshi-config": "4.137.0",
     "yoshi-helpers": "4.138.0",
     "yoshi-runtime": "1.0.732",
+    "yoshi-command-lint": "4.0.0",
     "yoshi-server-tools": "4.138.0"
   },
   "devDependencies": {

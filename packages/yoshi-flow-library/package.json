@@ -37,6 +37,7 @@
     "read-pkg": "5.2.0",
     "yoshi-common": "4.139.0",
     "yoshi-config": "4.137.0",
+    "yoshi-command-lint": "4.0.0",
     "yoshi-flow-legacy": "4.139.0",
     "yoshi-helpers": "4.138.0"
   }

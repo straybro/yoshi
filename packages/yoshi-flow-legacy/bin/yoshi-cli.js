@@ -18,7 +18,12 @@ prog
   .description('Run the linter')
   .option('--fix', 'Automatically fix lint problems')
   .option('--format', 'Use a specific formatter for eslint/tslint')
-  .action(() => runCLI('lint'));
+  .action(() =>
+    require('yoshi-command-lint').default(
+      process.argv.slice(2),
+      require('yoshi-config'),
+    ),
+  );
 
 prog
   .command('test [files]...')

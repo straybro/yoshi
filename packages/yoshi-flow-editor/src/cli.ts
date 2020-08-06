@@ -27,7 +27,7 @@ const commands: {
   start: () => import('./commands/start'),
   add: () => import('./commands/add-component'),
   test: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
-  lint: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
+  lint: () => import('yoshi-command-lint'),
   info: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
   release: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
 };

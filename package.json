@@ -61,7 +61,8 @@
     "test:legacy:build": "npm run test:build --prefix ./packages/yoshi-flow-legacy",
     "test:legacy:start": "npm run test:start --prefix ./packages/yoshi-flow-legacy",
     "test:legacy:test": "npm run test:test --prefix ./packages/yoshi-flow-legacy",
-    "test:legacy:others": "npm run test:others --prefix ./packages/yoshi-flow-legacy"
+    "test:legacy:others": "npm run test:others --prefix ./packages/yoshi-flow-legacy && npm run test:legacy:others:lint",
+    "test:legacy:others:lint": "npm run test --prefix ./packages/yoshi-command-lint"
   },
   "husky": {
     "hooks": {
