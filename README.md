@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://yoshi-assets.surge.sh/create-yoshi-app.gif" alt="create-yoshi-app">
+  <img src="scripts/screencast/screencast.svg" alt="create-yoshi-app">
 </p>
 
 ## Read the documentation
