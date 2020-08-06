@@ -30,7 +30,6 @@
     "@types/webpack": "4.41.21",
     "@types/webpack-bundle-analyzer": "3.8.0",
     "@types/webpack-manifest-plugin": "2.1.0",
-    "@types/webpack-node-externals": "1.7.1",
     "@types/webpackbar": "4.0.0",
     "@types/xmldoc": "1.1.4",
     "type-fest": "0.16.0"
