@@ -1,5 +1,21 @@
 # Changelog
 
+## v4.140.0 (2020-08-06)
+
+#### :memo: Documentation
+
+- [#2924](https://github.com/wix-private/yoshi/pull/2924) Add amazing screencast to the main readme ([@ranyitz](https://github.com/ranyitz))
+- [#2922](https://github.com/wix-private/yoshi/pull/2922) add simple check to see if anything changed in regard to the website … ([@galElmalah](https://github.com/galElmalah))
+
+#### :house: Internal
+
+- `yoshi-command-lint`, `yoshi-flow-app`, `yoshi-flow-bm`, `yoshi-flow-editor`, `yoshi-flow-legacy`, `yoshi-flow-library`, `yoshi-flow-monorepo`
+  - [#2910](https://github.com/wix-private/yoshi/pull/2910) Yoshi command lint ([@aristofun](https://github.com/aristofun))
+- `yoshi-common`
+  - [#2919](https://github.com/wix-private/yoshi/pull/2919) Only send BI with `typescriptVersion` if in a TS project ([@amitdahan](https://github.com/amitdahan))
+- Other
+  - [#2917](https://github.com/wix-private/yoshi/pull/2917) Make sure docusaurus monorepo dependencies are being updated in the same PR ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.139.0 (2020-08-05)
 
 #### :rocket: New Feature
