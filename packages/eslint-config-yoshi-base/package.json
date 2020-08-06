@@ -10,14 +10,14 @@
   "author": "Ronen Amiel & Ran Yitzhaki",
   "license": "ISC",
   "peerDependencies": {
-    "babel-eslint": "^10.0.0",
-    "eslint": "^5.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jest": "^22.0.0 || ^23.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^2.0.5"
+    "eslint": "^5.0.0"
   },
   "dependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jest": "23.20.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "prettier": "2.0.5",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "eslint-config-prettier": "^6.0.0"
