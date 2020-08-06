@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.142.0 (2020-08-06)
+
+#### :bug: Bug Fix
+
+- `eslint-config-yoshi-base`, `eslint-config-yoshi`, `yoshi-flow-legacy`
+  - [#2958](https://github.com/wix-private/yoshi/pull/2958) sort linting dependencies ([@ranyitz](https://github.com/ranyitz))
+
+#### :nail_care: Polish
+
+- `yoshi-common`
+  - [#2957](https://github.com/wix-private/yoshi/pull/2957) Add an env var for skipping thread-loader (experimental) ([@ronami](https://github.com/ronami))
+
 ## v4.141.0 (2020-08-06)
 
 #### :bug: Bug Fix
