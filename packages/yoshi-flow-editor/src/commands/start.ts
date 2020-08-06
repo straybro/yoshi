@@ -9,6 +9,7 @@ import {
 } from 'yoshi-config/build/paths';
 import { mapValues } from 'lodash';
 import * as telemetry from 'yoshi-common/build/telemetry';
+import copyExternalViewerScript from '../scripts/copyExternalViewerScript';
 import { cliCommand } from '../cli';
 import {
   joinDirs,
@@ -129,6 +130,12 @@ const start: cliCommand = async function (argv, config, model) {
   });
 
   await devEnvironment.start();
+
+  // If app has viewer script configured by other project, we can just specifiy a path to it,
+  // so it will work with local overrides.
+  if (model.externalViewerScriptPath) {
+    copyExternalViewerScript(model.externalViewerScriptPath);
+  }
 };
 
 export default start;

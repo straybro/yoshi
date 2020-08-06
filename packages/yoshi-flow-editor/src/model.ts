@@ -42,6 +42,7 @@ export interface FlowEditorModel {
   components: Array<ComponentModel>;
   createControllersStrategy: CreateControllersStrategy;
   sentry: SentryConfig | null;
+  externalViewerScriptPath: string | null;
   urls: URLsConfig;
 }
 
@@ -70,6 +71,7 @@ export interface AppConfig {
   translations?: TranslationsConfig | null;
   sentry?: SentryConfig;
   bi?: BIConfig | string;
+  externalViewerScriptPath?: string;
   createControllersStrategy?: CreateControllersStrategy;
 }
 export interface ComponentConfig {
@@ -278,6 +280,10 @@ For more info, visit http://tiny.cc/dev-center-registration`);
     [] as Array<ComponentModel>,
   );
 
+  const defaultCreateControllersStrategy = appConfig.externalViewerScriptPath
+    ? 'controller'
+    : 'all';
+
   const model = {
     // dev center app name from .application.json
     appName: appConfig.appName || null,
@@ -292,7 +298,9 @@ For more info, visit http://tiny.cc/dev-center-registration`);
     artifactId,
     viewerEntryFileName,
     components: componentModels,
-    createControllersStrategy: appConfig.createControllersStrategy || 'all',
+    externalViewerScriptPath: appConfig.externalViewerScriptPath ?? null,
+    createControllersStrategy:
+      appConfig.createControllersStrategy ?? defaultCreateControllersStrategy,
     urls: {
       viewerUrl: (urlsConfig && urlsConfig.viewerUrl) || null,
       editorUrl: (urlsConfig && urlsConfig.editorUrl) || null,

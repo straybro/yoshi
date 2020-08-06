@@ -14,6 +14,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         projectName: '@wix/app',
         artifactId: '7891',
         createControllersStrategy: 'all',
+        externalViewerScriptPath: null,
         editorEntryFileName: 'a/b/editor.app.ts',
         viewerEntryFileName: 'a/b',
         biConfig: {
@@ -59,6 +60,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         projectName: '@wix/app',
         artifactId: '7891',
         urls: {},
+        externalViewerScriptPath: null,
         createControllersStrategy: 'controller',
         translationsConfig: {},
         biConfig: {
@@ -113,6 +115,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         createControllersStrategy: 'all',
         urls: {},
         biConfig: {},
+        externalViewerScriptPath: null,
         translationsConfig: null,
         editorEntryFileName: null,
         viewerEntryFileName: 'a/b',
@@ -152,6 +155,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         urls: {},
         createControllersStrategy: 'all',
         translationsConfig: {},
+        externalViewerScriptPath: null,
         biConfig: {
           visitor: 'bi-visitor-package',
           owner: 'bi-owner-package',
@@ -196,6 +200,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         createControllersStrategy: 'all',
         viewerEntryFileName: 'a/b',
         appDefId: 'APP_DEF_ID',
+        externalViewerScriptPath: 'a/b/c',
         biConfig: {
           visitor: 'bi-visitor-package',
           owner: 'bi-owner-package',
