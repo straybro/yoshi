@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.141.0 (2020-08-06)
+
+#### :bug: Bug Fix
+
+- `yoshi-command-lint`, `yoshi-serverless`
+  - [#2955](https://github.com/wix-private/yoshi/pull/2955) Fix yoshi deps out of sync with repo versions ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.140.0 (2020-08-06)
 
 #### :memo: Documentation
