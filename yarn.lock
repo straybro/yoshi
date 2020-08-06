@@ -8027,14 +8027,14 @@ atob@^2.1.2:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
-autoprefixer@9.8.5:
-  version "9.8.5"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/autoprefixer/-/autoprefixer-9.8.5.tgz#2c225de229ddafe1d1424c02791d0c3e10ccccaa"
-  integrity sha1-LCJd4indr+HRQkwCeR0MPhDMzKo=
+autoprefixer@9.8.6:
+  version "9.8.6"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/autoprefixer/-/autoprefixer-9.8.6.tgz#3b73594ca1bf9266320c5acf1588d74dea74210f"
+  integrity sha1-O3NZTKG/kmYyDFrPFYjXTep0IQ8=
   dependencies:
     browserslist "^4.12.0"
-    caniuse-lite "^1.0.30001097"
-    colorette "^1.2.0"
+    caniuse-lite "^1.0.30001109"
+    colorette "^1.2.1"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.32"
@@ -9791,10 +9791,10 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000929, caniuse-lite@^1.0.30000989, can
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/caniuse-lite/-/caniuse-lite-1.0.30001085.tgz#bed28bd51ff7425d33ee23e730c7f3b703711db6"
   integrity sha1-vtKL1R/3Ql0z7iPnMMfztwNxHbY=
 
-caniuse-lite@^1.0.30001097:
-  version "1.0.30001100"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/caniuse-lite/-/caniuse-lite-1.0.30001100.tgz#2a58615e0c01cf716ab349b20ca4d86ef944aa4e"
-  integrity sha1-KlhhXgwBz3Fqs0myDKTYbvlEqk4=
+caniuse-lite@^1.0.30001109:
+  version "1.0.30001109"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/caniuse-lite/-/caniuse-lite-1.0.30001109.tgz#a9f3f26a0c3753b063d7acbb48dfb9c0e46f2b19"
+  integrity sha1-qfPyagw3U7Bj16y7SN+5wORvKxk=
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -10369,7 +10369,7 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.2"
 
-colorette@^1.2.0:
+colorette@^1.2.1:
   version "1.2.1"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
   integrity sha1-TQuSEyXBT6+SYzCGpTbbbolWSxs=
