@@ -1062,12 +1062,16 @@ export function createBaseWebpackConfig({
           exclude: /\.carmi.(js|ts)$/,
           include: includeAllInTranspilation,
           use: [
-            {
-              loader: 'thread-loader',
-              options: {
-                workers: os.cpus().length - 1,
-              },
-            },
+            ...(process.env.SKIP_THREAD_LOADER
+              ? []
+              : [
+                  {
+                    loader: 'thread-loader',
+                    options: {
+                      workers: os.cpus().length - 1,
+                    },
+                  },
+                ]),
 
             ...(useAngular
               ? [{ loader: 'yoshi-angular-dependencies/ng-annotate-loader' }]
@@ -1119,21 +1123,25 @@ export function createBaseWebpackConfig({
           ],
         },
 
-        {
-          test: reScript,
-          include: includeAllInTranspilation,
-          // Optimize JS processing worker stuff excluded due to
-          // https://github.com/webpack-contrib/worker-loader/issues/177
-          exclude: [/\.inline\.worker\.js/, /\.carmi.(js|ts)$/],
-          use: [
-            {
-              loader: 'thread-loader',
-              options: {
-                workers: os.cpus().length - 1,
+        ...(process.env.SKIP_THREAD_LOADER
+          ? []
+          : [
+              {
+                test: reScript,
+                include: includeAllInTranspilation,
+                // Optimize JS processing worker stuff excluded due to
+                // https://github.com/webpack-contrib/worker-loader/issues/177
+                exclude: [/\.inline\.worker\.js/, /\.carmi.(js|ts)$/],
+                use: [
+                  {
+                    loader: 'thread-loader',
+                    options: {
+                      workers: os.cpus().length - 1,
+                    },
+                  },
+                ],
               },
-            },
-          ],
-        },
+            ]),
 
         ...(transpileCarmiOutput
           ? [
