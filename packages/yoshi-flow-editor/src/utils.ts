@@ -36,6 +36,8 @@ const urlOriginToSupportedOverridesMap: Record<string, Array<string>> = {
   appBuilderUrl: ['viewerPlatformOverrides'],
 };
 
+type ShouldIncludeFormatter = (component: ComponentModel) => boolean;
+
 export const normalizeStartUrlOption = (
   urls: Record<string, string | undefined>,
 ): Array<string> => {
@@ -52,24 +54,41 @@ export const normalizeStartUrlOption = (
   return result;
 };
 
-const widgetUrlFormatter = (component: ComponentModel, baseUrl: string) => {
+const widgetUrlFormatter = (
+  component: ComponentModel,
+  baseUrl: string,
+  shouldIncludeFormatter?: ShouldIncludeFormatter,
+) => {
+  if (shouldIncludeFormatter && !shouldIncludeFormatter(component)) {
+    return '';
+  }
   return `${component.id}=${urlJoin(
     baseUrl,
     `${component.name}ViewerWidget.bundle.js`,
   )}`;
 };
 
-const controllerUrlFormatter = (component: ComponentModel, baseUrl: string) => {
+const controllerUrlFormatter = (
+  component: ComponentModel,
+  baseUrl: string,
+  shouldIncludeFormatter?: ShouldIncludeFormatter,
+) => {
+  if (shouldIncludeFormatter && !shouldIncludeFormatter(component)) {
+    return '';
+  }
   return `${component.id}=${urlJoin(
     baseUrl,
     `${component.name}Controller.bundle.js`,
   )}`;
 };
 
-const tpaUrlFormatterForType = (type: 'editor' | 'settings' = 'editor') => (
-  component: ComponentModel,
-  baseUrl: string,
-) => {
+const tpaUrlFormatterForType = (
+  type: 'editor' | 'settings' = 'editor',
+  shouldIncludeFormatter?: ShouldIncludeFormatter,
+) => (component: ComponentModel, baseUrl: string) => {
+  if (shouldIncludeFormatter && !shouldIncludeFormatter(component)) {
+    return '';
+  }
   return `${component.id}=${urlJoin(baseUrl, type, component.name)}`;
 };
 
@@ -107,6 +126,9 @@ const isOverrideSupportedForOrigin = (
   );
 };
 
+const withSettings = (component: ComponentModel) =>
+  Boolean(component.settingsFileName || component.settingsMobileFileName);
+
 export const overrideQueryParamsWithModel = (
   model: FlowEditorModel,
   { cdnUrl, serverUrl }: { cdnUrl: string; serverUrl: string },
@@ -135,7 +157,9 @@ export const overrideQueryParamsWithModel = (
   isOverrideSupportedForOrigin(origin, 'tpaSettingsUrlOverride') &&
     urlWithParams.searchParams.set(
       'tpaSettingsUrlOverride',
-      editorComponentsWithFormatter(tpaUrlFormatterForType('settings')),
+      editorComponentsWithFormatter(
+        tpaUrlFormatterForType('settings', withSettings),
+      ),
     );
 
   model.createControllersStrategy === 'controller' &&

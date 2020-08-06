@@ -229,4 +229,59 @@ describe('addOverrideQueryParamsWithModel', () => {
 
     expect(urlWithParams).toBe(`https://mysite.com/`);
   });
+
+  it("generates override params for settings only if it's included in the model's component", () => {
+    const overrideParams = overrideQueryParamsWithModel(
+      {
+        appName: 'app',
+        projectName: '@wix/app',
+        artifactId: '7891',
+        createControllersStrategy: 'all',
+        editorEntryFileName: 'a/b/editor.app.ts',
+        viewerEntryFileName: 'a/b',
+        biConfig: {
+          visitor: 'bi-visitor-package',
+          owner: 'bi-owner-package',
+        },
+        appDefId: 'APP_DEF_ID',
+        sentry: null,
+        translationsConfig: {},
+        urls: {
+          viewerUrl: 'https://google.com',
+          editorUrl: 'https://google.com',
+        },
+        experimentsConfig: {
+          scope: 'test-scope',
+        },
+        components: [
+          {
+            name: 'comp',
+            id: 'WIDGET_ID',
+            type: OOI_WIDGET_COMPONENT_TYPE,
+            widgetFileName: 'proj/comp/Widget.ts',
+            viewerControllerFileName: 'proj/comp/controller.ts',
+            editorControllerFileName: null,
+            settingsFileName: null,
+            settingsMobileFileName: null,
+          },
+          {
+            name: 'comp2',
+            id: 'WIDGET_ID_2',
+            type: OOI_WIDGET_COMPONENT_TYPE,
+            widgetFileName: 'proj/comp/Widget2.ts',
+            viewerControllerFileName: 'proj/comp/controller-2.ts',
+            editorControllerFileName: null,
+            settingsFileName: 'path/to/settings-2',
+            settingsMobileFileName: null,
+          },
+        ],
+      },
+      { cdnUrl, serverUrl },
+    );
+    const urlWithParams = overrideParams('https://mysite.com', 'editorUrl');
+
+    expect(urlWithParams).toBe(
+      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaMobileUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaSettingsUrlOverride=,WIDGET_ID_2=https://localhost:5004/settings/comp2&widgetsUrlOverride=WIDGET_ID=https://localhost:5005/compViewerWidget.bundle.js,WIDGET_ID_2=https://localhost:5005/comp2ViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=https://localhost:5005/viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=https://localhost:5005/editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"https://localhost:5005/"}`,
+    );
+  });
 });
