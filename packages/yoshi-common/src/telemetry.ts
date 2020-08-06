@@ -44,12 +44,14 @@ const biLogger = initSchemaLogger(biLoggerFactory)();
 
 const { version: yoshiVersion } = require('../package.json');
 
+const isTS = isTypescriptProject();
+
 const biDefaults: Intersection<StartInitParams, BuildStartParams> = {
   isCI,
   nodeVersion: `${semver.parse(process.version)?.major}`,
   yoshiVersion: `${semver.parse(yoshiVersion)?.major}`,
-  projectLanguage: isTypescriptProject() ? 'ts' : 'js',
-  typescriptVersion: getTypescriptVersion(),
+  projectLanguage: isTS ? 'ts' : 'js',
+  typescriptVersion: isTS ? getTypescriptVersion() : undefined,
   email: getWixEmail(),
 };
 
