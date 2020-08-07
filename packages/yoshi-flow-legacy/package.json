@@ -139,7 +139,7 @@
     "serve": "11.3.2",
     "shelljs": "0.8.4",
     "shmock": "0.8.1",
-    "strip-ansi": "4.0.0",
+    "strip-ansi": "6.0.0",
     "tempy": "0.6.0",
     "typescript": "3.9.7",
     "yoshi-angular-dependencies": "4.58.0",
