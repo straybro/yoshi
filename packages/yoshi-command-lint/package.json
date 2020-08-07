@@ -32,7 +32,7 @@
     "yoshi-helpers": "4.138.0"
   },
   "devDependencies": {
-    "@types/node": "12.12.6",
+    "@types/node": "12.12.54",
     "chai": "4.2.0",
     "mocha": "3.5.3",
     "mocha-teamcity-reporter": "2.5.2",
