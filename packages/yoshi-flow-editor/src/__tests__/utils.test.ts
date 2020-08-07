@@ -239,6 +239,7 @@ describe('addOverrideQueryParamsWithModel', () => {
         createControllersStrategy: 'all',
         editorEntryFileName: 'a/b/editor.app.ts',
         viewerEntryFileName: 'a/b',
+        externalViewerScriptPath: null,
         biConfig: {
           visitor: 'bi-visitor-package',
           owner: 'bi-owner-package',
