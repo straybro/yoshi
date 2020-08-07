@@ -21571,21 +21571,21 @@ os-locale@^3.0.0, os-locale@^3.1.0:
     lcid "^2.0.0"
     mem "^4.0.0"
 
-os-name@2.0.1, os-name@^2.0.1:
-  version "2.0.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/os-name/-/os-name-2.0.1.tgz#b9a386361c17ae3a21736ef0599405c9a8c5dc5e"
-  integrity sha1-uaOGNhwXrjohc27wWZQFyajF3F4=
-  dependencies:
-    macos-release "^1.0.0"
-    win-release "^1.0.0"
-
-os-name@^3.0.0, os-name@^3.1.0:
+os-name@3.1.0, os-name@^3.0.0, os-name@^3.1.0:
   version "3.1.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/os-name/-/os-name-3.1.0.tgz#dec19d966296e1cd62d701a5a66ee1ddeae70801"
   integrity sha1-3sGdlmKW4c1i1wGlpm7h3ernCAE=
   dependencies:
     macos-release "^2.2.0"
     windows-release "^3.1.0"
+
+os-name@^2.0.1:
+  version "2.0.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/os-name/-/os-name-2.0.1.tgz#b9a386361c17ae3a21736ef0599405c9a8c5dc5e"
+  integrity sha1-uaOGNhwXrjohc27wWZQFyajF3F4=
+  dependencies:
+    macos-release "^1.0.0"
+    win-release "^1.0.0"
 
 os-tmpdir@^1.0.0, os-tmpdir@^1.0.1, os-tmpdir@~1.0.1, os-tmpdir@~1.0.2:
   version "1.0.2"
