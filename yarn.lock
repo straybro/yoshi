@@ -20258,17 +20258,10 @@ mocha-jenkins-reporter@*:
     mkdirp "^0.5.4"
     xml "^1.0.1"
 
-mocha-teamcity-reporter@*:
+mocha-teamcity-reporter@*, mocha-teamcity-reporter@3.0.0:
   version "3.0.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha-teamcity-reporter/-/mocha-teamcity-reporter-3.0.0.tgz#2c4776288f23dac61aa0fee5930571cc2a51df1a"
   integrity sha1-LEd2KI8j2sYaoP7lkwVxzCpR3xo=
-
-mocha-teamcity-reporter@2.5.2:
-  version "2.5.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha-teamcity-reporter/-/mocha-teamcity-reporter-2.5.2.tgz#724d43b7bd719ce229436be79627445c7273ad9c"
-  integrity sha1-ck1Dt71xnOIpQ2vnlidEXHJzrZw=
-  dependencies:
-    mocha ">=3.5.0 < 6"
 
 mocha@3.5.3:
   version "3.5.3"
@@ -20288,7 +20281,7 @@ mocha@3.5.3:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
-mocha@5.2.0, "mocha@>=3.5.0 < 6":
+mocha@5.2.0:
   version "5.2.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha/-/mocha-5.2.0.tgz#6d8ae508f59167f940f2b5b3c4a612ae50c90ae6"
   integrity sha1-bYrlCPWRZ/lA8rWzxKYSrlDJCuY=

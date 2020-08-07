@@ -69,7 +69,7 @@
     "minimist": "1.2.5",
     "mkdirp": "0.5.5",
     "mocha": "3.5.3",
-    "mocha-teamcity-reporter": "2.5.2",
+    "mocha-teamcity-reporter": "3.0.0",
     "mock-require": "3.0.3",
     "nyc": "12.0.2",
     "os-name": "3.1.0",
