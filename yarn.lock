@@ -4454,10 +4454,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/url-join/-/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
   integrity sha1-cu/3FkikKcfUrPlOA3gOBmcTab0=
 
-"@types/uuid@7.0.4":
-  version "7.0.4"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/uuid/-/uuid-7.0.4.tgz#00a5749810b4ad80bff73a61f9cc9d0d521feb3c"
-  integrity sha1-AKV0mBC0rYC/9zph+cydDVIf6zw=
+"@types/uuid@8.0.1":
+  version "8.0.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/uuid/-/uuid-8.0.1.tgz#42958a1a880640b139eea97a1640e1a3f61016d2"
+  integrity sha1-QpWKGogGQLE57ql6FkDho/YQFtI=
 
 "@types/validate-npm-package-name@3.0.0":
   version "3.0.0"
@@ -28425,6 +28425,11 @@ uuid@8.1.0:
   version "8.1.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/uuid/-/uuid-8.1.0.tgz#6f1536eb43249f473abc6bd58ff983da1ca30d8d"
   integrity sha1-bxU260Mkn0c6vGvVj/mD2hyjDY0=
+
+uuid@8.3.0:
+  version "8.3.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
+  integrity sha1-q3OAhcoi3JqMknJeRZsdUH311uo=
 
 uuid@^2.0.1:
   version "2.0.3"
