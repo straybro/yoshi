@@ -117,7 +117,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest-yoshi-preset": "4.142.0",
     "karma": "2.0.5",
-    "karma-chrome-launcher": "2.2.0",
+    "karma-chrome-launcher": "3.1.0",
     "karma-jasmine": "1.1.2",
     "karma-mocha": "2.0.1",
     "karma-phantomjs-launcher": "1.0.4",

@@ -14165,13 +14165,6 @@ front-matter@^3.0.1:
   dependencies:
     js-yaml "^3.13.1"
 
-fs-access@^1.0.0:
-  version "1.0.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
-  integrity sha1-1qh/JiJxzv6+wwxVNAf7mV2od3o=
-  dependencies:
-    null-check "^1.0.0"
-
 fs-constants@^1.0.0:
   version "1.0.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/fs-constants/-/fs-constants-1.0.0.tgz#6be0de9be998ce16af8afc24497b9ee9b7ccd9ad"
@@ -18140,12 +18133,11 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
-karma-chrome-launcher@2.2.0:
-  version "2.2.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/karma-chrome-launcher/-/karma-chrome-launcher-2.2.0.tgz#cf1b9d07136cc18fe239327d24654c3dbc368acf"
-  integrity sha1-zxudBxNswY/iOTJ9JGVMPbw2is8=
+karma-chrome-launcher@3.1.0:
+  version "3.1.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/karma-chrome-launcher/-/karma-chrome-launcher-3.1.0.tgz#805a586799a4d05f4e54f72a204979f3f3066738"
+  integrity sha1-gFpYZ5mk0F9OVPcqIEl58/MGZzg=
   dependencies:
-    fs-access "^1.0.0"
     which "^1.2.1"
 
 karma-jasmine@1.1.2:
@@ -21140,11 +21132,6 @@ nth-check@^1.0.2, nth-check@~1.0.1:
   integrity sha1-sr0pXDfj3VijvwcAN2Zjuk2c8Fw=
   dependencies:
     boolbase "~1.0.0"
-
-null-check@^1.0.0:
-  version "1.0.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/null-check/-/null-check-1.0.0.tgz#977dffd7176012b9ec30d2a39db5cf72a0439edd"
-  integrity sha1-l33/1xdgErnsMNKjnbXPcqBDnt0=
 
 num2fraction@^1.2.2:
   version "1.2.2"
