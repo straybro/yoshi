@@ -44,7 +44,7 @@
     "listr": "^0.14.3",
     "lodash": "^4.17.11",
     "node-fetch": "2.6.0",
-    "open": "^6.4.0",
+    "open": "^7.0.0",
     "parse-git-config": "^3.0.0",
     "pascal-case": "^2.0.1",
     "prompts": "^2.3.2",
