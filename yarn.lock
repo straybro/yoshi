@@ -20263,10 +20263,10 @@ mocha-bamboo-reporter@*:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha-bamboo-reporter/-/mocha-bamboo-reporter-1.1.2.tgz#bbd13ddbd227895b52237284a3b767704bd7e710"
   integrity sha1-u9E929IniVtSI3KEo7dncEvX5xA=
 
-mocha-env-reporter@3.0.2:
-  version "3.0.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha-env-reporter/-/mocha-env-reporter-3.0.2.tgz#608a375ea3ba2f1c4aedd0fb97d3af2d6ef3618f"
-  integrity sha1-YIo3XqO6LxxK7dD7l9OvLW7zYY8=
+mocha-env-reporter@4.0.0:
+  version "4.0.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/mocha-env-reporter/-/mocha-env-reporter-4.0.0.tgz#6e6b72f88e5aa19c4a07ea1478923555afc815dc"
+  integrity sha1-bmty+I5aoZxKB+oUeJI1Va/IFdw=
   dependencies:
     mocha-bamboo-reporter "*"
     mocha-jenkins-reporter "*"

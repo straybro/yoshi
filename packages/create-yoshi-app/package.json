@@ -67,7 +67,7 @@
     "find-cache-dir": "3.3.1",
     "minimist": "1.2.5",
     "mocha": "5.2.0",
-    "mocha-env-reporter": "3.0.2",
+    "mocha-env-reporter": "4.0.0",
     "mock-require": "3.0.3",
     "tempy": "0.6.0",
     "ts-node": "8.10.2",

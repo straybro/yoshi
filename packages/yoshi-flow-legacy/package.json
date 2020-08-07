@@ -123,7 +123,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "karma-teamcity-reporter": "1.1.0",
     "minimatch": "3.0.4",
-    "mocha-env-reporter": "3.0.2",
+    "mocha-env-reporter": "4.0.0",
     "ng-annotate": "1.2.2",
     "node-fetch": "2.6.0",
     "node-sass": "4.14.1",

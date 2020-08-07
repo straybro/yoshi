@@ -120,7 +120,7 @@
     "lodash": "4.17.19",
     "minimist": "1.2.5",
     "mocha": "5.2.0",
-    "mocha-env-reporter": "3.0.2",
+    "mocha-env-reporter": "4.0.0",
     "mocha-teamcity-reporter": "2.5.2",
     "multimatch": "4.0.0",
     "node-fetch": "2.6.0",
