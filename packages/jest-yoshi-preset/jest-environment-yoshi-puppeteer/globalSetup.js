@@ -4,14 +4,12 @@ process.on('exit', () => {
   }
 });
 
-const fs = require('fs-extra');
 const stream = require('stream');
 const chalk = require('chalk');
 const puppeteer = require('puppeteer');
 const child_process = require('child_process');
 const waitPort = require('wait-port');
 const { servers, name: packageName } = require('yoshi-config');
-const { WS_ENDPOINT_PATH, IS_DEBUG_MODE } = require('./constants');
 const { shouldRunE2Es } = require('./utils');
 const { shouldDeployToCDN } = require('yoshi-helpers/build/queries');
 const { getProcessOnPort } = require('yoshi-helpers/utils');
@@ -51,7 +49,7 @@ module.exports = async (config) => {
       const watchDebugMode = JestWatchDebug.getDebugMode();
 
       puppeteerRuntimeOverrides.devtools = watchDebugMode;
-      await fs.outputFile(IS_DEBUG_MODE, watchDebugMode);
+      process.env.IS_DEBUG_MODE = watchDebugMode;
     }
 
     global.BROWSER = await puppeteer.launch({
@@ -79,7 +77,7 @@ module.exports = async (config) => {
       ],
     });
 
-    await fs.outputFile(WS_ENDPOINT_PATH, global.BROWSER.wsEndpoint());
+    process.env.WS_ENDPOINT = global.BROWSER.wsEndpoint();
 
     const webpackDevServerProcess = await getProcessOnPort(
       servers.cdn.port,

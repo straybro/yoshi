@@ -1,6 +1,4 @@
-const fs = require('fs-extra');
 const puppeteer = require('puppeteer');
-const { WS_ENDPOINT_PATH, IS_DEBUG_MODE } = require('./constants');
 const { setupRequireHooks } = require('yoshi-common/build/require-hooks');
 const loadJestYoshiConfig = require('../load-jest-config');
 const { getBrowserDebugFunction } = require('./utils');
@@ -20,12 +18,12 @@ module.exports = class PuppeteerEnvironment extends ParentEnvironment {
   async setup() {
     await super.setup();
 
-    const browserWSEndpoint = await fs.readFile(WS_ENDPOINT_PATH, 'utf8');
+    const browserWSEndpoint = process.env.WS_ENDPOINT;
 
     let isDebugMode = false;
 
     try {
-      isDebugMode = JSON.parse(await fs.readFile(IS_DEBUG_MODE, 'utf8'));
+      isDebugMode = JSON.parse(process.env.IS_DEBUG_MODE);
     } catch (e) {}
 
     if (!browserWSEndpoint) {
