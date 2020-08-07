@@ -2,7 +2,7 @@ import path from 'path';
 import globby from 'globby';
 import { isLeft } from 'fp-ts/lib/Either';
 import { PathReporter } from 'io-ts/lib/PathReporter';
-import serializeError from 'serialize-error';
+import { serializeError } from 'serialize-error';
 import { BUILD_DIR } from 'yoshi-config/build/paths';
 import { requestPayloadCodec, DSL } from '../types';
 import { relativeFilePath, connectToYoshiServerHMR, HttpError } from '../utils';

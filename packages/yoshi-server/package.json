@@ -34,7 +34,7 @@
     "micro": "9.3.5-canary.3",
     "path-to-regexp": "3.2.0",
     "react-dev-utils": "7.0.5",
-    "serialize-error": "4.1.0",
+    "serialize-error": "7.0.1",
     "sockjs-client": "1.5.0",
     "type-fest": "0.16.0",
     "wix-bootstrap-bo-auth": "^1.0.1888",

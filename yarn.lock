@@ -25353,12 +25353,12 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
-serialize-error@4.1.0:
-  version "4.1.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serialize-error/-/serialize-error-4.1.0.tgz#63e1e33ede20bcd89d9f0528ea4c15fbf0f2b78a"
-  integrity sha1-Y+HjPt4gvNidnwUo6kwV+/Dyt4o=
+serialize-error@7.0.1:
+  version "7.0.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serialize-error/-/serialize-error-7.0.1.tgz#f1360b0447f61ffb483ec4157c737fab7d778e18"
+  integrity sha1-8TYLBEf2H/tIPsQVfHN/q313jhg=
   dependencies:
-    type-fest "^0.3.0"
+    type-fest "^0.13.1"
 
 serialize-error@^2.1.0:
   version "2.1.0"
