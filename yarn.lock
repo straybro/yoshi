@@ -22089,10 +22089,10 @@ path-to-regexp@2.2.1:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/path-to-regexp/-/path-to-regexp-2.2.1.tgz#90b617025a16381a879bc82a38d4e8bdeb2bcf45"
   integrity sha1-kLYXAloWOBqHm8gqONTovesrz0U=
 
-path-to-regexp@3.2.0:
-  version "3.2.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/path-to-regexp/-/path-to-regexp-3.2.0.tgz#fa7877ecbc495c601907562222453c43cc204a5f"
-  integrity sha1-+nh37LxJXGAZB1YiIkU8Q8wgSl8=
+path-to-regexp@6.1.0:
+  version "6.1.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/path-to-regexp/-/path-to-regexp-6.1.0.tgz#0b18f88b7a0ce0bfae6a25990c909ab86f512427"
+  integrity sha1-Cxj4i3oM4L+uaiWZDJCauG9RJCc=
 
 path-to-regexp@^1.7.0:
   version "1.8.0"

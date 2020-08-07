@@ -1,6 +1,6 @@
 import path from 'path';
 import SockJS from 'sockjs-client';
-import pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import { ROUTES_BUILD_DIR } from 'yoshi-config/build/paths';
 
 const routesBuildDir = path.resolve(ROUTES_BUILD_DIR);
