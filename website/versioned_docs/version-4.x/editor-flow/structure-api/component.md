@@ -9,7 +9,7 @@ According to the Yoshi Editor Flow concept, the app is grouped by components, in
 So for now, we'll have `Widget`, `Settings` and `controller` in a single place, instead of having `settings` directory with all settings panels of your app. Or `viewerScript` directory, which will include all controllers. With last approach, it could be really hard to navigate between `controller` and `Widget` located in completely different directories or even projects, since Widget consumes properties passed by controller. You'll probably want to maintain `PublicData` in a single place also instead of switching between settings and widget directory.
 
 ## `.component.json`
-Located under `src/components/:componentName/.component.json` this config file helps us to generate `createControllers` for Viewer Script under the hood. Here you can find `id` of your component and type (`WIDGET_OUT_OF_IFRAME`, `PAGE_OUT)OF_IFRAME` or `APP_STUDIO_WIDGET`).
+Located under `src/components/:componentName/.component.json` this config file helps us to generate `createControllers` for Viewer Script under the hood. Here you can find `id` of your component and type (`WIDGET_OUT_OF_IFRAME`, `PAGE_OUT_OF_IFRAME` or `APP_STUDIO_WIDGET`).
 
 ## `controller`
 File which `export default createController` function.

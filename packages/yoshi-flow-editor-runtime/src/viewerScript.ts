@@ -185,32 +185,39 @@ export const createControllersWithDescriptors = (
   controllerDescriptors: Array<ControllerDescriptor>,
 ) => (
   controllerConfigs: Array<IWidgetControllerConfig>,
-  controllerInstance?: {
+  controllerModulesMap?: {
     [paramKey: string]:
-      | { default: CreateControllerFn }
+      | { [methodName: string]: CreateControllerFn }
       | CreateControllerFn
       | Function;
   },
 ) => {
   const wrappedControllers = controllerConfigs.map((controllerConfig) => {
     // [Platform surprise] `type` here, is a widgetId. :(
-    const { type } = controllerConfig;
+    const { type: widgetId } = controllerConfig;
     const controllerDescriptor:
       | ControllerDescriptor
-      | undefined = getDescriptorForConfig(type, controllerDescriptors);
+      | undefined = getDescriptorForConfig(widgetId, controllerDescriptors);
 
     if (!controllerDescriptor) {
       throw new Error(
-        `Descriptor for widgetId: "${controllerConfig.type}" was not found. Please create a ".component.json" file for current widget`,
+        `Descriptor for widgetId: "${widgetId}" was not found. Please create a ".component.json" file for current widget`,
       );
     }
 
-    if (controllerInstance?.[type]) {
-      const method = controllerInstance?.[type];
-      if (typeof method === 'function') {
-        controllerDescriptor.method = method;
-      } else if (typeof method.default === 'function') {
-        controllerDescriptor.method = method.default;
+    if (controllerModulesMap?.[widgetId]) {
+      const controllerModule = controllerModulesMap?.[widgetId];
+      if (typeof controllerModule === 'function') {
+        controllerDescriptor.method = controllerModule;
+      } else if (controllerModule) {
+        const controllerKey =
+          Object.keys(controllerModule).find((key) =>
+            key.toLowerCase().includes('controller'),
+          ) || 'default';
+        const method = controllerModule[controllerKey];
+        if (typeof method === 'function') {
+          controllerDescriptor.method = method;
+        }
       }
     }
 

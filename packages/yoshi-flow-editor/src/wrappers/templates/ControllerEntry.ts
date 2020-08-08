@@ -53,7 +53,7 @@ export default t<Opts>`
       ? `import biLogger from '${visitorBiLoggerPath}'`
       : 'var biLogger = null'};
 
-  export default createControllerWrapper(userController, {
+  const _controller = createControllerWrapper(userController, {
     sentryConfig,
     biConfig,
     experimentsConfig,
@@ -63,4 +63,6 @@ export default t<Opts>`
     projectName: ${({ projectName }) => `"${projectName}"`},
     defaultTranslations,
   });
+  export const controller = _controller;
+  export default _controller;
 `;
