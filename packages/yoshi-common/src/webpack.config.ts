@@ -1038,7 +1038,7 @@ export function createBaseWebpackConfig({
               {
                 test: reScript,
                 loader: 'yoshi-angular-dependencies/ng-annotate-loader',
-                include: shouldTranspileFile,
+                include: includeAllInTranspilation,
               },
             ]
           : []),
