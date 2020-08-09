@@ -1,5 +1,36 @@
 # Changelog
 
+## v4.143.0 (2020-08-09)
+
+#### :rocket: New Feature
+
+- `create-yoshi-app`, `yoshi-common`, `yoshi-flow-library`
+  - [#2959](https://github.com/wix-private/yoshi/pull/2959) Library Flow: Skip build folder removal on 'start' command ([@aristofun](https://github.com/aristofun))
+- `yoshi-flow-editor-runtime`, `yoshi-flow-editor`
+  - [#2953](https://github.com/wix-private/yoshi/pull/2953) Add controllerExportName option for editor flow's separate controllers mode ([@yavorsky](https://github.com/yavorsky))
+- `yoshi-flow-editor`
+  - [#2819](https://github.com/wix-private/yoshi/pull/2819) Support external viewer script for editor flow projects ([@yavorsky](https://github.com/yavorsky))
+
+#### :bug: Bug Fix
+
+- `yoshi-common`
+  - [#2993](https://github.com/wix-private/yoshi/pull/2993) Run ng-annotate on configured externalUnprocessedModules ([@ranyitz](https://github.com/ranyitz))
+- `jest-yoshi-preset`
+  - [#2654](https://github.com/wix-private/yoshi/pull/2654) Use env vars to pass puppeteer's `wsEndpoint` & `isDebugMode` ([@amitdahan](https://github.com/amitdahan))
+- `yoshi-flow-editor`
+  - [#2961](https://github.com/wix-private/yoshi/pull/2961) fix(flow-editor): Add missing parameter to tests ([@bordi](https://github.com/bordi))
+- `create-yoshi-app`, `yoshi-flow-editor`
+  - [#2952](https://github.com/wix-private/yoshi/pull/2952) fix(editor-flow): Fix auto height lib behaviour ([@bordi](https://github.com/bordi))
+
+#### :nail_care: Polish
+
+- `yoshi-flow-editor`
+  - [#2954](https://github.com/wix-private/yoshi/pull/2954) Don’t overrider URL for settings component ([@yavorsky](https://github.com/yavorsky))
+
+#### :memo: Documentation
+
+- [#2950](https://github.com/wix-private/yoshi/pull/2950) Janet publish flow v2 ([@galElmalah](https://github.com/galElmalah))
+
 ## v4.142.0 (2020-08-06)
 
 #### :bug: Bug Fix
