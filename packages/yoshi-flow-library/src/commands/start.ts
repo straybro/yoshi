@@ -2,7 +2,7 @@ import path from 'path';
 import arg from 'arg';
 import fs from 'fs-extra';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
-import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
+import { TARGET_DIR, STATICS_DIR } from 'yoshi-config/build/paths';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import webpack from 'webpack';
 import * as telemetry from 'yoshi-common/build/telemetry';
@@ -50,7 +50,7 @@ const start: cliCommand = async function (argv, config, pkgJson) {
   }
 
   await Promise.all([
-    fs.emptyDir(join(BUILD_DIR)),
+    fs.emptyDir(join(STATICS_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
   ]);
 

@@ -158,7 +158,9 @@ const testTemplate = (mockedAnswers) => {
       it('should not have errors on typescript strict check', async () => {
         console.log('checking strict typescript...');
 
-        const result = await exec('./node_modules/.bin/tsc --noEmit --strict');
+        const result = await exec(
+          './node_modules/.bin/tsc --noEmit --strict --incremental false',
+        );
 
         if (result.exitCode !== 0) {
           console.log(result.stderr);

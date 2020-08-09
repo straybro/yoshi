@@ -13,6 +13,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "incremental": true,
     "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "dist/esm",

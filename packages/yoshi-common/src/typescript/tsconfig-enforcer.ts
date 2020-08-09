@@ -29,6 +29,7 @@ const compilerOptions: CustomCompilerOptions = {
   jsx: { suggested: 'react' },
   forceConsistentCasingInFileNames: { suggested: true },
   noFallthroughCasesInSwitch: { suggested: true },
+  incremental: { suggested: true },
 
   // These values are required and cannot be changed by the user
   // Keep this in sync with babel transpilation and the webpack config
