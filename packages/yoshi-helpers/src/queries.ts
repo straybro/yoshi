@@ -4,12 +4,10 @@ import globby from 'globby';
 import config from 'yoshi-config';
 import * as globs from 'yoshi-config/build/globs';
 import isCi from 'is-ci';
-import { getBuildInfo } from '@wix/ci-build-info';
 import importCwd from 'import-cwd';
 import { PackageJson } from 'type-fest';
+import { getBuildInfoForPackage } from './ci-build-info';
 import { defaultEntry } from './constants';
-
-export { getBuildInfo };
 
 export const exists = (
   patterns: string | ReadonlyArray<string>,
@@ -92,7 +90,7 @@ export const hasBundleInStaticsDir = (cwd = process.cwd()) => {
 };
 
 export const shouldDeployToCDN = (packageName: string) => {
-  return isCi && !!getBuildInfo().v1.packages[packageName].artifact?.cdnUrl;
+  return isCi && !!getBuildInfoForPackage(packageName).artifact?.cdnUrl;
 };
 
 export const isWebWorkerBundle = !!config.webWorkerEntry;

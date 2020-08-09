@@ -11,7 +11,8 @@ import { POM_FILE } from 'yoshi-config/build/paths';
 import xmldoc from 'xmldoc';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Stats } from 'webpack';
-import { inTeamCity, getBuildInfo } from './queries';
+import { inTeamCity } from './queries';
+import { getBuildInfoForPackage } from './ci-build-info';
 
 export function logIfAny(log: any) {
   if (log) {
@@ -223,7 +224,7 @@ export const getServerlessBase = (scope: string) => {
 };
 
 export const getProjectArtifactVersion = (packageName: string) => {
-  return getBuildInfo().v1.packages[packageName].fingerprint;
+  return getBuildInfoForPackage(packageName).fingerprint;
 };
 
 // Gets the CDN base path for the project at the current working dir
@@ -231,7 +232,7 @@ export const getProjectCDNBasePath = (
   packageName: string,
   useUnversionedBaseUrl: boolean,
 ) => {
-  const cdnUrl = getBuildInfo().v1.packages[packageName].artifact?.cdnUrl;
+  const cdnUrl = getBuildInfoForPackage(packageName).artifact?.cdnUrl;
 
   if (!cdnUrl) {
     throw new Error(
