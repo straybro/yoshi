@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import importCwd from 'import-cwd';
 import { bootstrap } from 'yoshi-serverless-testing';
+import proxy from 'express-http-proxy';
 import { AppConfig } from '../model';
 import velocityDataPrivate from './velocity.private.data.json';
 import velocityData from './velocity.data.json';
@@ -15,6 +16,10 @@ const getSentryConfig = (config: AppConfig | null) => {
   return config?.sentry ?? null;
 };
 
+const getProxyConfig = (config: AppConfig | null) => {
+  return config?.localProxy ?? null;
+};
+
 const serverDirectory = 'node_modules/yoshi-flow-editor/build/server';
 const editorTemplate = path.resolve(__dirname, './templates/editorApp.vm');
 const settingsTemplate = path.resolve(__dirname, './templates/settingsApp.vm');
@@ -22,6 +27,7 @@ const applicationConfig = importCwd.silent(
   './.application.json',
 ) as AppConfig | null;
 const sentry = getSentryConfig(applicationConfig);
+const proxyConfig = getProxyConfig(applicationConfig);
 
 const server = httpTestkit.server({
   port: process.env.PORT ? Number(process.env.PORT) : undefined,
@@ -54,6 +60,18 @@ app.get(
     res.json(experiments);
   },
 );
+
+if (proxyConfig) {
+  app.use(
+    '/_api/*',
+    proxy(proxyConfig?.host || 'editor.wix.com', {
+      https: true,
+      proxyReqPathResolver(req) {
+        return req.originalUrl;
+      },
+    }),
+  );
+}
 
 app.use('/editor/:widgetName', (req, res) => {
   const { widgetName } = req.params;

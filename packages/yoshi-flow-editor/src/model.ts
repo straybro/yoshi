@@ -73,6 +73,9 @@ export interface AppConfig {
   bi?: BIConfig | string;
   externalViewerScriptPath?: string;
   createControllersStrategy?: CreateControllersStrategy;
+  localProxy?: {
+    host?: string;
+  };
 }
 export interface ComponentConfig {
   id: string;
