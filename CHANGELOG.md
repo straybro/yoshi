@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.144.0 (2020-08-10)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-monorepo`
+  - [#2995](https://github.com/wix-private/yoshi/pull/2995) Consider suricate when creating webworker manifest ([@gonengar](https://github.com/gonengar))
+
+#### :nail_care: Polish
+
+- `yoshi-helpers`
+  - [#2962](https://github.com/wix-private/yoshi/pull/2962) Better error message for missing build info ([@ohana54](https://github.com/ohana54))
+
 ## v4.143.0 (2020-08-09)
 
 #### :rocket: New Feature
