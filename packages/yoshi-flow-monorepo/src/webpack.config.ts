@@ -272,11 +272,13 @@ export function createWebWorkerWebpackConfig(
     isHot,
     isAnalyze,
     forceEmitStats,
+    suricate,
   }: {
     isDev?: boolean;
     isHot?: boolean;
     isAnalyze?: boolean;
     forceEmitStats?: boolean;
+    suricate?: boolean;
   } = {},
 ): webpack.Configuration {
   const defaultOptions = createDefaultOptions(pkg, libs, apps);
@@ -291,6 +293,7 @@ export function createWebWorkerWebpackConfig(
     createEjsTemplates: pkg.config.experimentalBuildHtml,
     isAnalyze,
     forceEmitStats,
+    suricate,
     ...defaultOptions,
   });
 

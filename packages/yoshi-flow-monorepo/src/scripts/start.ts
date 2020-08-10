@@ -142,6 +142,7 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
     webWorkerConfig = createWebWorkerWebpackConfig(pkg, libs, apps, {
       isDev: true,
       isHot: true,
+      suricate: pkg.config.suricate,
     });
   }
 
