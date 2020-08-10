@@ -3,7 +3,8 @@
     "src"
   ],
   "files": [
-    "./node_modules/jest-yoshi-preset/types.d.ts"
+    "./src/external-types.d.ts",
+    "./src/test-types.d.ts"
   ],
   "compilerOptions": {
     "target": "ES5",
