@@ -3903,7 +3903,7 @@
     "@types/jest" "*"
     "@types/puppeteer" "*"
 
-"@types/express-http-proxy@^1.6.1":
+"@types/express-http-proxy@1.6.1":
   version "1.6.1"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/express-http-proxy/-/express-http-proxy-1.6.1.tgz#b505ecdf51bf6d5b361fd8bfa777baabe4427a44"
   integrity sha1-tQXs31G/bVs2H9i/p3e6q+RCekQ=
