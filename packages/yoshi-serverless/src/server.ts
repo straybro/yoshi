@@ -3,7 +3,6 @@ import { parse as parseUrl } from 'url';
 // @ts-ignore - missing types
 import fs from 'fs-extra';
 import globby from 'globby';
-import importFresh from 'import-fresh';
 import { WebRequest, FunctionContext } from '@wix/serverless-api';
 import { ROUTES_BUILD_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
 import { RouteFunction, InitServerFunction } from './types';
@@ -54,7 +53,9 @@ export default class Server {
     const initServerPath = path.resolve(BUILD_DIR, 'init-server.js');
 
     if (await fs.pathExists(initServerPath)) {
-      const chunk = importFresh(initServerPath) as InitServerFunction;
+      const chunk = nonWebpackRequireFresh(
+        initServerPath,
+      ) as InitServerFunction;
 
       this.initData = await chunk(this.context);
     }
