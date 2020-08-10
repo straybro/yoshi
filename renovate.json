@@ -1,11 +1,17 @@
 {
   "extends": [
     "config:base",
-    ":maintainLockFilesWeekly",
-    ":automergeMinor"
+    ":maintainLockFilesWeekly"
   ],
-  "automergeType": "pr-comment",
-  "automergeComment": "#automerge",
+  "minor": {
+    "prBodyNotes": ["#automerge"]
+  },
+  "patch": {
+    "prBodyNotes": ["#automerge"]
+  },
+  "lockFileMaintenance": {
+    "prBodyNotes": ["#automerge"]
+  },
   "enabledManagers": [
     "npm"
   ],
