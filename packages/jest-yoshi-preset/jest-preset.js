@@ -46,6 +46,7 @@ const supportedGlobalOverrideKeys = [
   'coverageDirectory',
   'coveragePathIgnorePatterns',
   'coverageThreshold',
+  'reporters',
 ];
 
 const globalValidOverrides = pick(jestYoshiConfig, supportedGlobalOverrideKeys);

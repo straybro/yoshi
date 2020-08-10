@@ -111,6 +111,7 @@ Has a default test timeout of 10 seconds.
 - `coverageReporters` - Jest's [coverageReporters](https://jestjs.io/docs/en/configuration#coveragereporters-array-string)
 - `coverageDirectory` - Jest's [coverageDirectory](https://jestjs.io/docs/en/configuration#coveragedirectory-string)
 - `coverageThreshold` - Jest's [coverageThreshold](https://jestjs.io/docs/en/configuration#coveragethreshold-object)
+- `reporters` - Jest's [reporters](https://jestjs.io/docs/en/configuration#reporters-arraymodulename--modulename-options)
 
 This preset looks for a `jest-yoshi.config.js` file at the root of your project. The exported object is used to configure different parts of the preset.
 
