@@ -98,16 +98,16 @@ app.use('/settings/:widgetName', (req, res) => {
 });
 
 // Launch the server
-server.start().then(
-  async () => {
+server
+  .start()
+  .then(async () => {
     if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
       const serverlessApp = bootstrap();
       await serverlessApp.start();
     }
-  },
-  (err) => {
+  })
+  .catch((err) => {
     console.error(
       `Fake server failed to start on port ${process.env.PORT}: ${err.message}`,
     );
-  },
-);
+  });

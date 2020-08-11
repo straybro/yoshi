@@ -10,7 +10,7 @@
   "author": "Yaniv Efraim",
   "license": "ISC",
   "dependencies": {
-    "@wix/serverless-testkit": "^1.0.0",
+    "@wix/serverless-testkit": "^1.0.452",
     "yoshi-config": "4.143.0",
     "yoshi-helpers": "4.144.0"
   },
