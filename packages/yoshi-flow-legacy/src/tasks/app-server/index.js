@@ -44,7 +44,6 @@ function initializeServerStartDelegate({
 }) {
   return async (newPort) => {
     const defaultEnv = {
-      NODE_ENV: 'development',
       DEBUG: 'wix:*,wnp:*',
     };
 
@@ -52,10 +51,13 @@ function initializeServerStartDelegate({
       port: newPort,
     });
 
-    const env = Object.assign(defaultEnv, process.env, {
+    const env = {
+      ...defaultEnv,
+      ...process.env,
+      NODE_ENV: 'development',
       PORT: newPort,
       ...bootstrapEnvironmentParams,
-    });
+    };
 
     if (newPort !== defaultPort) {
       console.log(
