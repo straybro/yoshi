@@ -6,7 +6,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "version": "docusaurus docs:version",
-    "publish-janet": "(git diff  --name-status origin/master | grep 'website/') && janet deploy --ci || echo 'No changes to 'website' directory detected.\nSkipping Janet PR build'"
+    "publish-janet": "node scripts/publish-website.js"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.59",
