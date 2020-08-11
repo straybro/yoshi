@@ -1,5 +1,34 @@
 # Changelog
 
+## 4.145.0 (2020-08-11)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-editor`
+  - [#2951](https://github.com/wix-private/yoshi/pull/2951) Add local proxy to /\_api/\* requests for editor flow projects ([@yavorsky](https://github.com/yavorsky))
+- `jest-yoshi-preset`
+  - [#2999](https://github.com/wix-private/yoshi/pull/2999) add options to add 'reporters' to yoshi jest preset ([@zivl](https://github.com/zivl))
+
+#### :bug: Bug Fix
+
+- `create-yoshi-app`, `yoshi-flow-library`
+  - [#2996](https://github.com/wix-private/yoshi/pull/2996) Library flow css modules external types ([@kobiburnley](https://github.com/kobiburnley))
+- `yoshi-serverless`
+  - [#3004](https://github.com/wix-private/yoshi/pull/3004) Fix critical dependency warning when using Yoshi Serverless ([@ronami](https://github.com/ronami))
+
+#### :nail_care: Polish
+
+- `yoshi-common`
+  - [#3019](https://github.com/wix-private/yoshi/pull/3019) Reuse chunk loading promises for async web-worker target ([@giladsegal](https://github.com/giladsegal))
+
+#### :memo: Documentation
+
+- [#3018](https://github.com/wix-private/yoshi/pull/3018) [blog post]: Why we moved yoshi to be private ([@ranyitz](https://github.com/ranyitz))
+
+#### :house: Internal
+
+- [#3020](https://github.com/wix-private/yoshi/pull/3020) Check diff with master when publishing website only on PR CI ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.144.0 (2020-08-10)
 
 #### :bug: Bug Fix
