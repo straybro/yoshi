@@ -10,7 +10,7 @@ export class UserActionsWatcher {
   }
 
   watch() {
-    if (!process.stdout.isTTY) {
+    if (!process.stdin.isTTY) {
       return;
     }
 
