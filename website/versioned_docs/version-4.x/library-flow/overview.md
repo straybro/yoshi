@@ -46,14 +46,6 @@ In case you want to ship a `.css` bundle with your library, also run `npm instal
 
 See [configuration guide](library-flow/configuration.md)
 
-### storybook
-
-`Boolean`
-
-This option enables experimental Storybook feature. You will need to install `yoshi-storybook-dependencies` as well.
-
-When this feature is enabled you can create storybook files that should end with `.stories.(ts|tsx|js)`. Read Storybook documentation section ["Writing Stories"](https://storybook.js.org/docs/basics/writing-stories/) for more details.
-
 ## FAQ
 
 ### What `build` command produces?
