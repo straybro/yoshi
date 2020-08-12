@@ -1,5 +1,25 @@
 # Changelog
 
+## v4.146.0 (2020-08-12)
+
+#### :bug: Bug Fix
+
+- `yoshi-common`
+  - [#3026](https://github.com/wix-private/yoshi/pull/3026) ActionWatcher - Correct exit term ([@NitayRabi](https://github.com/NitayRabi))
+- `yoshi-flow-legacy`
+  - [#3022](https://github.com/wix-private/yoshi/pull/3022) Fix start --production of legacy flow ([@ranyitz](https://github.com/ranyitz))
+
+#### :nail_care: Polish
+
+- Other
+  - [#3024](https://github.com/wix-private/yoshi/pull/3024) Exclude storybook option from docs ([@ranyitz](https://github.com/ranyitz))
+- `yoshi-serverless-client`
+  - [#3021](https://github.com/wix-private/yoshi/pull/3021) Add type safety to Yoshi Serverless Client (small refactor) ([@ronami](https://github.com/ronami))
+
+#### :house: Internal
+
+- [#3025](https://github.com/wix-private/yoshi/pull/3025) Improve the manual release script with better error handling ([@ranyitz](https://github.com/ranyitz))
+
 ## 4.145.0 (2020-08-11)
 
 #### :rocket: New Feature
