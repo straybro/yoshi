@@ -110,7 +110,10 @@ module.exports = function (api, opts = {}) {
         ? []
         : [
             // Transform Object { ...rest, ...spread } to support old browsers
-            requireDefault('@babel/plugin-proposal-object-rest-spread'),
+            requireDefault('@babel/plugin-proposal-object-rest-spread', {
+              loose:
+                process.env.EXPERIMENTAL_BABEL_OBJECT_SPREAD_LOOSE === 'true',
+            }),
             !options.ignoreReact &&
               !disablePropTypeRemoval && [
                 // Remove PropTypes on react projects.
