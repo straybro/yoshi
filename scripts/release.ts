@@ -1,66 +1,64 @@
-import { promises as fs } from 'fs';
+import fs from 'fs-extra';
 import execa from 'execa';
 import chalk from 'chalk';
-// https://github.com/wix-a/changelog-prepend
-import { prependChangelog } from 'changelog-prepend/lib/prependChangelog';
+import addNewVersionToChangelog from './changelog-utils/addVersionToChangelog';
 
 process.env.GITHUB_AUTH = process.env.GITHUB_AUTH || process.env.github_token;
 
-main();
+const forceOption = process.argv.indexOf('--force') !== -1;
 
-async function main() {
-  try {
-    if (!process.env.GITHUB_AUTH) {
-      throw new Error('Must provide GITHUB_AUTH');
-    }
+if (!process.env.GITHUB_AUTH) {
+  console.error(`Must provide GITHUB_AUTH environment parameter with a GitHub access Token
+You can generate a new token using this link
 
-    console.log(`Fetching tags...`);
-    await execa('git', ['fetch', '--tags']);
+https://github.com/settings/tokens/new
 
-    const { version: prevVersion } = JSON.parse(
-      (await fs.readFile('lerna.json')).toString('utf8'),
-    );
-
-    console.log(`Bumping version with ${chalk.bold('lerna version')}...`);
-    await execa('./node_modules/.bin/lerna', [
-      'version',
-      '--bump',
-      'minor',
-      '--no-push',
-      '--exact',
-      '--yes',
-    ]);
-
-    const { version: nextVersion } = JSON.parse(
-      (await fs.readFile('lerna.json')).toString('utf8'),
-    );
-
-    console.log(
-      `Generating & prepending changelog with ${chalk.bold(
-        'lerna-changelog',
-      )}...`,
-    );
-    await prependChangelog({
-      prevVersion,
-    });
-
-    console.log('Re-creating tags...');
-    execa('git', ['tag', '-d', `v${nextVersion}`]);
-    execa('git', ['tag', '-a', `v${nextVersion}`, '-m', `v${nextVersion}`]);
-
-    console.log(
-      chalk.green(`✔ New version & changelog were created: v${nextVersion}`),
-    );
-    console.log(
-      `To publish this version push with tags: ${chalk.bold(
-        `git push --follow-tags origin master`,
-      )}`,
-    );
-  } catch (err) {
-    console.log(chalk.red('prepend-changelog failed.'));
-    console.error(err);
-    console.log();
-
-    process.exit(1);
-  }
+Assign only the "repo" scope`);
+  process.exit(1);
 }
+
+console.log(`Fetching tags...`);
+execa.sync('git', ['fetch', '--tags']);
+
+const { version: currentVersion } = fs.readJSONSync('lerna.json');
+
+const lernaVersionCommand = [
+  'version',
+  '--bump',
+  'minor',
+  '--no-push',
+  '--exact',
+  '--yes',
+];
+
+console.log(
+  `Bumping version with ${chalk.bold(
+    `lerna ${lernaVersionCommand.join(' ')}`,
+  )}...`,
+);
+
+execa.sync('./node_modules/.bin/lerna', lernaVersionCommand, {
+  stdio: 'inherit',
+});
+
+const { version: nextVersion } = fs.readJSONSync('lerna.json');
+
+console.log(
+  `Adding a changelog version with ${chalk.bold('lerna-changelog')}...`,
+);
+
+addNewVersionToChangelog({
+  currentVersion,
+  force: forceOption,
+});
+
+execa.sync('git', ['add', 'CHANGELOG.md'], { stdio: 'inherit' });
+execa.sync('git', ['commit', '-m', `changelog for v${nextVersion}`], {
+  stdio: 'inherit',
+});
+
+console.log(
+  chalk.green(`✔ New version & changelog were created: v${nextVersion}`),
+);
+console.log(`To publish this version push with tags\n`);
+console.log(chalk.bold(`git push --follow-tags origin master`));
