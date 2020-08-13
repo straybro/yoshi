@@ -1,6 +1,6 @@
 {
   "name": "yoshi-common",
-  "version": "4.146.0",
+  "version": "4.147.0",
   "keywords": [
     "yoshi",
     "common"
@@ -46,7 +46,7 @@
     "@zeit/webpack-asset-relocator-loader": "0.7.2",
     "autoprefixer": "9.8.6",
     "babel-loader": "8.1.0",
-    "babel-preset-yoshi": "4.143.0",
+    "babel-preset-yoshi": "4.147.0",
     "bi-logger-yoshi": "1.0.347",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "chalk": "4.1.0",
