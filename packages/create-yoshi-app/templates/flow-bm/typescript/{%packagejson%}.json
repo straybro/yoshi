@@ -8,7 +8,7 @@
     "email": "{%authorEmail%}"
   },
   "scripts": {
-    "start": "PORT=5000 yoshi-bm start --url http://localhost:5000/business-manager/00000000-0000-0000-0000-000000000000/{%projectName%}",
+    "start": "yoshi-bm start",
     "build": "yoshi-bm build",
     "test": "yoshi-bm test",
     "lint": "yoshi-bm lint",

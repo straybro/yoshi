@@ -4,6 +4,7 @@ process.on('unhandledRejection', (error) => {
   throw error;
 });
 
+import chalk from 'chalk';
 import arg from 'arg';
 import loadConfig from 'yoshi-config/loadConfig';
 import { Config } from 'yoshi-config/build/config';
@@ -103,8 +104,17 @@ Promise.resolve().then(async () => {
 
   const runCommand = (await commands[command]()).default;
 
-  // legacy flow commands doen't need to be run
-  if (typeof runCommand === 'function') {
-    await runCommand(forwardedArgs, config);
+  try {
+    if (typeof runCommand === 'function') {
+      await runCommand(forwardedArgs, config);
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.log(chalk.red(e.message) + '\n');
+    } else {
+      console.log(chalk.red('Yoshi encountered an unexpected error!\n'));
+      console.log(e);
+    }
+    process.exit(1);
   }
 });

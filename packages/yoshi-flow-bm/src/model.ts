@@ -141,10 +141,9 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     };
   };
 
-  const pages = globFiles([
-    PAGES_PATTERN,
-    `!${PAGES_MODULE_HOOKS_PATTERN}`,
-  ]).map(getPageModel);
+  const pages = globFiles([PAGES_PATTERN, `!${PAGES_MODULE_HOOKS_PATTERN}`])
+    .map(getPageModel)
+    .sort((page1, page2) => page1.route.localeCompare(page2.route));
 
   const exportedComponents = globFiles([
     EXPORTED_COMPONENTS_PATTERN,

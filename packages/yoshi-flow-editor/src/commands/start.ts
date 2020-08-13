@@ -122,7 +122,9 @@ const start: cliCommand = async function (argv, config, model) {
     webpackDevServerPort: config.servers.cdn.port,
     appServerPort: config.servers.app.port,
     appName: config.name,
-    serverFilePath: require.resolve('yoshi-flow-editor/build/server/server.js'),
+    serverStartFile: require.resolve(
+      'yoshi-flow-editor/build/server/server.js',
+    ),
     startUrl: normalizedUrl,
     enableClientHotUpdates: Boolean(config.hmr),
     createEjsTemplates: config.experimentalBuildHtml,

@@ -178,6 +178,17 @@ export const tryRequire = (name: string) => {
   return require(absolutePath);
 };
 
+export const getProjectGroupId = (cwd = process.cwd()) => {
+  if (fs.existsSync(path.join(cwd, POM_FILE))) {
+    const content = fs.readFileSync(path.join(cwd, POM_FILE), 'utf-8');
+    const groupId = new xmldoc.XmlDocument(content).valueWithPath('groupId');
+
+    return groupId;
+  }
+
+  return '';
+};
+
 // Gets the artifact id of the project at the current working dir
 export const getProjectArtifactId = (cwd = process.cwd()) => {
   if (fs.existsSync(path.join(cwd, POM_FILE))) {

@@ -37,7 +37,7 @@ export const serveApp = async ({
   env?: Record<string, string>;
   useAppName?: boolean;
 }) => {
-  const serverFilePath =
+  const serverStartFile =
     serverStartFileParser(config.pkgJson) ?? getServerStartFile({ cwd });
 
   const staticsDir = path.join(cwd, STATICS_DIR);
@@ -48,7 +48,7 @@ export const serveApp = async ({
   }
 
   const serverProcess = new ServerProcess({
-    serverFilePath,
+    serverStartFile,
     appName: config.name,
     port: config.servers.app.port,
     useAppName,

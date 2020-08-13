@@ -1,22 +1,29 @@
 import path from 'path';
 import * as fs from 'fs-extra';
-import { getProjectArtifactId } from 'yoshi-helpers/build/utils';
+import {
+  getProjectArtifactId,
+  getProjectGroupId,
+} from 'yoshi-helpers/build/utils';
+import { AppConfigTemplate } from '@wix/ambassador-service-discovery-server/types';
 import { FlowBMModel } from './model';
-import { MODULE_CONFIG_PATH } from './constants';
+import { getModuleConfigPath } from './constants';
+import { getRootModuleId } from './queries';
 
-export const renderModuleConfig = ({
-  pages,
-  config: { moduleId, moduleConfigurationId, appDefId, topology },
-}: FlowBMModel) => {
-  const artifactId = `com.wixpress.${getProjectArtifactId()}`;
+export const generateModuleConfig = (model: FlowBMModel): AppConfigTemplate => {
+  const {
+    pages,
+    config: { appDefId, topology, moduleBundleName },
+  } = model;
+
+  const artifactId = `${getProjectGroupId()}.${getProjectArtifactId()}`;
   const pageComponents = pages.map(({ componentId, componentName, route }) => ({
     pageComponentId: componentId,
     pageComponentName: componentName,
     route,
   }));
 
-  const template = {
-    moduleId: moduleConfigurationId ?? moduleId,
+  return {
+    moduleId: getRootModuleId(model),
     appDefId,
     mainPageComponentId: pageComponents.reduce((prev, { route, ...rest }) =>
       route.split('/').length > prev.route.split('/').length
@@ -30,19 +37,23 @@ export const renderModuleConfig = ({
       {
         file: {
           artifactId,
-          path: 'module.bundle.min.js',
+          path: `${moduleBundleName}.bundle.min.js`,
         },
         debugFile: {
           artifactId,
-          path: 'module.bundle.js',
+          path: `${moduleBundleName}.bundle.js`,
         },
       },
     ],
   };
+};
+
+export const renderModuleConfig = (model: FlowBMModel) => {
+  const template = generateModuleConfig(model);
 
   const templatePath = path.join(
     process.cwd(),
-    MODULE_CONFIG_PATH(template.moduleId),
+    getModuleConfigPath(template.moduleId!),
   );
 
   fs.outputJSONSync(templatePath, template, { spaces: 2 });

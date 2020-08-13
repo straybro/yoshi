@@ -399,6 +399,8 @@ export default class DevEnvironment {
       await compilationPromise;
     }
 
+    let actualStartUrl = startUrl;
+
     // start app server if exists
     if (serverProcess) {
       await serverProcess.initialize();
@@ -419,11 +421,15 @@ export default class DevEnvironment {
         },
       });
 
-      const actualStartUrl = suricate
-        ? getTunnelUrl(appName)
-        : startUrl || 'http://localhost:3000';
+      actualStartUrl = suricate ? getTunnelUrl(appName) : startUrl;
+    }
 
-      openBrowser(actualStartUrl);
+    if (actualStartUrl || serverProcess) {
+      openBrowser(
+        Array.isArray(actualStartUrl)
+          ? actualStartUrl
+          : [actualStartUrl ?? 'http://localhost:3000'],
+      );
     }
 
     createUserActionsWatcher().on('r', async () => {
@@ -458,7 +464,7 @@ export default class DevEnvironment {
 
   static async create({
     webpackConfigs,
-    serverFilePath,
+    serverStartFile,
     https,
     webpackDevServerPort,
     appServerPort,
@@ -483,7 +489,7 @@ export default class DevEnvironment {
       webpack.Configuration?, // generic config
       webpack.Configuration?, // generic config
     ];
-    serverFilePath?: string;
+    serverStartFile?: string;
     https: boolean;
     webpackDevServerPort: number;
     appServerPort: number;
@@ -504,9 +510,9 @@ export default class DevEnvironment {
 
     let serverProcess;
 
-    if (serverFilePath) {
+    if (serverStartFile) {
       serverProcess = await ServerProcessWithHMR.create({
-        serverFilePath,
+        serverStartFile,
         cwd,
         port: appServerPort,
         suricate,

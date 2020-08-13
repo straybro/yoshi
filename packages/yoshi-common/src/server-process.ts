@@ -45,7 +45,7 @@ export class ServerProcess {
 
   constructor({
     cwd = process.cwd(),
-    serverFilePath,
+    serverStartFile,
     env,
     port,
     useAppName,
@@ -53,7 +53,7 @@ export class ServerProcess {
     inspectArg,
   }: {
     cwd?: string;
-    serverFilePath: string;
+    serverStartFile: string;
     env: ServerProcessEnv;
     port: number;
     useAppName?: boolean;
@@ -61,7 +61,7 @@ export class ServerProcess {
     inspectArg?: string;
   }) {
     this.cwd = cwd;
-    this.serverFilePath = serverFilePath;
+    this.serverFilePath = serverStartFile;
     this.env = env;
     this.port = port;
     this.useAppName = useAppName;
@@ -179,7 +179,7 @@ export class ServerProcessWithHMR extends ServerProcess {
 
   constructor({
     cwd,
-    serverFilePath,
+    serverStartFile,
     socketServer,
     suricate,
     appName,
@@ -187,7 +187,7 @@ export class ServerProcessWithHMR extends ServerProcess {
     inspectArg,
   }: {
     cwd: string;
-    serverFilePath: string;
+    serverStartFile: string;
     socketServer: SocketServer;
     suricate: boolean;
     appName: string;
@@ -197,7 +197,7 @@ export class ServerProcessWithHMR extends ServerProcess {
     super({
       cwd,
       port,
-      serverFilePath,
+      serverStartFile,
       appName,
       env: {
         HMR_PORT: `${socketServer.hmrPort}`,
@@ -236,14 +236,14 @@ export class ServerProcessWithHMR extends ServerProcess {
 
   static async create({
     cwd = process.cwd(),
-    serverFilePath,
+    serverStartFile,
     appName,
     suricate,
     port,
     inspectArg,
   }: {
     cwd?: string;
-    serverFilePath: string;
+    serverStartFile: string;
     appName: string;
     suricate: boolean;
     port: number;
@@ -254,7 +254,7 @@ export class ServerProcessWithHMR extends ServerProcess {
     return new ServerProcessWithHMR({
       socketServer,
       cwd,
-      serverFilePath,
+      serverStartFile,
       appName,
       suricate,
       port,

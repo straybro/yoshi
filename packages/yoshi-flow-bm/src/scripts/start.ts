@@ -4,18 +4,18 @@ import fs from 'fs-extra';
 import chalk from 'chalk';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
 import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
-import { getServerStartFile } from 'yoshi-helpers/build/server-start-file';
 import * as telemetry from 'yoshi-common/build/telemetry';
 import { CliCommand } from '../bin/yoshi-bm';
-import {
-  createClientWebpackConfig,
-  createServerWebpackConfig,
-} from '../webpack.config';
+import { createClientWebpackConfig } from '../webpack.config';
 import createFlowBMModel, { watchFlowBMModel } from '../model';
 import { renderModule } from '../module';
 import { renderModuleConfig } from '../moduleConfig';
-import getStartUrl from '../start-url';
 import getEntries from '../entries';
+import getStartUrl from '../start-url';
+import { getMetaSiteId } from '../metaSiteId';
+import { getServerStartFile } from '../start-file';
+import { fetchModuleConfig } from '../bm-configs';
+import { createFlowLogger } from './logger';
 
 const join = (...dirs: Array<string>) => path.join(process.cwd(), ...dirs);
 
@@ -26,23 +26,17 @@ const start: CliCommand = async function (argv, yoshiConfig) {
     {
       // Types
       '--help': Boolean,
-      '--server': String,
       '--production': Boolean,
       '--https': Boolean,
       '--debug': Boolean,
       '--debug-brk': Boolean,
       '--url': String,
-
-      // Aliases
-      '--entry-point': '--server',
-      '-e': '--server',
     },
     { argv },
   );
 
   const {
     '--help': help,
-    '--server': serverStartFileCLI,
     '--production': shouldRunAsProduction,
     '--url': url,
   } = args;
@@ -69,13 +63,9 @@ const start: CliCommand = async function (argv, yoshiConfig) {
     process.exit(0);
   }
 
-  let serverStartFile;
-  try {
-    serverStartFile = getServerStartFile({ serverStartFileCLI });
-  } catch (e) {
-    console.error(e.message);
-    process.exit(1);
-  }
+  // TODO: Decouple the flow from yoshi-config and inline this
+  yoshiConfig.servers.cdn.ssl = true;
+  yoshiConfig.servers.cdn.url = 'https://localhost:3200/';
 
   console.log(chalk.cyan('Starting development environment...\n'));
 
@@ -102,24 +92,37 @@ const start: CliCommand = async function (argv, yoshiConfig) {
   });
   clientConfig.entry = getEntries(model);
 
-  const serverConfig = createServerWebpackConfig(yoshiConfig, {
-    isDev: true,
-    isHot: true,
-  });
+  const [metaSiteId, prodConfig] = await Promise.all([
+    getMetaSiteId(),
+    fetchModuleConfig(model),
+  ]);
 
-  const startUrl = url ?? (await getStartUrl(model, yoshiConfig.servers.cdn));
+  const logger = createFlowLogger(yoshiConfig, metaSiteId, prodConfig);
+
+  const startUrl =
+    url ??
+    getStartUrl(
+      model,
+      model.pages[0], // pages are sorted by route so [0] is shortest
+      yoshiConfig.servers.cdn,
+      metaSiteId,
+      prodConfig,
+    );
+
+  const serverStartFile = getServerStartFile();
 
   const devEnvironment = await DevEnvironment.create({
-    webpackConfigs: [clientConfig, serverConfig],
+    webpackConfigs: [clientConfig],
     https: yoshiConfig.servers.cdn.ssl,
     webpackDevServerPort: yoshiConfig.servers.cdn.port,
     appServerPort: yoshiConfig.servers.app.port,
-    serverFilePath: serverStartFile,
     appName: yoshiConfig.name,
     startUrl,
+    serverStartFile,
     enableClientHotUpdates: Boolean(yoshiConfig.hmr),
     createEjsTemplates: yoshiConfig.experimentalBuildHtml,
     yoshiServer: yoshiConfig.yoshiServer,
+    logger,
   });
 
   await devEnvironment.start();

@@ -118,7 +118,7 @@ const start: cliCommand = async function (argv, config) {
     webpackDevServerPort: config.servers.cdn.port,
     appServerPort: config.servers.app.port,
     https: config.servers.cdn.ssl,
-    serverFilePath: serverStartFile,
+    serverStartFile,
     suricate: config.suricate,
     appName: config.name,
     startUrl: url || config.startUrl,

@@ -7,7 +7,7 @@ export const MODULE_HOOKS_EXT = `module.${EXTENSIONS}`;
 
 export const CONFIG_PATH = `.module.${CONFIG_EXT}`;
 
-export const MODULE_CONFIG_PATH = (moduleId: string) =>
+export const getModuleConfigPath = (moduleId: string) =>
   `target/module_${constantCase(moduleId)}.json`;
 
 export const PAGES_DIR = 'src/pages';
@@ -40,3 +40,5 @@ export const BI_LOGGER_DEFINITIONS_PATH = path.join(
   GENERATED_DIR,
   'biLogger.d.ts',
 );
+
+export const DEV_SERVER_PATTERN = `dev/server.${EXTENSIONS}`;

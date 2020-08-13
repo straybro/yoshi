@@ -4895,6 +4895,11 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-payment-services-web/-/@wix/ambassador-payment-services-web-1.0.1240.tgz#7f9a4410b2361e285577f78ff7e755aa4b3740fe"
   integrity sha1-f5pEELI2HihVd/eP9+dVqks3QP4=
 
+"@wix/ambassador-service-discovery-server@1.0.164":
+  version "1.0.164"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-service-discovery-server/-/@wix/ambassador-service-discovery-server-1.0.164.tgz#45a888ca7c0b7cfb1624c50198305a32f700053d"
+  integrity sha1-RaiIynwLfPsWJMUBmDBaMvcABT0=
+
 "@wix/ambassador-site-properties-service@*":
   version "2.0.26"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-site-properties-service/-/@wix/ambassador-site-properties-service-2.0.26.tgz#104a3edbfc8d3375c2263b0693f2bc362fff3de1"
@@ -10160,26 +10165,6 @@ change-emitter@^0.1.2:
   version "0.1.6"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
   integrity sha1-6LL+PX8at9aaMhma/5HqaTFAlRU=
-
-changelog-prepend-consts@^1.7.0:
-  version "1.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend-consts/-/changelog-prepend-consts-1.7.0.tgz#2d9fdd02b9ba392b9ddafc65795d0a2889b1f7d5"
-  integrity sha1-LZ/dArm6OSud2vxleV0KKImx99U=
-
-changelog-prepend-read-changelog@^1.7.0:
-  version "1.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend-read-changelog/-/changelog-prepend-read-changelog-1.7.0.tgz#44167ef55a6da60a228235a05e060eb7d8b4d98f"
-  integrity sha1-RBZ+9VptpgoigjWgXgYOt9i02Y8=
-  dependencies:
-    changelog-prepend-consts "^1.7.0"
-
-changelog-prepend@1.7.0:
-  version "1.7.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/changelog-prepend/-/changelog-prepend-1.7.0.tgz#f7f461fa50a561b44d0e4cfdbe2e77795d6be414"
-  integrity sha1-9/Rh+lClYbRNDkz9vi53eV1r5BQ=
-  dependencies:
-    changelog-prepend-consts "^1.7.0"
-    changelog-prepend-read-changelog "^1.7.0"
 
 char-regex@^1.0.2:
   version "1.0.2"

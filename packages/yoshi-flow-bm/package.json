@@ -10,6 +10,7 @@
   "description": "Yoshi Business-Manager Flow",
   "author": "Amit Dahan <amitda@wix.com>",
   "dependencies": {
+    "@wix/ambassador-service-discovery-server": "1.0.164",
     "@wix/business-manager-api": "1.0.1040",
     "arg": "4.1.3",
     "chalk": "4.1.0",

@@ -41,7 +41,7 @@ const logUrls = ({
 }: {
   processType: ProcessType;
   urls?: Urls;
-  suricate: boolean;
+  suricate?: boolean;
   appName: string;
 }) => {
   console.log();
@@ -65,12 +65,16 @@ const logUrls = ({
 export const getProcessName = (type: ProcessType) =>
   chalk.greenBright(`[${type.toUpperCase()}]`);
 
-const logProcessState = (
+export const logProcessState = (
   {
     processType,
     suricate,
     appName,
-  }: { processType: ProcessType; suricate: boolean; appName: string },
+  }: {
+    processType: ProcessType;
+    suricate?: boolean;
+    appName: string;
+  },
   state: ProcessState,
 ) => {
   switch (state.status) {
@@ -160,17 +164,7 @@ function logUsageInstructions(state: State) {
   }
 }
 
-const logger: DevEnvironmentLogger = ({
-  state,
-  appName,
-  suricate,
-  suffix,
-}: {
-  state: State;
-  appName: string;
-  suricate: boolean;
-  suffix: string;
-}) => {
+const logger: DevEnvironmentLogger = ({ state, appName, suricate, suffix }) => {
   if (shouldClearConsole()) {
     clearConsole();
   }

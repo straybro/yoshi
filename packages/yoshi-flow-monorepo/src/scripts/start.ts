@@ -171,7 +171,7 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
     https: pkg.config.servers.cdn.ssl,
     webpackDevServerPort: pkg.config.servers.cdn.port,
     appServerPort: pkg.config.servers.app.port,
-    serverFilePath: serverStartFile,
+    serverStartFile,
     appName: pkg.config.name,
     suricate: pkg.config.suricate,
     enableClientHotUpdates: Boolean(pkg.config.hmr),

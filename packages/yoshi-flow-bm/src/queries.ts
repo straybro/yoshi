@@ -1,5 +1,9 @@
 import { FlowBMModel } from './model';
 
+export const getRootModuleId = ({
+  config: { moduleId, moduleConfigurationId },
+}: FlowBMModel) => moduleConfigurationId ?? moduleId;
+
 export const shouldAddI18n = (model: FlowBMModel) =>
   !!model.config.translations?.default;
 
