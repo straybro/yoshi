@@ -1,5 +1,20 @@
 # Changelog
 
+## v4.147.0 (2020-08-13)
+
+#### :nail_care: Polish
+
+- `babel-preset-yoshi`
+  - [#3027](https://github.com/wix-private/yoshi/pull/3027) Experimental obj spread loose mode flag ([@roymiloh](https://github.com/roymiloh))
+
+#### :memo: Documentation
+
+- [#3030](https://github.com/wix-private/yoshi/pull/3030) Removing a redundant symbol out of the script ([@BnayaZil](https://github.com/BnayaZil))
+
+#### :house: Internal
+
+- [#2923](https://github.com/wix-private/yoshi/pull/2923) Automatic website publishing on master branch ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.146.0 (2020-08-12)
 
 #### :bug: Bug Fix
