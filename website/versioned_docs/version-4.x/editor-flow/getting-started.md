@@ -11,7 +11,7 @@ sidebar_label: Getting Started
 Run create-yoshi-app and generate the project:
 
 ```bash
-❯ npx create-yoshi-app@latest my-app
+npx create-yoshi-app@latest my-app
 ```
 
 Now, you'll be prompt with questions.
