@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.148.0 (2020-08-14)
+
+#### :nail_care: Polish
+
+- `yoshi-flow-editor-runtime`
+  - [#3032](https://github.com/wix-private/yoshi/pull/3032) Pass default translations to yoshi controller testkit ([@yavorsky](https://github.com/yavorsky))
+
+#### :rocket: New Feature
+
+- `yoshi-flow-bm`
+  - [#2800](https://github.com/wix-private/yoshi/pull/2800) Support new modules & page components in production BM ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.147.0 (2020-08-13)
 
 #### :nail_care: Polish
