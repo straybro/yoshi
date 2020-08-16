@@ -65,7 +65,7 @@
     "jest-resolve-dependencies": "24.9.0",
     "jest-runtime": "24.9.0",
     "jest-teamcity": "1.8.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "minimist": "1.2.5",
     "mkdirp": "0.5.5",
     "mocha": "3.5.3",

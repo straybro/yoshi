@@ -116,7 +116,7 @@
     "lerna": "3.22.1",
     "lerna-changelog": "0.8.3",
     "lint-staged": "10.2.11",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "minimist": "1.2.5",
     "mocha": "5.2.0",
     "mocha-env-reporter": "4.0.0",

@@ -31,7 +31,7 @@
     "fs-extra": "9.0.1",
     "globby": "11.0.1",
     "import-cwd": "3.0.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "webpack-stats-plugin": "0.3.2",
     "wnpm-ci": "8.0.127",
     "yoshi-command-lint": "4.148.0",

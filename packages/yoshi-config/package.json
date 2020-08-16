@@ -23,7 +23,7 @@
     "find-up": "4.1.0",
     "import-fresh": "3.2.1",
     "jest-validate": "24.9.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "read-pkg": "5.2.0"
   }
 }

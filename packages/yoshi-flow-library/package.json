@@ -33,7 +33,7 @@
     "jest": "24.9.0",
     "jest-teamcity": "1.8.0",
     "jest-validate": "24.9.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "read-pkg": "5.2.0",
     "yoshi-command-lint": "4.148.0",
     "yoshi-common": "4.148.0",
