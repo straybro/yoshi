@@ -14,3 +14,8 @@ yarn --cwd './website' run build
 
 echo "Publish using Janet"
 yarn --cwd './website' run publish-janet
+
+echo "Re-index doc-search"
+curl --request GET -sL \
+     --url 'https://bo.wix.com/doc-search/api/v1/index?indexName=wix_yoshi' \
+     --keepalive-time 180
