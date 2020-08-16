@@ -25545,6 +25545,13 @@ serialize-javascript@^3.1.0:
   dependencies:
     randombytes "^2.1.0"
 
+serialize-javascript@^4.0.0:
+  version "4.0.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serialize-javascript/-/serialize-javascript-4.0.0.tgz#b525e1238489a5ecfc42afacc3fe99e666f4b1aa"
+  integrity sha1-tSXhI4SJpez8Qq+sw/6Z5mb0sao=
+  dependencies:
+    randombytes "^2.1.0"
+
 serve-favicon@^2.5.0:
   version "2.5.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serve-favicon/-/serve-favicon-2.5.0.tgz#935d240cdfe0f5805307fdfe967d88942a2cbcf0"
@@ -27172,7 +27179,22 @@ terminate@2.1.2:
   dependencies:
     ps-tree "^1.1.1"
 
-terser-webpack-plugin@1.4.4, terser-webpack-plugin@^1.4.3:
+terser-webpack-plugin@1.4.5:
+  version "1.4.5"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/terser-webpack-plugin/-/terser-webpack-plugin-1.4.5.tgz#a217aefaea330e734ffacb6120ec1fa312d6040b"
+  integrity sha1-oheu+uozDnNP+sthIOwfoxLWBAs=
+  dependencies:
+    cacache "^12.0.2"
+    find-cache-dir "^2.1.0"
+    is-wsl "^1.1.0"
+    schema-utils "^1.0.0"
+    serialize-javascript "^4.0.0"
+    source-map "^0.6.1"
+    terser "^4.1.2"
+    webpack-sources "^1.4.0"
+    worker-farm "^1.7.0"
+
+terser-webpack-plugin@^1.4.3:
   version "1.4.4"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/terser-webpack-plugin/-/terser-webpack-plugin-1.4.4.tgz#2c63544347324baafa9a56baaddf1634c8abfc2f"
   integrity sha1-LGNUQ0cyS6r6mla6rd8WNMir/C8=
