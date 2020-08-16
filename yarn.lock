@@ -27451,10 +27451,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-toastify-js@1.9.0:
-  version "1.9.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/toastify-js/-/toastify-js-1.9.0.tgz#726963ce850d914ee836951b5e79bdf641fe979e"
-  integrity sha1-cmljzoUNkU7oNpUbXnm99kH+l54=
+toastify-js@1.9.1:
+  version "1.9.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/toastify-js/-/toastify-js-1.9.1.tgz#95bd5bc03a6144ea5e736a2e39fb0730195818b3"
+  integrity sha1-lb1bwDphROpec2ouOfsHMBlYGLM=
 
 toggle-selection@^1.0.6:
   version "1.0.6"
