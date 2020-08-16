@@ -69,12 +69,12 @@ export const createFlowLogger = (
         processState && logProcessState({ processType, appName }, processState);
       }
 
-      console.log(chalk.bold.whiteBright('  Usage'));
+      console.log(chalk.bold('  Usage'));
       model.pages.slice(0, 9).forEach(({ route }, i) => {
         console.log(
-          `   > Press ${chalk.bold.whiteBright(
-            i + 1,
-          )} to open ${chalk.cyan.bold(`/${route}`)} on production.`,
+          `   > Press ${chalk.bold(i + 1)} to open ${chalk.cyan.bold(
+            `/${route}`,
+          )} on production.`,
         );
       });
 
