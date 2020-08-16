@@ -4469,10 +4469,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/url-join/-/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
   integrity sha1-cu/3FkikKcfUrPlOA3gOBmcTab0=
 
-"@types/uuid@8.0.1":
-  version "8.0.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/uuid/-/uuid-8.0.1.tgz#42958a1a880640b139eea97a1640e1a3f61016d2"
-  integrity sha1-QpWKGogGQLE57ql6FkDho/YQFtI=
+"@types/uuid@8.3.0":
+  version "8.3.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha1-IVwjHf9zbVupJBDm1gIFDM5+Jz8=
 
 "@types/validate-npm-package-name@3.0.0":
   version "3.0.0"
