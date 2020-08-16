@@ -13172,10 +13172,10 @@ eslint-plugin-react-hooks@1.7.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
   integrity sha1-YhC21aNyBfC5KFj4laToJwIKfQQ=
 
-eslint-plugin-react@7.20.5:
-  version "7.20.5"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/eslint-plugin-react/-/eslint-plugin-react-7.20.5.tgz#29480f3071f64a04b2c3d99d9b460ce0f76fb857"
-  integrity sha1-KUgPMHH2SgSyw9mdm0YM4PdvuFc=
+eslint-plugin-react@7.20.6:
+  version "7.20.6"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/eslint-plugin-react/-/eslint-plugin-react-7.20.6.tgz#4d7845311a93c463493ccfa0a19c9c5d0fd69f60"
+  integrity sha1-TXhFMRqTxGNJPM+goZycXQ/Wn2A=
   dependencies:
     array-includes "^3.1.1"
     array.prototype.flatmap "^1.2.3"
