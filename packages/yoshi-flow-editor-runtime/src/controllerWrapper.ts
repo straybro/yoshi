@@ -2,6 +2,7 @@ import {
   IWidgetControllerConfig,
   IPlatformServices,
   IWidgetController,
+  IWixAPI,
 } from '@wix/native-components-infra/dist/src/types/types';
 import { CreateControllerFn, IControllerAppData } from './types';
 import {
@@ -18,12 +19,12 @@ import {
 import { VisitorBILoggerFactory } from './generated/bi-logger-types';
 import { wrapUserController } from './helpers/wrapUserController';
 
-interface ControllerWrapperOptions {
+export interface ControllerWrapperOptions {
   sentryConfig: SentryConfig | null;
   experimentsConfig: ExperimentsConfig | null;
   inEditor: boolean;
   biConfig: BIConfig;
-  biLogger: VisitorBILoggerFactory;
+  biLogger: VisitorBILoggerFactory | null;
   appName: string | null;
   projectName: string;
   defaultTranslations: DefaultTranslations | null;
@@ -38,6 +39,7 @@ export default (
     experimentsConfig,
     biLogger,
     projectName,
+    inEditor,
     translationsConfig,
     defaultTranslations,
     appName,
@@ -47,11 +49,13 @@ export default (
   appData,
   flowAPI,
   platformServices,
+  wixApi,
 }: {
   controllerConfig: IWidgetControllerConfig;
   appData: IControllerAppData;
   flowAPI?: ControllerFlowAPI | null;
   platformServices?: IPlatformServices;
+  wixApi?: IWixAPI;
 }) => {
   // If flowAPI passed - it means it's already inited and we shouldn't provide additional actions.
   if (flowAPI) {
@@ -72,10 +76,10 @@ export default (
     projectName,
     sentry: sentryConfig,
     platformServices,
-    wixAPI: controllerConfig.wixCodeApi,
+    wixAPI: wixApi ?? controllerConfig.wixCodeApi,
     translationsConfig,
     defaultTranslations,
-    inEditor: false,
+    inEditor,
     biConfig,
     biLogger,
     appName,
@@ -84,7 +88,7 @@ export default (
 
   flowAPI = new ControllerFlowAPI({
     viewerScriptFlowAPI,
-    appDefinitionId: controllerConfig.appParams.appDefinitionId,
+    appDefinitionId: controllerConfig.appParams?.appDefinitionId,
     translationsConfig,
     widgetId: controllerConfig.type,
     biLogger,
