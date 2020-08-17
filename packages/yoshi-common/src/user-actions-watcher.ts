@@ -24,7 +24,7 @@ export class UserActionsWatcher {
     process.stdin.on('keypress', (str) => {
       if (str === CTRL_C) {
         process.stdin.setRawMode(false);
-        process.exit(130);
+        process.exit(0);
       } else {
         this.actions[str]?.(); // eslint-disable-line no-unused-expressions
       }
