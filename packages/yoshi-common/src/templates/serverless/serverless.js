@@ -1,8 +1,14 @@
 const { Server } = require('yoshi-serverless');
 const { FullHttpResponse, HttpError } = require('@wix/serverless-api');
 
-const accessControlHeaders = {
+const accessControlHeadersDev = {
   'Access-Control-Allow-Origin': '*',
+  'Access-Control-Request-Method': '*',
+  'Access-Control-Allow-Headers':
+    'origin, x-wix-brand, x-requested-with, content-type, accept, x-wix-scheduler-instance, authorization',
+};
+const accessControlHeadersProd = {
+  'Access-Control-Allow-Origin': 'https://static.parastorage.com',
   'Access-Control-Request-Method': '*',
   'Access-Control-Allow-Headers':
     'origin, x-wix-brand, x-requested-with, content-type, accept, x-wix-scheduler-instance, authorization',
@@ -15,19 +21,16 @@ const addOptionsCors = (functionsBuilder) => {
     return new FullHttpResponse({
       status: 204,
       body: {},
-      ...(process.env.NODE_ENV === 'development'
-        ? { headers: accessControlHeaders }
-        : {}),
+      headers: getHeaders(),
     });
   });
 };
 
 const getHeaders = () => {
-  let headers = { 'content-type': 'application/json' };
-  if (isDevelopment) {
-    headers = { ...accessControlHeaders, ...headers };
-  }
-  return headers;
+  return {
+    ...(isDevelopment ? accessControlHeadersDev : accessControlHeadersProd),
+    'content-type': 'application/json',
+  };
 };
 
 module.exports = (functionsBuilder) => {

@@ -25,10 +25,16 @@ export interface HttpClient {
 
 // https://github.com/developit/unfetch/issues/46
 const fetch = unfetch;
+// in case the page is staticly rendered from parastorage, we need an absolute url
+const wixBase =
+  typeof window !== 'undefined' &&
+  window.location.hostname === 'static.parastorage.com'
+    ? `https://www.wix.com`
+    : '';
 const serverlessBase = process.env.YOSHI_SERVERLESS_BASE;
 
 const defaultBaseUrl = serverlessBase
-  ? serverlessBase
+  ? `${wixBase}${serverlessBase}`
   : `/_api/${process.env.PACKAGE_NAME}`;
 
 export default class implements HttpClient {
