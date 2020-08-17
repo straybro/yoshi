@@ -16,16 +16,6 @@ const accessControlHeadersProd = {
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-const addOptionsCors = (functionsBuilder) => {
-  functionsBuilder.addWebFunction('OPTIONS', '*', async () => {
-    return new FullHttpResponse({
-      status: 204,
-      body: {},
-      headers: getHeaders(),
-    });
-  });
-};
-
 const getHeaders = () => {
   return {
     ...(isDevelopment ? accessControlHeadersDev : accessControlHeadersProd),
@@ -34,12 +24,16 @@ const getHeaders = () => {
 };
 
 module.exports = (functionsBuilder) => {
-  if (isDevelopment) {
-    addOptionsCors(functionsBuilder);
-  }
   return functionsBuilder
     .withSecurityOptions({
       requireHttps: true,
+    })
+    .addWebFunction('OPTIONS', '*', async () => {
+      return new FullHttpResponse({
+        status: 204,
+        body: {},
+        headers: getHeaders(),
+      });
     })
     .addWebFunction('POST', '*', async (ctx, req) => {
       try {
