@@ -4,13 +4,13 @@
     ":maintainLockFilesWeekly"
   ],
   "minor": {
-    "prBodyNotes": ["#automerge"]
+    "commitBody": "#automerge"
   },
   "patch": {
-    "prBodyNotes": ["#automerge"]
+    "commitBody": "#automerge"
   },
   "lockFileMaintenance": {
-    "prBodyNotes": ["#automerge"]
+    "commitBody": "#automerge"
   },
   "enabledManagers": [
     "npm"
