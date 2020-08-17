@@ -1,5 +1,22 @@
 # Changelog
 
+## v4.149.0 (2020-08-17)
+
+#### :rocket: New Feature
+* `yoshi-flow-editor-runtime`
+  * [#2956](https://github.com/wix-private/yoshi/pull/2956) Add controllerwrapper testkit ([@yavorsky](https://github.com/yavorsky))
+
+#### :bug: Bug Fix
+* `yoshi-flow-bm`
+  * [#3054](https://github.com/wix-private/yoshi/pull/3054) Stop using `chalk.whiteBright` ([@amitdahan](https://github.com/amitdahan))
+
+#### :nail_care: Polish
+* `yoshi-common`, `yoshi-serverless-client`
+  * [#3063](https://github.com/wix-private/yoshi/pull/3063) Yoshi Serverless: add support for yoshi serverless client calls from parastorage ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :house: Internal
+* [#3031](https://github.com/wix-private/yoshi/pull/3031) Index website after publish ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.148.0 (2020-08-14)
 
 #### :nail_care: Polish
