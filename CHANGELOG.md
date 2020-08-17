@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.150.0 (2020-08-17)
+
+#### :bug: Bug Fix
+* `yoshi-common`
+  * [#3071](https://github.com/wix-private/yoshi/pull/3071) Yoshi Serverless: add options with cors for production ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :nail_care: Polish
+* `yoshi-common`
+  * [#3069](https://github.com/wix-private/yoshi/pull/3069) change exit code on ctrl+c from 130 to 0 ([@roymiloh](https://github.com/roymiloh))
+
 ## v4.149.0 (2020-08-17)
 
 #### :rocket: New Feature
