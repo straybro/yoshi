@@ -35,7 +35,7 @@ export default async function publishServerless(config: Config) {
   await git.clone(
     'git@github.com:wix-a/yoshi-serverless.git',
     path.resolve('temp'),
-    { depth: 1 },
+    ['--depth=1'],
   );
   console.log('clone complete');
 
