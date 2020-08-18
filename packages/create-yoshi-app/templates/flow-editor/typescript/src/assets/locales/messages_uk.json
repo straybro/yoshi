@@ -2,5 +2,6 @@
   "app.widget.welcome": "Вітаю",
   "app.settings.label": "Налаштуй Віджет",
   "app.settings.tabs.main": "Головна",
-  "app.settings.tabs.design": "Дизайн"
+  "app.settings.tabs.design": "Дизайн",
+  "app.settings.defaults.greetingsPretext": "до"
 }

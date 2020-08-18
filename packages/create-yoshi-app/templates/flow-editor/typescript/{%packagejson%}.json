@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@wix/native-components-infra": "^1.0.668",
+    "@wix/tpa-settings": "^2.0.196",
     "@wix/wix-axios-config": "latest",
     "@wix/wix-base-ui": "3.745.0",
     "@wix/wix-experiments": "^3.0.442",
@@ -64,8 +65,7 @@
     "uuid": "^3.3.2",
     "wix-ui-tpa": "^1.0.123",
     "typescript": "~3.9.0",
-    "yoshi-flow-editor-runtime": "^4.67.0",
-    "@wix/tpa-settings": "^2.0.185"
+    "yoshi-flow-editor-runtime": "^4.67.0"
   },
   "jest": {
     "preset": "jest-yoshi-preset"

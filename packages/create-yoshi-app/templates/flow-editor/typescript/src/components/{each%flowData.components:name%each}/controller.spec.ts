@@ -34,9 +34,14 @@ describe('createController', () => {
     const flowAPI = controllerFlowAPIMock({
       experimentsConfig,
       controllerConfig,
+      defaultTranslations: {
+        'app.settings.defaults.greetingsPretext': 'to',
+      },
       widgetId: 'someWidget',
       appDefinitionId,
     });
+
+    await flowAPI.translations.init();
 
     const controller = await createAppController({
       flowAPI,

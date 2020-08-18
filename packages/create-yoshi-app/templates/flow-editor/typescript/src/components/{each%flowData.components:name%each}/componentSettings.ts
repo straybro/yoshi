@@ -8,6 +8,7 @@ export type IComponentSettings = ISettingsParams<{
 export const componentSettings: IComponentSettings = {
   greetingsText: {
     key: 'greetingsText',
-    getDefaultValue: () => `to ${appName}`,
+    getDefaultValue: ({ t }) =>
+      `${t('app.settings.defaults.greetingsPretext')} ${appName}`,
   },
 };

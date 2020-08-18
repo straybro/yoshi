@@ -15,42 +15,31 @@ import './Settings.global.scss';
 import { MainTab } from './Tabs/MainTab';
 import { DesignTab } from './Tabs/DesignTab';
 
-type ISettingsProps = {
-  Wix: IWixStatic;
-} & InjectedTranslateProps &
-  InjectedExperimentsProps;
+type ISettingsProps = InjectedTranslateProps & InjectedExperimentsProps;
 
-export const Settings = translate()(
-  withExperiments<ISettingsProps>(({ Wix, experiments, t }) => {
-    return (
-      <>
-        <SettingsTabLayout dataHook="settings-tabs" Wix={Wix}>
-          {experiments.enabled('specs.test.HideMainTab') ? null : (
+export default translate()(
+  withExperiments<ISettingsProps>(({ t, experiments }) => (
+    <WixSDK isEditor>
+      {({ Wix }) => (
+        <TpaSettingsProvider Wix={Wix} t={t}>
+          <SettingsTabLayout dataHook="settings-tabs" Wix={Wix}>
+            {experiments.enabled('specs.test.HideMainTab') ? null : (
+              <SettingsTabLayout.Tab
+                title={t('app.settings.tabs.main')}
+                dataHook="main-tab-button"
+                articleId="xxx-xxx-xxx-xxx"
+                Component={() => <MainTab />}
+              />
+            )}
             <SettingsTabLayout.Tab
-              title={t('app.settings.tabs.main')}
-              dataHook="main-tab-button"
+              title={t('app.settings.tabs.design')}
+              dataHook="design-tab-button"
               articleId="xxx-xxx-xxx-xxx"
-              Component={() => <MainTab />}
+              Component={() => <DesignTab />}
             />
-          )}
-          <SettingsTabLayout.Tab
-            title={t('app.settings.tabs.design')}
-            dataHook="design-tab-button"
-            articleId="xxx-xxx-xxx-xxx"
-            Component={() => <DesignTab />}
-          />
-        </SettingsTabLayout>
-      </>
-    );
-  }),
-);
-
-export default () => (
-  <WixSDK isEditor>
-    {({ Wix }) => (
-      <TpaSettingsProvider Wix={Wix}>
-        <Settings Wix={Wix} />
-      </TpaSettingsProvider>
-    )}
-  </WixSDK>
+          </SettingsTabLayout>
+        </TpaSettingsProvider>
+      )}
+    </WixSDK>
+  )),
 );

@@ -11,7 +11,9 @@ const createController: CreateControllerFn = async ({
   const { setProps } = flowAPI.controllerConfig;
 
   const publicData = flowAPI.controllerConfig.config.publicData.COMPONENT || {};
-  const settings = getSettingsValues(publicData, componentSettings);
+  const settings = getSettingsValues(publicData, componentSettings, {
+    t: flowAPI.translations.t,
+  });
 
   return {
     async pageReady() {
@@ -24,6 +26,7 @@ const createController: CreateControllerFn = async ({
       const updatedSettings = getSettingsValues(
         updatedPublicData,
         componentSettings,
+        { t: flowAPI.translations.t },
       );
 
       setProps({
