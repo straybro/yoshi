@@ -87,7 +87,7 @@ export function createServerWebpackConfig(
       yoshiServer: config.yoshiServer,
     });
 
-    let entryConfig = config.yoshiServer
+    let entryConfig = process.env.EXPERIMENTAL_YOSHI_SERVERLESS
       ? createServerEntries(serverConfig.context as string)
       : {};
 

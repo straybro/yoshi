@@ -6,7 +6,12 @@ import {
   printBuildResult,
   printBundleSizeSuggestion,
 } from 'yoshi-common/build/print-build-results';
-import { BUILD_DIR, TARGET_DIR } from 'yoshi-config/build/paths';
+import publishServerless from 'yoshi-server-tools/build/serverless-publish';
+import {
+  BUILD_DIR,
+  TARGET_DIR,
+  SERVERLESS_DIR,
+} from 'yoshi-config/build/paths';
 import { inTeamCity } from 'yoshi-helpers/build/queries';
 import * as telemetry from 'yoshi-common/build/telemetry';
 import { copyTemplates } from 'yoshi-common/build/copy-assets';
@@ -69,6 +74,7 @@ const build: CliCommand = async function (argv, config) {
   await Promise.all([
     fs.emptyDir(join(BUILD_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
+    fs.emptyDir(join(SERVERLESS_DIR)),
   ]);
 
   const model = createFlowBMModel();
@@ -123,6 +129,9 @@ const build: CliCommand = async function (argv, config) {
 
   printBuildResult({ webpackStats: [clientOptimizedStats, serverStats] });
   printBundleSizeSuggestion();
+  if (inTeamCity() && process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+    await publishServerless(config);
+  }
 };
 
 export default build;

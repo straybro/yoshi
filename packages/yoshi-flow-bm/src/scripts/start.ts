@@ -3,7 +3,11 @@ import arg from 'arg';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import DevEnvironment from 'yoshi-common/build/dev-environment';
-import { TARGET_DIR, BUILD_DIR } from 'yoshi-config/build/paths';
+import {
+  TARGET_DIR,
+  BUILD_DIR,
+  SERVERLESS_DIR,
+} from 'yoshi-config/build/paths';
 import * as telemetry from 'yoshi-common/build/telemetry';
 import { CliCommand } from '../bin/yoshi-bm';
 import { createClientWebpackConfig } from '../webpack.config';
@@ -77,6 +81,7 @@ const start: CliCommand = async function (argv, yoshiConfig) {
   await Promise.all([
     fs.emptyDir(join(BUILD_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
+    fs.emptyDir(join(SERVERLESS_DIR)),
   ]);
 
   watchFlowBMModel((model) => {

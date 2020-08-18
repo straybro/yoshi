@@ -11,6 +11,7 @@
   "references": [
     { "path": "../yoshi-config" },
     { "path": "../yoshi-helpers" },
-    { "path": "../yoshi-common" }
+    { "path": "../yoshi-common" },
+    { "path": "../yoshi-server-tools" },
   ]
 }

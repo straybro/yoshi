@@ -4030,10 +4030,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/i18next@*", "@types/i18next@8.4.5", "@types/i18next@8.4.6":
+"@types/i18next@*":
   version "8.4.5"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/i18next/-/i18next-8.4.5.tgz#d6c0cb594258815219c70006e9f5cd65ad6d797f"
   integrity sha1-1sDLWUJYgVIZxwAG6fXNZa1teX8=
+
+"@types/i18next@8.4.6":
+  version "8.4.6"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/i18next/-/i18next-8.4.6.tgz#d03e36289c913dc624378f5f1c8925e553e6d6c8"
+  integrity sha1-0D42KJyRPcYkN49fHIkl5VPm1sg=
 
 "@types/is-ci@2.0.0":
   version "2.0.0"
@@ -4211,10 +4216,25 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@12.12.17", "@types/node@12.12.54", "@types/node@8.10.62", "@types/node@>= 8", "@types/node@^12.0.0", "@types/node@^12.7.7", "@types/node@^13.7.0":
+"@types/node@*", "@types/node@12.12.54", "@types/node@>= 8", "@types/node@^12.7.7":
   version "12.12.54"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node/-/node-12.12.54.tgz#a4b58d8df3a4677b6c08bfbc94b7ad7a7a5f82d1"
   integrity sha1-pLWNjfOkZ3tsCL+8lLetenpfgtE=
+
+"@types/node@12.12.17":
+  version "12.12.17"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node/-/node-12.12.17.tgz#191b71e7f4c325ee0fb23bc4a996477d92b8c39b"
+  integrity sha1-GRtx5/TDJe4PsjvEqZZHfZK4w5s=
+
+"@types/node@8.10.62":
+  version "8.10.62"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node/-/node-8.10.62.tgz#8d0d0db44a46ae7679d92e2e36d41bf1c3625d6a"
+  integrity sha1-jQ0NtEpGrnZ52S4uNtQb8cNiXWo=
+
+"@types/node@^13.7.0":
+  version "13.13.15"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/node/-/node-13.13.15.tgz#fe1cc3aa465a3ea6858b793fd380b66c39919766"
+  integrity sha1-/hzDqkZaPqaFi3k/04C2bDmRl2Y=
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
