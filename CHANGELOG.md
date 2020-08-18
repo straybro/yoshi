@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.151.0 (2020-08-18)
+
+#### :rocket: New Feature
+* `yoshi-flow-bm`
+  * [#3080](https://github.com/wix-private/yoshi/pull/3080) make yoshi serverless work with bm-flow ([@yanivefraim](https://github.com/yanivefraim))
+* `create-yoshi-app`
+  * [#3070](https://github.com/wix-private/yoshi/pull/3070) Update tpa settings to have a default value translations use-case ([@yavorsky](https://github.com/yavorsky))
+
+#### :bug: Bug Fix
+* `yoshi-server-tools`
+  * [#3079](https://github.com/wix-private/yoshi/pull/3079) Yoshi Serverless: fix publish to be faster ([@yanivefraim](https://github.com/yanivefraim))
+
 ## v4.150.0 (2020-08-17)
 
 #### :bug: Bug Fix
