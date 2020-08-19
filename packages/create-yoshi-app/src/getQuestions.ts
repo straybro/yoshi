@@ -1,6 +1,7 @@
 import getGitConfig from 'parse-git-config';
 import { capitalize } from 'lodash';
 import open from 'open';
+import { yellow, dim } from 'chalk';
 import templates from './templates';
 import { ExtendedPromptObject } from './extended-prompts';
 import {
@@ -9,6 +10,19 @@ import {
   isEmail,
   WIX_EMAIL_PATTERN,
 } from './wixEmail';
+import { TemplateDefinition, YoshiFlow } from './TemplateModel';
+
+const experimentalBadge = yellow('(experimental)');
+
+const getFlowBadge = (yoshiFlow: YoshiFlow) => {
+  return dim(`${yoshiFlow}-flow`);
+};
+
+const getDisplayName = ({ name, experimental, flow }: TemplateDefinition) => {
+  return `${name} ${getFlowBadge(flow)} ${
+    experimental ? experimentalBadge : ''
+  }`;
+};
 
 export default (): Array<ExtendedPromptObject<string>> => {
   const gitConfig = getGitConfig.sync({ include: true, type: 'global' });
@@ -40,9 +54,9 @@ export default (): Array<ExtendedPromptObject<string>> => {
       type: 'autocomplete',
       name: 'templateDefinition',
       message: 'Choose project type',
-      choices: templates.map((project) => ({
-        title: project.title || project.name,
-        value: project,
+      choices: templates.map((templateDefinition) => ({
+        title: getDisplayName(templateDefinition),
+        value: templateDefinition,
       })),
       next(answers) {
         const questions: Array<ExtendedPromptObject<string>> = [];

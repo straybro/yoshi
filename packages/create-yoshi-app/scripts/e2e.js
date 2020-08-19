@@ -23,7 +23,7 @@ const templatesWithTitles = flatMap(templates, (templateDefinition) => {
   return templateDefinition.availableLanguages.map((language) => {
     return {
       ...templateDefinition,
-      title: `${templateDefinition.name}-${language}`,
+      title: `${templateDefinition.id}-${language}`,
     };
   });
 });
@@ -124,7 +124,7 @@ const testTemplate = (mockedAnswers) => {
     // in the describe block will run first!
     it('step 1: should generate project successfully', async () => {
       mockAppData(mockedAnswers);
-      if (isOutOfIframe(mockedAnswers.templateDefinition.name)) {
+      if (isOutOfIframe(mockedAnswers.templateDefinition.id)) {
         mockFlowData(
           mockedAnswers.templateDefinition.title,
           'WIDGET_OUT_OF_IFRAME',
@@ -134,14 +134,14 @@ const testTemplate = (mockedAnswers) => {
           mockedAnswers.templateDefinition.projectName,
         );
         mockAutoRelease();
-      } else if (isAppBuilder(mockedAnswers.templateDefinition.name)) {
+      } else if (isAppBuilder(mockedAnswers.templateDefinition.id)) {
         mockFlowData(mockedAnswers.templateDefinition.title, 'STUDIO_WIDGET');
         mockSentryData(
           'some-team',
           mockedAnswers.templateDefinition.projectName,
         );
         mockAutoRelease();
-      } else if (isBMFlow(mockedAnswers.templateDefinition.name)) {
+      } else if (isBMFlow(mockedAnswers.templateDefinition.id)) {
         mockSentryData(
           'some-team',
           mockedAnswers.templateDefinition.projectName,

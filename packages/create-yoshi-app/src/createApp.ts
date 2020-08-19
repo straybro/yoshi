@@ -22,11 +22,11 @@ export interface CreateAppOptions {
 }
 
 const shouldRegisterSentry = ({ templateDefinition }: TemplateModel) =>
-  isBMFlow(templateDefinition.name) ||
-  templateDefinition.name.includes('flow-editor');
+  isBMFlow(templateDefinition.id) ||
+  templateDefinition.id.includes('flow-editor');
 
 const shouldRegisterDevCenter = ({ templateDefinition }: TemplateModel) =>
-  templateDefinition.name.includes('flow-editor');
+  templateDefinition.id.includes('flow-editor');
 
 export default async ({
   workingDir,

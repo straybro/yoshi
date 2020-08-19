@@ -89,7 +89,9 @@ function minimalTemplateModel() {
     authorEmail: 'rany@wix.com',
     language: 'javascript',
     templateDefinition: {
-      name: 'minimal-template',
+      flow: 'app',
+      id: 'minimal-template',
+      name: 'Minimal Template',
       path: path.join(__dirname, './__fixtures__/minimal-template/'),
       availableLanguages: ['javascript'],
     },

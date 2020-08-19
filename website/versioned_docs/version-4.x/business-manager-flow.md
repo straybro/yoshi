@@ -74,7 +74,7 @@ export default () => {
 
 ## Initial Setup
 
-Run `EXPERIMENTAL_FLOW_BM=true npx create-yoshi-app` & choose template `flow-bm`.
+Run `npx create-yoshi-app` & choose template `Business Manager Module flow-bm`.
 
 This will bootstrap a new Business-Manager application, along with a single (root) page.
 

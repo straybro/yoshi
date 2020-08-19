@@ -21,10 +21,6 @@ if (focusProjects) {
   process.env.FOCUS_PROJECTS = focusProjects;
 }
 
-process.env.EXPERIMENTAL_FLOW_BM = 'true';
-process.env.EXPERIMENTAL_PLATFORM_TEMPLATE = 'true';
-process.env.EXPERIMENTAL_FLOW_LIBRARY = 'true';
-
 // Instantiate a Mocha instance.
 const mocha = new Mocha({
   timeout: 60 * 1000 * 20,

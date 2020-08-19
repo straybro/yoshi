@@ -4,68 +4,79 @@ import {
   FLOW_BM_TEMPLATE_NAME,
   OOI_TEMPLATE_NAME,
   PLATFORM_TEMPLATE_NAME,
-} from './utils';
+} from './constants';
 
 const toTemplatePath = (templateName: string) =>
   resolve(__dirname, '../templates', templateName);
 
 const templates: Array<TemplateDefinition> = [
   {
-    name: 'fullstack',
+    id: 'fullstack',
+    name: `FullStack App`,
+    flow: 'app',
     path: toTemplatePath('fullstack'),
     availableLanguages: ['typescript', 'javascript'],
   },
   {
-    name: 'client',
+    id: 'client',
+    name: `Client Only App`,
+    flow: 'app',
     path: toTemplatePath('client'),
     availableLanguages: ['typescript', 'javascript'],
   },
   {
-    name: 'business-manager-module',
-    path: toTemplatePath('business-manager-module'),
-    availableLanguages: ['typescript', 'javascript'],
-  },
-  {
-    name: OOI_TEMPLATE_NAME,
-    title: 'flow-editor - Out of iFrame',
+    id: OOI_TEMPLATE_NAME,
+    name: `Out Of iFrame App`,
+    flow: 'editor',
     path: toTemplatePath('flow-editor'),
     availableLanguages: ['typescript'],
   },
   {
-    name: 'library',
+    id: 'flow-library',
+    name: `Library`,
+    path: toTemplatePath('flow-library'),
+    experimental: true,
+    flow: 'library',
+    availableLanguages: ['typescript'],
+  },
+  {
+    id: 'library',
+    name: `Library`,
     path: toTemplatePath('library'),
+    flow: 'legacy',
+    availableLanguages: ['typescript', 'javascript'],
+  },
+
+  {
+    id: FLOW_BM_TEMPLATE_NAME,
+    name: `Business Manager Module`,
+    path: toTemplatePath(FLOW_BM_TEMPLATE_NAME),
+    experimental: true,
+    flow: 'bm',
+    availableLanguages: ['typescript'],
+  },
+  {
+    id: 'business-manager-module',
+    name: `Business Manager Module`,
+    path: toTemplatePath('business-manager-module'),
+    flow: 'app',
     availableLanguages: ['typescript', 'javascript'],
   },
   {
-    name: 'server',
+    id: PLATFORM_TEMPLATE_NAME,
+    name: `Platform App`,
+    path: toTemplatePath('flow-editor-platform'),
+    experimental: true,
+    flow: 'editor',
+    availableLanguages: ['typescript'],
+  },
+  {
+    id: 'server',
+    name: `Server Only`,
     path: toTemplatePath('server'),
+    flow: 'legacy',
     availableLanguages: ['typescript', 'javascript'],
   },
 ];
-
-if (process.env.EXPERIMENTAL_FLOW_BM === 'true') {
-  templates.push({
-    name: FLOW_BM_TEMPLATE_NAME,
-    path: toTemplatePath(FLOW_BM_TEMPLATE_NAME),
-    availableLanguages: ['typescript'],
-  });
-}
-
-if (process.env.EXPERIMENTAL_PLATFORM_TEMPLATE === 'true') {
-  templates.push({
-    name: PLATFORM_TEMPLATE_NAME,
-    title: 'flow-editor - Platform',
-    path: toTemplatePath('flow-editor-platform'),
-    availableLanguages: ['typescript'],
-  });
-}
-
-if (process.env.EXPERIMENTAL_FLOW_LIBRARY === 'true') {
-  templates.push({
-    name: 'flow-library',
-    path: toTemplatePath('flow-library'),
-    availableLanguages: ['typescript'],
-  });
-}
 
 export default templates;

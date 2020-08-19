@@ -1,6 +1,11 @@
 import chalk from 'chalk';
 import execa from 'execa';
-import { privateRegistry } from './constants';
+import {
+  privateRegistry,
+  OOI_TEMPLATE_NAME,
+  FLOW_BM_TEMPLATE_NAME,
+  PLATFORM_TEMPLATE_NAME,
+} from './constants';
 
 export const clearConsole = () => process.stdout.write('\x1Bc');
 
@@ -91,18 +96,11 @@ export const isInsideGitRepo = (dir: string) => {
   }
 };
 
-export const OOI_TEMPLATE_NAME = 'flow-editor-ooi';
-export const PLATFORM_TEMPLATE_NAME = 'flow-editor-platform';
-export const FLOW_BM_TEMPLATE_NAME = 'flow-bm';
+export const isOutOfIframe = (templateId: string): boolean =>
+  templateId === OOI_TEMPLATE_NAME;
 
-export const isOutOfIframe = (str: string): boolean => {
-  return str === OOI_TEMPLATE_NAME;
-};
+export const isAppBuilder = (templateId: string): boolean =>
+  templateId === PLATFORM_TEMPLATE_NAME;
 
-export const isAppBuilder = (str: string): boolean => {
-  return str === PLATFORM_TEMPLATE_NAME;
-};
-
-export const isBMFlow = (str: string) => {
-  return str === FLOW_BM_TEMPLATE_NAME;
-};
+export const isBMFlow = (templateId: string) =>
+  templateId === FLOW_BM_TEMPLATE_NAME;

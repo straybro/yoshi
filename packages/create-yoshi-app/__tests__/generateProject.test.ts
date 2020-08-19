@@ -9,7 +9,9 @@ test('verify generation works as expected', () => {
   const templateModel = new TemplateModel({
     projectName: `test-project`,
     templateDefinition: {
-      name: 'fake-template',
+      id: 'fake-template',
+      name: 'Fake Template',
+      flow: 'app',
       path: path.join(__dirname, './__fixtures__/fake-template/'),
       availableLanguages: ['typescript'],
     },

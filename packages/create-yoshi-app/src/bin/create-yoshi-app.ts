@@ -55,7 +55,7 @@ createApp({
   templateModel: maybeTemplateModel,
 }).then((templateModel) => {
   telemetry.createProject(
-    templateModel.templateDefinition.name,
+    templateModel.templateDefinition.id,
     templateModel.projectName,
     templateModel.language,
     templateModel.authorEmail,

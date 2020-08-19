@@ -349,9 +349,9 @@ export default (): Array<ExtendedPromptObject<string>> => {
               type: 'text',
               name: 'appName',
               async after(answers, context: any) {
-                if (isAppBuilder(context.templateDefinition.name)) {
+                if (isAppBuilder(context.templateDefinition.id)) {
                   answers.components = getDefaultAnswers(
-                    context.templateDefinition.name,
+                    context.templateDefinition.id,
                   ).components;
                 } else {
                   answers.components = [];
@@ -363,7 +363,7 @@ export default (): Array<ExtendedPromptObject<string>> => {
               },
               message: 'Name of the app:',
               next(answers, context: any) {
-                if (isOutOfIframe(context.templateDefinition.name)) {
+                if (isOutOfIframe(context.templateDefinition.id)) {
                   return [addOOIComponentStep({ multiple: true })];
                 }
                 return [];
@@ -422,7 +422,7 @@ export default (): Array<ExtendedPromptObject<string>> => {
                   answers.components.length === 0;
                 if (
                   isEmptyApp &&
-                  isOutOfIframe(context.templateDefinition.name)
+                  isOutOfIframe(context.templateDefinition.id)
                 ) {
                   context.isPlatformComponentRegistered = isPlatformComponentRegistered;
                   return [addOOIComponentStep({ multiple: true })];

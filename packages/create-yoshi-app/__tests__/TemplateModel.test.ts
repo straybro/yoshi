@@ -5,7 +5,9 @@ describe('TemplateModel', () => {
   describe('language is javascript', () => {
     const model = new TemplateModel({
       templateDefinition: {
-        name: 'client',
+        name: 'Client',
+        id: 'client',
+        flow: 'app',
         path: path.join(__dirname, '../templates/client'),
         availableLanguages: ['javascript'],
       },
@@ -25,7 +27,9 @@ describe('TemplateModel', () => {
   describe('language is typescript', () => {
     const model = new TemplateModel({
       templateDefinition: {
-        name: 'client',
+        name: 'Client',
+        id: 'client',
+        flow: 'app',
         path: path.join(__dirname, '../templates/client'),
         availableLanguages: ['typescript'],
       },

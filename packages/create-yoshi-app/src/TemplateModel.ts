@@ -9,11 +9,15 @@ export type SentryData = {
   DSN: string;
 };
 
+export type YoshiFlow = 'editor' | 'app' | 'legacy' | 'bm' | 'library';
+
 export interface TemplateDefinition {
+  id: string;
   name: string;
-  title?: string;
   path: string;
   warning?: string;
+  experimental?: boolean;
+  flow: YoshiFlow;
   availableLanguages: Array<Language>;
 }
 
@@ -23,6 +27,7 @@ export default class TemplateModel<F = Record<string, any>> {
   readonly authorEmail: string;
   readonly templateDefinition: TemplateDefinition;
   readonly language: Language;
+
   flowData: F | null;
   sentryData: SentryData | null;
 
@@ -53,7 +58,7 @@ export default class TemplateModel<F = Record<string, any>> {
   }
 
   getTitle() {
-    return `${this.templateDefinition.name}-${this.language}`;
+    return `${this.templateDefinition.id}-${this.language}`;
   }
 
   getFlowData(): F | null {

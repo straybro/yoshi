@@ -18,7 +18,7 @@ Now, you'll be prompt with questions.
 
 Fill your `name` and `email`.
 
-Pick `flow-editor - Out of Iframe` or `flow-editor - Platform app` according to the type of app you want to create.
+Pick `Out of iFrame flow-editor` or `Platform App flow-editor` according to the type of app you want to create.
 In most cases you'll need _Out of iFrame_, to read more about Platform apps, please go to [Platform apps section](./platform-apps-support.md).
 
 According to your needs, the next steps could vary:

@@ -14,7 +14,7 @@ const getFallback = (localAppModel: LocalAppTemplateModel) => () => {
   );
 
   return new TemplateModel(
-    getDefaultAnswers(localAppModel.templateDefinition.name),
+    getDefaultAnswers(localAppModel.templateDefinition.id),
   );
 };
 

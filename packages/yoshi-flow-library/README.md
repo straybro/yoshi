@@ -37,10 +37,10 @@ A library is a chunk of code that you want to reuse between client applications,
 ## Installation
 
 ```sh
-EXPERIMENTAL_FLOW_LIBRARY=true npx create-yoshi-app <my-library>
+npx create-yoshi-app <my-library>
 ```
 
-Choose `flow-library` & `TypeScript`
+Choose `Library library-flow`
 
 ## Usage
 
