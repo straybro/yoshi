@@ -22,9 +22,9 @@ function createCompiler(webpackConfig: Array<webpack.Configuration>) {
   try {
     compiler = webpack(webpackConfig);
   } catch (err) {
-    console.log(chalk.red('Failed to compile.'));
+    console.log(chalk.red('Failed to create a compiler.'));
     console.log();
-    console.log(err.message || err);
+    console.log(err);
     console.log();
 
     return process.exit(1);
