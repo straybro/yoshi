@@ -111,6 +111,7 @@ const withComponents = (components: Array<ComponentModel>) => {
     ) => {
       return components
         .map((component) => formatter(component, baseUrl))
+        .filter((component) => !!component)
         .join(',');
     };
   };

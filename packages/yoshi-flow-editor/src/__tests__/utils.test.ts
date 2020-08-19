@@ -282,7 +282,7 @@ describe('addOverrideQueryParamsWithModel', () => {
     const urlWithParams = overrideParams('https://mysite.com', 'editorUrl');
 
     expect(urlWithParams).toBe(
-      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaMobileUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaSettingsUrlOverride=,WIDGET_ID_2=https://localhost:5004/settings/comp2&widgetsUrlOverride=WIDGET_ID=https://localhost:5005/compViewerWidget.bundle.js,WIDGET_ID_2=https://localhost:5005/comp2ViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=https://localhost:5005/viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=https://localhost:5005/editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"https://localhost:5005/"}`,
+      `https://mysite.com/?tpaWidgetUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaMobileUrlOverride=WIDGET_ID=https://localhost:5004/editor/comp,WIDGET_ID_2=https://localhost:5004/editor/comp2&tpaSettingsUrlOverride=WIDGET_ID_2=https://localhost:5004/settings/comp2&widgetsUrlOverride=WIDGET_ID=https://localhost:5005/compViewerWidget.bundle.js,WIDGET_ID_2=https://localhost:5005/comp2ViewerWidget.bundle.js&viewerPlatformOverrides=APP_DEF_ID=https://localhost:5005/viewerScript.bundle.js&editorScriptUrlOverride=APP_DEF_ID=https://localhost:5005/editorScript.bundle.js&overridePlatformBaseUrls=APP_DEF_ID={"staticsBaseUrl":"https://localhost:5005/"}`,
     );
   });
 });
