@@ -1,43 +1,67 @@
 # Changelog
 
+## v4.152.0 (2020-08-19)
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`, `yoshi-flow-library`
+  - [#3078](https://github.com/wix-private/yoshi/pull/3078) Remove experimental environment param from create yoshi app templates ([@ranyitz](https://github.com/ranyitz))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-editor`
+  - [#3083](https://github.com/wix-private/yoshi/pull/3083) fix(editor-flow): Filter out empty components from url formatter ([@bordi](https://github.com/bordi))
+- `yoshi-common`
+  - [#3081](https://github.com/wix-private/yoshi/pull/3081) Improve error handling when can't create a compiler ([@ranyitz](https://github.com/ranyitz))
+- `yoshi-stylable-dependencies`
+  - [#3082](https://github.com/wix-private/yoshi/pull/3082) Adding `^` to stylable version, essentially accepting minor and patch changes ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.151.0 (2020-08-18)
 
 #### :rocket: New Feature
-* `yoshi-flow-bm`
-  * [#3080](https://github.com/wix-private/yoshi/pull/3080) make yoshi serverless work with bm-flow ([@yanivefraim](https://github.com/yanivefraim))
-* `create-yoshi-app`
-  * [#3070](https://github.com/wix-private/yoshi/pull/3070) Update tpa settings to have a default value translations use-case ([@yavorsky](https://github.com/yavorsky))
+
+- `yoshi-flow-bm`
+  - [#3080](https://github.com/wix-private/yoshi/pull/3080) make yoshi serverless work with bm-flow ([@yanivefraim](https://github.com/yanivefraim))
+- `create-yoshi-app`
+  - [#3070](https://github.com/wix-private/yoshi/pull/3070) Update tpa settings to have a default value translations use-case ([@yavorsky](https://github.com/yavorsky))
 
 #### :bug: Bug Fix
-* `yoshi-server-tools`
-  * [#3079](https://github.com/wix-private/yoshi/pull/3079) Yoshi Serverless: fix publish to be faster ([@yanivefraim](https://github.com/yanivefraim))
+
+- `yoshi-server-tools`
+  - [#3079](https://github.com/wix-private/yoshi/pull/3079) Yoshi Serverless: fix publish to be faster ([@yanivefraim](https://github.com/yanivefraim))
 
 ## v4.150.0 (2020-08-17)
 
 #### :bug: Bug Fix
-* `yoshi-common`
-  * [#3071](https://github.com/wix-private/yoshi/pull/3071) Yoshi Serverless: add options with cors for production ([@yanivefraim](https://github.com/yanivefraim))
+
+- `yoshi-common`
+  - [#3071](https://github.com/wix-private/yoshi/pull/3071) Yoshi Serverless: add options with cors for production ([@yanivefraim](https://github.com/yanivefraim))
 
 #### :nail_care: Polish
-* `yoshi-common`
-  * [#3069](https://github.com/wix-private/yoshi/pull/3069) change exit code on ctrl+c from 130 to 0 ([@roymiloh](https://github.com/roymiloh))
+
+- `yoshi-common`
+  - [#3069](https://github.com/wix-private/yoshi/pull/3069) change exit code on ctrl+c from 130 to 0 ([@roymiloh](https://github.com/roymiloh))
 
 ## v4.149.0 (2020-08-17)
 
 #### :rocket: New Feature
-* `yoshi-flow-editor-runtime`
-  * [#2956](https://github.com/wix-private/yoshi/pull/2956) Add controllerwrapper testkit ([@yavorsky](https://github.com/yavorsky))
+
+- `yoshi-flow-editor-runtime`
+  - [#2956](https://github.com/wix-private/yoshi/pull/2956) Add controllerwrapper testkit ([@yavorsky](https://github.com/yavorsky))
 
 #### :bug: Bug Fix
-* `yoshi-flow-bm`
-  * [#3054](https://github.com/wix-private/yoshi/pull/3054) Stop using `chalk.whiteBright` ([@amitdahan](https://github.com/amitdahan))
+
+- `yoshi-flow-bm`
+  - [#3054](https://github.com/wix-private/yoshi/pull/3054) Stop using `chalk.whiteBright` ([@amitdahan](https://github.com/amitdahan))
 
 #### :nail_care: Polish
-* `yoshi-common`, `yoshi-serverless-client`
-  * [#3063](https://github.com/wix-private/yoshi/pull/3063) Yoshi Serverless: add support for yoshi serverless client calls from parastorage ([@yanivefraim](https://github.com/yanivefraim))
+
+- `yoshi-common`, `yoshi-serverless-client`
+  - [#3063](https://github.com/wix-private/yoshi/pull/3063) Yoshi Serverless: add support for yoshi serverless client calls from parastorage ([@yanivefraim](https://github.com/yanivefraim))
 
 #### :house: Internal
-* [#3031](https://github.com/wix-private/yoshi/pull/3031) Index website after publish ([@kobiburnley](https://github.com/kobiburnley))
+
+- [#3031](https://github.com/wix-private/yoshi/pull/3031) Index website after publish ([@kobiburnley](https://github.com/kobiburnley))
 
 ## v4.148.0 (2020-08-14)
 
