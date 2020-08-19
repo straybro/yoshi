@@ -9,4 +9,6 @@ export * from './sentry';
 export * from './bi';
 export * from './types';
 export * from './componentInfo';
+export * from './moduleInfo';
 export * from './appLoaded';
+export * from './instance';

@@ -85,7 +85,6 @@ export default () => {
 };
 ```
 
-
 ## Fedops
 
 Create a valid `fedops.json` file in order to opt-in to the built-in Fedops integration.
@@ -164,3 +163,29 @@ export default () => {
 };
 ```
  
+
+## Instance
+Returns the current `instance` for the optional `appDefId` passed.
+
+If `useInstance` was called without an `appDefId`, the `appDefId` provided in `.module.json` will be used, and if that isn't defined - MetaSite's `appDefId` will be used.
+
+Uses `getCurrentInstance` & `registerToInstanceChanges` to track updates. 
+Can be useful for when you want to initialize an [Ambassador](https://github.com/wix-private/ambassador) client, or a fetch/axios client.  
+
+### Usage
+
+```typescript jsx
+import { useInstance } from 'yoshi-flow-bm-runtime';
+import { appDefIds } from '@wix/business-manager-api';
+import { createHeaders } from '@wix/headers';
+
+export default () => {
+  const signedInstance = useInstance();
+  const headers = useMemo(
+    () => createHeaders({ signedInstance }), 
+    [signedInstance]
+  );
+
+  // ...
+};
+```

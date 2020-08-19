@@ -22,6 +22,7 @@ export const generateComponentCode = (
 import Component from '${absolutePath}';
 import {
   wrapComponent,
+  createModuleInfoProvider,
   createComponentInfoProvider,
   ${addI18n ? 'createI18nProvider,' : ''}
   ${addExperiments ? 'createExperimentsProvider,' : ''}
@@ -33,6 +34,9 @@ import {
 ${addBI ? `import initSchemaLogger from '${model.config.bi}';` : ''}
 
 export default wrapComponent(Component, [
+  createModuleInfoProvider(JSON.parse('${JSON.stringify({
+    appDefId: model.config.appDefId,
+  })}')),
   createComponentInfoProvider(JSON.parse('${JSON.stringify({
     componentId,
     type,
