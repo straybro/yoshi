@@ -1,7 +1,7 @@
 import eventually from 'wix-eventually';
 import { viewerUrl } from '../../../dev/sites';
 
-const BUTTON_SELECTOR = '[data-testid=buttonElement]';
+const BUTTON_SELECTOR = '[role="button"] > div';
 
 describe('Viewer App', () => {
   it('should change text on button click', async () => {

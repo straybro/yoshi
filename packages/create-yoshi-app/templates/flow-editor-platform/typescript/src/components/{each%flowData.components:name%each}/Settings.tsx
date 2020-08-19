@@ -43,7 +43,7 @@ class WidgetSettingsPanel extends React.Component<
     }
     this.componentId = componentId;
 
-    this.onInitialTextValueChange = initialText => {
+    this.onInitialTextValueChange = (initialText) => {
       this.setState({ initialText });
       this.appAPI.updateWidgetProp(
         this.componentId,
@@ -87,7 +87,7 @@ class WidgetSettingsPanel extends React.Component<
 
 export default () => (
   <EditorSDK>
-    {sdk => (
+    {(sdk) => (
       <WidgetSettingsPanel
         editorSDK={sdk.editorSDK as IEditorSDK}
         editorSDKConfig={sdk.editorSDKConfig}
