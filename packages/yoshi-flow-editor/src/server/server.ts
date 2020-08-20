@@ -5,12 +5,20 @@ import httpTestkit from '@wix/wix-http-testkit';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import importCwd from 'import-cwd';
-import { bootstrap } from 'yoshi-serverless-testing';
+import { bootstrap, AmbassadorTestkit } from 'yoshi-serverless-testing';
 import proxy from 'express-http-proxy';
 import { AppConfig } from '../model';
 import velocityDataPrivate from './velocity.private.data.json';
 import velocityData from './velocity.data.json';
 import renderVM from './vm';
+
+type Mocks = {
+  default: ({
+    ambassadorTestkit,
+  }: {
+    ambassadorTestkit: AmbassadorTestkit;
+  }) => void;
+};
 
 const getSentryConfig = (config: AppConfig | null) => {
   return config?.sentry ?? null;
@@ -104,6 +112,26 @@ server
     if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
       const serverlessApp = bootstrap();
       await serverlessApp.start();
+      // We try to require and call a user file called 'dev/mocks'
+      const mocks = importCwd.silent('./dev/mocks') as Mocks | null;
+      if (mocks) {
+        try {
+          mocks.default({ ambassadorTestkit: serverlessApp.ambassador });
+        } catch (e) {
+          console.error(
+            `
+          ------------------ oh no 🤪 ------------------
+          There was an error running the 'dev/mocks' file.
+          Please make sure that you have a file with:
+          export default ({ ambassadorTestkit }) => {
+            // Mock your RPC here
+          }
+
+          ${e}
+          `,
+          );
+        }
+      }
     }
   })
   .catch((err) => {
