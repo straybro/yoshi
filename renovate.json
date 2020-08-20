@@ -4,13 +4,13 @@
     ":maintainLockFilesWeekly"
   ],
   "minor": {
-    "commitBody": "#automerge"
+    "commitMessageSuffix": "#automerge"
   },
   "patch": {
-    "commitBody": "#automerge"
+    "commitMessageSuffix": "#automerge"
   },
   "lockFileMaintenance": {
-    "commitBody": "#automerge"
+    "commitMessageSuffix": "#automerge"
   },
   "enabledManagers": [
     "npm"
