@@ -71,7 +71,9 @@ const build: cliCommand = async function (argv, config) {
   await Promise.all([
     fs.emptyDir(join(BUILD_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
-    fs.emptyDir(join(SERVERLESS_DIR)),
+    process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+      ? fs.emptyDir(join(SERVERLESS_DIR))
+      : Promise.resolve(),
   ]);
 
   await copyTemplates();

@@ -78,7 +78,9 @@ const start: cliCommand = async function (argv, config, model) {
   await Promise.all([
     fs.emptyDir(joinDirs(BUILD_DIR)),
     fs.emptyDir(joinDirs(TARGET_DIR)),
-    fs.emptyDir(joinDirs(SERVERLESS_DIR)),
+    process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+      ? fs.emptyDir(joinDirs(SERVERLESS_DIR))
+      : Promise.resolve(),
   ]);
 
   if (model.biConfig) {

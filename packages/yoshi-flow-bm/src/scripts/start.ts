@@ -81,7 +81,9 @@ const start: CliCommand = async function (argv, yoshiConfig) {
   await Promise.all([
     fs.emptyDir(join(BUILD_DIR)),
     fs.emptyDir(join(TARGET_DIR)),
-    fs.emptyDir(join(SERVERLESS_DIR)),
+    process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+      ? fs.emptyDir(join(SERVERLESS_DIR))
+      : Promise.resolve(),
   ]);
 
   watchFlowBMModel((model) => {
