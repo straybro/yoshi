@@ -64,7 +64,7 @@ const templates: Array<TemplateDefinition> = [
   },
   {
     id: PLATFORM_TEMPLATE_NAME,
-    name: `Platform App`,
+    name: `Editor Platform App`,
     path: toTemplatePath('flow-editor-platform'),
     experimental: true,
     flow: 'editor',
