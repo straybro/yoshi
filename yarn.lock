@@ -4923,10 +4923,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-site-properties-service/-/@wix/ambassador-site-properties-service-2.0.26.tgz#104a3edbfc8d3375c2263b0693f2bc362fff3de1"
   integrity sha1-EEo+2/yNM3XCJjsGk/K8Ni//PeE=
 
-"@wix/ambassador-testkit@*", "@wix/ambassador-testkit@^5.0.293":
-  version "5.0.293"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-testkit/-/@wix/ambassador-testkit-5.0.293.tgz#cd80c10069cd3f26a91eb8d8fe5f4f698300dfdc"
-  integrity sha1-zYDBAGnNPyapHrjY/l9PaYMA39w=
+"@wix/ambassador-testkit@*":
+  version "5.0.291"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ambassador-testkit/-/@wix/ambassador-testkit-5.0.291.tgz#ac92e47bacb1a0ed303f87cf9db36a84302d79c0"
+  integrity sha1-rJLke6yxoO0wP4fPnbNqhDAtecA=
   dependencies:
     "@wix/wix-grpc-client" latest
     "@wix/wix-grpc-testkit" latest
@@ -5341,9 +5341,9 @@
     ts-node "^8.0.3"
 
 "@wix/serverless-testkit@^1.0.452":
-  version "1.0.453"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/serverless-testkit/-/@wix/serverless-testkit-1.0.453.tgz#3f23e4c1bf3d4fe8d4aa314219b8f5c5671262c3"
-  integrity sha1-PyPkwb89T+jUqjFCGbj1xWcSYsM=
+  version "1.0.452"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/serverless-testkit/-/@wix/serverless-testkit-1.0.452.tgz#5e3a1c8a0e207422a821f06b8e76eabf825727e6"
+  integrity sha1-Xjocig4gdCKoIfBrjnbqv4JXJ+Y=
   dependencies:
     "@wix/ambassador" "*"
     "@wix/ambassador-cronulla" "*"
