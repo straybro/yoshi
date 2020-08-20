@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-editor",
-  "version": "4.152.0",
+  "version": "4.153.0",
   "description": "Yoshi Editor-Platform Flow",
   "main": "index.js",
   "bin": {
@@ -20,7 +20,7 @@
     "body-parser": "^1.19.0",
     "chalk": "^4.0.0",
     "cors": "^2.8.5",
-    "create-yoshi-app": "4.152.0",
+    "create-yoshi-app": "4.153.0",
     "express-http-proxy": "^1.6.0",
     "fs-extra": "^9.0.0",
     "globby": "^11.0.0",
