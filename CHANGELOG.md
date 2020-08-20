@@ -1,5 +1,34 @@
 # Changelog
 
+## v4.153.0 (2020-08-20)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-editor`, `yoshi-serverless-testing`
+  - [#3074](https://github.com/wix-private/yoshi/pull/3074) yoshi-flow-editor: add support for dev/mocks file ([@yanivefraim](https://github.com/yanivefraim))
+- `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#3055](https://github.com/wix-private/yoshi/pull/3055) Add `useInstance` helper to BM flow runtime ([@amitdahan](https://github.com/amitdahan))
+
+#### :building_construction: Templates
+
+- `create-yoshi-app`
+  - [#3087](https://github.com/wix-private/yoshi/pull/3087) Rename the platform app template to editor platform app ([@ranyitz](https://github.com/ranyitz))
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-app`, `yoshi-flow-bm`, `yoshi-flow-editor`
+  - [#3091](https://github.com/wix-private/yoshi/pull/3091) Clean serverless folder only for Yoshi Serverless ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :nail_care: Polish
+
+- `yoshi-flow-editor`, `yoshi-serverless-testing`
+  - [#3089](https://github.com/wix-private/yoshi/pull/3089) Revert "yoshi-flow-editor: add support for dev/mocks file" ([@ranyitz](https://github.com/ranyitz))
+
+#### :house: Internal
+
+- `create-yoshi-app`
+  - [#3085](https://github.com/wix-private/yoshi/pull/3085) Fix platform tests ([@yavorsky](https://github.com/yavorsky))
+
 ## v4.152.0 (2020-08-19)
 
 #### :building_construction: Templates
