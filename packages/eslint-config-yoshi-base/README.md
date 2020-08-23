@@ -7,13 +7,10 @@
 
 ## Installation
 
-Install all peer dependencies:
+Install eslint:
 
 ```
   "eslint": "^5.0.0",
-  "prettier": "^2.0.5",
-  "babel-eslint": "^8.2.2",
-  "eslint-plugin-prettier": "^2.6.0"
 ```
 
 Add the following to your `package.json`:
