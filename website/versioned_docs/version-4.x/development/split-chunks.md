@@ -8,7 +8,7 @@ sidebar_label: Split Chunks
 
 If you are using multiple entries you might consider using the [`yoshi.splitChunks`](https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693), it will create a separate file (chunk) consisting of common modules shared between multiple entry points. This results in page speed optimizations as the browser can quickly serve the shared code from cache, rather than being forced to load a larger bundle whenever a new page is visited.
 
-If you want to add it, go to your `package.json` and add the `commonChunks` option, the value can be a _boolean_ or an _object_.
+If you want to add it, go to your `package.json` and add the `splitChunks` option, the value can be a _boolean_ or an _object_.
 
 ```json
 "yoshi": {
