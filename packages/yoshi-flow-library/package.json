@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-library",
-  "version": "4.154.0",
+  "version": "4.155.0",
   "bin": {
     "yoshi-library": "./bin/yoshi-library.js"
   },
