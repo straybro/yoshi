@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.155.0 (2020-08-23)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-library`
+  - [#3109](https://github.com/wix-private/yoshi/pull/3109) [Library-Flow]: Add types.d.ts to files array, so they will be published to `npm` ([@borislit](https://github.com/borislit))
+
 ## v4.154.0 (2020-08-23)
 
 #### :nail_care: Polish
