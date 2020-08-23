@@ -110,11 +110,26 @@ export class WebWorkerMainTemplatePlugin {
                 ]),
                 '})',
                 '.then(function(moduleContent) {',
-                Template.indent('Function(moduleContent)()'),
+                Template.indent([
+                  'if (!moduleContent) {',
+                  Template.indent(
+                    "throw new Error('Loading chunk ' + chunkId + ' failed with empty moduleContent ' + typeof moduleContent);",
+                  ),
+                  '}',
+                  "if (typeof moduleContent === 'string' && moduleContent.indexOf('" +
+                    mainTemplate.outputOptions.chunkCallbackName +
+                    "') === -1) {",
+                  Template.indent(
+                    "throw new Error('Loading chunk ' + chunkId + ' failed with unexpected moduleContent \\n' + moduleContent);",
+                  ),
+                  '}',
+                  'Function(moduleContent)()',
+                ]),
                 '});',
               ]),
             ]),
             '}',
+            "throw new Error('Loading chunk ' + chunkId + ' failed with unexpected installedChunk: ' + installedChunks[chunkId]);",
           ]),
           '}));',
         ]);
