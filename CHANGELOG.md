@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.154.0 (2020-08-23)
+
+#### :nail_care: Polish
+
+- `yoshi-common`
+  - [#3108](https://github.com/wix-private/yoshi/pull/3108) Add error logging for async webworker target ([@giladsegal](https://github.com/giladsegal))
+
+#### :memo: Documentation
+
+- [#3107](https://github.com/wix-private/yoshi/pull/3107) Fixed typo in `splitChunks` docs ([@marik22312](https://github.com/marik22312))
+
 ## v4.153.0 (2020-08-20)
 
 #### :rocket: New Feature
