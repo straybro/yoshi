@@ -207,6 +207,10 @@
     {
       "type": "doc",
       "id": "version-4.x/business-manager-flow/migration"
+    },
+    {
+      "type": "doc",
+      "id": "version-4.x/business-manager-flow/lazy-exported-components"
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { ComponentType, useMemo, Suspense } from 'react';
+import React, { ComponentType, useMemo } from 'react';
 import ModuleProvider, { IBMModuleParams } from './hooks/ModuleProvider';
 
 interface AdditionalProps {
@@ -78,18 +78,14 @@ export default function wrapComponent<P extends {}>(
     );
 
     return (
-      <Suspense fallback="">
-        <ModuleProvider moduleParams={moduleParams}>
-          {deps.reduce(
-            (children, Provider) => (
-              <Provider>{children}</Provider>
-            ),
-            <Component {...((restProps as unknown) as P)}>
-              {children}
-            </Component>,
-          )}
-        </ModuleProvider>
-      </Suspense>
+      <ModuleProvider moduleParams={moduleParams}>
+        {deps.reduce(
+          (children, Provider) => (
+            <Provider>{children}</Provider>
+          ),
+          <Component {...((restProps as unknown) as P)}>{children}</Component>,
+        )}
+      </ModuleProvider>
     );
   };
 }

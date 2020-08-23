@@ -6,7 +6,7 @@ import {
   registerPageComponentMonitors,
 } from '@wix/business-manager-api';
 import { ModuleRegistry, ReactLoadableComponent } from 'react-module-container';
-import React, { ComponentType, useMemo } from 'react';
+import React, { ComponentType, Suspense, SuspenseProps, useState } from 'react';
 import { BrowserClient } from '@sentry/browser';
 import { IBMModuleParams } from './hooks/ModuleProvider';
 import {
@@ -16,6 +16,7 @@ import {
   ModuleInitFn,
   ResolveFn,
 } from './types';
+import { createLazyComponent } from './createLazyComponent';
 
 interface ModuleHooks {
   files?: FilesFn;
@@ -93,7 +94,11 @@ export default function createModule({
         ({ componentId, loadComponent, moduleHooks }) => {
           this.registerComponentWithModuleParams(
             componentId,
-            this.createLazyComponent(componentId, loadComponent, moduleHooks),
+            this.createLazyExportedComponent(
+              componentId,
+              loadComponent,
+              moduleHooks,
+            ),
           );
         },
       );
@@ -123,26 +128,52 @@ export default function createModule({
       // the true lazy wrapper once we can call
       // `files(moduleParams)`.
       return (props) => {
-        const Component = useMemo(
-          () =>
-            ReactLoadableComponent(
-              id,
-              resolve
-                ? () =>
-                    Promise.all([
-                      loadComponent(),
-                      resolve.call(this, { module: this, moduleParams: props }),
-                    ]).then(([component, resolved = {}]) => ({
-                      default: component,
-                      ...resolved,
-                    }))
-                : loadComponent,
-              files?.call(this, { module: this, moduleParams: props }),
-            ),
-          [],
+        const [Component] = useState(() =>
+          ReactLoadableComponent(
+            id,
+            resolve
+              ? () =>
+                  Promise.all([
+                    loadComponent(),
+                    resolve.call(this, { module: this, moduleParams: props }),
+                  ]).then(([component, resolved = {}]) => ({
+                    default: component,
+                    ...resolved,
+                  }))
+              : loadComponent,
+            files?.call(this, { module: this, moduleParams: props }),
+          ),
         );
 
-        return <Component {...props} />;
+        return (
+          <Suspense fallback={null}>
+            <Component {...props} />
+          </Suspense>
+        );
+      };
+    }
+
+    private createLazyExportedComponent(
+      name: string,
+      loadComponent: () => Promise<ComponentType<any>>,
+      { files, resolve }: ModuleHooks,
+    ): ComponentType<IBMModuleParams & SuspenseProps> {
+      return ({ fallback, ...props }) => {
+        const [LazyComponent] = useState(() =>
+          createLazyComponent({
+            name,
+            loadComponent,
+            files: files?.call(this, { module: this, moduleParams: props }),
+            resolve: resolve?.call(this, { module: this, moduleParams: props }),
+            props,
+          }),
+        );
+
+        return (
+          <Suspense fallback={fallback ?? null}>
+            <LazyComponent />;
+          </Suspense>
+        );
       };
     }
 
