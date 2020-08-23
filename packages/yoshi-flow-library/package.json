@@ -12,7 +12,8 @@
   "files": [
     "build",
     "src",
-    "bin"
+    "bin",
+    "types.d.ts"
   ],
   "author": "Ran Yitzhaki",
   "license": "ISC",
