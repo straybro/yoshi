@@ -5,6 +5,7 @@ import {
   WidgetAPI,
   ControllerConfig,
   AppParams,
+  PlatformAPIs,
 } from '@wix/bob-widget-services/dist/src/types/viewerTypes';
 
 const DEFAULT_PROPS = {
@@ -43,5 +44,6 @@ export default ({
     $w: WixSelector;
     wixCodeApi: WixCodeAPI;
     appParams: AppParams;
+    platformAPIs: PlatformAPIs;
   };
 }) => widgetViewerController(controllerConfig);
