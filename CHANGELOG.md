@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.156.0 (2020-08-24)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-bm-runtime`
+  - [#3092](https://github.com/wix-private/yoshi/pull/3092) bm-flow: React.lazy ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.155.0 (2020-08-23)
 
 #### :bug: Bug Fix
