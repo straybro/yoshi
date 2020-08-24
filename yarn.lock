@@ -5052,7 +5052,7 @@
     tslib "^1.5.0"
     urijs "^1.18.12"
 
-"@wix/ci-build-info@^1.0.46":
+"@wix/ci-build-info@1.0.46":
   version "1.0.46"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/ci-build-info/-/@wix/ci-build-info-1.0.46.tgz#864e58193601ee507571e5a44f545294cc62f274"
   integrity sha1-hk5YGTYB7lB1ceWkT1RSlMxi8nQ=
