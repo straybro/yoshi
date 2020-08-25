@@ -263,6 +263,31 @@ export function createServerWebpackConfig(
   return serverConfig;
 }
 
+export function createServerPerformanceWebpackConfig(
+  pkg: PackageGraphNode,
+  libs: Array<PackageGraphNode>,
+  apps: Array<PackageGraphNode>,
+): webpack.Configuration {
+  const defaultOptions = createDefaultOptions(pkg, libs, apps);
+
+  const serverConfig = createBaseWebpackConfig({
+    cwd: pkg.location,
+    configName: 'server-performance',
+    target: 'node',
+    isMonorepo: true,
+    nodeExternalsWhitelist: libs.map((pkg) => new RegExp(pkg.name)),
+    useAssetRelocator: pkg.config.experimentalUseAssetRelocator,
+    forceMinimizeServer: isThunderboltElementModule(pkg),
+    serverExternals: pkg.config.serverExternals,
+    exportAsLibraryName: 'ServerPerformance',
+    ...defaultOptions,
+  });
+
+  serverConfig.entry = { 'server-performance': './server-performance' };
+
+  return serverConfig;
+}
+
 export function createWebWorkerWebpackConfig(
   pkg: PackageGraphNode,
   libs: Array<PackageGraphNode>,

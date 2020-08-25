@@ -29,6 +29,8 @@ const commands: {
   test: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
   lint: () => import('yoshi-command-lint'),
   info: () => import('yoshi-flow-legacy/bin/yoshi-legacy'),
+  'build-server-performance': () =>
+    import('../scripts/build-server-performance'),
 };
 
 const args = arg(

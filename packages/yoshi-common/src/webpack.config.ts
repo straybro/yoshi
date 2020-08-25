@@ -416,6 +416,7 @@ export function createBaseWebpackConfig({
   configName:
     | 'client'
     | 'server'
+    | 'server-performance'
     | 'web-worker'
     | 'site-assets'
     | 'web-worker-server';
