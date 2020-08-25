@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.158.0 (2020-08-25)
+
+#### :rocket: New Feature
+
+- `yoshi-common`, `yoshi-flow-monorepo`
+  - [#3115](https://github.com/wix-private/yoshi/pull/3115) Initial script for building the server code for performance testing with Perfer ([@ronami](https://github.com/ronami))
+
+#### :nail_care: Polish
+
+- `yoshi-flow-monorepo`
+  - [#3131](https://github.com/wix-private/yoshi/pull/3131) Add env vars to control async-webworker target and webworker max chun… ([@giladsegal](https://github.com/giladsegal))
+
 ## v4.157.0 (2020-08-25)
 
 #### :rocket: New Feature
