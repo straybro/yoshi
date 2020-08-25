@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.157.0 (2020-08-25)
+
+#### :rocket: New Feature
+
+- `yoshi-flow-editor-runtime`
+  - [#3105](https://github.com/wix-private/yoshi/pull/3105) Add testkit for component wrapper ([@yavorsky](https://github.com/yavorsky))
+
+#### :house: Internal
+
+- `create-yoshi-app`
+  - [#3113](https://github.com/wix-private/yoshi/pull/3113) fix types on editor platform template ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.156.0 (2020-08-24)
 
 #### :rocket: New Feature
