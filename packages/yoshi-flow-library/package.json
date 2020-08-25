@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-library",
-  "version": "4.156.0",
+  "version": "4.157.0",
   "bin": {
     "yoshi-library": "./bin/yoshi-library.js"
   },
@@ -36,10 +36,10 @@
     "jest-validate": "24.9.0",
     "lodash": "4.17.20",
     "read-pkg": "5.2.0",
-    "yoshi-command-lint": "4.156.0",
-    "yoshi-common": "4.156.0",
+    "yoshi-command-lint": "4.157.0",
+    "yoshi-common": "4.157.0",
     "yoshi-config": "4.149.0",
-    "yoshi-flow-legacy": "4.156.0",
-    "yoshi-helpers": "4.156.0"
+    "yoshi-flow-legacy": "4.157.0",
+    "yoshi-helpers": "4.157.0"
   }
 }
