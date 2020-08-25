@@ -308,10 +308,12 @@ export function createWebWorkerWebpackConfig(
 ): webpack.Configuration {
   const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
+  const useAsyncWebWorker = process.env.USE_ASYNC_WEBWORKER === 'true';
+
   const workerConfig = createBaseWebpackConfig({
     cwd: pkg.location,
     configName: 'web-worker',
-    target: isThunderboltElementModule(pkg) ? 'async-webworker' : 'webworker',
+    target: useAsyncWebWorker ? 'async-webworker' : 'webworker',
     isDev,
     isHot,
     isMonorepo: true,
@@ -337,6 +339,14 @@ export function createWebWorkerWebpackConfig(
 
   if (pkg.config.webWorkerSplitChunks) {
     workerConfig.optimization!.splitChunks = pkg.config.webWorkerSplitChunks;
+  }
+
+  if (process.env.SINGLE_WEBWORKER_CHUNK === 'true') {
+    workerConfig.plugins!.push(
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 1,
+      }),
+    );
   }
 
   return workerConfig;
