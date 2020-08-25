@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { ViewerScriptWrapper } from '@wix/native-components-infra';
 import SentryGlobal from '@sentry/browser';
+import { IAppParams } from '@wix/native-components-infra/dist/src/HOC/ViewerScriptWrapper/viewerScriptWrapper';
 import { ErrorBoundary } from './react/ErrorBoundary';
 import { WixSDK } from './react/SDK/SDKRenderProp';
 import WidgetWrapper from './WidgetWrapper';
@@ -27,7 +28,7 @@ declare global {
   }
 }
 interface IEditorAppCreatorProps {
-  UserComponent: typeof React.Component;
+  UserComponent: React.ComponentType<any>;
   userController: CreateControllerFn;
   customInitAppForPage: InitAppForPageFn;
   translationsConfig: TranslationsConfig;
@@ -37,18 +38,21 @@ interface IEditorAppCreatorProps {
   defaultTranslations: DefaultTranslations | null;
   biConfig: BIConfig;
   projectName: string;
-  biLogger: VisitorBILoggerFactory;
+  biLogger: VisitorBILoggerFactory | null;
 }
 interface IEditorAppWithWixSDKCreatorProps extends IEditorAppCreatorProps {
   sdk: IWixSDKContext;
+  wrapperOptions?: Partial<IAppParams>;
 }
 
 interface IEditorAppWrapperProps extends IEditorAppCreatorProps {
   children: React.ReactNode;
 }
 
+export type IEditorAppWrapperOptions = Partial<IAppParams>;
+
 // TODO: fill overrides and whatnot from santawrapper
-const createEditorAppForWixSDK = ({
+export const createEditorAppForWixSDK = ({
   UserComponent,
   userController,
   customInitAppForPage,
@@ -61,6 +65,7 @@ const createEditorAppForWixSDK = ({
   biConfig,
   biLogger,
   sdk,
+  wrapperOptions,
 }: IEditorAppWithWixSDKCreatorProps) => {
   const WithComponent = WidgetWrapper(UserComponent, {
     name,
@@ -98,11 +103,12 @@ const createEditorAppForWixSDK = ({
       widgetId: '',
       getAllPublicData: true,
     },
+    ...(wrapperOptions ?? {}),
   });
 };
 
 interface IEditorAppWithCreatorState {
-  EditorAppComponent: typeof React.Component | null;
+  EditorAppComponent: React.ComponentType | null;
 }
 interface IEditorAppWithCreatorProps extends IEditorAppWrapperProps {
   sdk: IWixSDKContext;

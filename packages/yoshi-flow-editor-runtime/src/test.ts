@@ -5,3 +5,4 @@ export * from './test/BILogger/BILoggerProvider';
 export * from './test/controller/FlowAPI.mock';
 export * from './test/controller/controllerConfig.mock';
 export * from './test/controller/controllerWrapper';
+export * from './test/controller/componentWrapper';

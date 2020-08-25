@@ -160,7 +160,7 @@ export const createControllers = (
   experimentsConfig: ExperimentsConfig | null = null,
   defaultTranslations: DefaultTranslations | null = null,
   biConfig: BIConfig,
-  biLogger: VisitorBILoggerFactory,
+  biLogger: VisitorBILoggerFactory | null,
   projectName: string,
 ) => {
   return createControllersWithDescriptors([
@@ -233,7 +233,7 @@ interface InitAppForPageWrapperOptions {
   experimentsConfig: ExperimentsConfig | null;
   inEditor: boolean;
   biConfig: BIConfig;
-  biLogger: VisitorBILoggerFactory;
+  biLogger: VisitorBILoggerFactory | null;
   appName: string | null;
   projectName: string;
   defaultTranslations: DefaultTranslations | null;

@@ -63,7 +63,7 @@ class AppLoadedHandler extends React.Component<IAppLoadedHandlerProps> {
 // This widget is going to be called inside entry-point wrappers
 // Each widget should contain component to wrap name, so here we return a getter instead of component.
 const getWidgetWrapper = (
-  UserComponent: typeof React.Component,
+  UserComponent: React.ComponentType<any>,
   {
     name,
     sentry,

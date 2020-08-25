@@ -20,72 +20,67 @@ It's based on [`jest-yoshi-preset`](https://bo.wix.com/pages/yoshi/docs/jest-yos
 For proper integration testing, we recommend to use sled, but if you still want to test your controller part with jest you can emulate the controller lifecycle.
 
 Since editor flow provides extended API with some useful features, you have to mock this part.
-By importing `controllerWrapper` and wrapping your controller, you can emulate `flowAPI` instance.
+By using `componentWrapper` for component and controller, you can emulate `flowAPI` instance.
+
 `controllerWrapper` accepts controller function (the one you are exporting from `controller.ts`) and returns a controller with mocked `flowAPI`.
 
-In case you are developing multi-GAble widget and `createControllers` are happening in non-editor-flow project, you can call a mocked controller with `prepopulated` field. Here you can pass mocked fedops, bi, sentry loggers, experiments, and translations.
-
-This is an example, how to mock a simple integation between widget and controller using `controllerWrapper` and `ViewerScriptWrapper`:
-
-*`__tests__/createViewerScriptForTests.ts`*
-```ts
-export const createViewerScriptForTests = (mockedControllers, mocked) => {
-  return {
-    createControllers(configs) {
-      return configs.map(config => {
-        const factory = mockedControllers[config.type];
-        return factory({ ...config, prepopulated: {
-          biLogger: mocked.biLogger,
-          fedopsLogger: mocked.fedopsLogger,
-          sentryMonitor: mocked.sentryMonitor,
-          translations: mocked.translations,
-          experimentss: mocked.experiments,
-        }});
-      });
-    }
-  };
-}
-```
-We just created a helper which will create a basic Viewer Script structure, but with custom controllers passed as an argument. 
-
-_\_\_tests\_\_/wrapWidgetWithController.ts_
-```ts
-import {ViewerScriptWrapper} from '@wix/native-components-infra/dist/es/src/HOC/ViewerScriptWrapper/viewerScriptWrapper';
-import { controllerWrapper } from 'yoshi-flow-editor-runtime/test';
-import { createViewerScriptForTests } from './createViewerScriptForTests.ts';
-
-export const wrapWidgetWithController = (component, controller, widgetID) => {
-  const viewerScript = createViewerScriptForTests({
-    [widgetID]: controllerWrapper(controller),
-  });
-
-  return ViewerScriptWrapper(AppWithDefaults, {
-    viewerScript,
-    // other options and mocks
-  });
-};
-```
-
-With `wrapWidgetWithController` you can just pass your component and controller instances and receive React Component with mocked controller lifecycle.
+With `componentWrapper` you can just pass your `component`, `controller` and `initAppForPage` to receive React Component with mocked controller lifecycle.
 
 _controller.spec.ts_
 ```ts
+import { componentWrapper } from 'yoshi-flow-editor-runtime/test';
 import Widget from './Widget';
-import controller from './controller'
+import controller from './controller';
+import { initAppForPage } from '../../viewer.app.ts';
 import { render, screen } from '@testing-library/react'
-import { wrapWidgetWithController } from '__tests__/wrapWidgetWithController';
 
 test('Widget is rendered', () => {
-  const widget = render(wrapWidgetWithController(Widget, controller));
-  expect(screen.getByRole('button')).toHaveTextContent('hellos')
-})
+  const widget = render(
+    componentWrapper({
+      component: Widget,
+      controller: controller,
+      initAppForPage: initAppForPage, // optional
+      wrapperOptions: {}
+    })
+  );
+  expect(screen.getByRole('button')).toHaveTextContent('hello')
+});
 ```
-`wrapWidgetWithController` can be rendered as a regular React Component during testing.
+`componentWrapper` can be rendered as a regular React Component during testing.
 
-For more options available for `ViewerScriptWrapper`, please check [the documentation](https://github.com/wix-private/native-components-infra#viewerscriptwrapper)
+`wrapperOptions` - options will be passed to `ViewerScriptWrapper`.  Docs and available options are available under [ViewerScriptWrapper docs](https://github.com/wix-private/native-components-infra#viewerscriptwrapper).
 
-In the future, we might provide more ready-to-use solutions for integration testing based on mocks.
-But now, we believe it can be fully replaced with sled since instead of mocks we are testing our components against the real environment.
+---
+
+In case you are developing **multi-GAble** widget and `createControllers` are happening in non-editor-flow project, you can pass mocked fedops, bi, sentry loggers, experiments, and translations.
+
+This is an example how to mock a simple integation between widget and controller using `controllerWrapper` and `ViewerScriptWrapper` on your side:
+
+*`createViewerScript.ts`*
+```ts
+export const createViewerScript = (controllers, opts) => {
+  return {
+    createControllers(configs) {
+      return configs.map(config => {
+        const factory = controllers[config.type];
+        return factory({
+          ...config,
+          prepopulated: {
+            biLogger: opts.biLogger,
+            fedopsLogger: opts.fedopsLogger,
+            sentryMonitor: opts.sentryMonitor,
+            translations: opts.translations,
+            experimentss: opts.experiments,
+          }
+        });
+      });
+    }
+  };
+};
+```
+In `createViewerScript` function you can pass `prepopulated` values with mocks. It will prevent data to be fetched.
+
+*We believe it can be fully replaced with sled since instead of mocks we are testing our components against the real environment.*
 
 ### e2e (sled)
 *File pattern used to get sled tests is **`sled/**/*.e2e.spec.ts`***

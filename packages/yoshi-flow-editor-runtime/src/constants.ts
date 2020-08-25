@@ -50,7 +50,7 @@ export type ControllerDescriptor = {
   translationsConfig: TranslationsConfig | null;
   defaultTranslations: DefaultTranslations | null;
   projectName: string;
-  biLogger: VisitorBILoggerFactory;
+  biLogger: VisitorBILoggerFactory | null;
   widgetType: WidgetType;
   biConfig: BIConfig;
   controllerFileName: string | null;
