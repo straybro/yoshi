@@ -165,13 +165,12 @@ export default function createModule({
             loadComponent,
             files: files?.call(this, { module: this, moduleParams: props }),
             resolve: resolve?.call(this, { module: this, moduleParams: props }),
-            props,
           }),
         );
 
         return (
           <Suspense fallback={fallback ?? null}>
-            <LazyComponent />;
+            <LazyComponent {...props}/>;
           </Suspense>
         );
       };

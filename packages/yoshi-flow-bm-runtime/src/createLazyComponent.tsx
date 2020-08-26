@@ -10,7 +10,6 @@ import { IBMModuleParams } from './moduleParams';
 export interface CreateLazyComponentProps {
   name: string;
   loadComponent: () => Promise<ComponentType<IBMModuleParams>>;
-  props: IBMModuleParams;
   files?: Array<string>;
   resolve?: Promise<{}>;
   crossorigin?: boolean;
@@ -23,7 +22,6 @@ export function createLazyComponent({
   loadComponent,
   crossorigin,
   resolve,
-  props,
   unloadStylesOnDestroy,
 }: CreateLazyComponentProps) {
   return lazy(async () => {
@@ -47,7 +45,7 @@ export function createLazyComponent({
       );
 
       return {
-        default: () => {
+        default: (props: IBMModuleParams) => {
           useEffect(
             () => () => {
               if (unloadStylesOnDestroy !== false) {
