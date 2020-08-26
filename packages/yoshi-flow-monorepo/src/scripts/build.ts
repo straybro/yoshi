@@ -28,7 +28,7 @@ import {
   createSiteAssetsWebpackConfig,
 } from '../webpack.config';
 import buildPkgs from '../build';
-import { isSiteAssetsModule, isThunderboltAppModule } from '../utils';
+import { isThunderboltAppModule } from '../utils';
 
 const inTeamCity = checkInTeamCity();
 
@@ -156,12 +156,23 @@ const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
   }
 
   apps.forEach((pkg) => {
-    let clientDebugConfig;
-    let clientOptimizedConfig;
+    let siteAssetsConfigNode;
+    let siteAssetsConfigWeb;
 
-    if (isSiteAssetsModule(pkg)) {
+    const clientDebugConfig = createClientWebpackConfig(pkg, libs, apps, {
+      isDev: true,
+      forceEmitSourceMaps,
+    });
+
+    const clientOptimizedConfig = createClientWebpackConfig(pkg, libs, apps, {
+      isAnalyze,
+      forceEmitSourceMaps,
+      forceEmitStats,
+    });
+
+    if (pkg.config.siteAssetsEntry) {
       // for running in the server
-      clientDebugConfig = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+      siteAssetsConfigNode = createSiteAssetsWebpackConfig(pkg, libs, apps, {
         isDev: false,
         target: 'node',
         isAnalyze,
@@ -173,24 +184,13 @@ const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
       });
 
       // for running in the browser
-      clientOptimizedConfig = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+      siteAssetsConfigWeb = createSiteAssetsWebpackConfig(pkg, libs, apps, {
         isDev: false,
         target: 'web',
         isAnalyze,
         forceEmitSourceMaps,
         forceEmitStats,
         transpileCarmiOutput: true,
-      });
-    } else {
-      clientDebugConfig = createClientWebpackConfig(pkg, libs, apps, {
-        isDev: true,
-        forceEmitSourceMaps,
-      });
-
-      clientOptimizedConfig = createClientWebpackConfig(pkg, libs, apps, {
-        isAnalyze,
-        forceEmitSourceMaps,
-        forceEmitStats,
       });
     }
 
@@ -232,6 +232,8 @@ const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
       webWorkerConfig,
       webWorkerOptimizeConfig,
       webWorkerServerConfig,
+      siteAssetsConfigNode,
+      siteAssetsConfigWeb,
     ]);
   });
 
@@ -241,23 +243,38 @@ const build: cliCommand = async function (argv, rootConfig, { apps, libs }) {
     console.log(chalk.bold.underline(pkg.name));
     console.log();
 
-    if (isSiteAssetsModule(pkg)) {
-      const [siteAssetsNodeStats, siteAssetsBrowserStats] = getAppData(
-        pkg.name,
-      ).stats;
+    const [, clientOptimizedStats, serverStats] = getAppData(pkg.name).stats;
 
-      console.log(chalk.underline('Site Assets (web)'));
-      printClientBuildResult(siteAssetsBrowserStats);
-      console.log();
-      console.log(chalk.underline('Site Assets (node)'));
-      printServerBuildResult(siteAssetsNodeStats);
-    } else {
-      const [, clientOptimizedStats, serverStats] = getAppData(pkg.name).stats;
+    printBuildResult({
+      webpackStats: [clientOptimizedStats, serverStats],
+      cwd: pkg.location,
+    });
 
-      printBuildResult({
-        webpackStats: [clientOptimizedStats, serverStats],
-        cwd: pkg.location,
-      });
+    console.log();
+
+    if (pkg.config.siteAssetsEntry) {
+      const stats = getAppData(pkg.name).stats;
+
+      const siteAssetsBrowserStats = stats.find(
+        // @ts-ignore types miss this property
+        (s) => s.compilation.name === 'site-assets',
+      );
+
+      const siteAssetsNodeStats = stats.find(
+        // @ts-ignore types miss this property
+        (s) => s.compilation.name === 'site-assets-server',
+      );
+
+      if (siteAssetsBrowserStats) {
+        console.log(chalk.underline('Site Assets (web)'));
+        printClientBuildResult(siteAssetsBrowserStats);
+        console.log();
+      }
+
+      if (siteAssetsNodeStats) {
+        console.log(chalk.underline('Site Assets (node)'));
+        printServerBuildResult(siteAssetsNodeStats);
+      }
     }
 
     console.log();

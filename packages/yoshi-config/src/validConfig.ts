@@ -93,6 +93,17 @@ const validConfig: RequiredRecursively<InitialConfig> = {
       },
     ),
   },
+  siteAssets: {
+    entry: multipleValidOptions(
+      'index.js',
+      ['one.js'],
+      { two: 'two.js' },
+      {
+        app: 'index.js',
+      },
+    ),
+    exports: '[name]',
+  },
   suricate: false,
   experimentalStorybook: false,
 };

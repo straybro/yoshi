@@ -12,7 +12,6 @@ import {
   createWebWorkerServerWebpackConfig,
   createSiteAssetsWebpackConfig,
 } from '../webpack.config';
-import { isSiteAssetsModule } from '../utils';
 
 const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
   telemetry.startInit('Monorepo', rootConfig.name);
@@ -107,28 +106,27 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
     process.exit(1);
   }
 
-  let clientConfig;
-  let siteAssetConfigNode;
-  let siteAssetConfigWeb;
+  let siteAssetsConfigNode;
+  let siteAssetsConfigWeb;
 
-  if (isSiteAssetsModule(pkg)) {
-    siteAssetConfigNode = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+  const clientConfig = createClientWebpackConfig(pkg, libs, apps, {
+    isDev: true,
+    isHot: pkg.config.hmr as boolean,
+    suricate: pkg.config.suricate,
+  });
+
+  if (pkg.config.siteAssetsEntry) {
+    siteAssetsConfigNode = createSiteAssetsWebpackConfig(pkg, libs, apps, {
       isDev: true,
       target: 'node',
     });
 
     if (process.env.CREATE_SITE_ASSETS_WEB) {
-      siteAssetConfigWeb = createSiteAssetsWebpackConfig(pkg, libs, apps, {
+      siteAssetsConfigWeb = createSiteAssetsWebpackConfig(pkg, libs, apps, {
         isDev: true,
         target: 'web',
       });
     }
-  } else {
-    clientConfig = createClientWebpackConfig(pkg, libs, apps, {
-      isDev: true,
-      isHot: pkg.config.hmr as boolean,
-      suricate: pkg.config.suricate,
-    });
   }
 
   const serverConfig = createServerWebpackConfig(pkg, libs, apps, {
@@ -165,8 +163,8 @@ const start: cliCommand = async function (argv, rootConfig, { apps, libs }) {
       serverConfig,
       webWorkerConfig,
       webWorkerServerConfig,
-      siteAssetConfigNode,
-      siteAssetConfigWeb,
+      siteAssetsConfigNode,
+      siteAssetsConfigWeb,
     ],
     https: pkg.config.servers.cdn.ssl,
     webpackDevServerPort: pkg.config.servers.cdn.port,

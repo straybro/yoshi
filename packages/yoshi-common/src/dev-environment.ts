@@ -292,6 +292,25 @@ export default class DevEnvironment {
     return https;
   }
 
+  startSiteAssetsHotUpdate(compiler: webpack.Compiler) {
+    compiler.watch({}, async (error, stats) => {
+      // We save the result of this build to webpack-dev-server's internal state so the last
+      // server build results are sent to the browser on every refresh
+      //
+      // https://github.com/webpack/webpack-dev-server/blob/master/lib/Server.js#L144
+      // @ts-ignore
+      this._stats = stats;
+
+      const jsonStats = stats.toJson();
+
+      if (!error && !stats.hasErrors()) {
+        await this.triggerBrowserRefresh(jsonStats);
+      } else {
+        await this.showErrorsOnBrowser(jsonStats);
+      }
+    });
+  }
+
   startWebWorkerHotUpdate(compiler: webpack.Compiler) {
     compiler.watch({}, async (error, stats) => {
       // We save the result of this build to webpack-dev-server's internal state so the last
@@ -576,14 +595,26 @@ export default class DevEnvironment {
     let serverCompiler: webpack.Compiler | undefined;
     let webWorkerCompiler: webpack.Compiler | undefined;
     let webWorkerServerCompiler: webpack.Compiler | undefined;
+    let siteAssetsCompiler: webpack.Compiler | undefined;
+    let siteAssetsServerCompiler: webpack.Compiler | undefined;
 
     if (webpackConfigs.length > 0) {
       multiCompiler = createCompiler(webpackConfigs.filter(isTruthy));
 
-      clientCompiler = multiCompiler.compilers[0];
-      serverCompiler = multiCompiler.compilers[1];
-      webWorkerCompiler = multiCompiler.compilers[2];
-      webWorkerServerCompiler = multiCompiler.compilers[3];
+      clientCompiler = multiCompiler.compilers.find((c) => c.name === 'client');
+      serverCompiler = multiCompiler.compilers.find((c) => c.name === 'server');
+      webWorkerCompiler = multiCompiler.compilers.find(
+        (c) => c.name === 'web-worker',
+      );
+      webWorkerServerCompiler = multiCompiler.compilers.find(
+        (c) => c.name === 'web-worker-server',
+      );
+      siteAssetsCompiler = multiCompiler.compilers.find(
+        (c) => c.name === 'site-assets',
+      );
+      siteAssetsServerCompiler = multiCompiler.compilers.find(
+        (c) => c.name === 'site-assets-server',
+      );
     }
 
     let webpackDevServer;
@@ -642,6 +673,14 @@ export default class DevEnvironment {
 
     if (webWorkerServerCompiler) {
       devEnvironment.startWebWorkerHotUpdate(webWorkerServerCompiler);
+    }
+
+    if (siteAssetsCompiler) {
+      devEnvironment.startSiteAssetsHotUpdate(siteAssetsCompiler);
+    }
+
+    if (siteAssetsServerCompiler) {
+      devEnvironment.startSiteAssetsHotUpdate(siteAssetsServerCompiler);
     }
 
     devEnvironment.store.subscribe(

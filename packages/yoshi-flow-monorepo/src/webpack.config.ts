@@ -17,7 +17,6 @@ import {
   inMasterTeamCity,
 } from 'yoshi-helpers/build/queries';
 import { STATICS_DIR, SERVER_ENTRY, SRC_DIR } from 'yoshi-config/build/paths';
-import ManifestPlugin from 'yoshi-common/build/manifest-webpack-plugin';
 import { isObject } from 'lodash';
 import SentryWebpackPlugin from '@sentry/webpack-plugin';
 import { getProjectArtifactVersion } from 'yoshi-helpers/utils';
@@ -413,13 +412,13 @@ export function createSiteAssetsWebpackConfig(
     keepFunctionNames?: boolean;
   },
 ): webpack.Configuration {
-  const entry = pkg.config.entry || defaultEntry;
+  const entry = pkg.config.siteAssetsEntry;
 
   const defaultOptions = createDefaultOptions(pkg, libs, apps);
 
   const config = createBaseWebpackConfig({
     cwd: pkg.location,
-    configName: 'site-assets',
+    configName: target === 'web' ? `site-assets` : 'site-assets-server',
     target,
     isDev,
     isMonorepo: true,
@@ -431,7 +430,7 @@ export function createSiteAssetsWebpackConfig(
     serverExternals: target === 'node' ? {} : undefined,
     forceMinimizeServer,
     disableEmitSourceMaps,
-    exportAsLibraryName: pkg.config.exports,
+    exportAsLibraryName: pkg.config.siteAssetsExports,
     enhancedTpaStyle: pkg.config.enhancedTpaStyle,
     tpaStyle: pkg.config.tpaStyle,
     separateStylableCss: pkg.config.separateStylableCss,
@@ -442,14 +441,6 @@ export function createSiteAssetsWebpackConfig(
   });
 
   config.entry = isSingleEntry(entry) ? { app: entry as string } : entry;
-
-  const manifestName = target === 'node' ? 'manifest' : 'manifest-web';
-
-  // for site-assets we have two minified compilations
-  // for them to not override each other we'll rename the web one
-  config.plugins!.push(
-    new ManifestPlugin({ fileName: manifestName, isDev: isDev as boolean }),
-  );
 
   if (target === 'web') {
     // use a umd bundle for the web bundles

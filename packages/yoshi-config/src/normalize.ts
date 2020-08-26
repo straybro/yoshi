@@ -85,6 +85,8 @@ export default (initialConfig: InitialConfig, pkgJson: PackageJson): Config => {
     webWorkerSplitChunks: initialConfig.webWorker?.splitChunks,
     serverExternals: initialConfig.server?.externals,
     webWorkerServerEntry: initialConfig.webWorkerServer?.entry,
+    siteAssetsEntry: initialConfig.siteAssets?.entry,
+    siteAssetsExports: initialConfig.siteAssets?.exports,
 
     jestConfig: jest,
 

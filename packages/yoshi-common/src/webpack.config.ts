@@ -112,7 +112,6 @@ function getProgressBarInfo(
   isDev: boolean,
   isMonorepo: boolean,
   packageName: string,
-  target: CompilationTarget,
 ): {
   name: string;
   color: string;
@@ -137,9 +136,8 @@ function getProgressBarInfo(
       case 'server':
         return { name: `Server`, color: 'orange' };
       case 'site-assets':
-        if (target === 'web') {
-          return { name: `Site Assets [web]`, color: 'green' };
-        }
+        return { name: `Site Assets [web]`, color: 'green' };
+      case 'site-assets-server':
         return { name: `Site Assets [node]`, color: 'cyan' };
       default:
         return { name: configName, color: 'white' };
@@ -418,8 +416,9 @@ export function createBaseWebpackConfig({
     | 'server'
     | 'server-performance'
     | 'web-worker'
+    | 'web-worker-server'
     | 'site-assets'
-    | 'web-worker-server';
+    | 'site-assets-server';
   target: CompilationTarget;
   isDev?: boolean;
   isHot?: boolean;
@@ -810,9 +809,20 @@ export function createBaseWebpackConfig({
                 ]),
 
             // site-assets manifest is handled with its own plugin
-            ...(configName !== 'site-assets'
+            ...(configName !== 'site-assets' &&
+            configName !== 'site-assets-server'
               ? [new ManifestPlugin({ fileName: 'manifest', isDev })]
               : []),
+          ]
+        : []),
+
+      // `target` can be either `web` or `node`
+      ...(configName === 'site-assets' || configName === 'site-assets-server'
+        ? [
+            new ManifestPlugin({
+              fileName: `manifest-site-assets-${target}`,
+              isDev,
+            }),
           ]
         : []),
 
@@ -921,7 +931,7 @@ export function createBaseWebpackConfig({
       ...(!process.env.DEBUG && useProgressBar
         ? [
             new WebpackBar(
-              getProgressBarInfo(configName, isDev, isMonorepo, name, target),
+              getProgressBarInfo(configName, isDev, isMonorepo, name),
             ),
           ]
         : []),

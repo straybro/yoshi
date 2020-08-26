@@ -6,6 +6,3 @@ export const isThunderboltElementModule = (pkg: PackageGraphNode) =>
 
 export const isThunderboltAppModule = (pkg: PackageGraphNode) =>
   pkg.name === '@wix/thunderbolt-app';
-
-export const isSiteAssetsModule = (pkg: PackageGraphNode) =>
-  pkg.name === 'thunderbolt-becky' || pkg.name === '@wix/thunderbolt-becky';

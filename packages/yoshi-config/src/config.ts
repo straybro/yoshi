@@ -91,6 +91,10 @@ export type InitialConfig = {
   webWorkerServer?: {
     entry?: WebpackEntry;
   };
+  siteAssets?: {
+    entry?: WebpackEntry;
+    exports?: string;
+  };
   suricate?: boolean;
   experimentalStorybook?: boolean;
 };
@@ -144,6 +148,8 @@ export type Config = {
   webWorkerExternals?: WebpackExternals;
   webWorkerSplitChunks?: WebpackSplitChunks;
   webWorkerServerEntry?: WebpackEntry;
+  siteAssetsEntry?: WebpackEntry;
+  siteAssetsExports?: string;
   suricate: boolean;
   experimentalStorybook: boolean;
 };
