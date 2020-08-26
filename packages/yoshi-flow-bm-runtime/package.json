@@ -10,8 +10,8 @@
   "keywords": [],
   "author": "Amit Dahan <amitda@wix.com>",
   "dependencies": {
-    "@sentry/browser": "5.7.1",
-    "@wix/business-manager-api": "1.0.1047",
+    "@sentry/browser": "5.15.5",
+    "@wix/business-manager-api": "1.0.1156",
     "@wix/fedops-logger": "5.12.3",
     "@wix/web-bi-logger": "2.0.917",
     "@wix/wix-axios-config": "2.0.2268",
