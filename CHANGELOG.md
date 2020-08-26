@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.159.0 (2020-08-26)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-bm-runtime`
+  - [#3136](https://github.com/wix-private/yoshi/pull/3136) fix(flow-bm-runtime): lazy component props ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.158.0 (2020-08-25)
 
 #### :rocket: New Feature
