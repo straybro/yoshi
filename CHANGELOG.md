@@ -1,5 +1,17 @@
 # Changelog
 
+## v4.160.0 (2020-08-26)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-bm-runtime`
+  - [#3139](https://github.com/wix-private/yoshi/pull/3139) fix(flow-bm-runtime): align deps with template ([@kobiburnley](https://github.com/kobiburnley))
+
+#### :nail_care: Polish
+
+- `yoshi-common`, `yoshi-config`, `yoshi-flow-monorepo`
+  - [#3066](https://github.com/wix-private/yoshi/pull/3066) Expand site assets feature to editor-elements ([@ronami](https://github.com/ronami))
+
 ## v4.159.0 (2020-08-26)
 
 #### :bug: Bug Fix
