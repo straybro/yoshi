@@ -121,7 +121,7 @@ export class WebWorkerMainTemplatePlugin {
                     "throw new Error('Loading chunk ' + chunkId + ' failed with unexpected moduleContent \\n' + moduleContent);",
                   ),
                   '}',
-                  'var args = Function(moduleContent)()',
+                  'var args = Function("return " + moduleContent)()',
                   'webpackChunkCallback(args[0], args[1])',
                 ]),
                 '});',

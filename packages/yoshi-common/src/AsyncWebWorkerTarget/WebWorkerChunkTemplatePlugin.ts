@@ -7,7 +7,7 @@ class WebWorkerChunkTemplatePlugin {
       'WebWorkerChunkTemplatePlugin',
       (modules, chunk) => {
         const source = new ConcatSource();
-        source.add(`return [${JSON.stringify(chunk.ids)},`);
+        source.add(`[${JSON.stringify(chunk.ids)},`);
         source.add(modules);
         source.add(']');
         return source;
