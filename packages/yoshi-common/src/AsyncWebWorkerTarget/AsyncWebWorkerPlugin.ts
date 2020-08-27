@@ -1,6 +1,6 @@
 // @ts-nocheck
-import WebWorkerChunkTemplatePlugin from 'webpack/lib/webworker/WebWorkerChunkTemplatePlugin';
 import WebWorkerHotUpdateChunkTemplatePlugin from 'webpack/lib/webworker/WebWorkerHotUpdateChunkTemplatePlugin';
+import WebWorkerChunkTemplatePlugin from './WebWorkerChunkTemplatePlugin';
 import { WebWorkerMainTemplatePlugin } from './WebWorkerMainTemplatePlugin';
 
 export class AsyncWebWorkerPlugin {

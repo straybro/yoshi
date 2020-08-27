@@ -116,14 +116,13 @@ export class WebWorkerMainTemplatePlugin {
                     "throw new Error('Loading chunk ' + chunkId + ' failed with empty moduleContent ' + typeof moduleContent);",
                   ),
                   '}',
-                  "if (typeof moduleContent === 'string' && moduleContent.indexOf('" +
-                    mainTemplate.outputOptions.chunkCallbackName +
-                    "') === -1) {",
+                  "if (typeof moduleContent !== 'string') {",
                   Template.indent(
                     "throw new Error('Loading chunk ' + chunkId + ' failed with unexpected moduleContent \\n' + moduleContent);",
                   ),
                   '}',
-                  'Function(moduleContent)()',
+                  'var args = Function(moduleContent)()',
+                  'webpackChunkCallback(args[0], args[1])',
                 ]),
                 '});',
               ]),
@@ -139,14 +138,9 @@ export class WebWorkerMainTemplatePlugin {
       'WebWorkerMainTemplatePlugin',
       (source, chunk, hash) => {
         if (needChunkOnDemandLoadingCode(chunk)) {
-          const chunkCallbackName =
-            mainTemplate.outputOptions.chunkCallbackName;
-          const globalObject = mainTemplate.outputOptions.globalObject;
           return Template.asString([
             source,
-            `${globalObject}[${JSON.stringify(
-              chunkCallbackName,
-            )}] = function webpackChunkCallback(chunkIds, moreModules) {`,
+            `function webpackChunkCallback(chunkIds, moreModules) {`,
             Template.indent([
               'for(var moduleId in moreModules) {',
               Template.indent(
