@@ -103,7 +103,7 @@ Defaults to `false` (`http`)
 {
   "yoshiFlowLibrary": {
     "bundle": {
-      "port": 3333
+      "https": true
     }
   }
 }
