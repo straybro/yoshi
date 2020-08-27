@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.161.0 (2020-08-27)
+
+#### :nail_care: Polish
+
+- `yoshi-common`
+  - [#3143](https://github.com/wix-private/yoshi/pull/3143) Don't rely on global state for async-webworker dynamic imports ([@ronami](https://github.com/ronami))
+
+#### :memo: Documentation
+
+- [#3145](https://github.com/wix-private/yoshi/pull/3145) Fix Library Flow docs to show the right `https` example ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.160.0 (2020-08-26)
 
 #### :bug: Bug Fix
