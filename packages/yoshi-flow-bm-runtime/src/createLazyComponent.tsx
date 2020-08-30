@@ -1,11 +1,8 @@
 import React, { ComponentType, lazy, useEffect } from 'react';
 import { ModuleRegistry } from 'react-module-container';
-import {
-  filesAppender,
-  unloadStyles,
-} from 'react-module-container/dist/src/tag-appender';
 import { LazyComponentLoadingError } from 'react-module-container/dist/src/ReactModuleContainerErrors';
 import { IBMModuleParams } from './moduleParams';
+import { filesAppender, unloadStyles } from './tag-appender';
 
 export interface CreateLazyComponentProps {
   name: string;
