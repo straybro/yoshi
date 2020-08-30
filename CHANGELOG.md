@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.163.0 (2020-08-30)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-bm-runtime`
+  - [#3168](https://github.com/wix-private/yoshi/pull/3168) tag-appender ([@kobiburnley](https://github.com/kobiburnley))
+
 ## v4.162.0 (2020-08-30)
 
 #### :bug: Bug Fix
