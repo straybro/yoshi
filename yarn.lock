@@ -4281,10 +4281,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/lodash/-/lodash-4.14.156.tgz#cbe30909c89a1feeb7c60803e785344ea0ec82d1"
   integrity sha1-y+MJCciaH+63xggD54U0TqDsgtE=
 
-"@types/lodash@4.14.159":
-  version "4.14.159"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/lodash/-/lodash-4.14.159.tgz#61089719dc6fdd9c5cb46efc827f2571d1517065"
-  integrity sha1-YQiXGdxv3ZxctG78gn8lcdFRcGU=
+"@types/lodash@4.14.161":
+  version "4.14.161"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/lodash/-/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
+  integrity sha1-ohygd32rxuT0Tz0H83t2X1QYixg=
 
 "@types/long@*", "@types/long@4.0.1", "@types/long@^4.0.1":
   version "4.0.1"
