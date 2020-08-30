@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.162.0 (2020-08-30)
+
+#### :bug: Bug Fix
+
+- `yoshi-common`
+  - [#3150](https://github.com/wix-private/yoshi/pull/3150) Don't use `return` outside of a function in asyc-webworker ([@ronami](https://github.com/ronami))
+
 ## v4.161.0 (2020-08-27)
 
 #### :nail_care: Polish
