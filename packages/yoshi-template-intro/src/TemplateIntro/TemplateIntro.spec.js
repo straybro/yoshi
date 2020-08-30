@@ -7,9 +7,9 @@ describe('Intro', () => {
 
   afterEach(() => wrapper.unmount());
 
-  it('renders a title correctly', () => {
+  it('renders a logo', () => {
     wrapper = mount(<Intro />);
 
-    expect(wrapper.find('img')).toHaveLength(1);
+    expect(wrapper.find('[alt="logo"]').length).toBe(1);
   });
 });
