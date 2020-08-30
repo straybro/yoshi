@@ -95,6 +95,6 @@ This serves your application's statics and opens up production Business-Manager,
 Run `npx yoshi-bm build` to build your Business-Manager application.
 This builds your module bundle and generates a working `module_MODULE_ID.json` file in your `target` directory, for your [integration with Business-Manager](https://github.com/wix-private/business-manager/blob/master/business-manager-web/docs/module-config-file.md).
 
-### Testing
+### [Testing](./testing.md)
 
 Run `npx yoshi-bm test` to run your tests with the configured test runner (Jest by default). Pass `--watch` to start it in watch mode.

@@ -1,4 +1,4 @@
-import React, { createContext, FC, useMemo } from 'react';
+import React, { createContext, FC, useState } from 'react';
 import { create, FedopsLogger } from '@wix/fedops-logger';
 
 export const FedopsContext = createContext<FedopsLogger | null>(null);
@@ -8,7 +8,8 @@ export interface FedopsProviderProps {
 }
 
 const FedopsProvider: FC<FedopsProviderProps> = ({ appName, children }) => {
-  const client = useMemo(() => create(appName), [appName]);
+  const [client] = useState(() => create(appName));
+
   return (
     <FedopsContext.Provider value={client}>{children}</FedopsContext.Provider>
   );

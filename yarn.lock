@@ -2767,16 +2767,6 @@
     "@sentry/utils" "5.15.5"
     tslib "^1.9.3"
 
-"@sentry/browser@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/browser/-/browser-5.7.1.tgz#1f8435e2a325d7a09f830065ebce40a2b3c708a4"
-  integrity sha1-H4Q14qMl16CfgwBl685AorPHCKQ=
-  dependencies:
-    "@sentry/core" "5.7.1"
-    "@sentry/types" "5.7.1"
-    "@sentry/utils" "5.7.1"
-    tslib "^1.9.3"
-
 "@sentry/browser@^5.15.5":
   version "5.17.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/browser/-/browser-5.17.0.tgz#0c3796cb02df3ec8db13341564fae0bc83e148c5"
@@ -2831,17 +2821,6 @@
     "@sentry/utils" "5.17.0"
     tslib "^1.9.3"
 
-"@sentry/core@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/core/-/core-5.7.1.tgz#3eb2b7662cac68245931ee939ec809bf7a639d0e"
-  integrity sha1-PrK3ZiysaCRZMe6TnsgJv3pjnQ4=
-  dependencies:
-    "@sentry/hub" "5.7.1"
-    "@sentry/minimal" "5.7.1"
-    "@sentry/types" "5.7.1"
-    "@sentry/utils" "5.7.1"
-    tslib "^1.9.3"
-
 "@sentry/hub@4.6.5":
   version "4.6.5"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/hub/-/hub-4.6.5.tgz#451def7bc8d90d9cc007f58f364b3ce305c4701a"
@@ -2869,15 +2848,6 @@
     "@sentry/utils" "5.17.0"
     tslib "^1.9.3"
 
-"@sentry/hub@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/hub/-/hub-5.7.1.tgz#a52acd9fead7f3779d96e9965c6978aecc8b9cad"
-  integrity sha1-pSrNn+rX83edlumWXGl4rsyLnK0=
-  dependencies:
-    "@sentry/types" "5.7.1"
-    "@sentry/utils" "5.7.1"
-    tslib "^1.9.3"
-
 "@sentry/minimal@4.6.5":
   version "4.6.5"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/minimal/-/minimal-4.6.5.tgz#64433d2c9fda69eedbb61855a7ff8905f7b19218"
@@ -2903,15 +2873,6 @@
   dependencies:
     "@sentry/hub" "5.17.0"
     "@sentry/types" "5.17.0"
-    tslib "^1.9.3"
-
-"@sentry/minimal@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/minimal/-/minimal-5.7.1.tgz#56afc537737586929e25349765e37a367958c1e1"
-  integrity sha1-Vq/FN3N1hpKeJTSXZeN6NnlYweE=
-  dependencies:
-    "@sentry/hub" "5.7.1"
-    "@sentry/types" "5.7.1"
     tslib "^1.9.3"
 
 "@sentry/node@^4.3.0":
@@ -2946,11 +2907,6 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/types/-/types-5.17.0.tgz#b8d245ac7d5caa749c549e9f72aab2d6522afe63"
   integrity sha1-uNJFrH1cqnScVJ6fcqqy1lIq/mM=
 
-"@sentry/types@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/types/-/types-5.7.1.tgz#4c4c1d4d891b6b8c2c3c7b367d306a8b1350f090"
-  integrity sha1-TEwdTYkba4wsPHs2fTBqixNQ8JA=
-
 "@sentry/utils@4.6.5":
   version "4.6.5"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/utils/-/utils-4.6.5.tgz#4c960524914311eb76bbd6ca7f80f4d98c04db7f"
@@ -2973,14 +2929,6 @@
   integrity sha1-uAmwZ2ZfPrrqd7p7XR0dFKTtdss=
   dependencies:
     "@sentry/types" "5.17.0"
-    tslib "^1.9.3"
-
-"@sentry/utils@5.7.1":
-  version "5.7.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/utils/-/utils-5.7.1.tgz#cf37ad55f78e317665cd8680f202d307fa77f1d0"
-  integrity sha1-zzetVfeOMXZlzYaA8gLTB/p38dA=
-  dependencies:
-    "@sentry/types" "5.7.1"
     tslib "^1.9.3"
 
 "@sentry/webpack-plugin@1.12.0":
@@ -5163,25 +5111,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@wix/business-manager-api@1.0.1040":
-  version "1.0.1040"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/business-manager-api/-/@wix/business-manager-api-1.0.1040.tgz#1f2764218d61ceac2461bed47421d72a45089b82"
-  integrity sha1-HydkIY1hzqwkYb7UdCHXKkUIm4I=
-  dependencies:
-    "@sentry/browser" "5.7.1"
-    "@wix/wix-experiments" latest
-    history "^3.3.0"
-    react "16.8.3"
-    react-dom "16.8.3"
-    react-module-container "^1.0.1037"
-    recompose "0.30.0"
-    tslib "^1.5.0"
-    urijs "^1.18.12"
-
-"@wix/business-manager-api@1.0.1156":
-  version "1.0.1156"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/business-manager-api/-/@wix/business-manager-api-1.0.1156.tgz#9c970240dc9dabae53fb05e0268c647c6b19af33"
-  integrity sha1-nJcCQNydq65T+wXgJoxkfGsZrzM=
+"@wix/business-manager-api@1.0.1158":
+  version "1.0.1158"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@wix/business-manager-api/-/@wix/business-manager-api-1.0.1158.tgz#b9c2e580ff8373cb3a2f5b1c576b53a150532381"
+  integrity sha1-ucLlgP+Dc8s6L1scV2tToVBTI4E=
   dependencies:
     "@sentry/browser" "5.15.5"
     "@wix/wix-experiments" latest
@@ -24156,16 +24089,6 @@ react-dom@16.13.1, react-dom@^16.13.1, react-dom@^16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-dom@16.8.3:
-  version "16.8.3"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-dom/-/react-dom-16.8.3.tgz#ae236029e66210783ac81999d3015dfc475b9c32"
-  integrity sha1-riNgKeZiEHg6yBmZ0wFd/EdbnDI=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.13.3"
-
 react-draggable@^4.0.3:
   version "4.4.3"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-draggable/-/react-draggable-4.4.3.tgz#0727f2cae5813e36b0e4962bf11b2f9ef2b406f3"
@@ -24401,16 +24324,6 @@ react@16.13.1, react@^16.13.1, react@^16.8.3:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-react@16.8.3:
-  version "16.8.3"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react/-/react-16.8.3.tgz#c6f988a2ce895375de216edcfaedd6b9a76451d9"
-  integrity sha1-xvmIos6JU3XeIW7c+u3WuadkUdk=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.13.3"
 
 read-cmd-shim@^1.0.1:
   version "1.0.5"
@@ -25599,14 +25512,6 @@ saxes@^3.1.9:
   integrity sha1-1Z0f0zLskq2YouCy7mRHAjhLHFs=
   dependencies:
     xmlchars "^2.1.1"
-
-scheduler@^0.13.3:
-  version "0.13.6"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
-  integrity sha1-RmpOwzJGezGpG5v3TlNHBy5M2Ik=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.19.1:
   version "0.19.1"

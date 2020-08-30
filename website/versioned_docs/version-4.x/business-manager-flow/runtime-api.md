@@ -6,6 +6,18 @@ sidebar_label: Runtime API
 
 # `yoshi-flow-bm-runtime`
 
+## `moduleParams`
+BM Flow provides your relevant `moduleParams` object directly on Context, to be consumed conveniently:
+
+### Example
+```typescript jsx
+export default () => {
+  const { accountLanguage } = useModuleParams();
+
+  // ...
+}
+```
+
 ## I18N
 
 BM Flow provides integration with [`@wix/wix-i18n-config`](https://github.com/wix-private/fed-infra/tree/master/wix-i18n-config).

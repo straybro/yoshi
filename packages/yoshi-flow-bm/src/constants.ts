@@ -2,6 +2,7 @@ import path from 'path';
 import { constantCase } from 'constant-case';
 
 const EXTENSIONS = '{tsx,ts,jsx,js}';
+export const TEST_EXCLUSIONS = `!**/*.{test,spec,driver}.${EXTENSIONS}`;
 export const CONFIG_EXT = 'json';
 export const MODULE_HOOKS_EXT = `module.${EXTENSIONS}`;
 

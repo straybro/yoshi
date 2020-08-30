@@ -24,6 +24,7 @@ import {
   EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN,
   MODULE_HOOKS_EXT,
   FEDOPS_CONFIG_PATH,
+  TEST_EXCLUSIONS,
 } from './constants';
 import {
   ExportedComponentConfig,
@@ -141,16 +142,25 @@ export default function createFlowBMModel(cwd = process.cwd()): FlowBMModel {
     };
   };
 
-  const pages = globFiles([PAGES_PATTERN, `!${PAGES_MODULE_HOOKS_PATTERN}`])
+  const pages = globFiles([
+    PAGES_PATTERN,
+    `!**/*.${MODULE_HOOKS_EXT}`,
+    TEST_EXCLUSIONS,
+  ])
     .map(getPageModel)
     .sort((page1, page2) => page1.route.localeCompare(page2.route));
 
   const exportedComponents = globFiles([
     EXPORTED_COMPONENTS_PATTERN,
-    `!${EXPORTED_COMPONENTS_MODULE_HOOKS_PATTERN}`,
+    `!**/*.${MODULE_HOOKS_EXT}`,
+    TEST_EXCLUSIONS,
   ]).map(getExportedComponentModel);
 
-  const methods = globFiles(METHODS_PATTERN).map(getMethodModel);
+  const methods = globFiles([
+    METHODS_PATTERN,
+    `!**/*.${MODULE_HOOKS_EXT}`,
+    TEST_EXCLUSIONS,
+  ]).map(getMethodModel);
 
   const [moduleHooksPath] = globFiles(MODULE_HOOKS_PATTERN);
   const [localePath] = globDirs(TRANSLATIONS_DIR);
