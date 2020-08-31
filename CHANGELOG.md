@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.164.0 (2020-08-31)
+
+#### :rocket: New Feature
+
+- `yoshi-serverless-client`, `yoshi-serverless-react`
+  - [#3138](https://github.com/wix-private/yoshi/pull/3138) Yoshi Serverless: add support for yoshi-serverless-react ([@yanivefraim](https://github.com/yanivefraim))
+- `create-yoshi-app`, `yoshi-flow-bm-runtime`, `yoshi-flow-bm`
+  - [#3051](https://github.com/wix-private/yoshi/pull/3051) Add testkits for BM flow runtimes ([@amitdahan](https://github.com/amitdahan))
+
 ## v4.163.0 (2020-08-30)
 
 #### :bug: Bug Fix
