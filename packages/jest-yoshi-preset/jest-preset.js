@@ -192,6 +192,9 @@ const config = {
             // Locally `babel-preset-yoshi` is symlinked, which causes jest to try and run babel on it.
             // See here for more details: https://github.com/facebook/jest/blob/6af2f677e5c48f71f526d4be82d29079c1cdb658/packages/jest-core/src/runGlobalHook.js#L61
             '/babel-preset-yoshi/',
+            ...(process.env.EXPERIMENTAL_YOSHI_SERVERLESS
+              ? ['/serverless/']
+              : []),
           ],
 
           transform,

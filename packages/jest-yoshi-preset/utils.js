@@ -6,8 +6,9 @@ function withServerTransformer(transformer) {
     ...transformer,
     process(source, filename, config, transformOptions) {
       let result = source;
-
-      if (project.yoshiServer && /\.api\.(js|tsx?)$/.test(filename)) {
+      const isYoshiServer =
+        project.yoshiServer || process.env.EXPERIMENTAL_YOSHI_SERVERLESS;
+      if (isYoshiServer && /\.api\.(js|tsx?)$/.test(filename)) {
         result = transform.process(source, filename);
       }
 
