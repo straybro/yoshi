@@ -2931,10 +2931,10 @@
     "@sentry/types" "5.17.0"
     tslib "^1.9.3"
 
-"@sentry/webpack-plugin@1.12.0":
-  version "1.12.0"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/webpack-plugin/-/webpack-plugin-1.12.0.tgz#3a8c6f86d545a24a9def5b274dc3898aa881e828"
-  integrity sha1-OoxvhtVFokqd71snTcOJiqiB6Cg=
+"@sentry/webpack-plugin@1.12.1":
+  version "1.12.1"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@sentry/webpack-plugin/-/webpack-plugin-1.12.1.tgz#4c70c76f3faffccff1601695be742af80aeabed9"
+  integrity sha1-THDHbz+v/M/xYBaVvnQq+Arqvtk=
   dependencies:
     "@sentry/cli" "^1.55.0"
 
