@@ -11275,10 +11275,10 @@ copy-to-clipboard@^3.0.8:
   dependencies:
     toggle-selection "^1.0.6"
 
-copy-webpack-plugin@5.1.1:
-  version "5.1.1"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/copy-webpack-plugin/-/copy-webpack-plugin-5.1.1.tgz#5481a03dea1123d88a988c6ff8b78247214f0b88"
-  integrity sha1-VIGgPeoRI9iKmIxv+LeCRyFPC4g=
+copy-webpack-plugin@5.1.2:
+  version "5.1.2"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/copy-webpack-plugin/-/copy-webpack-plugin-5.1.2.tgz#8a889e1dcafa6c91c6cd4be1ad158f1d3823bae2"
+  integrity sha1-ioieHcr6bJHGzUvhrRWPHTgjuuI=
   dependencies:
     cacache "^12.0.3"
     find-cache-dir "^2.1.0"
@@ -11290,7 +11290,7 @@ copy-webpack-plugin@5.1.1:
     normalize-path "^3.0.0"
     p-limit "^2.2.1"
     schema-utils "^1.0.0"
-    serialize-javascript "^2.1.2"
+    serialize-javascript "^4.0.0"
     webpack-log "^2.0.0"
 
 core-js-compat@^3.6.2:
@@ -25681,11 +25681,6 @@ serialize-error@^2.1.0:
   version "2.1.0"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
   integrity sha1-ULZ51WNc34Rme9yOWa9OW4HV9go=
-
-serialize-javascript@^2.1.2:
-  version "2.1.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/serialize-javascript/-/serialize-javascript-2.1.2.tgz#ecec53b0e0317bdc95ef76ab7074b7384785fa61"
-  integrity sha1-7OxTsOAxe9yV73arcHS3OEeF+mE=
 
 serialize-javascript@^3.1.0:
   version "3.1.0"
