@@ -4514,10 +4514,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/selenium-webdriver/-/selenium-webdriver-3.0.17.tgz#50bea0c3c2acc31c959c5b1e747798b3b3d06d4b"
   integrity sha1-UL6gw8KswxyVnFsedHeYs7PQbUs=
 
-"@types/semver@7.3.2":
-  version "7.3.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/semver/-/semver-7.3.2.tgz#39a0ee84ac60d77ed994b82c0d43895cbdd0e584"
-  integrity sha1-OaDuhKxg137ZlLgsDUOJXL3Q5YQ=
+"@types/semver@7.3.3":
+  version "7.3.3"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@types/semver/-/semver-7.3.3.tgz#3ad6ed949e7487e7bda6f886b4a2434a2c3d7b1a"
+  integrity sha1-OtbtlJ50h+e9pviGtKJDSiw9exo=
 
 "@types/serve-static@*":
   version "1.13.4"
