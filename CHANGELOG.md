@@ -1,5 +1,22 @@
 # Changelog
 
+## v4.165.0 (2020-08-31)
+
+#### :rocket: New Feature
+
+- `jest-yoshi-preset`
+  - [#3060](https://github.com/wix-private/yoshi/pull/3060) Yoshi serverless: make it work with jest ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :bug: Bug Fix
+
+- `yoshi-common`, `yoshi-flow-app`, `yoshi-flow-bm`, `yoshi-flow-editor`, `yoshi-server-tools`, `yoshi-serverless`
+  - [#3167](https://github.com/wix-private/yoshi/pull/3167) Yoshi Serverless: check that deploy was finished ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :house: Internal
+
+- `create-yoshi-app`
+  - [#3172](https://github.com/wix-private/yoshi/pull/3172) Disable testing editor flow platform project until e2e tests won't be flaky. ([@yavorsky](https://github.com/yavorsky))
+
 ## v4.164.0 (2020-08-31)
 
 #### :rocket: New Feature
