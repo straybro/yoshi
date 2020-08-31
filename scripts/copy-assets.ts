@@ -10,7 +10,12 @@ export default function copyAssets(
   watch: boolean,
 ) {
   const patterns = packagesList.reduce((acc: Array<string>, pkg: string) => {
-    return [...acc, `${pkg}/src/**/*`, `!${pkg}/src/**/*.(ts|tsx|json)`];
+    return [
+      ...acc,
+      `${pkg}/src/**/*`,
+      `!${pkg}/src/**/*.(ts|tsx|json)`,
+      `${pkg}/src/**/*.d.ts`,
+    ];
   }, []);
 
   const assets = globby.sync(patterns, {

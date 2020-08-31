@@ -20,6 +20,7 @@
     "yoshi-server-client": "latest",
     "yoshi-serverless-client": "latest",
     "yoshi-server-react": "latest",
+    "yoshi-serverless-react": "latest",
     "yoshi-server-testing": "latest"
   },
   "devDependencies": {

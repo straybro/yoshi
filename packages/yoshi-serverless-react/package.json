@@ -1,0 +1,23 @@
+{
+  "name": "yoshi-serverless-react",
+  "version": "4.149.0",
+  "main": "build/index.js",
+  "sideEffects": false,
+  "keywords": [
+    "yoshi",
+    "server"
+  ],
+  "author": "Yaniv Efraim",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "yoshi-serverless": "^4.14.0",
+    "yoshi-serverless-client": "^4.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.44",
+    "react": "16.13.1",
+    "yoshi-serverless": "4.149.0",
+    "yoshi-serverless-client": "4.149.0"
+  }
+}

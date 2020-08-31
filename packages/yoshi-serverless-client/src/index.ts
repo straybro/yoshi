@@ -19,7 +19,7 @@ type Options = {
 export interface HttpClient {
   request<Result extends FunctionResult, Args extends FunctionArgs>(
     method: DSL<Result, Args>,
-    options?: { headers?: unfetch.IsomorphicHeaders },
+    options?: { headers?: { [index: string]: string } },
   ): (...args: Args) => Promise<UnpackPromise<Result>>;
 }
 
@@ -54,7 +54,7 @@ export default class implements HttpClient {
 
   request<Result extends FunctionResult, Args extends FunctionArgs>(
     method: DSL<Result, Args>,
-    options?: { headers?: unfetch.IsomorphicHeaders },
+    options?: { headers?: { [index: string]: string } },
   ): (...args: Args) => Promise<UnpackPromise<Result>> {
     return async (...args: Args) => {
       const url = joinUrls(this.baseUrl, '/_api_');
