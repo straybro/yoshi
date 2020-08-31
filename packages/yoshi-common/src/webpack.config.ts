@@ -847,6 +847,9 @@ export function createBaseWebpackConfig({
               'process.env.YOSHI_SERVERLESS_BASE': JSON.stringify(
                 getServerlessBase(getServerlessScope(name)),
               ),
+              'process.env.SERVERLESS_BUILD_UNIQUE_ID': JSON.stringify(
+                process.env.SERVERLESS_BUILD_UNIQUE_ID,
+              ),
             }
           : {}),
         'process.env.PACKAGE_NAME': JSON.stringify(stripOrganization(name)),

@@ -1,5 +1,6 @@
 import path from 'path';
 import traverse from '@babel/traverse';
+import { v4 as uuidv4 } from 'uuid';
 import { SRC_DIR } from 'yoshi-config/build/paths';
 import { parse } from '@babel/parser';
 
@@ -42,4 +43,8 @@ export function transform(source: string, fullFileName: string) {
   });
 
   return [...headers, ...functions].join('\n\n');
+}
+
+export function generateServerlessBuildId() {
+  process.env.SERVERLESS_BUILD_UNIQUE_ID = uuidv4();
 }

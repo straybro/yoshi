@@ -1,6 +1,7 @@
 import path from 'path';
 import arg from 'arg';
 import { runWebpack } from 'yoshi-common/build/webpack-utils';
+import { generateServerlessBuildId } from 'yoshi-server-tools/build/utils';
 import {
   printBuildResult,
   printBundleSizeSuggestion,
@@ -47,7 +48,9 @@ const build: cliCommand = async function (argv, config) {
     '--stats': forceEmitStats,
     '--source-map': forceEmitSourceMaps,
   } = args;
-
+  // "SERVERLESS_BUILD_UNIQUE_ID" is used as a unique ID to verify that serverless deploy was done
+  // see: https://github.com/wix-private/yoshi/pull/3167
+  generateServerlessBuildId();
   if (help) {
     console.log(
       `
