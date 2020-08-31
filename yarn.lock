@@ -7561,10 +7561,10 @@
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@zeit/schemas/-/schemas-2.6.0.tgz#004e8e553b4cd53d538bd38eac7bcbf58a867fe3"
   integrity sha1-AE6OVTtM1T1Ti9OOrHvL9YqGf+M=
 
-"@zeit/webpack-asset-relocator-loader@0.7.2":
-  version "0.7.2"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@zeit/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-0.7.2.tgz#fabbd55706f63332fe67bab915a56ef71ec19f80"
-  integrity sha1-+rvVVwb2MzL+Z7q5FaVu9x7Bn4A=
+"@zeit/webpack-asset-relocator-loader@0.8.0":
+  version "0.8.0"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/@zeit/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-0.8.0.tgz#aeba5baefb9908caf3865807fc175a211c4746b0"
+  integrity sha1-rrpbrvuZCMrzhlgH/BdaIRxHRrA=
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
