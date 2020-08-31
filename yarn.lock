@@ -16187,7 +16187,7 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@4.2.5, husky@^4.2.5:
+husky@4.2.5:
   version "4.2.5"
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/husky/-/husky-4.2.5.tgz#2b4f7622673a71579f901d9885ed448394b5fa36"
   integrity sha1-K092Imc6cVefkB2Yhe1Eg5S1+jY=
@@ -22566,10 +22566,10 @@ performance-now@^2.1.0:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-petri-specs@1.3.290:
-  version "1.3.290"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/petri-specs/-/petri-specs-1.3.290.tgz#17e08fbe8e28aacfd1e6cbcaa2d49fa49ee06739"
-  integrity sha1-F+CPvo4oqs/R5svKotSfpJ7gZzk=
+petri-specs@1.3.291:
+  version "1.3.291"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/petri-specs/-/petri-specs-1.3.291.tgz#b790b4d8fd7cf55d387d89e93d7acf777edfccc9"
+  integrity sha1-t5C02P189V04fYnpPXrPd37fzMk=
   dependencies:
     ab-translate "~1.1.0"
     ajv "^6.12.2"
@@ -22579,7 +22579,6 @@ petri-specs@1.3.290:
     commander "^2.9.0"
     configstore "^2.0.0"
     cosmiconfig "^5.2.0"
-    husky "^4.2.5"
     inquirer "^7.2.0"
     jest-validate "^26.1.0"
     lodash.defaultsdeep "^4.6.1"
