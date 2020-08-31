@@ -86,7 +86,7 @@
     "webpack": "4.44.1",
     "webpack-dev-middleware": "3.7.2",
     "webpack-hot-client": "4.1.2",
-    "wnpm-ci": "8.0.127",
+    "wnpm-ci": "8.0.129",
     "word-wrap": "1.2.3",
     "xmldoc": "1.1.2",
     "yoshi-command-lint": "4.165.0",

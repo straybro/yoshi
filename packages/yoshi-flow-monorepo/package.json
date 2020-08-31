@@ -33,7 +33,7 @@
     "import-cwd": "3.0.0",
     "lodash": "4.17.20",
     "webpack-stats-plugin": "0.3.2",
-    "wnpm-ci": "8.0.127",
+    "wnpm-ci": "8.0.129",
     "yoshi-command-lint": "4.165.0",
     "yoshi-common": "4.165.0",
     "yoshi-config": "4.163.0",
