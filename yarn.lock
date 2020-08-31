@@ -24183,10 +24183,10 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
-react-module-container@1.0.2344:
-  version "1.0.2344"
-  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-module-container/-/react-module-container-1.0.2344.tgz#cac65447887dab27a10b17681464c7687c31ff24"
-  integrity sha1-ysZUR4h9qyehCxdoFGTHaHwx/yQ=
+react-module-container@1.0.2346:
+  version "1.0.2346"
+  resolved "https://repo.dev.wixpress.com/artifactory/api/npm/npm-repos/react-module-container/-/react-module-container-1.0.2346.tgz#42f4c8c6ae19e7d8cadddfa540d2b7ca5f2dc45d"
+  integrity sha1-QvTIxq4Z59jK3d+lQNK3yl8txF0=
   dependencies:
     lodash "^4.17.15"
     prop-types "^15.7.2"
