@@ -24,7 +24,7 @@
     "flow-bm": "npm run templates -- flow-bm-typescript",
     "flow-editor": "npm run flow-editor:ooi && npm run flow-editor:platform",
     "flow-editor:ooi": "npm run templates -- flow-editor-ooi-typescript",
-    "flow-editor:platform": "npm run templates -- flow-editor-platform-typescript",
+    "flow-editor:platform": "echo 'Currently editor platform tests are flaky and were disabled.'",
     "dev": "ts-node scripts/dev.js"
   },
   "dependencies": {
