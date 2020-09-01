@@ -1,5 +1,19 @@
 # Changelog
 
+## v4.167.0 (2020-09-01)
+
+#### :bug: Bug Fix
+
+- `yoshi-flow-bm-runtime`
+  - [#3190](https://github.com/wix-private/yoshi/pull/3190) Remove a slippery semicolon from BM exported components ([@amitdahan](https://github.com/amitdahan))
+- `yoshi-common`, `yoshi-flow-app`, `yoshi-flow-bm`, `yoshi-flow-editor`, `yoshi-flow-monorepo`
+  - [#3147](https://github.com/wix-private/yoshi/pull/3147) Fix yoshi serverless to work with bm-flow ([@yanivefraim](https://github.com/yanivefraim))
+
+#### :house: Internal
+
+- `babel-plugin-transform-hmr-runtime`, `babel-preset-yoshi`, `bootstrap-hot-loader`, `create-yoshi-app`, `eslint-config-yoshi-base`, `eslint-config-yoshi`, `jest-yoshi-preset`, `stylelint-config-yoshi`, `tslint-config-yoshi-base`, `tslint-config-yoshi`, `yoshi-angular-dependencies`, `yoshi-command-lint`, `yoshi-common`, `yoshi-config`, `yoshi-flow-app`, `yoshi-flow-bm-runtime`, `yoshi-flow-bm`, `yoshi-flow-editor-runtime`, `yoshi-flow-editor`, `yoshi-flow-legacy`, `yoshi-flow-library`, `yoshi-flow-monorepo`, `yoshi-helpers`, `yoshi-server-client`, `yoshi-server-react`, `yoshi-server-testing`, `yoshi-server-tools`, `yoshi-server`, `yoshi-serverless-client`, `yoshi-serverless-react`, `yoshi-serverless-testing`, `yoshi-serverless`, `yoshi-storybook-dependencies`, `yoshi-stylable-dependencies`, `yoshi-style-dependencies`, `yoshi-template-intro`, `yoshi`
+  - [#3187](https://github.com/wix-private/yoshi/pull/3187) Monorepo customizations ([@ranyitz](https://github.com/ranyitz))
+
 ## v4.166.0 (2020-09-01)
 
 #### :bug: Bug Fix
