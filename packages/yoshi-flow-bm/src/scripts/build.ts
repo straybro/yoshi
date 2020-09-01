@@ -18,7 +18,7 @@ import * as telemetry from 'yoshi-common/build/telemetry';
 import { copyTemplates } from 'yoshi-common/build/copy-assets';
 import {
   createClientWebpackConfig,
-  createServerWebpackConfig,
+  createYoshiServerlessWebpackConfig,
 } from '../webpack.config';
 import { CliCommand } from '../bin/yoshi-bm';
 import createFlowBMModel from '../model';
@@ -120,14 +120,17 @@ const build: CliCommand = async function (argv, config) {
   });
   clientOptimizedConfig.entry = entries;
 
-  const serverConfig = createServerWebpackConfig(config, {
-    isDev: true,
-  });
+  let serverConfig;
+  if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS === 'true') {
+    serverConfig = createYoshiServerlessWebpackConfig(config, {
+      isDev: true,
+    });
+  }
 
   const { stats } = await runWebpack([
     clientDebugConfig,
     clientOptimizedConfig,
-    serverConfig,
+    ...(serverConfig ? [serverConfig] : []),
   ]);
 
   const [, clientOptimizedStats, serverStats] = stats;

@@ -1,16 +1,12 @@
 import { Configuration } from 'webpack';
-import {
-  validateServerEntry,
-  createServerEntries,
-} from 'yoshi-common/build/webpack-utils';
 import { createBaseWebpackConfig } from 'yoshi-common/build/webpack.config';
 import { Config } from 'yoshi-config/build/config';
+import { createYoshiServerEntries } from 'yoshi-common/build/webpack-utils';
 import {
   isTypescriptProject,
   inTeamCity,
   isProduction,
 } from 'yoshi-helpers/build/queries';
-import { SERVER_ENTRY } from 'yoshi-config/build/paths';
 import bmExternalModules from './bmExternalModules';
 
 const useTypeScript = isTypescriptProject();
@@ -67,7 +63,7 @@ export function createClientWebpackConfig(
   return clientConfig;
 }
 
-export function createServerWebpackConfig(
+export function createYoshiServerlessWebpackConfig(
   config: Config,
   { isDev, isHot }: { isDev?: boolean; isHot?: boolean } = {},
 ): Configuration {
@@ -80,23 +76,8 @@ export function createServerWebpackConfig(
     isHot,
     ...defaultOptions,
   });
-
-  serverConfig.entry = async () => {
-    const serverEntry = validateServerEntry({
-      extensions: serverConfig.resolve!.extensions as Array<string>,
-      yoshiServer: config.yoshiServer,
-    });
-
-    let entryConfig = process.env.EXPERIMENTAL_YOSHI_SERVERLESS
-      ? createServerEntries(serverConfig.context as string)
-      : {};
-
-    if (serverEntry) {
-      entryConfig = { ...entryConfig, [SERVER_ENTRY]: serverEntry };
-    }
-
-    return entryConfig;
-  };
+  serverConfig.entry = () =>
+    createYoshiServerEntries(serverConfig.context as string);
 
   return serverConfig;
 }

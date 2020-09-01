@@ -3,7 +3,7 @@ import path from 'path';
 import webpack from 'webpack';
 import {
   validateServerEntry,
-  createServerEntries,
+  createYoshiServerEntries,
 } from 'yoshi-common/build/webpack-utils';
 // @ts-ignore
 import { StatsWriterPlugin } from 'webpack-stats-plugin';
@@ -249,7 +249,7 @@ export function createServerWebpackConfig(
     });
 
     let entryConfig = pkg.config.yoshiServer
-      ? createServerEntries(serverConfig.context as string, pkg.location)
+      ? createYoshiServerEntries(serverConfig.context as string, pkg.location)
       : {};
 
     if (serverEntry) {

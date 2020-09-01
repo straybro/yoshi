@@ -49,7 +49,7 @@ export function printBuildResult({
   const [clientStats, serverStats] = webpackStats;
 
   printClientBuildResult(clientStats, cwd);
-  printServerBuildResult(serverStats, cwd);
+  serverStats && printServerBuildResult(serverStats, cwd);
 }
 
 function prepareAssets(

@@ -87,7 +87,10 @@ function waitForCompilation(compiler: webpack.Compiler) {
   });
 }
 
-function createServerEntries(context: string, cwd: string = process.cwd()) {
+function createYoshiServerEntries(
+  context: string,
+  cwd: string = process.cwd(),
+) {
   const serverFunctions = fs.pathExistsSync(path.join(cwd, SRC_DIR))
     ? globby.sync('**/*.api.(js|ts)', {
         cwd: path.join(cwd, SRC_DIR),
@@ -279,7 +282,7 @@ export {
   waitForCompilation,
   addEntry,
   overrideRules,
-  createServerEntries,
+  createYoshiServerEntries,
   watchDynamicEntries,
   validateServerEntry,
   calculatePublicPath,

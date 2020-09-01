@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import {
   validateServerEntry,
-  createServerEntries,
+  createYoshiServerEntries,
 } from 'yoshi-common/build/webpack-utils';
 import { createBaseWebpackConfig } from 'yoshi-common/build/webpack.config';
 import { defaultEntry } from 'yoshi-helpers/build/constants';
@@ -126,7 +126,7 @@ export function createServerWebpackConfig(
     });
 
     let entryConfig = config.yoshiServer
-      ? createServerEntries(serverConfig.context as string)
+      ? createYoshiServerEntries(serverConfig.context as string)
       : {};
 
     if (serverEntry) {

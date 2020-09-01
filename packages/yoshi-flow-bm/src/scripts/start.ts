@@ -10,7 +10,10 @@ import {
 } from 'yoshi-config/build/paths';
 import * as telemetry from 'yoshi-common/build/telemetry';
 import { CliCommand } from '../bin/yoshi-bm';
-import { createClientWebpackConfig } from '../webpack.config';
+import {
+  createClientWebpackConfig,
+  createYoshiServerlessWebpackConfig,
+} from '../webpack.config';
 import createFlowBMModel, { watchFlowBMModel } from '../model';
 import { renderModule } from '../module';
 import { renderModuleConfig } from '../moduleConfig';
@@ -97,7 +100,16 @@ const start: CliCommand = async function (argv, yoshiConfig) {
     isDev: true,
     isHot: yoshiConfig.hmr as boolean,
   });
+
   clientConfig.entry = getEntries(model);
+
+  let serverConfig;
+  if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS === 'true') {
+    serverConfig = createYoshiServerlessWebpackConfig(yoshiConfig, {
+      isDev: true,
+      isHot: true,
+    });
+  }
 
   const [metaSiteId, prodConfig] = await Promise.all([
     getMetaSiteId(),
@@ -119,7 +131,7 @@ const start: CliCommand = async function (argv, yoshiConfig) {
   const serverStartFile = getServerStartFile();
 
   const devEnvironment = await DevEnvironment.create({
-    webpackConfigs: [clientConfig],
+    webpackConfigs: [clientConfig, serverConfig],
     https: yoshiConfig.servers.cdn.ssl,
     webpackDevServerPort: yoshiConfig.servers.cdn.port,
     appServerPort: yoshiConfig.servers.app.port,
