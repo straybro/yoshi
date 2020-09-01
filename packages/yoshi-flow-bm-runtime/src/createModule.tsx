@@ -170,7 +170,7 @@ export default function createModule({
 
         return (
           <Suspense fallback={fallback ?? null}>
-            <LazyComponent {...props}/>;
+            <LazyComponent {...props} />
           </Suspense>
         );
       };
