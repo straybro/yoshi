@@ -1,6 +1,6 @@
 {
   "name": "yoshi-server-react",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
@@ -17,8 +17,8 @@
   "devDependencies": {
     "@types/react": "16.9.44",
     "react": "16.13.1",
-    "yoshi-server": "4.166.0",
-    "yoshi-server-client": "4.166.0"
+    "yoshi-server": "4.167.0",
+    "yoshi-server-client": "4.167.0"
   },
   "scripts": {
     "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",

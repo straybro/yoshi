@@ -1,6 +1,6 @@
 {
   "name": "yoshi-server-client",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
@@ -19,7 +19,7 @@
     "yoshi-server": "^4.14.0"
   },
   "devDependencies": {
-    "yoshi-server": "4.166.0"
+    "yoshi-server": "4.167.0"
   },
   "scripts": {
     "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",

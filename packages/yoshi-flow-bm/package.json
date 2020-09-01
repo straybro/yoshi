@@ -1,6 +1,6 @@
 {
   "name": "yoshi-flow-bm",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "bin": {
     "yoshi-bm": "./build/bin/yoshi-bm.js"
   },
@@ -28,13 +28,13 @@
     "react-dev-utils": "9.1.0",
     "uuid": "8.3.0",
     "webpack": "4.44.1",
-    "yoshi-command-lint": "4.166.0",
-    "yoshi-common": "4.166.0",
-    "yoshi-config": "4.163.0",
-    "yoshi-flow-legacy": "4.166.0",
-    "yoshi-helpers": "4.166.0",
-    "yoshi-server-tools": "4.166.0",
-    "yoshi-style-dependencies": "4.71.0"
+    "yoshi-command-lint": "4.167.0",
+    "yoshi-common": "4.167.0",
+    "yoshi-config": "4.167.0",
+    "yoshi-flow-legacy": "4.167.0",
+    "yoshi-helpers": "4.167.0",
+    "yoshi-server-tools": "4.167.0",
+    "yoshi-style-dependencies": "4.167.0"
   },
   "devDependencies": {
     "@types/cosmiconfig": "6.0.0",
@@ -43,7 +43,7 @@
     "@types/react-dev-utils": "9.0.4",
     "@types/uuid": "8.3.0",
     "@types/webpack": "4.41.21",
-    "yoshi-flow-bm-runtime": "4.166.0"
+    "yoshi-flow-bm-runtime": "4.167.0"
   },
   "wix": {
     "artifact": {

@@ -1,6 +1,6 @@
 {
   "name": "yoshi-helpers",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "keywords": [
     "helpers",
     "yoshi",
@@ -25,7 +25,7 @@
     "semver": "7.3.2",
     "server-destroy": "1.0.1",
     "xmldoc": "1.1.2",
-    "yoshi-config": "4.163.0"
+    "yoshi-config": "4.167.0"
   },
   "devDependencies": {
     "@types/detect-port": "1.3.0",

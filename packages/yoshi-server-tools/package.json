@@ -1,6 +1,6 @@
 {
   "name": "yoshi-server-tools",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "keywords": [
     "yoshi",
     "server"
@@ -19,8 +19,8 @@
     "node-fetch": "2.6.0",
     "simple-git": "2.20.1",
     "uuid": "8.3.0",
-    "yoshi-config": "4.163.0",
-    "yoshi-helpers": "4.166.0"
+    "yoshi-config": "4.167.0",
+    "yoshi-helpers": "4.167.0"
   },
   "scripts": {
     "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",

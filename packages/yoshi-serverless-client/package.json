@@ -1,6 +1,6 @@
 {
   "name": "yoshi-serverless-client",
-  "version": "4.166.0",
+  "version": "4.167.0",
   "main": "build/index.js",
   "sideEffects": false,
   "keywords": [
@@ -20,7 +20,7 @@
     "yoshi-serverless": "^4.14.0"
   },
   "devDependencies": {
-    "yoshi-serverless": "4.166.0"
+    "yoshi-serverless": "4.167.0"
   },
   "scripts": {
     "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
