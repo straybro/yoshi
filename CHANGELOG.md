@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.166.0 (2020-09-01)
+
+#### :bug: Bug Fix
+
+- `yoshi-common`
+  - [#3180](https://github.com/wix-private/yoshi/pull/3180) Fix `async-webworker` to not create empty .min.js files ([@ronami](https://github.com/ronami))
+
 ## v4.165.0 (2020-08-31)
 
 #### :rocket: New Feature
