@@ -21,5 +21,15 @@
     "uuid": "8.3.0",
     "yoshi-config": "4.163.0",
     "yoshi-helpers": "4.166.0"
+  },
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-server-tools"
+    }
   }
 }

@@ -25,5 +25,15 @@
     "jest-validate": "24.9.0",
     "lodash": "4.17.20",
     "read-pkg": "5.2.0"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-config"
+    }
   }
 }

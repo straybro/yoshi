@@ -17,5 +17,15 @@
   "peerDependencies": {
     "yoshi-serverless": "^4.14.0",
     "yoshi-serverless-client": "^4.14.0"
+  },
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-serverless-testing"
+    }
   }
 }

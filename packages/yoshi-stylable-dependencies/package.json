@@ -14,5 +14,14 @@
     "@stylable/node": "^3.8.4",
     "@stylable/runtime": "^3.8.4",
     "@stylable/webpack-plugin": "^3.8.4"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-stylable-dependencies"
+    }
   }
 }

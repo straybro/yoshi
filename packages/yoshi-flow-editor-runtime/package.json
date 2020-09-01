@@ -36,5 +36,15 @@
     "@types/react": "16.9.44",
     "@types/react-i18next": "7.8.3",
     "react": "16.13.1"
+  },
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-flow-editor-runtime"
+    }
   }
 }

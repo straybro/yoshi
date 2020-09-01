@@ -23,5 +23,14 @@
   "devDependencies": {
     "glob": "7.1.6",
     "lodash": "4.17.20"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "eslint-config-yoshi"
+    }
   }
 }

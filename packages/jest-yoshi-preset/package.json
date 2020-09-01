@@ -50,5 +50,14 @@
     "graphql-tag": "2.11.0",
     "jest-transform-graphql": "2.1.0",
     "typescript": "3.9.7"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "jest-yoshi-preset"
+    }
   }
 }

@@ -6,7 +6,10 @@
   "module": "./build/esm/index.js",
   "types": "./build/types/index.d.ts",
   "sideEffects": false,
-  "scripts": {},
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
   "keywords": [],
   "author": "Amit Dahan <amitda@wix.com>",
   "dependencies": {
@@ -28,5 +31,11 @@
   },
   "peerDependencies": {
     "react": "16.13.1"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-flow-bm-runtime"
+    }
   }
 }

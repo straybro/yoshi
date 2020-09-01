@@ -15,5 +15,14 @@
   "dependencies": {
     "stylelint": "^9.7.1",
     "stylelint-prettier": "^1.0.3"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "stylelint-config-yoshi"
+    }
   }
 }

@@ -33,6 +33,12 @@
     ]
   },
   "scripts": {
-    "test": "jest"
+    "test": "#jest"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "babel-plugin-transform-hmr-runtime"
+    }
   }
 }

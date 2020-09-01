@@ -4,6 +4,8 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#",
     "start": "start-storybook"
   },
   "author": "Nitay Rabinovich",
@@ -16,5 +18,11 @@
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-storybook-dependencies"
+    }
   }
 }

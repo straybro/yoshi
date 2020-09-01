@@ -14,6 +14,8 @@
     "create-yoshi-app": "build/bin/create-yoshi-app.js"
   },
   "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#",
     "templates": "ts-node scripts/runE2E.js",
     "client": "npm run templates -- client client-typescript",
     "fullstack": "npm run templates -- fullstack fullstack-typescript",
@@ -72,5 +74,11 @@
     "tempy": "0.6.0",
     "ts-node": "8.10.2",
     "type-fest": "0.16.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "create-yoshi-app"
+    }
   }
 }

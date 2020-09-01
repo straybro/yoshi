@@ -9,6 +9,9 @@
   ],
   "author": "Yaniv Efraim",
   "license": "ISC",
+  "scripts": {
+    "test": "#"
+  },
   "peerDependencies": {
     "react": "^16.9.0",
     "yoshi-serverless": "^4.14.0",
@@ -17,7 +20,13 @@
   "devDependencies": {
     "@types/react": "16.9.44",
     "react": "16.13.1",
-    "yoshi-serverless": "4.149.0",
-    "yoshi-serverless-client": "4.149.0"
+    "yoshi-serverless": "4.165.0",
+    "yoshi-serverless-client": "4.165.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-serverless-react"
+    }
   }
 }

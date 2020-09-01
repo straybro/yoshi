@@ -7,8 +7,9 @@
     "yoshi-flow-editor": "./bin/yoshi-flow-editor.js"
   },
   "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
     "postinstall": "node ./postinstall",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "#"
   },
   "keywords": [],
   "author": "Dean Shub",
@@ -58,5 +59,11 @@
   },
   "peerDependencies": {
     "@wix/bob-widget-services": "^2.0.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-flow-editor"
+    }
   }
 }

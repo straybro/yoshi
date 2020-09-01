@@ -31,5 +31,15 @@
     "yoshi-flow-legacy": "4.166.0",
     "yoshi-helpers": "4.166.0",
     "yoshi-server-tools": "4.166.0"
+  },
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-flow-app"
+    }
   }
 }

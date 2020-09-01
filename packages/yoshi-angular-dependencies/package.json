@@ -21,5 +21,14 @@
     "protractor": "5.4.4",
     "protractor-browser-logs": "1.0.456",
     "screenshot-reporter": "1.1.330"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-angular-dependencies"
+    }
   }
 }

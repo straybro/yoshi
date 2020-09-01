@@ -17,5 +17,14 @@
   "peerDependencies": {
     "tslint": ">=5.10.0",
     "tslint-react-hooks": "^2.1.0"
+  },
+  "scripts": {
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "tslint-config-yoshi"
+    }
   }
 }

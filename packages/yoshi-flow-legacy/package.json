@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "mocha": "mocha --retries=$([ -z \"$TEAMCITY_VERSION\" ] && echo 0 || echo 1)",
-    "test": "mocha './+(test|src)/{,!(fixtures)/**/}/*.spec.js'",
+    "test": "#",
+    "test:all": "mocha './+(test|src)/{,!(fixtures)/**/}/*.spec.js'",
     "test:build": "npm run mocha -- 'test/{build,loaders}.spec.js'",
     "test:start": "npm run mocha -- 'test/start.spec.js'",
     "test:test": "npm run mocha -- 'test/{test,jasmine,e2e}.spec.js'",
@@ -144,5 +145,11 @@
     "typescript": "3.9.7",
     "yoshi-angular-dependencies": "4.143.0",
     "yoshi-style-dependencies": "4.71.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-flow-legacy"
+    }
   }
 }

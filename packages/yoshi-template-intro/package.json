@@ -46,5 +46,11 @@
     "presets": [
       "yoshi"
     ]
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi-template-intro"
+    }
   }
 }

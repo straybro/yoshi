@@ -18,5 +18,15 @@
     "@types/express": "4.17.7",
     "@types/webpack-env": "1.15.2",
     "express": "4.17.1"
+  },
+  "scripts": {
+    "build": "tsc -b && cpy './**/*' '!./**/*.(ts|tsx|json)' ../build --parents --cwd=src",
+    "test": "#"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "bootstrap-hot-loader"
+    }
   }
 }

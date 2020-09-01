@@ -9,12 +9,8 @@
     "url": "https://github.com/wix/yoshi"
   },
   "scripts": {
-    "mocha": "mocha --retries=$([ -z \"$TEAMCITY_VERSION\" ] && echo 0 || echo 1)",
-    "test": "mocha './+(test|src)/{,!(fixtures)/**/}/*.spec.js'",
-    "test:build": "npm run mocha -- 'test/{build,loaders}.spec.js'",
-    "test:start": "npm run mocha -- 'test/start.spec.js'",
-    "test:test": "npm run mocha -- 'test/{test,jasmine,e2e}.spec.js'",
-    "test:others": "npm run mocha -- 'test/{webpack-config,config,lint}.spec.js' 'src/**/*.spec.js' 'test/tasks/**/*.spec.js'"
+    "lint": "eslint .",
+    "test": "#"
   },
   "files": [
     "bin",
@@ -29,5 +25,11 @@
     "yoshi-flow-legacy": "4.166.0",
     "yoshi-flow-monorepo": "4.166.0",
     "yoshi-helpers": "4.166.0"
+  },
+  "wix": {
+    "artifact": {
+      "groupId": "com.wixpress.npm",
+      "artifactId": "yoshi"
+    }
   }
 }
