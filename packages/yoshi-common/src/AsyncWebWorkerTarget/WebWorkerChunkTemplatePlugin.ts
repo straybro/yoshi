@@ -7,7 +7,10 @@ class WebWorkerChunkTemplatePlugin {
       'WebWorkerChunkTemplatePlugin',
       (modules, chunk) => {
         const source = new ConcatSource();
-        source.add(`[${JSON.stringify(chunk.ids)},`);
+        // use an assignment so terser doesn't clean this entire file
+        // will be used by the main chunk as `Function('return ' + ...)`
+        // which returns the value of the assignment
+        source.add(`self._tmp_ = [${JSON.stringify(chunk.ids)},`);
         source.add(modules);
         source.add(']');
         return source;
