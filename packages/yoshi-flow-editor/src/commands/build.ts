@@ -18,7 +18,7 @@ import fs from 'fs-extra';
 import * as telemetry from 'yoshi-common/build/telemetry';
 import {
   createClientWebpackConfig,
-  createServerWebpackConfig,
+  createYoshiServerWebpackConfig,
   createWebWorkerWebpackConfig,
 } from '../webpack.config';
 import { cliCommand } from '../cli';
@@ -126,9 +126,12 @@ const build: cliCommand = async function (argv, config, model) {
     customEntry: clientEntries,
   });
 
-  const serverConfig = createServerWebpackConfig(config, {
-    isDev: true,
-  });
+  let serverConfig;
+  if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+    serverConfig = createYoshiServerWebpackConfig(config, {
+      isDev: true,
+    });
+  }
 
   const webWorkerCustomEntry = buildWorkerEntries(model);
 
@@ -147,7 +150,7 @@ const build: cliCommand = async function (argv, config, model) {
   const { stats } = await runWebpack([
     clientDebugConfig,
     clientOptimizedConfig,
-    serverConfig,
+    ...(serverConfig ? [serverConfig] : []),
     webWorkerConfig,
     webWorkerOptimizeConfig,
   ]);

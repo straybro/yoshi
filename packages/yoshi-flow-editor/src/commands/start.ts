@@ -18,7 +18,7 @@ import {
 } from '../utils';
 import {
   createClientWebpackConfig,
-  createServerWebpackConfig,
+  createYoshiServerWebpackConfig,
   createWebWorkerWebpackConfig,
 } from '../webpack.config';
 import {
@@ -93,10 +93,13 @@ const start: cliCommand = async function (argv, config, model) {
     customEntry: buildClientEntries(model),
   });
 
-  const serverConfig = createServerWebpackConfig(config, {
-    isDev: true,
-    isHot: true,
-  });
+  let serverConfig;
+  if (process.env.EXPERIMENTAL_YOSHI_SERVERLESS) {
+    serverConfig = createYoshiServerWebpackConfig(config, {
+      isDev: true,
+      isHot: true,
+    });
+  }
 
   const webWorkerConfig = createWebWorkerWebpackConfig(config, {
     isDev: true,

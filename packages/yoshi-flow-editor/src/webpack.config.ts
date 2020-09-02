@@ -84,7 +84,7 @@ export function createClientWebpackConfig(
   return clientConfig;
 }
 
-export function createServerWebpackConfig(
+export function createYoshiServerWebpackConfig(
   config: Config,
   { isDev, isHot }: { isDev?: boolean; isHot?: boolean } = {},
 ): webpack.Configuration {
@@ -99,9 +99,7 @@ export function createServerWebpackConfig(
   });
 
   serverConfig.entry = async () =>
-    process.env.EXPERIMENTAL_YOSHI_SERVERLESS
-      ? createYoshiServerEntries(serverConfig.context as string)
-      : {};
+    createYoshiServerEntries(serverConfig.context as string);
 
   return serverConfig;
 }
