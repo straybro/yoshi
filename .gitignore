@@ -12,3 +12,5 @@ tsconfig.tsbuildinfo
 .history
 yarn-error.log
 target/
+coverage/
+.nyc_output
