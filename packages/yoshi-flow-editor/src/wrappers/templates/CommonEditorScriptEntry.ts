@@ -44,8 +44,11 @@ export default t<Opts>`
       if (editorScriptEntry.appManifest) {
         builder = builder.withAppManifest(editorScriptEntry.appManifest);
       }
-      if (editorScriptEntry.eventHandler) {
-        builder = builder.withEventHandler(editorScriptEntry.eventHandler);
+
+      var eventHandler = editorScriptEntry.eventHandler || editorScriptEntry.onEvent;
+
+      if (eventHandler) {
+        builder = builder.withEventHandler(eventHandler);
       }
       ${controllersMeta
         .map(

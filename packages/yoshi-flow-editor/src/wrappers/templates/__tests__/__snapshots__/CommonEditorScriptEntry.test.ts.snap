@@ -98,8 +98,11 @@ exports[`CommonEditorScriptEntry template generates correct template with entry 
       if (editorScriptEntry.appManifest) {
         builder = builder.withAppManifest(editorScriptEntry.appManifest);
       }
-      if (editorScriptEntry.eventHandler) {
-        builder = builder.withEventHandler(editorScriptEntry.eventHandler);
+
+      var eventHandler = editorScriptEntry.eventHandler || editorScriptEntry.onEvent;
+
+      if (eventHandler) {
+        builder = builder.withEventHandler(eventHandler);
       }
       
       var userController_0 = require('project/src/components/a/editor.controller.ts');
@@ -130,8 +133,11 @@ exports[`CommonEditorScriptEntry template generates correct template with entry 
       if (editorScriptEntry.appManifest) {
         builder = builder.withAppManifest(editorScriptEntry.appManifest);
       }
-      if (editorScriptEntry.eventHandler) {
-        builder = builder.withEventHandler(editorScriptEntry.eventHandler);
+
+      var eventHandler = editorScriptEntry.eventHandler || editorScriptEntry.onEvent;
+
+      if (eventHandler) {
+        builder = builder.withEventHandler(eventHandler);
       }
       
       var userController_0 = require('project/src/components/a/editor.controller.ts');
